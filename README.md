@@ -1,0 +1,3 @@
+# EVA
+
+My NixOs configuration
