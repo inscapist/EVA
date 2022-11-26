@@ -64,8 +64,14 @@
     #   Verify hardware acceleration with vainfo (equivalent of glxinfo):
     #   $ nix-shell -p libva-utils --run vainfo
     extraPackages = with pkgs; [
+      # << intel >>
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
       vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+
+      # << nvidia >>
+      # vaapiVdpau
+      # libvdpau-va-gl
+      # nvidia-vaapi-driver
     ];
   };
 

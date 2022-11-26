@@ -20,6 +20,7 @@ in {
     ../../devil-arms/fonts.nix
     ../../devil-arms/networking.nix
     ../../devil-arms/nvidia.nix
+    ../../devil-arms/settings.nix
     ../../devil-arms/softwares.nix
     ../../devil-arms/sound.nix
   ];
@@ -65,16 +66,5 @@ in {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "networkmanager" ];
     shell = pkgs.zsh;
-  };
-
-  system.stateVersion = "22.11";
-  nixpkgs.config.allowUnfree = true;
-
-  nix = {
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 30d";
-    };
   };
 }

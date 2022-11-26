@@ -18,9 +18,9 @@ in {
   environment.systemPackages = [ nvidia-offload ];
 
   hardware.nvidia = {
-    # Use opensourced kernel module:
+    # Use opensourced kernel module
     #   https://github.com/NixOS/nixpkgs/pull/172660
-    open = true;
+    open = lib.mkDefault true;
 
     # kernel modesetting:
     #   https://wiki.archlinux.org/title/Kernel_mode_setting

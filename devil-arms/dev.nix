@@ -20,7 +20,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    alacritty
     bat
     cbonsai
     curl
@@ -44,6 +43,7 @@
     iotop
     irssi
     jq
+    kitty
     lazygit
     lshw
     lsof
