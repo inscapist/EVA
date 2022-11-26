@@ -23,9 +23,6 @@
     ];
     fontconfig = {
       defaultFonts = {
-        # sansSerif = [ "IBM Plex Sans" ];
-        # serif = [ "IBM Plex Sans" ];
-        # monospace = [ "Monoid Nerd Font" ];
         serif = [ "Recursive Sans Casual Static Medium" ];
         sansSerif = [ "Recursive Sans Linear Static Medium" ];
         monospace = [ "Recursive Mono Linear Static" ];

@@ -16,7 +16,6 @@
       General = {
         FastConnectable = "true";
         JustWorksRepairing = "always";
-        MultiProfile = "multiple";
       };
     };
   };

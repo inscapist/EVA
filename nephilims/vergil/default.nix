@@ -15,13 +15,13 @@ in {
     ./optimization.nix
 
     ../../devil-arms/bluetooth.nix
+    ../../devil-arms/desktop.nix
     ../../devil-arms/dev.nix
     ../../devil-arms/fonts.nix
     ../../devil-arms/networking.nix
     ../../devil-arms/nvidia.nix
     ../../devil-arms/softwares.nix
     ../../devil-arms/sound.nix
-    ../../devil-arms/xorg.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -59,12 +59,7 @@ in {
     fcitx.engines = with pkgs.fcitx-engines; [ rime ];
   };
 
-  # To be replaced with home-manager
-  environment.variables = {
-    EDITOR = "hx";
-    BROWSER = "firefox";
-    TERMINAL = "alacritty";
-  };
+  environment.variables = { EDITOR = "hx"; };
 
   users.users.${hostName} = {
     isNormalUser = true;
