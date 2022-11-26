@@ -34,15 +34,24 @@
     video.hidpi.enable = true;
   };
 
-  hardware.nvidia.prime = {
-    # used in conjunction with Prime Offload
-    # https://github.com/NixOS/nixpkgs/blob/2ea79e0fe445f3fe4f7ac355e12b60ca0e2bd1fa/nixos/modules/hardware/video/nvidia.nix#L71-L89
-    nvidiaBusId = "PCI:1:0:0";
-    intelBusId = "PCI:0:2:0";
+  hardware.nvidia = {
+    prime = {
+      # used in conjunction with Prime Offload
+      #   https://github.com/NixOS/nixpkgs/blob/2ea79e0fe445f3fe4f7ac355e12b60ca0e2bd1fa/nixos/modules/hardware/video/nvidia.nix#L71-L89
+      nvidiaBusId = "PCI:1:0:0";
+      intelBusId = "PCI:0:2:0";
+    };
+
+    # Experimental power mgmt for newer cards
+    #   https://nixos.wiki/wiki/Talk:Nvidia
+    #   https://github.com/NixOS/nixpkgs/blob/8690906c4d80db5d85f52313a8487bf2e7b8d4c5/nixos/modules/hardware/video/nvidia.nix#L395-L413
+    #   Also see the NVIDIA docs, chapter 22
+    powerManagement.enable = true;
   };
 
   hardware.opengl = {
     enable = true;
+    driSupport = true; # vulcan
     # Hardware video acceleration:
     #   https://nixos.wiki/wiki/Accelerated_Video_Playback
     #   https://wiki.archlinux.org/title/Hardware_video_acceleration

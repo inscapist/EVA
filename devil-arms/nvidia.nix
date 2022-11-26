@@ -2,7 +2,9 @@
 
 # This creates a new 'nvidia-offload' program that runs the application passed to it on the GPU
 #   As per https://nixos.wiki/wiki/Nvidia
-#   Upstream: https://github.com/NixOS/nixos-hardware/blob/master/common/gpu/nvidia.nix
+#   Upstream:
+#   - https://github.com/NixOS/nixpkgs/blob/nixos-22.11/nixos/modules/hardware/video/nvidia.nix
+#   - https://github.com/NixOS/nixos-hardware/blob/master/common/gpu/nvidia.nix
 let
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1

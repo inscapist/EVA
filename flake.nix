@@ -8,13 +8,13 @@
   };
 
   outputs = { self, nixpkgs, agenix, flake-utils, ... }:
-    let defaultSystem = "x86_64-linux";
+    let system = "x86_64-linux";
     in {
       nixosConfigurations.vergil = nixpkgs.lib.nixosSystem {
-        system = defaultSystem;
+        inherit system;
         modules = [ ./nephilims/vergil agenix.nixosModule ];
       };
-    } // flake-utils.lib.eachSystem [ defaultSystem ] (system:
+    } // flake-utils.lib.eachSystem [ "x86_64-linux" "aarch64-darwin" ] (system:
       let pkgs = nixpkgs.legacyPackages.${system};
       in {
         devShells.default =

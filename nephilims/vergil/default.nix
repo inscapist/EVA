@@ -8,6 +8,7 @@ let
   hostName = "vergil";
   diskId = "/dev/disk/by-uuid/7d410c1c-20fd-407e-b4e9-bef439090522";
   timezone = "Asia/Singapore";
+  locale = "en_US.UTF-8";
 in {
   imports = [
     ./hardware-configuration.nix
@@ -15,11 +16,11 @@ in {
 
     ../../devil-arms/bluetooth.nix
     ../../devil-arms/dev.nix
-    ../../devil-arms/environment.nix
     ../../devil-arms/fonts.nix
+    ../../devil-arms/networking.nix
     ../../devil-arms/nvidia.nix
+    ../../devil-arms/softwares.nix
     ../../devil-arms/sound.nix
-    ../../devil-arms/wm.nix
     ../../devil-arms/xorg.nix
   ];
 
@@ -52,14 +53,17 @@ in {
   services.openssh.enable = true;
 
   time.timeZone = timezone;
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = locale;
   i18n.inputMethod = {
     enabled = "fcitx";
     fcitx.engines = with pkgs.fcitx-engines; [ rime ];
   };
 
-  console = {
-    # keyMap = "colemak";
+  # To be replaced with home-manager
+  environment.variables = {
+    EDITOR = "hx";
+    BROWSER = "firefox";
+    TERMINAL = "alacritty";
   };
 
   users.users.${hostName} = {
@@ -68,7 +72,6 @@ in {
     shell = pkgs.zsh;
   };
 
-  # Nix section
   system.stateVersion = "22.11";
   nixpkgs.config.allowUnfree = true;
 

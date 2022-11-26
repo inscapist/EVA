@@ -8,10 +8,11 @@
 
       # https://github.com/NixOS/nixpkgs/tree/master/pkgs/data/fonts
       ibm-plex
+      recursive
+      ttf_bitstream_vera
       noto-fonts
       noto-fonts-emoji
       noto-fonts-extra
-      recursive
       twemoji-color-font
 
       # CJK support
@@ -22,9 +23,12 @@
     ];
     fontconfig = {
       defaultFonts = {
-        sansSerif = [ "IBM Plex Sans" ];
-        serif = [ "IBM Plex Sans" ];
-        monospace = [ "Monoid Nerd Font" ];
+        # sansSerif = [ "IBM Plex Sans" ];
+        # serif = [ "IBM Plex Sans" ];
+        # monospace = [ "Monoid Nerd Font" ];
+        serif = [ "Recursive Sans Casual Static Medium" ];
+        sansSerif = [ "Recursive Sans Linear Static Medium" ];
+        monospace = [ "Recursive Mono Linear Static" ];
         emoji = [ "Twemoji" ];
       };
       localConf = ''

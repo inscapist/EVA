@@ -18,4 +18,51 @@
     # VirtualBox Guest additions
     #virtualisation.virtualbox.guest.enable = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    alacritty
+    bat
+    cbonsai
+    curl
+    direnv
+    dua
+    duf
+    duplicity
+    exa
+    fd
+    fx
+    fzf
+    git
+    glances
+    gparted
+    graphviz
+    helix
+    hexyl
+    htop
+    httpie
+    inetutils
+    iotop
+    irssi
+    jq
+    lazygit
+    lshw
+    lsof
+    man
+    neofetch
+    nodejs
+    nvtop
+    openssl
+    ripgrep
+    s-tui
+    tcpdump
+    tig
+    tealdeer
+    tmux
+    tokei
+    tree
+    unrar
+    wget
+    which
+    zip
+  ];
 }
