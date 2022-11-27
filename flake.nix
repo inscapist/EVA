@@ -1,5 +1,5 @@
 {
-  description = "My NixOS configuration - codename EVA";
+  description = "My NixOS configuration - codenamed EVA";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
@@ -18,16 +18,15 @@
       defaultUser = "xi";
       commonModules = [ agenix.nixosModule ./devil-arms ];
     in {
+
+      # Primary Driver - XPS 9520
       nixosConfigurations.vergil = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs defaultUser; };
         modules = [ ./nephilims/vergil ] ++ commonModules;
       };
 
-      # NOTE usage
-      # nix build .#nixosConfigurations.vergilInstaller.config.system.build.isoImage
-      # `lsblk` to find the flashdrive
-      # dd if=result/iso/_.iso of=/dev/sd_ status=progress
+      # Installer
       nixosConfigurations.vergilInstaller = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs defaultUser; };
