@@ -10,10 +10,11 @@
     '';
   };
 
+  fileSystems."/".options = [ "noatime" ];
+
   services = {
     fwupd.enable = true; # firmware update
     fprintd.enable = true; # fingerprint scanner
-    xserver.videoDrivers = [ "modesetting" "nvidia" ];
 
     # Monitor Intel CPU's temporature
     #   /necessity or legacy? swelling battery?/
@@ -22,27 +23,13 @@
     # thermald.enable = true;
   };
 
-  fileSystems."/".options = [ "noatime" ];
+  hardware.nvidiaOptimus.disable = true;
+  boot.blacklistedKernelModules = [ "nouveau" "nvidia" ];
 
   hardware = {
     enableRedistributableFirmware = true;
     cpu.intel.updateMicrocode = true;
     video.hidpi.enable = true;
-  };
-
-  hardware.nvidia = {
-    prime = {
-      # used in conjunction with Prime Offload
-      #   https://github.com/NixOS/nixpkgs/blob/2ea79e0fe445f3fe4f7ac355e12b60ca0e2bd1fa/nixos/modules/hardware/video/nvidia.nix#L71-L89
-      nvidiaBusId = "PCI:1:0:0";
-      intelBusId = "PCI:0:2:0";
-    };
-
-    # Experimental power mgmt for newer cards
-    #   https://nixos.wiki/wiki/Talk:Nvidia
-    #   https://github.com/NixOS/nixpkgs/blob/8690906c4d80db5d85f52313a8487bf2e7b8d4c5/nixos/modules/hardware/video/nvidia.nix#L395-L413
-    #   Also see the NVIDIA docs, chapter 22
-    powerManagement.enable = true;
   };
 
   hardware.opengl = {
@@ -55,21 +42,28 @@
     #   https://discourse.nixos.org/t/hardware-acceleration-on-firefox/7947/18
     #
     #   For normal use, VA-API is sufficient with the choice of either i965 or iHD (newer).
-    #   Ignore VDPAU and NvDecode/NvEncode
+    #   Ignore VDPAU and NvDecode/NvEncode on Nvidia
     #
     #   Verify hardware acceleration with vainfo (equivalent of glxinfo):
     #   $ nix-shell -p libva-utils --run vainfo
     extraPackages = with pkgs; [
-      # << intel >>
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
       vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-
-      # << nvidia >>
-      # vaapiVdpau
-      # libvdpau-va-gl
-      # nvidia-vaapi-driver
     ];
   };
+
+  # for debugging
+  environment.systemPackages = with pkgs; [
+    acpi
+    neofetch
+    nvtop
+    libva-utils
+    lshw
+    lsof
+    powertop
+    s-tui
+    tlp
+  ];
 
   powerManagement.powertop.enable = true;
 }

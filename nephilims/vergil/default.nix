@@ -29,4 +29,5 @@ in {
     extraGroups = [ "wheel" "docker" "networkmanager" ];
     shell = pkgs.zsh;
   };
+
 }

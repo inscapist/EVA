@@ -14,7 +14,6 @@
 
   # Configuration
   # https://wiki.hyprland.org/Configuring/Environment-variables/
-
   programs = { hyprland.enable = true; };
 
   nix = {
@@ -27,7 +26,15 @@
   };
 
   services.xserver = {
-    enable = true;
+    # A misleading option. Has nought to do with startx
+    # it simply means do not enable any display
     displayManager.startx.enable = true;
   };
+
+  # Lid settings
+  services.logind = {
+    lidSwitch = "suspend";
+    lidSwitchExternalPower = "lock";
+  };
+
 }

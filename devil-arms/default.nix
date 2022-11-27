@@ -6,9 +6,8 @@
     ./fonts.nix
     ./locales.nix
     ./networking.nix
-    ./nvidia.nix
+    ./nix.nix
     ./security.nix
-    ./settings.nix
     ./softwares.nix
     ./sound.nix
   ];

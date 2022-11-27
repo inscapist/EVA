@@ -15,11 +15,12 @@
   outputs = { self, nixpkgs, agenix, flake-utils, ... }@inputs:
     let
       system = "x86_64-linux";
+      defaultUser = "xi";
       commonModules = [ agenix.nixosModule ./devil-arms ];
     in {
       nixosConfigurations.vergil = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs defaultUser; };
         modules = [ ./nephilims/vergil ] ++ commonModules;
       };
 
@@ -29,7 +30,7 @@
       # dd if=result/iso/_.iso of=/dev/sd_ status=progress
       nixosConfigurations.vergilInstaller = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs defaultUser; };
         modules = [ ./nephilims/vergil/installer.nix ] ++ commonModules;
       };
 
