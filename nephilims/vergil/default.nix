@@ -2,11 +2,9 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, defaultUser, ... }:
 
-let
-  hostName = "vergil";
-  diskId = "/dev/disk/by-uuid/7d410c1c-20fd-407e-b4e9-bef439090522";
+let diskId = "/dev/disk/by-uuid/7d410c1c-20fd-407e-b4e9-bef439090522";
 in {
   imports = [ ./hardware-configuration.nix ./optimization.nix ];
 
@@ -24,10 +22,9 @@ in {
     };
   };
 
-  users.users.${hostName} = {
+  users.users.${defaultUser} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "networkmanager" ];
     shell = pkgs.zsh;
   };
-
 }
