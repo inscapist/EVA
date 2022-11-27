@@ -13,12 +13,20 @@
   };
 
   outputs = { self, nixpkgs, agenix, flake-utils, ... }@inputs:
-    let system = "x86_64-linux";
+    let
+      system = "x86_64-linux";
+      commonModules = [ agenix.nixosModule ./devil-arms ];
     in {
       nixosConfigurations.vergil = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
-        modules = [ agenix.nixosModule ./nephilims/vergil ];
+        modules = [ ./nephilims/vergil ] ++ commonModules;
+      };
+      # nix build .#nixosConfigurations.vergilInstaller.config.system.build.isoImage
+      nixosConfigurations.vergilInstaller = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs; };
+        modules = [ ./nephilims/vergil/installer.nix ] ++ commonModules;
       };
     } // flake-utils.lib.eachSystem [ "x86_64-linux" "aarch64-darwin" ] (system:
       let pkgs = nixpkgs.legacyPackages.${system};

@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{
+  services.openssh.enable = true;
 
   networking = {
     # inherit hostName;

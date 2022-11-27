@@ -19,6 +19,8 @@
     #virtualisation.virtualbox.guest.enable = true;
   };
 
+  environment.variables = { EDITOR = "hx"; };
+
   environment.systemPackages = with pkgs; [
     bat
     cbonsai

@@ -2,11 +2,7 @@
 
 {
   boot = {
-    kernel.sysctl = {
-      # Refuse ICMP echo requests
-      "net.ipv4.icmp_echo_ignore_broadcasts" = 1;
-      "fs.inotify.max_user_watches" = "1048576";
-    };
+    kernel.sysctl = { "fs.inotify.max_user_watches" = "1048576"; };
 
     # https://discourse.nixos.org/t/new-install-hangs-on-boot/21435/10
     extraModprobeConfig = ''
