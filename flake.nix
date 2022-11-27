@@ -17,7 +17,8 @@
       system = "x86_64-linux";
       defaultUser = "xi";
       commonModules = [ agenix.nixosModule ./devil-arms ];
-    in {
+    in
+    {
 
       # Primary Driver - XPS 9520
       nixosConfigurations.vergil = nixpkgs.lib.nixosSystem {
@@ -38,6 +39,6 @@
       in {
         devShells.default =
           import ./devil-triggers/dev-shell.nix { inherit pkgs; };
-        formatter = pkgs.nixfmt;
+        formatter = pkgs.nixpkgs-fmt;
       });
 }
