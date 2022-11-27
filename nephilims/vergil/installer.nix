@@ -4,6 +4,12 @@
     (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
   ];
 
+  disabledModules = [
+    ../../devil-arms/fonts.nix
+    ../../devil-arms/locales.nix
+    ../../devil-arms/softwares.nix
+  ];
+
   # use latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
