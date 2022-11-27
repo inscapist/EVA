@@ -54,6 +54,7 @@
     nodejs
     nvtop
     openssl
+    powertop
     ripgrep
     s-tui
     tcpdump

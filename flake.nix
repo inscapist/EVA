@@ -22,12 +22,17 @@
         specialArgs = { inherit inputs; };
         modules = [ ./nephilims/vergil ] ++ commonModules;
       };
+
+      # NOTE usage
       # nix build .#nixosConfigurations.vergilInstaller.config.system.build.isoImage
+      # `lsblk` to find the flashdrive
+      # dd if=result/iso/_.iso of=/dev/sd_ status=progress
       nixosConfigurations.vergilInstaller = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
         modules = [ ./nephilims/vergil/installer.nix ] ++ commonModules;
       };
+
     } // flake-utils.lib.eachSystem [ "x86_64-linux" "aarch64-darwin" ] (system:
       let pkgs = nixpkgs.legacyPackages.${system};
       in {

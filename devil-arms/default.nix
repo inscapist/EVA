@@ -4,6 +4,7 @@
     ./desktop.nix
     ./dev.nix
     ./fonts.nix
+    ./locales.nix
     ./networking.nix
     ./nvidia.nix
     ./security.nix
