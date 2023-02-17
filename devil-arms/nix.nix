@@ -1,7 +1,7 @@
 {
   nixpkgs.config = {
     allowUnfree = true;
-    allowBroken = true; # TODO reevaluate this
+    allowBroken = true;
   };
 
   nix = {
@@ -19,9 +19,6 @@
       experimental-features = [ "nix-command" "flakes" ];
 
     };
-    optimise = {
-      automatic = true;
-      dates = "weekly";
-    };
+    optimise = { automatic = true; };
   };
 }
