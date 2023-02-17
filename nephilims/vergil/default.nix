@@ -26,9 +26,24 @@ in {
 
   users.users.${defaultUser} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "networkmanager" ];
+    extraGroups =
+      [ "wheel" "docker" "networkmanager" "libvirtd" "video" "audio" ];
     shell = pkgs.zsh;
+
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKtsjUN63tlgndK6fx+hHPVo7rhncnIb+Y6A5ftx3vSY sparda"
+    ];
   };
 
-  system.stateVersion = "23.05";
+  services = {
+    dbus.packages = [ pkgs.gcr ];
+    getty.autologinUser = "${defaultUser}";
+    # gvfs.enable = true;
+    openssh = { enable = true; };
+  };
+
+  system = {
+    stateVersion = "23.05";
+    autoUpgrade.enable = true;
+  };
 }

@@ -10,5 +10,7 @@
     ./security.nix
     ./softwares.nix
     ./sound.nix
+    ./virtualization.nix
+    ./xdg.nix
   ];
 }

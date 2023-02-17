@@ -1,21 +1,20 @@
 { pkgs, ... }: {
 
   environment.systemPackages = with pkgs; [
+    lxappearance
     brave
     firefox
     fractal
     gthumb
-    lutris
+    # lutris
     maim
     nitch
     obsidian
     pavucontrol
     poppler_utils
-    qemu
     ranger
     slack
     tesseract
-    virt-manager
     zathura
   ];
 

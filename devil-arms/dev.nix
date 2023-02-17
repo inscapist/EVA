@@ -27,7 +27,7 @@
     httpie
     inetutils
     iotop
-    irssi
+    # irssi
     jq
     kitty
     lazygit
