@@ -10,6 +10,7 @@
       };
     };
     libvirtd = {
+      autoPrune.enable = true;
       enable = true;
       qemu = {
         package = pkgs.qemu_kvm;

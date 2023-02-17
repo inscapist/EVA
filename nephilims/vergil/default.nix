@@ -2,19 +2,9 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, defaultUser, ... }:
+{ config, pkgs, user, ... }:
 
-# look for it by running `ls -l /dev/disk/by-uuid` and find the one that points to:
-#   /nvme0n1p2
-let
-  basic = with pkgs; [ bat curl exa fd fx fzf git tig wget tree which ripgrep ];
-  clis = with pkgs; [ irssi httpie tokei zip tealdeer helix hexyl unrar ];
-  health = with pkgs; [ dua duf glances htop btop iotop tcpdump inetutils ];
-  dev = with pkgs; [ graphviz nodejs lazygit jq tesseract poppler_utils ];
-  others = with pkgs; [ duplicity cbonsai slack obsidian zathura ];
-  browsers = with pkgs; [ brave firefox ];
-  os = with pkgs; [ lxappearance gthumb maim pavucontrol ranger ];
-in {
+{
   imports = [ ./hardware-configuration.nix ./optimization.nix ];
 
   boot.loader.systemd-boot.enable = true;
@@ -25,13 +15,15 @@ in {
 
   boot.initrd.luks.devices = {
     nixcontainer = {
+      # look for it by running `ls -l /dev/disk/by-uuid` and find the one that points to:
+      #   /nvme0n1p2
       device = "/dev/disk/by-uuid/c2375d3b-1dc8-46db-a41b-773c633ce373";
       preLVM = true;
       allowDiscards = true;
     };
   };
 
-  users.users.xi = {
+  users.users.${user} = {
     isNormalUser = true;
     extraGroups =
       [ "wheel" "docker" "networkmanager" "libvirtd" "video" "audio" ];
@@ -43,7 +35,7 @@ in {
 
   services = {
     dbus.packages = [ pkgs.gcr ];
-    getty.autologinUser = "xi";
+    getty.autologinUser = user;
     # gvfs.enable = true;
     openssh = { enable = true; };
   };
@@ -52,7 +44,18 @@ in {
 
   environment = {
     variables = { EDITOR = "hx"; };
-    systemPackages = basic ++ clis ++ health ++ dev ++ others ++ browsers ++ os;
+    systemPackages = with pkgs;
+      let
+        clis = [ which bat curl wget exa fd fzf tree ripgrep jq fx ]
+          ++ [ git tig lazygit ]
+          ++ [ irssi httpie tokei zip tealdeer helix hexyl unrar ]
+          ++ [ dua duf glances htop btop iotop ]
+          ++ [ graphviz jq tesseract poppler_utils gdb ]
+          ++ [ tcpdump inetutils dig socat netcat ];
+        others = [ duplicity cbonsai slack obsidian zathura ];
+        browsers = [ brave firefox ];
+        os = [ lxappearance gthumb maim pavucontrol ranger ];
+      in clis ++ others ++ browsers ++ os;
   };
 
   system = {
