@@ -4,10 +4,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    agenix.url = "github:ryantm/agenix";
     hyprland = {
       url = "github:hyprwm/Hyprland";
       # build with your own instance of nixpkgs
@@ -19,7 +16,7 @@
     let
       system = "x86_64-linux";
       defaultUser = "xi";
-      commonModules = [ agenix.nixosModule ./devil-arms ];
+      commonModules = [ agenix.nixosModules.default ./devil-arms ];
     in {
 
       # Primary Driver - XPS 9520
