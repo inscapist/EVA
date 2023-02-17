@@ -1,16 +1,13 @@
 {
   imports = [
     ./bluetooth.nix
-    ./desktop.nix
-    ./dev.nix
     ./fonts.nix
     ./locales.nix
     ./networking.nix
     ./nix.nix
     ./security.nix
-    ./softwares.nix
     ./sound.nix
     ./virtualization.nix
-    ./xdg.nix
+    ./wayland.nix
   ];
 }

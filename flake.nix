@@ -7,7 +7,6 @@
     agenix.url = "github:ryantm/agenix";
     hyprland = {
       url = "github:hyprwm/Hyprland";
-      # build with your own instance of nixpkgs
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -15,22 +14,21 @@
   outputs = { self, nixpkgs, agenix, flake-utils, ... }@inputs:
     let
       system = "x86_64-linux";
-      defaultUser = "xi";
-      commonModules = [ agenix.nixosModules.default ./devil-arms ];
+      common = [ agenix.nixosModules.default ./devil-arms ];
     in {
 
       # Primary Driver - XPS 9520
       nixosConfigurations.vergil = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs defaultUser; };
-        modules = [ ./nephilims/vergil ] ++ commonModules;
+        specialArgs = { inherit inputs; };
+        modules = [ ./nephilims/vergil ] ++ common;
       };
 
       # Installer
       nixosConfigurations.vergilInstaller = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs defaultUser; };
-        modules = [ ./nephilims/vergil/installer.nix ] ++ commonModules;
+        specialArgs = { inherit inputs; };
+        modules = [ ./nephilims/vergil/installer.nix ] ++ common;
       };
 
     } // flake-utils.lib.eachDefaultSystem (system:
