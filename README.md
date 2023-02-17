@@ -19,3 +19,10 @@ nix build .#nixosConfigurations.vergilInstaller.config.system.build.isoImage
 # use `lsblk` to find the flashdrive
 dd if=result/iso/_.iso of=/dev/sd_ status=progress
 ```
+
+## Installation
+1. With the USB, enter boot selection with F12
+2. use `nmtui` to activate wifi
+3. run `ip a` to show ip addr
+4. execute scripts
+

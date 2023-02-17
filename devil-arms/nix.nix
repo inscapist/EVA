@@ -1,6 +1,4 @@
 { config, pkgs, ... }: {
-  system.stateVersion = "22.11";
-
   nixpkgs.config = {
     allowUnfree = true;
     allowBroken = true; # TODO reevaluate this

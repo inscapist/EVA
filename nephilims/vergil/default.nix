@@ -4,7 +4,9 @@
 
 { config, pkgs, defaultUser, ... }:
 
-let diskId = "/dev/disk/by-uuid/7d410c1c-20fd-407e-b4e9-bef439090522";
+# look for it by running `ls -l /dev/disk/by-uuid` and find the one that points to:
+#   /nvme0n1p2
+let diskId = "/dev/disk/by-uuid/c2375d3b-1dc8-46db-a41b-773c633ce373";
 in {
   imports = [ ./hardware-configuration.nix ./optimization.nix ];
 
@@ -27,4 +29,6 @@ in {
     extraGroups = [ "wheel" "docker" "networkmanager" ];
     shell = pkgs.zsh;
   };
+
+  system.stateVersion = "23.05";
 }
