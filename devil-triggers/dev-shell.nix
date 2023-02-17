@@ -3,8 +3,7 @@ pkgs.mkShell {
   buildInputs = with pkgs; [
     git
     nixfmt # from serokell folks, I prefer it
-    nixpkgs-fmt
-    rnix-lsp
+    nil
     statix
     manix
   ];

@@ -7,7 +7,7 @@
     gthumb
     lutris
     maim
-    neofetch
+    nitch
     obsidian
     pavucontrol
     poppler_utils

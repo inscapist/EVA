@@ -23,6 +23,7 @@
     helix
     hexyl
     htop
+    btop
     httpie
     inetutils
     iotop
