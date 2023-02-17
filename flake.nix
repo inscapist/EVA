@@ -26,24 +26,17 @@
     let
       system = "x86_64-linux";
       common = [ agenix.nixosModules.default ./devil-arms ];
-      user = "xi";
+      defaultUser = "xi";
     in {
 
       # Primary Driver - XPS 9520
       nixosConfigurations.vergil = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs defaultUser; };
         modules = [ ./nephilims/vergil ] ++ [
           home-manager.nixosModules.home-manager
+          ./devil-breakers
 
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.${user} = import ./devil-breakers;
-
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
-          }
         ] ++ common;
       };
 
