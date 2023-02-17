@@ -3,6 +3,7 @@
   security.polkit.enable = true;
   virtualisation = {
     docker = {
+      autoPrune.enable = true;
       enable = true;
       rootless = {
         enable = true;
@@ -10,7 +11,6 @@
       };
     };
     libvirtd = {
-      autoPrune.enable = true;
       enable = true;
       qemu = {
         package = pkgs.qemu_kvm;
