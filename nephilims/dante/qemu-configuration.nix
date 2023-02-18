@@ -27,17 +27,18 @@
     lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   # Use the GRUB 2 boot loader.
-  # boot.loader.grub.enable = true;
-  # boot.loader.grub.version = 2;
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot.loader.grub.enable = true;
+  boot.loader.grub.version = 2;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.efiInstallAsRemovable = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # Define on which hard drive you want to install Grub.
   # boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+  boot.loader.grub.device = "nodev"; # or "nodev" for efi only
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.systemd-boot.enable = true;
+  # boot.loader.efi.canTouchEfiVariables = true;
 
   # See "party" below
   fileSystems."/" = {
@@ -49,29 +50,4 @@
     device = "/dev/disk/by-label/boot";
     fsType = "vfat";
   };
-
-  environment = {
-    systemPackages = let
-      party = pkgs.writeShellScriptBin "party" ''
-        set -euxo pipefail
-        diskdev=/dev/vda
-
-        # Partitioning
-        sgdisk -o -g -n 1::+550M -t 1:ef00 -n 2:: -t 2:8300 $diskdev
-
-        # Formatting
-        mkfs.fat -n boot ''${diskdev}1
-        mkfs.ext4 -L nixos ''${diskdev}2
-
-        # Pre-Installation
-        mount /dev/disk/by-label/nixos /mnt
-        mkdir -p /mnt/boot
-        mount /dev/disk/by-label/boot /mnt/boot
-
-        # Generate/Copy Configuration
-        nixos-generate-config --root /mnt
-      '';
-    in [ party ];
-  };
-
 }

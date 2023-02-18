@@ -23,8 +23,28 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKtsjUN63tlgndK6fx+hHPVo7rhncnIb+Y6A5ftx3vSY sparda"
   ];
 
-  environment = {
+  environment = with pkgs; {
     variables = { EDITOR = "hx"; };
-    systemPackages = with pkgs; [ git tig lazygit helix curl which tree ];
+    systemPackages = let
+      party = writeShellScriptBin "party" ''
+        set -euxo pipefail
+        diskdev=/dev/vda
+
+        # Partitioning
+        sgdisk -o -g -n 1::+550M -t 1:ef00 -n 2:: -t 2:8300 $diskdev
+
+        # Formatting
+        mkfs.fat -n boot ''${diskdev}1
+        mkfs.ext4 -L nixos ''${diskdev}2
+
+        # Pre-Installation
+        mount /dev/disk/by-label/nixos /mnt
+        mkdir -p /mnt/boot
+        mount /dev/disk/by-label/boot /mnt/boot
+
+        # Generate/Copy Configuration
+        nixos-generate-config --root /mnt
+      '';
+    in [ party ] ++ [ git tig lazygit helix curl which tree ];
   };
 }
