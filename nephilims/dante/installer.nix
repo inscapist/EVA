@@ -38,9 +38,9 @@
         mkfs.ext4 -L nixos ''${diskdev}2
 
         # Pre-Installation
-        mount /dev/disk/by-label/nixos /mnt
+        mount ''${diskdev}2 /mnt
         mkdir -p /mnt/boot
-        mount /dev/disk/by-label/boot /mnt/boot
+        mount ''${diskdev}1 /mnt/boot
 
         # Generate/Copy Configuration
         nixos-generate-config --root /mnt
