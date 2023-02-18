@@ -35,4 +35,40 @@
   # Define on which hard drive you want to install Grub.
   # boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
   boot.loader.grub.device = "nodev"; # or "nodev" for efi only
+
+  # See "party" below
+  fileSystems."/" = {
+    device = "/dev/disk/by-label/nixos";
+    fsType = "ext4";
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-label/boot";
+    fsType = "vfat";
+  };
+
+  environment = {
+    systemPackages = let
+      party = pkgs.writeShellScriptBin "party" ''
+        set -euxo pipefail
+        diskdev=/dev/vda
+
+        # Partitioning
+        sgdisk -o -g -n 1::+550M -t 1:ef00 -n 2:: -t 2:8300 $diskdev
+
+        # Formatting
+        mkfs.fat -n boot ''${diskdev}1
+        mkfs.ext4 -L nixos ''${diskdev}2
+
+        # Pre-Installation
+        mount /dev/disk/by-label/nixos /mnt
+        mkdir -p /mnt/boot
+        mount /dev/disk/by-label/boot /mnt/boot
+
+        # Generate/Copy Configuration
+        nixos-generate-config --root /mnt
+      '';
+    in [ party ];
+  };
+
 }
