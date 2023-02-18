@@ -7,8 +7,10 @@
 {
   imports = [ ./qemu-configuration.nix ./optimization.nix ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  system = {
+    stateVersion = "23.05";
+    autoUpgrade.enable = true;
+  };
 
   # use latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -48,8 +50,4 @@
       in clis ++ others ++ browsers ++ os;
   };
 
-  system = {
-    stateVersion = "23.05";
-    autoUpgrade.enable = true;
-  };
 }
