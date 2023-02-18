@@ -33,18 +33,36 @@
       nixosConfigurations.vergil = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs defaultUser; };
-        modules = [ ./nephilims/vergil ] ++ [
+        modules = [
+          ./nephilims/vergil
           home-manager.nixosModules.home-manager
           ./devil-breakers
-
         ] ++ common;
       };
 
-      # Installer
+      # Vergil Installer
       nixosConfigurations.vergilInstaller = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
         modules = [ ./nephilims/vergil/installer.nix ] ++ common;
+      };
+
+      # Dante (Qemu on Alienware)
+      nixosConfigurations.dante = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./nephilims/dante
+          home-manager.nixosModules.home-manager
+          ./devil-breakers
+        ] ++ common;
+      };
+
+      # Dante Installer
+      nixosConfigurations.danteInstaller = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs; };
+        modules = [ ./nephilims/dante/installer.nix ] ++ common;
       };
 
     } // flake-utils.lib.eachDefaultSystem (system:
