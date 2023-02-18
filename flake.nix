@@ -49,7 +49,7 @@
       nixosConfigurations.dante = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs defaultUser; };
-        modules = [ ./nephilims/dante ] ++ common;
+        modules = [ ./nephilims/dante ]; # ++ common;
       };
 
       # --------------------------------------------------------
