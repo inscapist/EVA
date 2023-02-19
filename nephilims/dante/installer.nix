@@ -11,7 +11,8 @@
   # ];
 
   # use latest kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
   networking = {
     wireless.enable = false;
@@ -45,6 +46,12 @@
         # Generate/Copy Configuration
         nixos-generate-config --root /mnt
       '';
-    in [ party ] ++ [ git tig lazygit helix curl which tree ];
+      flaky = writeShellScriptBin "flaky" ''
+        cd /mnt/etc/nixos
+        git clone https://github.com/sagittaros/EVA.git
+        cd EVA
+        nixos-install --flake .#dante
+      '';
+    in [ party flaky ] ++ [ git tig lazygit helix curl which tree ];
   };
 }

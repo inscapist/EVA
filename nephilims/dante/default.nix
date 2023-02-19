@@ -13,7 +13,8 @@
   };
 
   # use latest kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
   users.users.${defaultUser} = {
     isNormalUser = true;
@@ -30,6 +31,19 @@
     getty.autologinUser = defaultUser;
     # gvfs.enable = true;
     openssh = { enable = true; };
+  };
+
+  security.sudo = {
+    enable = false;
+    extraConfig = ''
+      ${defaultUser} ALL=(ALL) NOPASSWD:ALL
+    '';
+  };
+  security.doas = {
+    enable = true;
+    extraConfig = ''
+      permit nopass :wheel
+    '';
   };
 
   programs.zsh.enable = true;
@@ -49,5 +63,4 @@
         os = [ lxappearance gthumb maim pavucontrol ranger ];
       in clis ++ others ++ browsers ++ os;
   };
-
 }

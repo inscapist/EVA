@@ -63,7 +63,7 @@
         modules = [ ./nephilims/vergil/installer.nix ];
       };
 
-      # Dante Installer
+      # Dante Installer on Qemu (make sure to change from bios to UEFI)
       nixosConfigurations.danteInstaller = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
