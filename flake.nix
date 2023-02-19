@@ -56,14 +56,20 @@
       # Installers
       # ========================================================
 
-      # Vergil Installer
+      # /Vergil Installer/
+      # nix build .#nixosConfigurations.vergilInstaller.config.system.build.isoImage -o vergil-iso
+      # find the thumbdrive using `lsblk` and replace `/dev/sdb` below
+      # sudo dd if=vergil-iso/iso/TAB.iso of=/dev/sdb status=progress
       nixosConfigurations.vergilInstaller = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
         modules = [ ./nephilims/vergil/installer.nix ];
       };
 
-      # Dante Installer on Qemu (make sure to change from bios to UEFI)
+      # /Dante Installer on Qemu (make sure to change from bios to UEFI)/
+      # nix build .#nixosConfigurations.danteInstaller.config.system.build.isoImage -o dante-iso
+      # find the thumbdrive using `lsblk` and replace `/dev/sdb` below
+      # sudo dd if=dante-iso/iso/TAB.iso of=/dev/sdb status=progress
       nixosConfigurations.danteInstaller = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
