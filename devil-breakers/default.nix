@@ -6,7 +6,10 @@
 
     users.${defaultUser} = {
       home.stateVersion = "23.05";
-      imports = [ ./doom-emacs.nix ./git.nix ];
+      imports = [
+        # ./doom-emacs.nix
+        # ./git.nix
+      ];
     };
   };
 }

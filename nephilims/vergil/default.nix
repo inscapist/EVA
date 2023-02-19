@@ -20,7 +20,7 @@
     nixcontainer = {
       # look for it by running `ls -l /dev/disk/by-uuid` and find the one that points to:
       #   /nvme0n1p2
-      device = "/dev/disk/by-uuid/c2375d3b-1dc8-46db-a41b-773c633ce373";
+      device = "/dev/nvme0n1p2";
       preLVM = true;
       allowDiscards = true;
     };
@@ -66,11 +66,11 @@
           ++ [ git tig lazygit ]
           ++ [ irssi httpie tokei zip tealdeer helix hexyl unrar ]
           ++ [ dua duf glances htop btop iotop ]
-          ++ [ graphviz jq tesseract poppler_utils gdb ]
+          ++ [ graphviz jq poppler_utils gdb ]
           ++ [ tcpdump inetutils dig socat netcat ];
         others = [ duplicity cbonsai slack obsidian zathura ];
         browsers = [ brave firefox ];
-        os = [ lxappearance gthumb maim pavucontrol ranger ];
+        os = [ lxappearance gthumb maim pavucontrol ranger thunar ];
       in clis ++ others ++ browsers ++ os;
   };
 }
