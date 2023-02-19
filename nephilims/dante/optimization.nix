@@ -27,6 +27,7 @@
     neofetch
     nvtop
     libva-utils
+    pciutils
     lshw
     lsof
     powertop
