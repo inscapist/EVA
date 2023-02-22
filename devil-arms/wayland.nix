@@ -31,10 +31,4 @@
     displayManager.startx.enable = true;
   };
 
-  # Lid settings
-  services.logind = {
-    lidSwitch = "suspend";
-    lidSwitchExternalPower = "lock";
-  };
-
 }

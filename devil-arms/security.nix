@@ -1,18 +1,26 @@
 { pkgs, ... }: {
-  security.sudo.wheelNeedsPassword = false;
 
-  # programs = {
-  #   seahorse.enable = true;
-  #   _1password.enable = true;
-  #   _1password-gui.enable = true;
-  # };
+  # Lid settings
+  services.logind = {
+    lidSwitch = "suspend";
+    lidSwitchExternalPower = "lock";
+  };
 
-  # security.pam.services.login.enableGnomeKeyring = true;
+  security = {
+    polkit.enable = true;
+    sudo = {
+      enable = true;
+      wheelNeedsPassword = false;
+    };
+    # doas = {
+    #   enable = true;
+    #   extraConfig = ''
+    #     permit nopass :wheel
+    #   '';
+    # };
+  };
 
-  # services = {
-  #   dbus.packages = with pkgs; [ gcr ];
-  #   gnome.gnome-keyring.enable = true;
-  # };
+  # TODO consider https://wiki.archlinux.org/title/GNOME/Keyring
 
   # security tweaks from Lord @hlissner
   boot.kernel.sysctl = {

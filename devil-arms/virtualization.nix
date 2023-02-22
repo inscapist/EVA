@@ -1,6 +1,6 @@
 { pkgs, ... }: {
-  environment.systemPackages = with pkgs; [ virt-manager spice-gtk swtpm ];
-  security.polkit.enable = true;
+  environment.systemPackages = with pkgs; [ virt-manager spice-gtk ];
+
   virtualisation = {
     docker = {
       autoPrune.enable = true;
@@ -18,9 +18,8 @@
           enable = true;
           packages = with pkgs; [ OVMFFull.fd ];
         };
-        swtpm.enable = true;
       };
     };
-    spiceUSBRedirection.enable = true;
+    # spiceUSBRedirection.enable = true;
   };
 }
