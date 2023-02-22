@@ -18,8 +18,7 @@
 
   boot.initrd.luks.devices = {
     nixcontainer = {
-      # look for it by running `ls -l /dev/disk/by-uuid` and find the one that points to:
-      #   /nvme0n1p2
+      # to use uuid, look for it by running `ls -l /dev/disk/by-uuid` and find the one that points to `/nvme0n1p2`
       device = "/dev/nvme0n1p2";
       preLVM = true;
       allowDiscards = true;
@@ -70,7 +69,7 @@
           ++ [ tcpdump inetutils dig socat netcat ];
         others = [ duplicity cbonsai slack obsidian zathura ];
         browsers = [ brave firefox ];
-        os = [ lxappearance gthumb maim pavucontrol ranger ];
+        os = [ lxappearance gthumb maim pavucontrol ranger xfce.thunar ];
       in clis ++ others ++ browsers ++ os;
   };
 }

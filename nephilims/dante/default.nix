@@ -60,7 +60,7 @@
           ++ [ tcpdump inetutils dig socat netcat ];
         others = [ duplicity cbonsai slack obsidian zathura ];
         browsers = [ brave firefox ];
-        os = [ lxappearance gthumb maim pavucontrol ranger ];
+        os = [ lxappearance gthumb maim pavucontrol ranger xfce.thunar ];
       in clis ++ others ++ browsers ++ os;
   };
 }
