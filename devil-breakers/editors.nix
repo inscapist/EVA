@@ -3,11 +3,6 @@
 {
   imports = [ nix-doom-emacs.hmModule ];
 
-  # Whether to enable fontconfig configuration. This will,
-  # for example, allow fontconfig to discover fonts and
-  # configurations installed through home.packages and nix-env.
-  fonts.fontconfig.enable = true;
-
   programs = {
     neovim = {
       enable = true;
