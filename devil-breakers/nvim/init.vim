@@ -1,7 +1,13 @@
 " ===========================================================================
 " PLUGINS
 " ===========================================================================
-call plug#begin('~/.config/nvim/plugged')
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim-plugins')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
@@ -17,15 +23,9 @@ Plug 'junegunn/goyo.vim'
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 " UI
 Plug 'franbach/miramare'
-" Plug 'morhetz/gruvbox'
 Plug 'sainnhe/everforest'
 Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
-" Language servers etc
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'mattn/emmet-vim'
-Plug 'neovimhaskell/haskell-vim'
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 
