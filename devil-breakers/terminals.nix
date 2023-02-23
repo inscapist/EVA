@@ -17,7 +17,7 @@
     };
   };
 
-  home.packages = with pkgs; [ (nerdfonts.override { fonts = [ "agave" ]; }) ];
+  home.packages = with pkgs; [ (nerdfonts.override { fonts = [ "Agave" ]; }) ];
 
   home.file.".config/alacritty/alacritty.yml".source =
     ./alacritty/alacritty.yml;
