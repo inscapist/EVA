@@ -35,6 +35,14 @@
 
       extraConfig = { push.autoSetupRemote = true; };
     };
+
+    lazygit = {
+      enable = true;
+      settings = {
+        # https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+        gui.theme = { lightTheme = true; };
+      };
+    };
   };
 
 }

@@ -1,0 +1,292 @@
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# FELIX's .zshrc, Wayland Edition
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# >> Zsh-snap
+# >> https://github.com/marlonrichert/zsh-snap
+# >> Install zsh-snap to ~/zsh-plugins
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Download Znap, if it's not there yet.
+[[ -f ~/Git/zsh-snap/znap.zsh ]] ||
+    git clone --depth 1 -- \
+        https://github.com/marlonrichert/zsh-snap.git ~/Git/zsh-snap
+
+source ~/Git/zsh-snap/znap.zsh  # Start Znap
+
+# # `znap prompt` makes your prompt visible in just 15-40ms!
+PURE_PROMPT_SYMBOL="▲"
+PURE_PROMPT_VICMD_SYMBOL="▸" # or "▼"
+znap prompt sindresorhus/pure
+
+znap source zsh-users/zsh-syntax-highlighting
+znap source agkozak/zsh-z
+
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+znap source zsh-users/zsh-autosuggestions
+
+# basic completions
+znap source zsh-users/zsh-completions
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # case insensitive
+
+# git extras
+# curl -sSL https://raw.githubusercontent.com/tj/git-extras/master/install.sh | sudo bash /dev/stdin
+# znap source tj/git-extras
+znap eval gitextras 'curl -fsSL https://raw.githubusercontent.com/tj/git-extras/master/etc/git-extras-completion.zsh'
+
+# rust completions
+znap function _rustup 'znap eval rustup-completion "rustup completions zsh"'
+compdef _rustup rustup
+znap function _cargo 'znap eval cargo-completion "rustup completions zsh cargo"'
+compdef _cargo cargo
+
+# k8s completions
+znap function _kapp 'znap eval kapp-completion "kapp completion zsh"'
+compdef _kapp kapp
+
+znap function _kubecm 'znap eval kubecm-completion "kubecm completion zsh"'
+compdef _kubecm kubecm
+
+# gh cli completions
+znap function _gh 'znap eval gh-completion "gh completion -s zsh"'
+compdef _gh gh
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# >> Options
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
+
+setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
+setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
+setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
+setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
+setopt HIST_BEEP                 # Beep when accessing non-existent history.
+
+unsetopt beep
+setopt LONG_LIST_JOBS     # List jobs in the long format by default.
+setopt AUTO_RESUME        # Attempt to resume existing job before creating a new process.
+setopt NOTIFY             # Report status of background jobs immediately.
+unsetopt BG_NICE          # Don't run all background jobs at a lower priority.
+unsetopt HUP              # Don't kill jobs on shell exit.
+unsetopt CHECK_JOBS       # Don't report on jobs when shell exit.
+setopt AUTO_CD              # Auto changes to a directory without typing cd.
+unsetopt CLOBBER            # Do not overwrite existing files with > and >>.
+                            # Use >! and >>! to bypass.
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# >> My Keybindings
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html
+# use zle -l to show available widgets
+export KEYTIMEOUT=1
+bindkey -v
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && \
+  bindkey '^R' fzf-history-widget
+
+BLOCK='\e[1 q'
+BEAM='\e[5 q'
+
+### Init
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne $BEAM
+}
+zle -N zle-line-init
+
+### OnKeyMap
+function zle-keymap-select {
+  if [[ $KEYMAP == vicmd ]] || [[ $1 = 'block' ]]; then
+    echo -ne $BLOCK
+  elif [[ $KEYMAP == main ]] || [[ $KEYMAP == viins ]] ||
+       [[ $KEYMAP = '' ]] || [[ $1 = 'beam' ]]; then
+    echo -ne $BEAM
+  fi
+}
+zle -N zle-keymap-select
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# >> My Aliases
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+# alias e="emacs -nw"
+alias d="docker"
+alias f="fd" # f -e pdf
+alias g="git"
+alias j="z"
+# alias h="hoogle"
+alias l="exa -lbF --git"
+alias m="make"
+alias n="nix"
+alias p="python"
+alias s="rg"
+alias t="tmux"
+alias v="vagrant"
+alias y="yarn"
+
+alias ad="ansible-doc"
+alias ap="ansible-playbook"
+alias da="direnv allow"
+alias di="dua interactive" # install with `sudo pacman -S dua-cli`
+alias ff="nemo"
+alias gb="git branch"
+alias gf="git fetch"
+alias gp="git pull"
+alias gpull="git pull"
+alias gup="git push -u origin HEAD"
+alias gt="git status"
+alias la='exa -la --git --color-scale'
+alias lg="lazygit"
+alias ls="exa"
+alias np="nix profile"
+alias nf="nix flake"
+alias nd="nix-tree --derivation"
+alias oo="xdg-open"
+
+# kubectl
+alias k="kubectl"
+alias kc="kubecm"
+alias kn="kubectl ns"
+alias knn="kubectl config view --minify -o jsonpath='{..namespace}'"
+alias kk="kubectl krew"
+alias kd="kubectl deprecations"
+alias kres="kubectl resource-capacity"
+alias ksh="kubectl run -it --rm --image=alpine --restart=Never -- sh"
+
+alias ccat="/bin/cat"
+alias cat="bat"
+alias genrand="openssl rand -hex 32"
+alias lls="/bin/ls"
+alias sha="npx shadow-cljs"
+alias pip="python -m pip"
+alias ports="sudo lsof -PiTCP -sTCP:LISTEN"
+alias open="xdg-open"
+alias sys="systemctl"
+alias sysu="systemctl --user"
+alias sysinfo="inxi -Fxxxz"
+alias supercurl="curl -kivL"
+
+# In wayland, wl-copy and wl-paste
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
+
+# gpg helpers
+alias gpg-keys="gpg --list-secret-keys --keyid-format=long"
+alias gpg-find-key="gpg --keyserver pgp.mit.edu --search-keys"
+alias gpg-import-key="gpg --keyserver pgp.mit.edu  --recv"
+alias gpg-update-keys="gpg --refresh-keys"
+
+alias dockerd-start="systemctl restart docker.service"
+alias doom-cache-clear="rm -rf ~/.emacs.d/.local/cache/*"
+
+function list-hardware-modules() {
+  for i in `find /sys/ -name modalias -exec cat {} \;`; do
+          /sbin/modprobe --config /dev/null --show-depends $i ;
+  done | rev | cut -f 1 -d '/' | rev | sort -u
+}
+
+function start-nvm() {
+  export NVM_DIR="$HOME/.config/nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
+
+function start-homebrew() {
+  # Set PATH, MANPATH, etc., for Homebrew.'
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+}
+
+function k8s-export-global-manifests() {
+  for n in $(kubectl get -o=name crd,ns,pv,psp,sc,pc,tokenreviews,mutatingwebhookconfigurations,validatingwebhookconfigurations,apiservices,clusterroles,clusterrolebindings)
+  do
+      mkdir -p $(dirname $n)
+      kubectl get -o=yaml $n > $n.yaml
+  done
+}
+
+function k8s-export-ns-manifests() {
+  for n in $(kubectl get -o=name ds,pvc,ing,svc,deploy,sts,pvc,netpol,vpa,kpa,hpa,prometheuses,certs)
+  do
+      mkdir -p $(dirname $n)
+      kubectl get -o=yaml $n > $n.yaml
+  done
+}
+
+# args:
+#   $1. server_name assuming SNI (eg. sub.domain.com)
+#   $2. endpoint (eg. IP_ADDR:8443 or sub.domain.com:443)
+function tlscert-check() {
+  echo | \
+    openssl s_client -servername $1 -connect $2 2>/dev/null | \
+    openssl x509 -text -noout
+}
+
+function tlscert-list-kube() {
+  kubectl get secrets -A \
+    --field-selector type=kubernetes.io/tls
+}
+
+# Ensure that the secret is in the current namespace
+# args:
+#   $1. secret_name
+function tlscert-check-kube() {
+  kubectl get secret $1 -o json | \
+    jq -r '.data."tls.crt"' | \
+    base64 -d | \
+    openssl x509 -noout -text
+}
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# >> My Environment
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+path+=(
+  ${HOME}/.local/bin
+  ${HOME}/.emacs.d/bin
+  ${HOME}/.cargo/bin
+  ${HOME}/.pyenv/bin
+  ${HOME}/.krew/bin
+  ${HOME}/.fly/bin
+  ${HOME}/go/bin
+  $(yarn global bin)
+)
+export PATH
+
+export DIRENV_LOG_FORMAT=
+eval "$(direnv hook zsh)"
+export EDITOR=nvim
+
+# gcloud sdk
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
+
+# haskell
+[ -f "/home/xi/.ghcup/env" ] && source "/home/xi/.ghcup/env" # ghcup-env
+
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# Use direnv to load these instead
+# Or call these on demand
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+#
+# source <(pyenv init - zsh)
+# source <(rbenv init - zsh)
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+# source ~/.zsh_private.zsh

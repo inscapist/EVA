@@ -8,7 +8,12 @@
       home.stateVersion = "23.05";
       imports = [
         # ./doom-emacs.nix
-        # ./git.nix
+        ./file-managers.nix
+        ./git.nix
+        ./notification.nix
+        ./nvim.nix
+        ./tmux.nix
+        ./zsh.nix
       ];
     };
   };

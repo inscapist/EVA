@@ -1,6 +1,4 @@
-{ pkgs, ... }: {
-  environment.systemPackages = with pkgs; [ virt-manager spice-gtk ];
-
+{ pkgs, defaultUser, ... }: {
   virtualisation = {
     docker = {
       autoPrune.enable = true;
@@ -20,6 +18,12 @@
         };
       };
     };
-    # spiceUSBRedirection.enable = true;
   };
+
+  environment.systemPackages = with pkgs; [ virt-manager docker-compose ];
+
+  users.groups.docker.members = [ defaultUser ];
+  users.groups.libvirtd.members = [ defaultUser ];
+
+  networking.firewall.trustedInterfaces = [ "virbr0" ];
 }

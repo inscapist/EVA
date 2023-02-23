@@ -27,8 +27,7 @@
 
   users.users.${defaultUser} = {
     isNormalUser = true;
-    extraGroups =
-      [ "wheel" "docker" "networkmanager" "libvirtd" "video" "audio" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "audio" ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKtsjUN63tlgndK6fx+hHPVo7rhncnIb+Y6A5ftx3vSY sparda"
