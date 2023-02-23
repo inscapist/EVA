@@ -16,6 +16,10 @@
       enable = true;
       enableAliases = true;
     };
+    direnv = {
+      enable = true;
+      enableZshIntegration = false; # am handling it in zshrc
+    };
   };
   home.file.".zshrc".source = ./zsh/zshrc;
 }

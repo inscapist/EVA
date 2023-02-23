@@ -9,11 +9,11 @@
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # Download Znap, if it's not there yet.
-[[ -f ~/Git/zsh-snap/znap.zsh ]] ||
+[[ -f ~/.zsh-snap/znap.zsh ]] ||
     git clone --depth 1 -- \
-        https://github.com/marlonrichert/zsh-snap.git ~/Git/zsh-snap
+        https://github.com/marlonrichert/zsh-snap.git ~/.zsh-snap
 
-source ~/Git/zsh-snap/znap.zsh  # Start Znap
+source ~/.zsh-snap/znap.zsh  # Start Znap
 
 # # `znap prompt` makes your prompt visible in just 15-40ms!
 PURE_PROMPT_SYMBOL="▲"
@@ -92,8 +92,7 @@ export KEYTIMEOUT=1
 bindkey -v
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && \
-  bindkey '^R' fzf-history-widget
+bindkey '^R' fzf-history-widget
 
 BLOCK='\e[1 q'
 BEAM='\e[5 q'
