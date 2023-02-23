@@ -7,11 +7,12 @@
     users.${defaultUser} = {
       home.stateVersion = "23.05";
       imports = [
-        # ./doom-emacs.nix
+        ./editors.nix
+        ./environment.nix
         ./file-managers.nix
         ./git.nix
         ./notification.nix
-        ./nvim.nix
+        ./terminals.nix
         ./tmux.nix
         ./zsh.nix
       ];

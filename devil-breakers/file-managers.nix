@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  # TODO add nemo here and deprecates thunar
+  home.packages = with pkgs; [ cinnamon.nemo ];
   programs = {
     # https://nix-community.github.io/home-manager/options.html#opt-programs.nnn.package
     nnn = {
