@@ -8,7 +8,7 @@
     enable = true;
     xwayland = {
       enable = false;
-      hidpi = true;
+      hidpi = false;
     };
     nvidiaPatches = false;
   };

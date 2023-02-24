@@ -16,6 +16,7 @@
         tmuxPlugins.yank
       ];
 
+      # https://github.com/iamverysimp1e/dots/blob/main/configs/tmux/.tmux.conf
       extraConfig = ''
         # https://unix.stackexchange.com/questions/568260/how-is-default-terminal-compared-to-tmux-terminal-overrides
         set -ga terminal-overrides ",*256col*:Tc"
