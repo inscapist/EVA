@@ -26,15 +26,11 @@
 
   # for debugging
   environment.systemPackages = with pkgs; [
-    acpi
     neofetch
-    # nvtop
     libva-utils
     pciutils
     lshw
     lsof
-    powertop
-    s-tui
   ];
 
 }

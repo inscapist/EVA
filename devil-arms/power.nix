@@ -1,4 +1,11 @@
-{
+{ pkgs, ... }: {
+
+  environment.systemPackages = with pkgs; [
+    acpi # check battery level with `acpi -bi`
+    powertop
+    s-tui
+  ];
+
   services = {
     # # This is the most popular
     # tlp = {
