@@ -12,6 +12,10 @@
     pulse.enable = true;
     media-session.enable = false;
     wireplumber.enable = true;
+
+    # see https://github.com/fufexan/nix-gaming/#pipewire-low-latency
+    # lowLatency.enable = true;
+
     config = {
       pipewire."context.properties"."default.clock.allowed-rates" =
         [ 44100 48000 88200 96000 176400 192000 358000 384000 716000 768000 ];

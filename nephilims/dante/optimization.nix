@@ -4,7 +4,10 @@
   fileSystems."/".options = [ "noatime" ];
 
   services = {
-    fwupd.enable = true; # firmware update
+    # firmware update
+    fwupd.enable = true;
+    # https://opensource.com/article/20/2/trim-solid-state-storage-linux
+    fstrim.enable = true;
   };
 
   hardware = {
@@ -25,15 +28,13 @@
   environment.systemPackages = with pkgs; [
     acpi
     neofetch
-    nvtop
+    # nvtop
     libva-utils
     pciutils
     lshw
     lsof
     powertop
     s-tui
-    tlp
   ];
 
-  # powerManagement.powertop.enable = true;
 }

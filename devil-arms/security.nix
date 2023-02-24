@@ -64,4 +64,9 @@
     "net.core.default_qdisc" = "cake";
   };
   boot.kernelModules = [ "tcp_bbr" ];
+
+  security.tpm2 = {
+    enable = true;
+    abrmd.enable = true;
+  };
 }

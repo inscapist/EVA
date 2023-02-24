@@ -1,4 +1,7 @@
 { pkgs, ... }: {
+
+  home.packages = [ pkgs.gh ];
+
   programs = {
     git = {
       enable = true;
@@ -33,7 +36,13 @@
           "!git for-each-ref --sort=-committerdate refs/remotes/ --color --format='%(color:white)%(committerdate:short)%(color:reset) %(color:bold blue)%(refname:short)%0a%(color:reset)  %(color:bold red)%(authorname):%(color:reset) %(subject)%0a'";
       };
 
-      extraConfig = { push.autoSetupRemote = true; };
+      delta = { enable = true; };
+
+      extraConfig = {
+        diff.colorMoved = "default";
+        merge.conflictstyle = "diff3";
+        push.autoSetupRemote = true;
+      };
     };
 
     lazygit = {

@@ -15,12 +15,6 @@
   services = {
     fwupd.enable = true; # firmware update
     fprintd.enable = true; # fingerprint scanner
-
-    # Monitor Intel CPU's temporature
-    #   /necessity or legacy? swelling battery?/
-    #   https://github.com/intel/thermal_daemon
-    #   https://www.phoronix.com/review/intel-thermald-tgl
-    # thermald.enable = true;
   };
 
   hardware.nvidiaOptimus.disable = true;
@@ -55,15 +49,11 @@
   environment.systemPackages = with pkgs; [
     acpi
     neofetch
-    nvtop
     libva-utils
     pciutils
     lshw
     lsof
     powertop
     s-tui
-    tlp
   ];
-
-  powerManagement.powertop.enable = true;
 }

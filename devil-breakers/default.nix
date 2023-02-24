@@ -2,7 +2,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { nix-doom-emacs = inputs.nix-doom-emacs; };
+    extraSpecialArgs = with inputs; { inherit nix-doom-emacs hyprland; };
 
     users.${defaultUser} = {
       home.stateVersion = "23.05";
@@ -13,14 +13,20 @@
       fonts.fontconfig.enable = true;
 
       imports = [
-        ./editors.nix
-        ./environment.nix
-        ./file-managers.nix
-        ./git.nix
-        ./notification.nix
-        ./terminals.nix
-        ./tmux.nix
-        ./zsh.nix
+        # programs
+        ./programs/browsers.nix
+        ./programs/emacs.nix
+        ./programs/filemanagers.nix
+        ./programs/git.nix
+        ./programs/ide.nix
+        ./programs/nvim.nix
+
+        # others
+        ./shell/tmux.nix
+        ./shell/zsh.nix
+        ./terminals/alacritty.nix
+        ./wayland/hyprland.nix
+        ./wayland/notification.nix
       ];
     };
   };
