@@ -1,0 +1,1 @@
+{ hmModules = ./hmModules.nix; }

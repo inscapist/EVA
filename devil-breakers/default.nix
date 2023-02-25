@@ -1,4 +1,4 @@
-{ user, system, inputs, dt, ... }: {
+{ user, system, inputs, dt, sdt, ... }: {
   imports = [ inputs.hm.nixosModules.home-manager ];
 
   home-manager = {
@@ -39,6 +39,9 @@
         ./desktop/xdg.nix
         ./slayer
         ./wayland
+
+        # sin devil triggers
+        sdt.hmModules
       ];
     };
   };

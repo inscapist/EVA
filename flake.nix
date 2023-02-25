@@ -36,8 +36,9 @@
       system = "x86_64-linux";
       mods = [ ./devil-arms ./devil-breakers ];
       dt = import ./devil-triggers nixpkgs.lib;
+      sdt = import ./sin-devil-triggers;
       specialArgs = {
-        inherit system inputs dt;
+        inherit system inputs dt sdt;
         user = "xi";
       };
     in {
