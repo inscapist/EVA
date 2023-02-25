@@ -34,7 +34,9 @@ sudo dd if=vergil-iso/iso/TAB.iso of=/dev/sdb status=progress
 ##  Credits
 I learned alot (and also copied 😅) from the community.
 
-🙇 to @fufexan
-🙇 to @ruixi
-🙇 to @hlissner
+🙇 @fufexan
+
+🙇 @ruixi
+
+🙇 @hlissner
 
