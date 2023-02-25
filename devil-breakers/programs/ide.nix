@@ -2,7 +2,7 @@
   home.packages = with pkgs; [
     #-- Languages --#
     yarn
-    python
+    python39
     clojure
     leiningen
     #-- LSP --#
