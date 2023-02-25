@@ -9,7 +9,7 @@
       default-bg = "rgba(0,0,0,0.7)";
       default-fg = "#${colors.text}";
 
-      font = "Roboto 12";
+      font = "agave 10";
 
       completion-bg = colors.bg;
       completion-fg = colors.fg;
