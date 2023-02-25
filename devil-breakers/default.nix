@@ -1,4 +1,4 @@
-{ user, inputs, dt, ... }: {
+{ user, system, inputs, dt, ... }: {
   imports = [ inputs.hm.nixosModules.home-manager ];
 
   home-manager = {
@@ -8,7 +8,7 @@
       with inputs;
       with dt; {
         inherit emacs-overlay doom hyprland hyprland-contrib;
-        inherit theme;
+        inherit system theme;
       };
 
     users.${user} = {

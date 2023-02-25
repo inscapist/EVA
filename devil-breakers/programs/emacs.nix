@@ -3,13 +3,7 @@
 
   programs.doom-emacs = {
     enable = true;
-
-    package = let
-      emacsPgtk = emacs-overlay.packages.${system}.emacsPgtk.override {
-        withXwidgets = false;
-      };
-    in emacsPgtk;
     doomPrivateDir = ./doom.d;
-    emacsPackage = pkgs.emacs-gtk;
+    emacsPackage = emacs-overlay.packages.${system}.emacsPgtk;
   };
 }

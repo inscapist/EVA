@@ -1,4 +1,4 @@
-{ theme, lib, config, hyprland, hyprland-contrib, pkgs, ... }: {
+{ theme, lib, config, hyprland, hyprland-contrib, pkgs, system, ... }: {
 
   imports = [ hyprland.homeManagerModules.default ];
 
@@ -11,7 +11,7 @@
   home.packages = with pkgs; [
     jq
     xorg.xprop
-    hyprland-contrib.packages.${pkgs.hostPlatform.system}.grimblast
+    hyprland-contrib.packages.${system}.grimblast
   ];
 
   # start swayidle as part of hyprland, not sway
