@@ -6,12 +6,15 @@ My NixOS configuration
 
 Inspired by the DMC game series.
 
-- [Nephilims](nephilims) -> Systems
-- [Devil Arms](devil-arms) -> NixOS modules
-- [Devil Breakers](devil-breakers) -> HomeManager modules
-- [Devil Triggers](devil-triggers) -> enhancements/utils/themes
-- [Nico](devil-triggers/nico) -> copied code that I don't understand :)
-- [Morrison](morrison) -> documentation
+| Name                             | Description                            |
+| -------------------------------- | -------------------------------------- |
+| [Nephilims](nephilims)           | Systems                                |
+| [Devil Arms](devil-arms)         | NixOS modules                          |
+| [Devil Breakers](devil-breakers) | HomeManager modules                    |
+| [Devil Triggers](devil-triggers) | enhancements/utils/themes              |
+| [Nico](devil-triggers/nico)      | lifted code that I don't understand :) |
+| [Morrison](morrison)             | documentation                          |
+
 
 ## Build Installer ISO
 
