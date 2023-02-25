@@ -61,8 +61,8 @@
         set -g message-command-style fg='colour222',bg='colour238'
         set -g pane-border-style fg='colour238'
         set -g pane-active-border-style fg='colour11'
+        setw -g window-status-separator ""
         setw -g window-status-activity-style fg='colour11',bg='colour235',none
-        setw -g window-status-separator \'\'
         setw -g window-status-style fg='colour121',bg='colour235',none
 
         setw -g window-status-format '#[fg=colour8,bg=colour235] #W '
