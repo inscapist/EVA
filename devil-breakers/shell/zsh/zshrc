@@ -5,14 +5,13 @@
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # >> Zsh-snap
 # >> https://github.com/marlonrichert/zsh-snap
-# >> Install zsh-snap to ~/zsh-plugins
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # Download Znap, if it's not there yet.
 [[ -f ~/.config/zsh/zsh-snap.zsh ]] ||
     git clone --depth 1 -- \
         https://github.com/marlonrichert/zsh-snap.git \
-        ~/.config/zsh/zsh-snap.zsh
+        ~/.config/zsh/zsh-snap
 
 source ~/.config/zsh/zsh-snap.zsh  # Start Znap
 
