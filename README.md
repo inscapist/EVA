@@ -35,7 +35,7 @@ sudo dd if=vergil-iso/iso/TAB.iso of=/dev/sdb status=progress
 
 ## First boot
 1. run `nmtui` to setup your wifi.
-2. run `passwd` to change your password.
+2. run `sudo passwd $USER` to change your password.
 3. run `Hyprland`.
 
 ## Setting up a new machine

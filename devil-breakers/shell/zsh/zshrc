@@ -199,6 +199,7 @@ alias dockerd-start="systemctl restart docker.service"
 alias doom-cache-clear="rm -rf ~/.emacs.d/.local/cache/*"
 
 # EVA maintenance
+alias hi=Hyprland
 alias eva-pull="pushd ~/EVA && git pull; popd"
 alias eva-update="pushd ~/EVA && nix flake update; popd"
 alias eva-check="pushd ~/EVA && nix flake check; popd"
