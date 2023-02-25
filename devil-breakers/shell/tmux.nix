@@ -55,6 +55,8 @@
         set -g status-position top
         set -g status-bg 'colour235'
         set -g status-justify 'left'
+        set -g status-left ""
+        set -g status-right ""
         set -g message-style fg='colour222',bg='colour238'
         set -g message-command-style fg='colour222',bg='colour238'
         set -g pane-border-style fg='colour238'
