@@ -34,9 +34,9 @@ sudo dd if=vergil-iso/iso/TAB.iso of=/dev/sdb status=progress
 9. reboot! 
 
 ## First boot
-1. run `nmtui` to setup your wifi
-2. run `passwd` to change your password
-3. run `Hyprland`
+1. run `nmtui` to setup your wifi.
+2. run `passwd` to change your password.
+3. run `Hyprland`.
 
 ## Setting up a new machine
 1. update this flake according to the generated config from `nixos-generate-config --root /mnt`.
