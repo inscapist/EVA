@@ -64,6 +64,8 @@
       '';
 
       flaky = writeShellScriptBin "flaky" ''
+        set -euxo pipefail
+
         cd /mnt/etc/nixos
         git clone https://github.com/sagittaros/EVA.git
         cd EVA
