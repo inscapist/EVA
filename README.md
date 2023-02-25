@@ -28,8 +28,15 @@ sudo dd if=vergil-iso/iso/TAB.iso of=/dev/sdb status=progress
 3. run `ip a` to show ip addr.
 4. now you can access via ssh (this is optional, of course).
 5. run `sudo su`.
-6. run `party` and `flaky`. 
-7. go take a nap. It is gonna take awhile.
+6. run `party`. Enter your LUKS passphrase.
+7. run `flaky`.
+8. go take a nap. It is gonna take awhile.
+9. reboot! 
+
+## First boot
+1. run `nmtui` to setup your wifi
+2. run `passwd` to change your password
+3. run `Hyprland`
 
 
 ## Setting up a new machine
