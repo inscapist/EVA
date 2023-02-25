@@ -13,7 +13,7 @@
         https://github.com/marlonrichert/zsh-snap.git \
         ~/.config/zsh/zsh-snap
 
-source ~/.config/zsh/zsh-snap.zsh  # Start Znap
+source ~/.config/zsh/zsh-snap/znap.zsh  # Start Znap
 
 # # `znap prompt` makes your prompt visible in just 15-40ms!
 PURE_PROMPT_SYMBOL="▲"
