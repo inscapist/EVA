@@ -1,6 +1,6 @@
 # EVA
 
-My NixOs configuration
+My NixOS configuration
 
 ## What's with all these hippy naming?
 
@@ -11,6 +11,7 @@ They are inspired by the DMC game.
 3. Devil Breakers -> HomeManager modules
 4. Devil Triggers -> enhancements/utils/themes
 4. Nico -> copied code that I don't understand :)
+4. Morrison -> documentation
 
 ## Build Installer ISO
 
@@ -26,7 +27,6 @@ sudo dd if=vergil-iso/iso/TAB.iso of=/dev/sdb status=progress
 2. use `nmtui` to activate wifi
 3. run `ip a` to show ip addr
 4. run `party` and `flaky`. and ignore following steps
-5. execute scripts in [gist](https://gist.github.com/sagittaros/ef15791c46e71adb934b52a3892236b7)
 6. update this flake according to the generated config
 7. clone this flake to /mnt/etc/...
 
@@ -39,4 +39,5 @@ I learned alot (and also copied 😅) from the community.
 🙇 @ruixi
 
 🙇 @hlissner
+
 
