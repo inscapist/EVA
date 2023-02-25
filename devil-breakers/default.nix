@@ -14,11 +14,6 @@
     users.${user} = {
       home = { stateVersion = "23.05"; };
 
-      nixpkgs.config = {
-        allowUnfree = true;
-        allowBroken = false;
-      };
-
       # Whether to enable fontconfig configuration. This will,
       # for example, allow fontconfig to discover fonts and
       # configurations installed through home.packages and nix-env.
@@ -42,6 +37,7 @@
         # spices
         ./desktop/gtk.nix
         ./desktop/xdg.nix
+        ./slayer
         ./wayland
       ];
     };
