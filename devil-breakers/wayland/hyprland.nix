@@ -112,17 +112,17 @@
       # logout menu
       bind = $mod, Escape, exec, wlogout -p layer-shell
       # lock screen
-      bind = $mod, L, exec, loginctl lock-session
+      bind = $mod SHIFT, L, exec, loginctl lock-session
       # emoji picker
       bind = $mod, E, exec, ${emoji}
       # select area to perform OCR on
       bind = $mod, O, exec, wl-ocr
 
       # move focus
-      bind = $mod, h, movefocus, l
-      bind = $mod, l, movefocus, r
-      bind = $mod, k, movefocus, u
-      bind = $mod, j, movefocus, d
+      bind = $mod, H, movefocus, l
+      bind = $mod, L, movefocus, r
+      bind = $mod, K, movefocus, u
+      bind = $mod, J, movefocus, d
 
       # window resize
       binde = $mod, right, resizeactive, 10 0
