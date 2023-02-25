@@ -1,26 +1,24 @@
 { user, inputs, dt, ... }: {
-  imports = [ inputs.home-manager.nixosModules.home-manager ];
+  imports = [ inputs.hm.nixosModules.home-manager ];
 
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = with inputs; {
-      inherit nix-doom-emacs hyprland;
-      inherit dt;
-    };
+    extraSpecialArgs = # make them available to hm modules
+      with inputs;
+      with dt; {
+        inherit doom hyprland hyprland-contrib;
+        inherit theme;
+      };
 
     users.${user} = {
-      home = {
-        stateVersion = "23.05";
-        extraOutputsToInstall = [ "doc" "devdoc" ];
-      };
+      home = { stateVersion = "23.05"; };
 
       # Whether to enable fontconfig configuration. This will,
       # for example, allow fontconfig to discover fonts and
       # configurations installed through home.packages and nix-env.
       fonts.fontconfig.enable = true;
 
-      # TODO use profiles with "xi@vergil"
       imports = [
         # essentials
         ./programs/browsers.nix
@@ -36,7 +34,7 @@
         # spices
         ./desktop/gtk.nix
         ./desktop/xdg.nix
-        ./wayland/hyprland.nix
+        ./wayland/hyprland
         ./wayland/notification.nix
       ];
     };

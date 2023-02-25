@@ -12,14 +12,19 @@
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    home-manager = {
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hm = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-doom-emacs = {
+    doom = {
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
 
   outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
@@ -53,9 +58,6 @@
       # ========================================================
 
       # //-- Vergil Installer --//
-      # nix build .#nixosConfigurations.vergilInstaller.config.system.build.isoImage -o vergil-iso
-      # find the thumbdrive using `lsblk` and replace `/dev/sdb` below
-      # sudo dd if=vergil-iso/iso/TAB.iso of=/dev/sdb status=progress
       nixosConfigurations.vergilInstaller = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [ ./nephilims/vergil/installer.nix ];

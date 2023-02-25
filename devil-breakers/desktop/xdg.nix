@@ -39,6 +39,8 @@ in {
     userDirs = {
       enable = true;
       createDirectories = true;
+
+      # I don't want so many directories
       desktop = null;
       music = null;
       publicShare = null;
@@ -47,8 +49,9 @@ in {
       documents = "${config.home.homeDirectory}/documents";
       download = "${config.home.homeDirectory}/downloads";
       pictures = "${config.home.homeDirectory}/pictures";
+
       extraConfig = {
-        XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/Screenshots";
+        XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/screenshots";
       };
     };
   };

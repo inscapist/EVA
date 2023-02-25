@@ -1,12 +1,27 @@
-{ hyprland, pkgs, ... }: {
+{ theme, lib, config, hyprland, hyprland-contrib, pkgs, ... }: {
 
-  imports = [ hyprland.homeManagerModules.default ];
+  imports = [ hyprland.homeManagerModules.default ./session.nix ];
 
-  # TODO check fufexan's greetd config
+  home.packages = with pkgs; [
+    xorg.xprop
+    hyprland-contrib.packages.${pkgs.hostPlatform.system}.grimblast
+  ];
+
+  # start swayidle as part of hyprland, not sway
+  # systemd.user.services.swayidle.Install.WantedBy = lib.mkForce ["hyprland-session.target"];
 
   # Configuration
   # https://github.com/hyprwm/Hyprland/blob/main/nix/hm-module.nix
-  wayland.windowManager.hyprland = {
+  wayland.windowManager.hyprland = let
+    inherit (theme) colors;
+    pointer = config.home.pointerCursor;
+    homeDir = config.home.homeDirectory;
+    terminal = "alacritty";
+
+    # wofi
+    emoji = "${pkgs.wofi-emoji}/bin/wofi-emoji";
+    launcher = "wofi";
+  in {
     enable = true;
     xwayland = {
       enable = false;
@@ -15,53 +30,23 @@
     nvidiaPatches = false;
     systemdIntegration = true;
     extraConfig = ''
-      $mod = SUPER
-
-      # should be configured per-profile
-      monitor = DP-1, preferred, auto, auto
-      monitor = DP-2, preferred, auto, auto
-      monitor = eDP-1, preferred, auto, auto
-      workspace = eDP-1, 1
-      workspace = DP-1, 10
-      workspace = DP-2, 10
+      $mod = ALT
 
       # scale apps
-      exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
-
-      # set cursor for HL itself
+      # exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
       exec-once = hyprctl setcursor ${pointer.name} ${toString pointer.size}
-
-      exec-once = systemctl --user start clight
-      exec-once = eww open bar
+      # exec-once = eww open bar
 
       misc {
-        # enable Variable Frame Rate
-        no_vfr = 0
-        # disable auto polling for config file changes
-        disable_autoreload = 1
+        disable_hyprland_logo = 1
         focus_on_activate = 1
       }
 
-      # touchpad gestures
-      gestures {
-        workspace_swipe = 1
-        workspace_swipe_forever = 1
-      }
-
       input {
-        kb_layout = ro
-
-        # focus change on cursor move
-        follow_mouse = 1
-        accel_profile = flat
-        touchpad {
-          scroll_factor = 0.3
-        }
-      }
-
-      device:MSFT0001:00 04F3:31EB Touchpad {
-        accel_profile = adaptive
-        natural_scroll = 1
+        kb_layout = us
+        kb_options = "caps:escape"
+        repeat_rate = 60
+        repeat_delay = 250
       }
 
       general {
@@ -105,34 +90,6 @@
         col.group_border = rgb(${colors.surface0})
       }
 
-      # telegram media viewer
-      windowrulev2 = float, title:^(Media viewer)$
-
-      # make Firefox PiP window floating and sticky
-      windowrulev2 = float, title:^(Picture-in-Picture)$
-      windowrulev2 = pin, title:^(Picture-in-Picture)$
-
-      # throw sharing indicators away
-      windowrulev2 = workspace special silent, title:^(Firefox — Sharing Indicator)$
-      windowrulev2 = workspace special silent, title:^(.*is sharing (your screen|a window)\.)$
-
-      # start spotify tiled in ws9
-      windowrulev2 = tile, class:^(Spotify)$
-      windowrulev2 = workspace 9 silent, class:^(Spotify)$
-
-      # start Discord/WebCord in ws2
-      windowrulev2 = workspace 2, title:^(.*(Disc|WebC)ord.*)$
-
-      # idle inhibit while watching videos
-      windowrulev2 = idleinhibit focus, class:^(mpv)$
-      windowrulev2 = idleinhibit fullscreen, class:^(firefox)$
-
-      # fix Matlab
-      windowrulev2 = rounding 0, class:^(MATLAB.*)$
-      windowrulev2 = tile, class:^(MATLAB.*)$
-
-      windowrulev2 = dimaround, class:^(gcr-prompter)$
-
       # mouse movements
       bindm = $mod, mouse:272, movewindow
       bindm = $mod, mouse:273, resizewindow
@@ -157,7 +114,7 @@
       # launcher
       bindr = $mod, SUPER_L, exec, pkill .${launcher}-wrapped || run-as-service ${launcher}
       # terminal
-      bind = $mod, Return, exec, run-as-service ${default.terminal.name}
+      bind = $mod, Return, exec, run-as-service ${terminal}
       # logout menu
       bind = $mod, Escape, exec, wlogout -p layer-shell
       # lock screen
@@ -236,35 +193,5 @@
       bind = $mod SHIFT, braceleft, focusmonitor, l
       bind = $mod SHIFT, braceright, focusmonitor, r
     '';
-  };
-
-  # https://wiki.hyprland.org/Configuring/Environment-variables/
-  home.sessionVariables = {
-    # XDG specifications
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_TYPE = "wayland";
-    XDG_SESSION_DESKTOP = "Hyprland";
-
-    # QT variables
-    QT_QPA_PLATFORMTHEME = "gtk3";
-    QT_SCALE_FACTOR = "1";
-    QT_QPA_PLATFORM = "wayland";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-
-    # Toolkit Backend Variables
-    SDL_VIDEODRIVER = "wayland";
-    _JAVA_AWT_WM_NONREPARENTING = "1";
-    CLUTTER_BACKEND = "wayland";
-    GDK_BACKEND = "wayland";
-    WLR_RENDERER = "vulkan";
-
-    # Theming
-    # GTK_THEME = "";
-    # XCURSOR_THEME = "";
-    # XCURSOR_SIZE = "";
-
-    # applications on wayland
-    MOZ_ENABLE_WAYLAND = "1";
   };
 }

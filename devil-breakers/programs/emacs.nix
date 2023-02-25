@@ -1,5 +1,5 @@
-{ nix-doom-emacs, pkgs, ... }: {
-  imports = [ nix-doom-emacs.hmModule ];
+{ doom, pkgs, ... }: {
+  imports = [ doom.hmModule ];
 
   # programs.doom-emacs = {
   #   enable = true;

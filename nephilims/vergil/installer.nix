@@ -1,6 +1,6 @@
 { config, pkgs, modulesPath, ... }: {
   imports = [
-    ../../devil-arms/base.nix
+    ../../devil-arms/melee/base.nix
     ./optimization.nix
     (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
   ];

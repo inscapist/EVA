@@ -4,7 +4,7 @@
     ./firearms/fonts.nix
     ./firearms/hyprland.nix
     ./firearms/locales.nix
-    ./firearms/packages.nix
+    ./firearms/tools.nix
 
     # anyone can use it, only a few truly master them
     ./melee/base.nix
