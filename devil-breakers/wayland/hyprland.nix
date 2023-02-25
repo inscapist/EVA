@@ -118,21 +118,16 @@
       bind = $mod, O, exec, wl-ocr
 
       # move focus
-      bind = $mod, left, movefocus, l
-      bind = $mod, right, movefocus, r
-      bind = $mod, up, movefocus, u
-      bind = $mod, down, movefocus, d
+      bind = $mod, h, movefocus, l
+      bind = $mod, l, movefocus, r
+      bind = $mod, k, movefocus, u
+      bind = $mod, j, movefocus, d
 
       # window resize
-      bind = $mod, S, submap, resize
-
-      submap = resize
-      binde = , right, resizeactive, 10 0
-      binde = , left, resizeactive, -10 0
-      binde = , up, resizeactive, 0 -10
-      binde = , down, resizeactive, 0 10
-      bind = , escape, submap, reset
-      submap = reset
+      binde = $mod, right, resizeactive, 10 0
+      binde = $mod, left, resizeactive, -10 0
+      binde = $mod, up, resizeactive, 0 -10
+      binde = $mod, down, resizeactive, 0 10
 
       # volume
       bindle = , XF86AudioRaiseVolume, exec, wpctl set-volume -l "1.0" @DEFAULT_AUDIO_SINK@ 6%+

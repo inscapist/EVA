@@ -26,7 +26,8 @@ sudo dd if=vergil-iso/iso/TAB.iso of=/dev/sdb status=progress
 1. With the USB, enter boot selection with F12 (on dell)
 2. use `nmtui` to activate wifi
 3. run `ip a` to show ip addr
-4. run `party` and `flaky`. and ignore following steps
+4. now you can access via ssh
+5. run `party` and `flaky`. and ignore following steps
 6. update this flake according to the generated config
 7. clone this flake to /mnt/etc/...
 
