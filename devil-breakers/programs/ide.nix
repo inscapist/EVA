@@ -1,10 +1,16 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
+    #-- Languages --#
+    yarn
+    python
+    clojure
+    leiningen
     #-- LSP --#
     nil
     sumneko-lua-language-server
     gopls
     pyright
+    clojure-lsp
     rust-analyzer
     tree-sitter
     #-- Formatters --#
