@@ -2,11 +2,7 @@
   programs = {
     zsh = {
       enable = true;
-      initExtra = ''
-        if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
-          exec Hyprland
-        fi
-      '';
+      dotDir = ".config/zsh";
     };
     fzf = {
       enable = true;
@@ -21,5 +17,5 @@
       enableZshIntegration = false; # am handling it in zshrc
     };
   };
-  home.file.".zshrc".source = ./zsh/zshrc;
+  home.file.".config/zsh/.zshrc".source = ./zsh/zshrc;
 }
