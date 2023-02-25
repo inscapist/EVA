@@ -6,12 +6,12 @@ My NixOS configuration
 
 Inspired by the DMC game series.
 
-1. Nephilims -> Systems
-2. Devil Arms -> NixOS modules
-3. Devil Breakers -> HomeManager modules
-4. Devil Triggers -> enhancements/utils/themes
-4. Nico -> copied code that I don't understand :)
-4. Morrison -> documentation
+- [Nephilims](nephilims) -> Systems
+- [Devil Arms](devil-arms) -> NixOS modules
+- [Devil Breakers](devil-breakers) -> HomeManager modules
+- [Devil Triggers](devil-triggers) -> enhancements/utils/themes
+- [Nico](devil-triggers/nico) -> copied code that I don't understand :)
+- [Morrison](morrison) -> documentation
 
 ## Build Installer ISO
 

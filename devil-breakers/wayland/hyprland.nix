@@ -20,6 +20,7 @@
   # Configuration
   # https://github.com/hyprwm/Hyprland/blob/main/nix/hm-module.nix
   wayland.windowManager.hyprland = let
+    # TODO
     inherit (theme) colors;
     pointer = config.home.pointerCursor;
     homeDir = config.home.homeDirectory;
@@ -139,9 +140,9 @@
       bindl = , XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 
       # backlight
-      bindle = , XF86MonBrightnessUp, exec, light -A 5
+      bindle = , XF86MonBrightnessUp, exec, light -A 1
       binde = , XF86MonBrightnessUp, exec, ${homeDir}/.config/eww/scripts/brightness osd
-      bindle = , XF86MonBrightnessDown, exec, light -U 5
+      bindle = , XF86MonBrightnessDown, exec, light -U 1
       binde = , XF86MonBrightnessUp, exec, ${homeDir}/.config/eww/scripts/brightness osd
 
       # screenshot
