@@ -7,7 +7,7 @@
     extraSpecialArgs = # make them available to hm modules
       with inputs;
       with dt; {
-        inherit emacs-overlay doom hyprland hyprland-contrib;
+        inherit emacs-overlay doom hyprland hyprland-contrib eww;
         inherit system theme;
       };
 
