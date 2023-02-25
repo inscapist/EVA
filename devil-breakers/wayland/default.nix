@@ -1,10 +1,11 @@
+{ pkgs, lib, inputs, ... }:
+
 {
-  # https://wiki.hyprland.org/Configuring/Environment-variables/
+  imports = [ ./hyprland.nix ./packages.nix ];
+
+  # make stuff work on wayland
   home.sessionVariables = {
-    # XDG specifications
-    XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
-    XDG_SESSION_DESKTOP = "Hyprland";
 
     # QT variables
     QT_QPA_PLATFORMTHEME = "gtk3";
@@ -27,5 +28,14 @@
 
     # applications on wayland
     MOZ_ENABLE_WAYLAND = "1";
+  };
+
+  # fake a tray to let certain apps start
+  # https://github.com/nix-community/home-manager/issues/2064
+  systemd.user.targets.tray = {
+    Unit = {
+      Description = "Home Manager System Tray";
+      Requires = [ "graphical-session-pre.target" ];
+    };
   };
 }

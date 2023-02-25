@@ -26,7 +26,10 @@
         ./programs/filemanagers.nix
         ./programs/git.nix
         ./programs/ide.nix
+        ./programs/notification.nix
         ./programs/nvim.nix
+
+        # terminal
         ./shell/tmux.nix
         ./shell/zsh.nix
         ./terminals/alacritty.nix
@@ -34,8 +37,7 @@
         # spices
         ./desktop/gtk.nix
         ./desktop/xdg.nix
-        ./wayland/hyprland
-        ./wayland/notification.nix
+        ./wayland
       ];
     };
   };

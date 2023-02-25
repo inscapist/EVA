@@ -1,8 +1,15 @@
 { theme, lib, config, hyprland, hyprland-contrib, pkgs, ... }: {
 
-  imports = [ hyprland.homeManagerModules.default ./session.nix ];
+  imports = [ hyprland.homeManagerModules.default ];
+
+  # https://wiki.hyprland.org/Configuring/Environment-variables/
+  home.sessionVariables = {
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_DESKTOP = "Hyprland";
+  };
 
   home.packages = with pkgs; [
+    jq
     xorg.xprop
     hyprland-contrib.packages.${pkgs.hostPlatform.system}.grimblast
   ];
@@ -38,8 +45,8 @@
       # exec-once = eww open bar
 
       misc {
-        disable_hyprland_logo = 1
-        focus_on_activate = 1
+        disable_hyprland_logo = true
+        focus_on_activate = true
       }
 
       input {
@@ -49,31 +56,21 @@
         repeat_delay = 250
       }
 
-      general {
-        gaps_in = 5
-        gaps_out = 5
-        border_size = 2
-        col.active_border = rgb(${colors.blue}) rgb(${colors.mauve}) 270deg
-        col.inactive_border = rgb(${colors.crust}) rgb(${colors.lavender}) 270deg
-      }
-
       decoration {
-        rounding = 16
-        blur = 1
+        rounding = 10
+        blur = true
         blur_size = 3
         blur_passes = 3
-        blur_new_optimizations = 1
+        blur_new_optimizations = true
 
-        drop_shadow = 1
-        shadow_ignore_window = 1
-        shadow_offset = 2 2
+        drop_shadow = true
         shadow_range = 4
-        shadow_render_power = 1
-        col.shadow = 0x55000000
+        shadow_render_power = 3
+        col.shadow = rgba(1a1a1aee)
       }
 
       animations {
-        enabled = 1
+        enabled = true
         animation = border, 1, 2, default
         animation = fade, 1, 4, default
         animation = windows, 1, 3, default, popin 80%
@@ -81,21 +78,16 @@
       }
 
       dwindle {
-        # keep floating dimentions while tiling
-        pseudotile = 1
-        preserve_split = 1
-
-        # group borders
-        col.group_border_active = rgb(${colors.pink})
-        col.group_border = rgb(${colors.surface0})
+        # https://wiki.hyprland.org/Configuring/Dwindle-Layout/
+        pseudotile = true
+        preserve_split = true
       }
 
-      # mouse movements
+      # Move/resize windows with mainMod + LMB/RMB and dragging
       bindm = $mod, mouse:272, movewindow
       bindm = $mod, mouse:273, resizewindow
-      bindm = $mod ALT, mouse:272, resizewindow
 
-      # compositor commands
+      # Compositor commands
       bind = $mod SHIFT, E, exec, pkill Hyprland
       bind = $mod, Q, killactive,
       bind = $mod, F, fullscreen,
@@ -105,16 +97,17 @@
       bind = $mod, R, togglesplit,
       bind = $mod, T, togglefloating,
       bind = $mod, P, pseudo,
-      bind = $mod ALT, ,resizeactive,
+      bind = $mod SUPER, ,resizeactive,
+
       # toggle "monocle" (no_gaps_when_only)
       $kw = dwindle:no_gaps_when_only
-      bind = $mod, M, exec, hyprctl keyword $kw $(($(hyprctl getoption $kw -j | jaq -r '.int') ^ 1))
+      bind = $mod, M, exec, hyprctl keyword $kw $(($(hyprctl getoption $kw -j | jq -r '.int') ^ 1))
 
       # utility
       # launcher
-      bindr = $mod, SUPER_L, exec, pkill .${launcher}-wrapped || run-as-service ${launcher}
+      bindr = $mod, SUPER_L, exec, ${launcher}
       # terminal
-      bind = $mod, Return, exec, run-as-service ${terminal}
+      bind = $mod, Return, exec, ${terminal}
       # logout menu
       bind = $mod, Escape, exec, wlogout -p layer-shell
       # lock screen
@@ -122,7 +115,7 @@
       # emoji picker
       bind = $mod, E, exec, ${emoji}
       # select area to perform OCR on
-      bind = $mod, O, exec, run-as-service wl-ocr
+      bind = $mod, O, exec, wl-ocr
 
       # move focus
       bind = $mod, left, movefocus, l
@@ -140,11 +133,6 @@
       binde = , down, resizeactive, 0 10
       bind = , escape, submap, reset
       submap = reset
-
-      # media controls
-      bindl = , XF86AudioPlay, exec, playerctl play-pause
-      bindl = , XF86AudioPrev, exec, playerctl previous
-      bindl = , XF86AudioNext, exec, playerctl next
 
       # volume
       bindle = , XF86AudioRaiseVolume, exec, wpctl set-volume -l "1.0" @DEFAULT_AUDIO_SINK@ 6%+
@@ -170,28 +158,8 @@
       bind = CTRL, Print, exec, grimblast --notify --cursor copysave output
       bind = $mod SHIFT CTRL, R, exec, grimblast --notify --cursor copysave output
 
-      bind = ALT, Print, exec, grimblast --notify --cursor copysave screen
-      bind = $mod SHIFT ALT, R, exec, grimblast --notify --cursor copysave screen
-
-      # workspaces
-      # binds mod + [shift +] {1..10} to [move to] ws {1..10}
-      ${builtins.concatStringsSep "\n" (builtins.genList (x:
-        let ws = let c = (x + 1) / 10; in builtins.toString (x + 1 - (c * 10));
-        in ''
-          bind = $mod, ${ws}, workspace, ${toString (x + 1)}
-          bind = $mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}
-        '') 10)}
-
-      # special workspace
-      bind = $mod SHIFT, grave, movetoworkspace, special
-      bind = $mod, grave, togglespecialworkspace, eDP-1
-
-      # cycle workspaces
-      bind = $mod, bracketleft, workspace, m-1
-      bind = $mod, bracketright, workspace, m+1
-      # cycle monitors
-      bind = $mod SHIFT, braceleft, focusmonitor, l
-      bind = $mod SHIFT, braceright, focusmonitor, r
+      bind = SUPER, Print, exec, grimblast --notify --cursor copysave screen
+      bind = $mod SHIFT SUPER, R, exec, grimblast --notify --cursor copysave screen
     '';
   };
 }

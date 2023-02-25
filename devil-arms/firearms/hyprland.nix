@@ -4,6 +4,7 @@
 
   # Configuration
   # https://github.com/hyprwm/Hyprland/blob/main/nix/module.nix
+  # NOTE: it is important that the settings are in sync with home manager's
   programs.hyprland = {
     enable = true;
     xwayland = {
@@ -12,13 +13,6 @@
     };
     nvidiaPatches = false;
   };
-
-  environment.systemPackages = with pkgs; [
-    grim # screen image capture
-    mako # notification daemon
-    slurp # screen area selection tool
-    wl-clipboard # clipboard CLI utilities
-  ];
 
   services.xserver = {
     # A misleading option. Has nought to do with startx
