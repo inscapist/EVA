@@ -8,7 +8,7 @@
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # Download Znap, if it's not there yet.
-[[ -f ~/.config/zsh/zsh-snap.zsh ]] ||
+[[ -f ~/.config/zsh/zsh-snap ]] ||
     git clone --depth 1 -- \
         https://github.com/marlonrichert/zsh-snap.git \
         ~/.config/zsh/zsh-snap
