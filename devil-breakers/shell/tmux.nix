@@ -14,6 +14,7 @@
         tmuxPlugins.sensible
         tmuxPlugins.vim-tmux-navigator
         tmuxPlugins.yank
+        tmuxPlugins.dracula
       ];
 
       # https://github.com/iamverysimp1e/dots/blob/main/configs/tmux/.tmux.conf
@@ -48,23 +49,23 @@
         bind K if-shell "$is_vim" "" "send-keys -R \; send-keys C-l \; clear-history"
 
 
-        # status bar theme
-        # https://gist.github.com/rajanand02/9407361
-        set -g status 'on'
-        set -g status-interval 2
-        set -g status-position top
-        set -g status-bg 'colour235'
-        set -g status-justify 'left'
-        set -g message-style fg='colour222',bg='colour238'
-        set -g message-command-style fg='colour222',bg='colour238'
-        set -g pane-border-style fg='colour238'
-        set -g pane-active-border-style fg='colour11'
-        setw -g window-status-activity-style fg='colour11',bg='colour235',none
-        setw -g window-status-separator \'\'
-        setw -g window-status-style fg='colour121',bg='colour235',none
+        # # status bar theme
+        # # https://gist.github.com/rajanand02/9407361
+        # set -g status 'on'
+        # set -g status-interval 2
+        # set -g status-position top
+        # set -g status-bg 'colour235'
+        # set -g status-justify 'left'
+        # set -g message-style fg='colour222',bg='colour238'
+        # set -g message-command-style fg='colour222',bg='colour238'
+        # set -g pane-border-style fg='colour238'
+        # set -g pane-active-border-style fg='colour11'
+        # setw -g window-status-activity-style fg='colour11',bg='colour235',none
+        # setw -g window-status-separator \'\'
+        # setw -g window-status-style fg='colour121',bg='colour235',none
 
-        setw -g window-status-format '#[fg=colour8,bg=colour235] #W '
-        setw -g window-status-current-format '#[fg=colour11,bg=colour235,bold] #W '
+        # setw -g window-status-format '#[fg=colour8,bg=colour235] #W '
+        # setw -g window-status-current-format '#[fg=colour11,bg=colour235,bold] #W '
       '';
     };
   };
