@@ -5,12 +5,6 @@
     (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
   ];
 
-  # disabledModules = [
-  #   ../../devil-arms/fonts.nix
-  #   ../../devil-arms/locales.nix
-  # ];
-
-  # use latest kernel
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
@@ -27,6 +21,7 @@
   environment = with pkgs; {
     variables = { EDITOR = "hx"; };
     systemPackages = let
+
       party = writeShellScriptBin "party" ''
         set -euxo pipefail
 
@@ -67,12 +62,14 @@
         # === actual installation ===
         nixos-generate-config --root /mnt
       '';
+
       flaky = writeShellScriptBin "flaky" ''
         cd /mnt/etc/nixos
         git clone https://github.com/sagittaros/EVA.git
         cd EVA
         nixos-install --flake .#vergil
       '';
+
     in [ party flaky ] ++ [ git tig lazygit helix curl which tree ];
   };
 }
