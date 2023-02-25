@@ -200,7 +200,8 @@ alias dockerd-start="systemctl restart docker.service"
 alias doom-cache-clear="rm -rf ~/.emacs.d/.local/cache/*"
 
 # update systems
-alias update-system="pushd ~/EVA && git add . && sudo nixos-rebuild -j 8 switch --flake .#vergil; popd"
+alias pull-eva="pushd ~/EVA && git pull; popd"
+alias update-eva="pushd ~/EVA && git add . && sudo nixos-rebuild -j 8 switch --flake .#vergil; popd"
 
 function list-hardware-modules() {
   for i in `find /sys/ -name modalias -exec cat {} \;`; do
