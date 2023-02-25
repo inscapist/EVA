@@ -43,7 +43,7 @@
       # scale apps
       # exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
       exec-once = hyprctl setcursor ${pointer.name} ${toString pointer.size}
-      # exec-once = eww open bar
+      exec-once = eww open bar
 
       misc {
         disable_hyprland_logo = true
@@ -104,17 +104,15 @@
       $kw = dwindle:no_gaps_when_only
       bind = $mod, M, exec, hyprctl keyword $kw $(($(hyprctl getoption $kw -j | jq -r '.int') ^ 1))
 
-      # utility
-      # launcher
-      bindr = $mod, SUPER_L, exec, ${launcher}
-      # terminal
+      # utilities
+      bindr = $mod, SPACE, exec, ${launcher}
       bind = $mod, Return, exec, ${terminal}
-      # logout menu
       bind = $mod, Escape, exec, wlogout -p layer-shell
-      # lock screen
       bind = $mod SHIFT, L, exec, loginctl lock-session
+
       # emoji picker
       bind = $mod, E, exec, ${emoji}
+
       # select area to perform OCR on
       bind = $mod, O, exec, wl-ocr
 
