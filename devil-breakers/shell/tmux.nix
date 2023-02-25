@@ -65,10 +65,6 @@
         setw -g window-status-separator \'\'
         setw -g window-status-style fg='colour121',bg='colour235',none
 
-        # status bar (bogus now)
-        set -g status-left \'\'
-        set -g status-right '#(status-right)'
-
         setw -g window-status-format '#[fg=colour8,bg=colour235] #W '
         setw -g window-status-current-format '#[fg=colour11,bg=colour235,bold] #W '
       '';
