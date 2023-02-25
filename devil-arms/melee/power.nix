@@ -2,7 +2,7 @@
 
   environment.systemPackages = with pkgs; [
     acpi # check battery level with `acpi -bi`
-    powertop
+    powertop # use this to check detailed power usage
     s-tui
   ];
 
@@ -31,6 +31,13 @@
     upower.enable = true;
   };
 
+  programs = {
+    # backlight control
+    light.enable = true;
+  };
+
   # # This is what I was familiar with
   # powerManagement.powertop.enable = true;
+
+  networking.networkmanager.wifi.powersave = true;
 }

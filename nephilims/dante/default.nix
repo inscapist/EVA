@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, defaultUser, ... }:
+{ config, pkgs, user, ... }:
 
 {
   imports = [ ./qemu-configuration.nix ./optimization.nix ];
@@ -16,7 +16,7 @@
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
-  users.users.${defaultUser} = {
+  users.users.${user} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "video" "audio" ];
     shell = pkgs.zsh;
@@ -26,7 +26,7 @@
   };
 
   services = {
-    getty.autologinUser = defaultUser;
+    getty.autologinUser = user;
     openssh = { enable = true; };
   };
 }

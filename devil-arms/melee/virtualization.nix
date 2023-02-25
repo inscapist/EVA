@@ -1,4 +1,4 @@
-{ pkgs, defaultUser, ... }: {
+{ pkgs, user, ... }: {
   virtualisation = {
     docker = {
       autoPrune.enable = true;
@@ -22,8 +22,8 @@
 
   environment.systemPackages = with pkgs; [ virt-manager docker-compose ];
 
-  users.groups.docker.members = [ defaultUser ];
-  users.groups.libvirtd.members = [ defaultUser ];
+  users.groups.docker.members = [ user ];
+  users.groups.libvirtd.members = [ user ];
 
   networking.firewall.trustedInterfaces = [ "virbr0" ];
 }

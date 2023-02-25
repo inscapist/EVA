@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, defaultUser, ... }:
+{ config, pkgs, user, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ./optimization.nix ];
@@ -25,7 +25,7 @@
     };
   };
 
-  users.users.${defaultUser} = {
+  users.users.${user} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "video" "audio" ];
     shell = pkgs.zsh;
@@ -35,7 +35,7 @@
   };
 
   services = {
-    getty.autologinUser = defaultUser;
+    getty.autologinUser = user;
     openssh = { enable = true; };
   };
 }

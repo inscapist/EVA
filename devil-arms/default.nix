@@ -1,15 +1,18 @@
 {
   imports = [
-    ./bluetooth.nix
-    ./fonts.nix
-    ./hyprland.nix
-    ./locales.nix
-    ./networking.nix
-    ./nix.nix
-    ./packages.nix
-    ./power.nix
-    ./security.nix
-    ./sound.nix
-    ./virtualization.nix
+    # pfft!
+    ./firearms/fonts.nix
+    ./firearms/hyprland.nix
+    ./firearms/locales.nix
+    ./firearms/packages.nix
+
+    # anyone can use it, only a few truly master them
+    ./melee/base.nix
+    ./melee/bluetooth.nix
+    ./melee/networking.nix
+    ./melee/power.nix
+    ./melee/security.nix
+    ./melee/sound.nix
+    ./melee/virtualization.nix
   ];
 }

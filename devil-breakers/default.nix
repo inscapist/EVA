@@ -1,14 +1,16 @@
-{ defaultUser, inputs, ... }: {
+{ user, inputs, dt, ... }: {
+  imports = [ inputs.home-manager.nixosModules.home-manager ];
+
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = with inputs; { inherit nix-doom-emacs hyprland; };
+    extraSpecialArgs = with inputs; {
+      inherit nix-doom-emacs hyprland;
+      inherit dt;
+    };
 
-    users.${defaultUser} = {
-
+    users.${user} = {
       home = {
-        # username = "xi";
-        # homeDirectory = "/home/xi";
         stateVersion = "23.05";
         extraOutputsToInstall = [ "doc" "devdoc" ];
       };

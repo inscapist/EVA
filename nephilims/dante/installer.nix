@@ -1,6 +1,6 @@
 { config, pkgs, modulesPath, ... }: {
   imports = [
-    ../../devil-arms/nix.nix
+    ../../devil-arms/base.nix
     ./optimization.nix
     (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
   ];

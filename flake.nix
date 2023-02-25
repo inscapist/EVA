@@ -22,65 +22,61 @@
     };
   };
 
-  outputs = { self, nixpkgs, agenix, home-manager, flake-utils, ... }@inputs:
+  outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
     let
       system = "x86_64-linux";
-      common = [
-        agenix.nixosModules.default
-        home-manager.nixosModules.home-manager
-        ./devil-arms
-        ./devil-breakers
-      ];
-      defaultUser = "xi";
+      mods = [ ./devil-arms ./devil-breakers ];
+      dt = import ./devil-triggers nixpkgs.lib;
+      specialArgs = {
+        inherit inputs dt;
+        user = "xi";
+      };
     in {
-
       # --------------------------------------------------------
       # My systems
       # ========================================================
 
-      # Primary Driver - XPS 9520
+      # //-- Primary Driver - XPS 9520 --//
       nixosConfigurations.vergil = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs defaultUser; };
-        modules = [ ./nephilims/vergil ] ++ common;
+        inherit system specialArgs;
+        modules = [ ./nephilims/vergil ] ++ mods;
       };
 
-      # Dante (Qemu on Alienware)
+      # //-- Dante - Qemu --//
       nixosConfigurations.dante = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs defaultUser; };
-        modules = [ ./nephilims/dante ./devil-arms/nix.nix ] ++ common;
+        inherit system specialArgs;
+        modules = [ ./nephilims/dante ] ++ mods;
       };
 
       # --------------------------------------------------------
       # Installers
       # ========================================================
 
-      # /Vergil Installer/
+      # //-- Vergil Installer --//
       # nix build .#nixosConfigurations.vergilInstaller.config.system.build.isoImage -o vergil-iso
       # find the thumbdrive using `lsblk` and replace `/dev/sdb` below
       # sudo dd if=vergil-iso/iso/TAB.iso of=/dev/sdb status=progress
       nixosConfigurations.vergilInstaller = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs; };
+        inherit system specialArgs;
         modules = [ ./nephilims/vergil/installer.nix ];
       };
 
-      # /Dante Installer on Qemu (make sure to change from bios to UEFI)/
+      # //-- Dante Installer on Qemu (make sure to change from bios to UEFI) --//
       # nix build .#nixosConfigurations.danteInstaller.config.system.build.isoImage -o dante-iso
       # find the thumbdrive using `lsblk` and replace `/dev/sdb` below
       # sudo dd if=dante-iso/iso/TAB.iso of=/dev/sdb status=progress
       nixosConfigurations.danteInstaller = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs; };
+        inherit system specialArgs;
         modules = [ ./nephilims/dante/installer.nix ];
       };
 
     } // flake-utils.lib.eachDefaultSystem (system:
+      # --------------------------------------------------------
+      # Dev shell
+      # ========================================================
       let pkgs = nixpkgs.legacyPackages.${system};
       in {
-        devShells.default =
-          import ./devil-triggers/dev-shell.nix { inherit pkgs; };
+        devShells.default = import ./dev-shell.nix { inherit pkgs; };
         formatter = pkgs.nixpkgs-fmt;
       });
 }
