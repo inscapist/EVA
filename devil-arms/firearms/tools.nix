@@ -5,7 +5,7 @@
       [ which bat curl wget fd tree ripgrep jq fx git tig ]
       ++ [ httpie tokei tealdeer helix hexyl unrar ]
       ++ [ dua duf htop btop iotop ] ++ [ graphviz gdb ]
-      ++ [ firefox poppler_utils zathura ]
+      ++ [ brave firefox poppler_utils ]
       ++ [ tcpdump inetutils dig socat netcat ];
   };
 }
