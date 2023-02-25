@@ -11,5 +11,8 @@
     withNodeJs = true;
   };
 
-  home.file.".config/nvim".source = ./nvim;
+  home.file.".config/nvim" = {
+    source = ./nvim;
+    recursive = true;
+  };
 }
