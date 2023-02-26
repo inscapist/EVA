@@ -4,7 +4,12 @@
   fonts = {
     fonts = with pkgs; [
       # https://github.com/NixOS/nixpkgs/blob/master/pkgs/data/fonts/nerdfonts/default.nix
-      (nerdfonts.override { fonts = [ "Monoid" ]; })
+      (nerdfonts.override {
+        fonts = [ "FiraCode" "JetBrainsMono" "Agave" "Monoid" ];
+      })
+
+      # icon fonts
+      material-symbols
 
       # https://github.com/NixOS/nixpkgs/tree/master/pkgs/data/fonts
       ibm-plex
@@ -12,12 +17,19 @@
       ttf_bitstream_vera
       noto-fonts
       noto-fonts-emoji
+
+      # normal fonts
+      jost
+      lexend
+      noto-fonts
       noto-fonts-extra
-      twemoji-color-font
+      noto-fonts-emoji
+      roboto
 
       # CJK support
       wqy_microhei
       wqy_zenhei
+      noto-fonts-cjk
       # noto-fonts-cjk-sans
       # noto-fonts-cjk-serif
     ];
@@ -26,36 +38,8 @@
         serif = [ "Recursive Sans Casual Static Medium" ];
         sansSerif = [ "Recursive Sans Linear Static Medium" ];
         monospace = [ "Recursive Mono Linear Static" ];
-        emoji = [ "Twemoji" ];
+        emoji = [ "Noto Color Emoji" ];
       };
-      localConf = ''
-        <?xml version="1.0"?>
-        <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
-        <fontconfig>
-            <description>Emoji fix</description>
-
-            <alias binding="weak">
-                <family>sans-serif</family>
-                <prefer>
-                    <family>Twemoji</family>
-                </prefer>
-            </alias>
-
-            <alias binding="weak">
-                <family>serif</family>
-                <prefer>
-                    <family>Twemoji</family>
-                </prefer>
-            </alias>
-
-            <alias binding="weak">
-                <family>monospace</family>
-                <prefer>
-                    <family>Twemoji</family>
-                </prefer>
-            </alias>
-        </fontconfig>
-      '';
     };
   };
 }
