@@ -1,7 +1,7 @@
 { pkgs, lib, inputs, ... }:
 
 {
-  imports = [ ./hyprland.nix ./packages.nix ];
+  imports = [ ./peripherals ./hyprland.nix ./packages.nix ];
 
   # make stuff work on wayland
   home.sessionVariables = {
