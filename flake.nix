@@ -51,11 +51,12 @@
           # defaults to latest emacs (version 30)
           emacs-overlay.overlay
           (final: prev: {
-            emacsPgtk = prev.emacsGit.overrideAttrs (old: {
+            emacsPgtk = prev.emacsPgtk.overrideAttrs (old: {
               name = "emacs-pgtk";
               version = inputs.emacs29.shortRev;
               src = inputs.emacs29;
               withPgtk = true;
+              withGTK3 = true;
             });
           })
         ];
