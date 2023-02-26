@@ -49,15 +49,14 @@
         config.allowUnfree = true;
         overlays = [
           emacs-overlay.overlay
-          (final: prev: {
-            emacsPgtk = prev.emacsGit.overrideAttrs (old: {
-              name = "emacs-pgtk";
-              version = inputs.emacs29.shortRev;
-              src = inputs.emacs29;
-              withPgtk = true;
-            });
-          })
-
+          # (final: prev: {
+          #   emacsPgtk = prev.emacsGit.overrideAttrs (old: {
+          #     name = "emacs-pgtk";
+          #     version = inputs.emacs29.shortRev;
+          #     src = inputs.emacs29;
+          #     withPgtk = true;
+          #   });
+          # })
         ];
       };
       specialArgs = {
