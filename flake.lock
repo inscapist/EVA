@@ -173,23 +173,6 @@
         "type": "github"
       }
     },
-    "emacs29": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1677373954,
-        "narHash": "sha256-sE/et3TiHMTLst39WrwwfHRogSnL0PR1LJIsyoQtgyY=",
-        "owner": "emacs-mirror",
-        "repo": "emacs",
-        "rev": "3cae0e3d96a5436735ab34327fc5c20e0cc864ee",
-        "type": "github"
-      },
-      "original": {
-        "owner": "emacs-mirror",
-        "ref": "emacs-29",
-        "repo": "emacs",
-        "type": "github"
-      }
-    },
     "evil-escape": {
       "flake": false,
       "locked": {
@@ -635,7 +618,6 @@
         "agenix": "agenix",
         "doom": "doom",
         "emacs-overlay": "emacs-overlay_2",
-        "emacs29": "emacs29",
         "eww": "eww",
         "flake-utils": "flake-utils_4",
         "hm": "hm",

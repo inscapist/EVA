@@ -7,7 +7,7 @@
   ];
 
   services = {
-    # # This is the most popular
+    # # This is the most popular (superceded by auto-cpufreq)
     # tlp = {
     #   enable = true;
     #   settings = {

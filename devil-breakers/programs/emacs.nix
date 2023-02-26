@@ -15,6 +15,6 @@
 
   home.file.".doom.d" = {
     source = ./doom.d;
-    # recursive = true;
+    recursive = true;
   };
 }
