@@ -118,7 +118,7 @@
 (map! :leader "w w" #'ace-window)
 
 ;; Elfeed;
-(map! :leader "e l" #'elfeed)
+;; (map! :leader "e l" #'elfeed)
 
 ;; toggle LSP Doc
 (map! :leader "h h" #'lsp-describe-thing-at-point)
