@@ -11,5 +11,12 @@ in {
 
     # -> rgba(,,,) colors (css)
     rgbaColors = lib.mapAttrs (_: nico.colorlib.rgba) colors;
+
+    wallpaper = ./portals/she-looks-at-you.jpg;
+    # wallpaper = builtins.fetchurl rec {
+    #   name = "wallpaper-${sha256}.png";
+    #   url = "https://files.catbox.moe/wn3b28.png";
+    #   sha256 = "0f7q0aj1q6mjfh248j8dflfbkbcpfvh5wl75r3bfhr8p6015jkwq";
+    # };
   };
 }

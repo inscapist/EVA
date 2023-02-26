@@ -3,7 +3,7 @@
     clock = true;
     font = "Jost *";
     ignore-empty-password = true;
-    image = default.wallpaper;
+    image = theme.wallpaper;
     indicator = true;
 
     bs-hl-color = xcolors.red;
