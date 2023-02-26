@@ -76,6 +76,10 @@
         blur_passes = 3
         blur_new_optimizations = true
 
+        active_opacity = 0.9
+        inactive_opacity = 0.7
+        fullscreen_opacity = 1
+
         drop_shadow = true
         shadow_ignore_window = true
         shadow_offset = 2 2
