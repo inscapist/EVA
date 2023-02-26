@@ -105,7 +105,7 @@
       bind = $mod, M, exec, hyprctl keyword $kw $(($(hyprctl getoption $kw -j | jq -r '.int') ^ 1))
 
       # utilities
-      bindr = $mod, SPACE, exec, ${launcher}
+      bind = $mod, Space, exec, ${launcher}
       bind = $mod, Return, exec, ${terminal}
       bind = $mod, Escape, exec, wlogout -p layer-shell
       bind = $mod SHIFT, L, exec, loginctl lock-session
