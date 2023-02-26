@@ -4,23 +4,15 @@
   fonts = {
     fonts = with pkgs; [
       # https://github.com/NixOS/nixpkgs/blob/master/pkgs/data/fonts/nerdfonts/default.nix
-      (nerdfonts.override {
-        fonts = [ "FiraCode" "JetBrainsMono" "Agave" "Monoid" ];
-      })
+      (nerdfonts.override { fonts = [ "Agave" "Monoid" ]; })
 
       # icon fonts
       material-symbols
 
-      # https://github.com/NixOS/nixpkgs/tree/master/pkgs/data/fonts
-      ibm-plex
-      recursive
-      ttf_bitstream_vera
-      noto-fonts
-      noto-fonts-emoji
-
       # normal fonts
       jost
       lexend
+      recursive
       noto-fonts
       noto-fonts-extra
       noto-fonts-emoji
