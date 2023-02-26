@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
 icons=("" "" "" "" "" "" "" "")
-num_icons=$(bc <<< "100 / ${#icons[@]}")
-
+num_icons=$(bc <<<"100 / ${#icons[@]}")
 
 geticon() {
-  level=$(awk -v n="$CAPACITY" -v c="$num_icons" 'BEGIN{print int(n/c-1)}')
+	level=$(awk -v n="$CAPACITY" -v c="$num_icons" 'BEGIN{print int(n/c-1)}')
 	if [[ "$level" -lt 0 ]]; then
 		level=0
 	fi
@@ -38,12 +37,12 @@ color() {
 
 wattage() {
 	microwatts=1000000
-	echo "$(bc -l <<< "scale=1; $RATE / $microwatts") W"
+	echo "$(bc -l <<<"scale=1; $RATE / $microwatts") W"
 }
 
 gettime() {
-	FULL=$(cat /sys/class/power_supply/BAT0/energy_full)
-	NOW=$(cat /sys/class/power_supply/BAT0/energy_now)
+	FULL=$(cat /sys/class/power_supply/BAT0/charge_full)
+	NOW=$(cat /sys/class/power_supply/BAT0/charge_now)
 
 	if [ "$RATE" -gt 0 ]; then
 		if [ "$STATE" = "Discharging" ]; then
@@ -51,12 +50,12 @@ gettime() {
 		else
 			EX="($FULL - $NOW) / $RATE"
 		fi
-		date -u -d@"$(bc -l <<< "$EX * 3600")" +%H:%M
+		date -u -d@"$(bc -l <<<"$EX * 3600")" +%H:%M
 	fi
 }
 
 while true; do
-	RATE=$(cat /sys/class/power_supply/BAT0/power_now)
+	RATE=$(cat /sys/class/power_supply/BAT0/current_now)
 	CAPACITY=$(cat /sys/class/power_supply/BAT0/capacity)
 	STATE=$(cat /sys/class/power_supply/BAT0/status)
 
