@@ -12,7 +12,7 @@ in {
     # -> rgba(,,,) colors (css)
     rgbaColors = lib.mapAttrs (_: nico.colorlib.rgba) colors;
 
-    wallpaper = ./portals/she-looks-at-you.jpg;
+    wallpaper = "${./portals/she-looks-at-you.jpg}";
     # wallpaper = builtins.fetchurl rec {
     #   name = "wallpaper-${sha256}.png";
     #   url = "https://files.catbox.moe/wn3b28.png";
