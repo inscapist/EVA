@@ -11,7 +11,8 @@
 
   programs.emacs = {
     enable = true;
-    package = emacs-overlay.packages.${system}.emacsPgtk;
+    # package = emacs-overlay.packages.${system}.emacsPgtk;
+    package = pkgs.emacs-gtk;
   };
 
   home.file.".doom.d" = {
