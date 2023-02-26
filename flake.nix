@@ -43,7 +43,7 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [ emacs-overlay ];
+        overlays = [ emacs-overlay.overlay ];
       };
       specialArgs = {
         inherit system pkgs inputs dt sdt;
