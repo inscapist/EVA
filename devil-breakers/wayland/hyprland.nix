@@ -158,10 +158,12 @@
       # workspaces
       # binds mod + [shift +] {1..10} to [move to] ws {1..10}
       ${builtins.concatStringsSep "\n" (builtins.genList (x:
-        let str = builtins.toString;
+        let
+          str = builtins.toString;
+          ws = let c = (x + 1) / 10; in x + 1 - (c * 10);
         in ''
-          bind = $mod, ${str (x + 1)}, workspace, ${str (x + 1)}
-          bind = $mod SHIFT, ${str (x + 1)}, movetoworkspace, ${str (x + 1)}
+          bind = $mod, ${str ws}, workspace, ${str (x + 1)}
+          bind = $mod SHIFT, ${str ws}, movetoworkspace, ${str (x + 1)}
         '') 10)}
     '';
   };
