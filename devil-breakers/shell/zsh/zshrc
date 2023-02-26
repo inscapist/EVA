@@ -195,9 +195,6 @@ alias gpg-find-key="gpg --keyserver pgp.mit.edu --search-keys"
 alias gpg-import-key="gpg --keyserver pgp.mit.edu  --recv"
 alias gpg-update-keys="gpg --refresh-keys"
 
-alias dockerd-start="systemctl restart docker.service"
-alias doom-cache-clear="rm -rf ~/.emacs.d/.local/cache/*"
-
 # EVA maintenance
 alias hi=Hyprland
 alias eva-pull="pushd ~/EVA && git pull; popd"
@@ -268,7 +265,7 @@ function tlscert-check-kube() {
 
 path+=(
   ${HOME}/.local/bin
-  ${HOME}/.emacs.d/bin
+  ${HOME}/.config/emacs/bin
   ${HOME}/.cargo/bin
   ${HOME}/.pyenv/bin
   ${HOME}/.krew/bin

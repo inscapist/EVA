@@ -154,6 +154,15 @@
 
       bind = SUPER, Print, exec, grimblast --notify --cursor copysave screen
       bind = $mod SHIFT SUPER, R, exec, grimblast --notify --cursor copysave screen
+
+      # workspaces
+      # binds mod + [shift +] {1..10} to [move to] ws {1..10}
+      ${builtins.concatStringsSep "\n" (builtins.genList (x:
+        let ws = let c = (x + 1) / 10; in x + 1 - (c * 10);
+        in ''
+          bind = $mod, ${ws}, workspace, ${x + 1}
+          bind = $mod SHIFT, ${ws}, movetoworkspace, ${x + 1}
+        '') 10)}
     '';
   };
 }
