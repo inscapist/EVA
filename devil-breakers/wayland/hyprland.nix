@@ -57,6 +57,18 @@
         repeat_delay = 250
       }
 
+      general {
+        gaps_in = 5
+        gaps_out = 5
+        border_size = 2
+        col.active_border = rgb(${colors.blue}) rgb(${colors.mauve}) 270deg
+        col.inactive_border = rgb(${colors.crust}) rgb(${colors.lavender}) 270deg
+
+        # group borders
+        col.group_border = rgb(${colors.surface0})
+        col.group_border_active = rgb(${colors.pink})
+      }
+
       decoration {
         rounding = 10
         blur = true
@@ -160,6 +172,8 @@
       ${builtins.concatStringsSep "\n" (builtins.genList (x:
         let
           str = builtins.toString;
+          # if x+1 == 10, ws -> 0, else ws == x+1
+          # because c is only == 1 when x+1 == 10
           ws = let c = (x + 1) / 10; in x + 1 - (c * 10);
         in ''
           bind = $mod, ${str ws}, workspace, ${str (x + 1)}
