@@ -13,6 +13,7 @@ in {
     rgbaColors = lib.mapAttrs (_: nico.colorlib.rgba) colors;
 
     wallpaper = "${./portals/she-looks-at-you.jpg}";
+    lockscreen = "${./portals/gun-aim.jpg}";
     # wallpaper = builtins.fetchurl rec {
     #   name = "wallpaper-${sha256}.png";
     #   url = "https://files.catbox.moe/wn3b28.png";
