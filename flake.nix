@@ -24,6 +24,10 @@
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    emacs29 = {
+      url = "github:emacs-mirror/emacs/emacs-29";
+      flake = false;
+    };
     doom = {
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,7 +38,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, emacs-overlay, ... }:
+  outputs = inputs@{ self, nixpkgs, flake-utils, emacs-overlay, emacs29, ... }:
     let
       system = "x86_64-linux";
       mods = [ ./devil-arms ./devil-breakers ];
@@ -43,7 +47,18 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [ emacs-overlay.overlay ];
+        overlays = [
+          emacs-overlay.overlay
+          (final: prev: {
+            emacsPgtk = prev.emacsGit.overrideAttrs (old: {
+              name = "emacs-pgtk";
+              version = inputs.emacs29.shortRev;
+              src = inputs.emacs29;
+              withPgtk = true;
+            });
+          })
+
+        ];
       };
       specialArgs = {
         inherit system pkgs inputs dt sdt;

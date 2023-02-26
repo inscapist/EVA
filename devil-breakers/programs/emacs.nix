@@ -1,8 +1,6 @@
 { emacs-overlay, doom, pkgs, lib, system, ... }: {
   imports = [ doom.hmModule ];
 
-  # XXX does no work..
-  # https://github.com/nix-community/nix-doom-emacs/issues/318
   programs.doom-emacs = {
     enable = true;
     doomPrivateDir = ./doom.d;
