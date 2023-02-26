@@ -28,25 +28,25 @@
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     eww = {
       url = "github:elkowar/eww";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.rust-overlay.follows = "rust-overlay";
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
+  outputs = inputs@{ self, nixpkgs, flake-utils, emacs-overlay, ... }:
     let
       system = "x86_64-linux";
       mods = [ ./devil-arms ./devil-breakers ];
       dt = import ./devil-triggers nixpkgs.lib;
       sdt = import ./sin-devil-triggers;
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        overlays = [ emacs-overlay ];
+      };
       specialArgs = {
-        inherit system inputs dt sdt;
+        inherit system pkgs inputs dt sdt;
         user = "xi";
       };
     in {

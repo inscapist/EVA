@@ -1,8 +1,6 @@
 { emacs-overlay, doom, pkgs, lib, system, ... }: {
   imports = [ doom.hmModule ];
 
-  nixpkgs.overlays = [ emacs-overlay.overlay ];
-
   # XXX does no work..
   # https://github.com/nix-community/nix-doom-emacs/issues/318
   programs.doom-emacs = {
