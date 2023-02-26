@@ -1,14 +1,15 @@
 lib:
 
-let
-  nico = import ./nico lib;
-  palette = import ./theme/palette.nix;
+let nico = import ./nico lib;
 in {
-  theme = {
+  theme = rec {
+    # -> RRGGBB
+    colors = import ./theme/palette.nix;
+
     # -> #RRGGBB
-    colors = lib.mapAttrs (_: nico.colorlib.hex) palette;
+    xcolors = lib.mapAttrs (_: nico.colorlib.hex) colors;
 
     # -> rgba(,,,) colors (css)
-    cssColors = lib.mapAttrs (_: nico.colorlib.rgba) palette;
+    rgbaColors = lib.mapAttrs (_: nico.colorlib.rgba) colors;
   };
 }

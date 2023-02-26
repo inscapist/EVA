@@ -1,5 +1,4 @@
 { theme, pkgs, ... }:
-
 let w = pkgs.wlogout;
 in with theme; {
   xdg.configFile."wlogout/style.css".text = ''
@@ -14,7 +13,7 @@ in with theme; {
       background: unset;
       border-radius: 16px;
     	border: 1px solid #28283d;
-      color: ${colors.text};
+      color: ${xcolors.text};
       margin: 1rem;
     	background-repeat: no-repeat;
     	background-position: center;
@@ -22,8 +21,8 @@ in with theme; {
     }
 
     button:focus, button:active, button:hover {
-      background-color: ${colors.blue};
-      color: ${colors.base};
+      background-color: ${xcolors.blue};
+      color: ${xcolors.base};
     	outline-style: none;
     }
 

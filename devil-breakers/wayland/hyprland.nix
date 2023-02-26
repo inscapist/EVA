@@ -70,16 +70,18 @@
       }
 
       decoration {
-        rounding = 10
+        rounding = 16
         blur = true
         blur_size = 3
         blur_passes = 3
         blur_new_optimizations = true
 
         drop_shadow = true
+        shadow_ignore_window = true
+        shadow_offset = 2 2
         shadow_range = 4
-        shadow_render_power = 3
-        col.shadow = rgba(1a1a1aee)
+        shadow_render_power = 1
+        col.shadow = 0x55000000
       }
 
       animations {
@@ -158,14 +160,8 @@
       # screenshot
       # stop animations while screenshotting; makes black border go away
       $screenshotarea = hyprctl keyword animation "fadeOut,0,0,default"; grimblast --notify copysave area; hyprctl keyword animation "fadeOut,1,4,default"
-      bind = , Print, exec, $screenshotarea
       bind = $mod SHIFT, R, exec, $screenshotarea
-
-      bind = CTRL, Print, exec, grimblast --notify --cursor copysave output
       bind = $mod SHIFT CTRL, R, exec, grimblast --notify --cursor copysave output
-
-      bind = SUPER, Print, exec, grimblast --notify --cursor copysave screen
-      bind = $mod SHIFT SUPER, R, exec, grimblast --notify --cursor copysave screen
 
       # workspaces
       # binds mod + [shift +] {1..10} to [move to] ws {1..10}

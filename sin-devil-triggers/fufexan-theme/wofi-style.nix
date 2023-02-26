@@ -6,24 +6,24 @@ with theme; {
     flowboxchild { outline-width: 0; }
 
     #outer-box {
-      background: ${colors.base};
-      border: 1px solid ${colors.border};
+      background: ${xcolors.base};
+      border: 1px solid ${xcolors.border};
       border-radius: 24px;
-      box-shadow: 0 2px 3px ${colors.crust};
+      box-shadow: 0 2px 3px ${xcolors.crust};
       margin: 5px 5px 10px;
       padding: 5px 5px 10px;
     }
 
     #input {
-      background-color: ${colors.crust};
+      background-color: ${xcolors.crust};
       border: none;
       border-radius: 16px;
-      color: ${colors.text};
+      color: ${xcolors.text};
       margin: 5px;
     }
 
     #inner-box {
-      background-color: ${colors.base};
+      background-color: ${xcolors.base};
       border: none;
       border-radius: 16px;
       margin: 5px;
@@ -35,14 +35,14 @@ with theme; {
     }
 
     #text {
-      color: ${colors.text};
+      color: ${xcolors.text};
       margin: 5px;
     }
 
     #entry { border-radius: 16px; }
 
     #entry:selected {
-      background-color: ${colors.surface0};
+      background-color: ${xcolors.surface0};
     }
   '';
 }
