@@ -6,7 +6,7 @@
 
 ;; custom variables
 (setq felix/default-font "Monoid Nerd Font"
-      felix/default-font-size 25
+      felix/default-font-size 20
       felix/default-font-weight 'extra-light ;; refer font-weight-table variable
       felix/muted-font-height 0.95
       felix/modeline-font "Monoid Nerd Font"
