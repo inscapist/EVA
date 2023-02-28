@@ -13,12 +13,9 @@
       felix/modeline-height 0.8)
 
 ;; font settings
-(setq doom-themes-enable-bold t
-      doom-themes-enable-italic t
-      doom-font (font-spec :family felix/default-font
+(setq doom-font (font-spec :family felix/default-font
                            :size felix/default-font-size
-                           :weight felix/default-font-weight)
-      all-the-icons-scale-factor 0.7)
+                           :weight felix/default-font-weight))
 
 
 ;; use kaolin theme
