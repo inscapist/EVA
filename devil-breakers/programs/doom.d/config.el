@@ -20,7 +20,7 @@
 (add-hook! 'elfeed-search-mode-hook 'elfeed-update)
 
 ;; (load! "+bindings")
-(load! "+ui")
+;;(load! "+ui")
 ;; (load! "+editor")
 ;; (load! "+hydra")
 ;; (load! "+langs")
