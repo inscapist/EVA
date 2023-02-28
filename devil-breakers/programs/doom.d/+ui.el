@@ -41,7 +41,7 @@
   `(mode-line-inactive :height ,felix/modeline-height ,felix/modeline-font))
 
 ;; performance hack
-(setq inhibit-compacting-font-caches t)
+;;(setq inhibit-compacting-font-caches t)
 
 ;; thinner modeline for (modeline +light)
 (setq +modeline-height 18)
