@@ -22,11 +22,11 @@ key_bindings:
   - { key: V, mods: Alt, action: Paste }
   - { key: C, mods: Alt, action: Copy }
   # tmux binding
-  - { key: N, mods: Alt, chars: "`n" }
-  - { key: W, mods: Alt, chars: "`x" }
-  - { key: K, mods: Alt|Control, chars: "`K" }
-  - { key: H, mods: Alt|Control, chars: "`," }
-  - { key: L, mods: Alt|Control, chars: "`." }
+  # - { key: N, mods: Alt, chars: "`n" }
+  # - { key: W, mods: Alt, chars: "`x" }
+  # - { key: K, mods: Alt|Control, chars: "`K" }
+  # - { key: H, mods: Alt|Control, chars: "`," }
+  # - { key: L, mods: Alt|Control, chars: "`." }
 
 colors:
   primary:

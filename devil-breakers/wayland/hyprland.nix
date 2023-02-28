@@ -20,7 +20,6 @@
   # Configuration
   # https://github.com/hyprwm/Hyprland/blob/main/nix/hm-module.nix
   wayland.windowManager.hyprland = let
-    # TODO
     inherit (theme) colors;
     pointer = config.home.pointerCursor;
     homeDir = config.home.homeDirectory;
@@ -111,11 +110,11 @@
       bind = $mod, Q, killactive,
       bind = $mod, F, fullscreen,
       bind = $mod, G, togglegroup,
-      bind = $mod SHIFT, N, changegroupactive, f
-      bind = $mod SHIFT, P, changegroupactive, b
+      bind = $mod CTRL, L, changegroupactive, f
+      bind = $mod CTRL, H, changegroupactive, b
       bind = $mod, R, togglesplit,
       bind = $mod, T, togglefloating,
-      bind = $mod, P, pseudo,
+      bind = $mod SHIFT, P, pseudo,
       bind = $mod SUPER, ,resizeactive,
 
       # toggle "monocle" (no_gaps_when_only)

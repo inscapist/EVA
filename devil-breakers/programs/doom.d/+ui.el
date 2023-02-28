@@ -22,14 +22,14 @@
 
 
 ;; use kaolin theme
-(use-package kaolin-themes
-  :config
-  (load-theme 'kaolin-mono-dark t)
-  (setq kaolin-themes-italic-comments t))
-(use-package kaolin-themes
-  :config
-  (load-theme 'kaolin-mono-dark t)
-  (setq kaolin-themes-italic-comments t))
+;; (use-package kaolin-themes
+;;   :config
+;;   (load-theme 'kaolin-mono-dark t)
+;;   (setq kaolin-themes-italic-comments t))
+;; (use-package kaolin-themes
+;;   :config
+;;   (load-theme 'kaolin-mono-dark t)
+;;   (setq kaolin-themes-italic-comments t))
 
 
 ;; customize faces. list with SPC-h-F
@@ -41,7 +41,7 @@
   `(mode-line-inactive :height ,felix/modeline-height ,felix/modeline-font))
 
 ;; performance hack
-;;(setq inhibit-compacting-font-caches t)
+(setq inhibit-compacting-font-caches t)
 
 ;; thinner modeline for (modeline +light)
 (setq +modeline-height 18)

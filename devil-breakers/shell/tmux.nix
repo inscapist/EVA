@@ -3,7 +3,7 @@
     # https://nix-community.github.io/home-manager/options.html#opt-programs.tmux.enable
     # https://github.com/sagittaros/dotfiles/blob/master/.tmux.conf
     tmux = {
-      enable = true;
+      enable = false;
 
       baseIndex = 1;
       mouse = true;
