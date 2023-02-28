@@ -10,7 +10,7 @@
   programs.emacs = {
     enable = true;
     # package = emacs-overlay.packages.${system}.emacsPgtk;
-    package = pkgs.emacsGit;
+    package = pkgs.emacsPgtk;
   };
 
   home.file.".doom.d" = {
