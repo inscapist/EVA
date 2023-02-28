@@ -3,6 +3,7 @@
     # pfft!
     ./firearms/fonts.nix
     ./firearms/locales.nix
+    ./firearms/privacy.nix
     ./firearms/tools.nix
     ./firearms/wayland.nix
 
