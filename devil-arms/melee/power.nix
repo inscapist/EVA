@@ -1,4 +1,25 @@
-{ pkgs, ... }: {
+{ pkgs, lib, inputs, ... }:
+
+let
+  programs = lib.makeBinPath
+    [ inputs.hyprland.packages.${pkgs.hostPlatform.system}.default ];
+
+  unplugged = pkgs.writeShellScript "unplugged" ''
+    export PATH=$PATH:${programs}
+    export HYPRLAND_INSTANCE_SIGNATURE=$(ls -w1 /tmp/hypr | tail -1)
+
+    systemctl --user --machine=1000@ stop easyeffects syncthing
+    hyprctl --batch 'keyword decoration:drop_shadow 0 ; keyword animations:enabled 0'
+  '';
+
+  plugged = pkgs.writeShellScript "plugged" ''
+    export PATH=$PATH:${programs}
+    export HYPRLAND_INSTANCE_SIGNATURE=$(ls -w1 /tmp/hypr | tail -1)
+
+    systemctl --user --machine=1000@ start easyeffects syncthing
+    hyprctl --batch 'keyword decoration:drop_shadow 1 ; keyword animations:enabled 1'
+  '';
+in {
 
   environment.systemPackages = with pkgs; [
     acpi # check battery level with `acpi -bi`
@@ -29,6 +50,12 @@
 
     # Check battery health with `upower -d`
     upower.enable = true;
+
+    udev.extraRules = ''
+      # start/stop services on power (un)plug
+      SUBSYSTEM=="power_supply", ATTR{online}=="1", RUN+="${plugged}"
+      SUBSYSTEM=="power_supply", ATTR{online}=="0", RUN+="${unplugged}"
+    '';
   };
 
   programs = {

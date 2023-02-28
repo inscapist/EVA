@@ -59,7 +59,7 @@
       general {
         gaps_in = 5
         gaps_out = 5
-        border_size = 2
+        border_size = 1
         col.active_border = rgb(${colors.blue}) rgb(${colors.mauve}) 270deg
         col.inactive_border = rgb(${colors.crust}) rgb(${colors.lavender}) 270deg
 
