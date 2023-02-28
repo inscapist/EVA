@@ -31,8 +31,8 @@
   in {
     enable = true;
     xwayland = {
-      enable = false;
-      hidpi = false;
+      enable = true;
+      hidpi = true;
     };
     nvidiaPatches = false;
     systemdIntegration = true;
@@ -98,7 +98,6 @@
       dwindle {
         # https://wiki.hyprland.org/Configuring/Dwindle-Layout/
         pseudotile = true
-        preserve_split = true
       }
 
       # Move/resize windows with mainMod + LMB/RMB and dragging
@@ -112,7 +111,7 @@
       bind = $mod, G, togglegroup,
       bind = $mod CTRL, L, changegroupactive, f
       bind = $mod CTRL, H, changegroupactive, b
-      bind = $mod, R, togglesplit,
+      # bind = $mod, R, togglesplit,
       bind = $mod, T, togglefloating,
       bind = $mod SHIFT, P, pseudo,
       bind = $mod SUPER, ,resizeactive,
