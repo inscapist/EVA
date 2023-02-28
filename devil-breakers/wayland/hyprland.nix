@@ -139,6 +139,12 @@
       bind = $mod, K, movefocus, u
       bind = $mod, J, movefocus, d
 
+      # move window
+      bind = $mod SHIFT, H, movewindow, l
+      bind = $mod SHIFT, L, movewindow, r
+      bind = $mod SHIFT, K, movewindow, u
+      bind = $mod SHIFT, J, movewindow, d
+
       # window resize
       binde = $mod, right, resizeactive, 10 0
       binde = $mod, left, resizeactive, -10 0
