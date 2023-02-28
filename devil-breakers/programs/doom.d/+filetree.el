@@ -1,6 +1,6 @@
 ;;; $DOOMDIR/+filetree.el -*- lexical-binding: t; -*-
 
-(setq felix/treemacs-font "Monoid"
+(setq felix/treemacs-font "Monoid Nerd Font"
       felix/treemacs-font-size 20
       felix/treemacs-font-weight 'extra-light
       doom-variable-pitch-font (font-spec :family felix/treemacs-font :size felix/treemacs-font-size :weight felix/treemacs-font-weight))

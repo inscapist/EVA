@@ -21,12 +21,12 @@
 
 ;; (load! "+bindings")
 (load! "+ui")
-;; (load! "+editor")
-;; (load! "+hydra")
-;; (load! "+langs")
-;; (load! "+org")
-;; (load! "+filetree")
-;; (load! "+extras")
+(load! "+editor")
+(load! "+hydra")
+(load! "+langs")
+(load! "+org")
+(load! "+filetree")
+(load! "+extras")
 
 
 ;; Safe variables
