@@ -1,1 +1,6 @@
-{ inputs, ... }: { imports = [ inputs.agenix.nixosModules.default ]; }
+{ inputs, system, ... }:
+
+with inputs; {
+  imports = [ agenix.nixosModules.default ];
+  environment.systemPackages = [ agenix.packages.${system}.default ];
+}
