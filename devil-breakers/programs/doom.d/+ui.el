@@ -14,8 +14,7 @@
 
 ;; font settings
 (setq doom-font (font-spec :family felix/default-font
-                           :size felix/default-font-size
-                           :weight felix/default-font-weight))
+                           :size felix/default-font-size))
 
 
 ;; use kaolin theme
