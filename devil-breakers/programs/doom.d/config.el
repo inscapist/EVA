@@ -19,12 +19,11 @@
 (after! elfeed (setq elfeed-search-filter "@5-days-ago"))
 (add-hook! 'elfeed-search-mode-hook 'elfeed-update)
 
-;; (load! "+bindings")
+(load! "+bindings")
 (load! "+ui")
 (load! "+editor")
 (load! "+hydra")
 (load! "+langs")
-(load! "+org")
 (load! "+filetree")
 (load! "+extras")
 
