@@ -8,8 +8,8 @@
   programs.hyprland = {
     enable = true;
     xwayland = {
-      enable = true;
-      hidpi = true;
+      enable = false;
+      hidpi = false;
     };
     nvidiaPatches = false;
   };
@@ -22,7 +22,7 @@
   hardware.opengl.enable = true;
   programs = {
     dconf.enable = true;
-    xwayland.enable = true;
+    xwayland.enable = false;
   };
   security.polkit.enable = true;
   xdg.portal = { enable = true; };

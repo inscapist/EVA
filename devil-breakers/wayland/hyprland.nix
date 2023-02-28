@@ -31,8 +31,8 @@
   in {
     enable = true;
     xwayland = {
-      enable = true;
-      hidpi = true;
+      enable = false;
+      hidpi = false;
     };
     nvidiaPatches = false;
     systemdIntegration = true;
