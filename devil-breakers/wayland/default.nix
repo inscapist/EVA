@@ -22,9 +22,10 @@
     WLR_RENDERER = "vulkan";
 
     # Xwayland
+    # https://wiki.hyprland.org/Configuring/XWayland/
     # XCURSOR_THEME = "";
     XCURSOR_SIZE = "32";
-    GDK_SCALE = "2";
+    # GDK_SCALE = "2";
 
     # applications on wayland
     MOZ_ENABLE_WAYLAND = "1";
