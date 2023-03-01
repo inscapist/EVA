@@ -3,7 +3,7 @@
     # https://nix-community.github.io/home-manager/options.html#opt-programs.tmux.enable
     # https://github.com/sagittaros/dotfiles/blob/master/.tmux.conf
     tmux = {
-      enable = false;
+      enable = true;
 
       baseIndex = 1;
       mouse = true;
@@ -50,23 +50,23 @@
 
         # status bar theme
         # https://gist.github.com/rajanand02/9407361
-        set -g status 'on'
-        set -g status-interval 2
-        set -g status-position top
-        set -g status-bg 'colour235'
-        set -g status-justify 'left'
-        set -g status-left ""
-        set -g status-right ""
-        set -g message-style fg='colour222',bg='colour238'
-        set -g message-command-style fg='colour222',bg='colour238'
-        set -g pane-border-style fg='colour238'
-        set -g pane-active-border-style fg='colour11'
-        setw -g window-status-separator ""
-        setw -g window-status-activity-style fg='colour11',bg='colour235',none
-        setw -g window-status-style fg='colour121',bg='colour235',none
+        set -g status 'off'
+        # set -g status-interval 2
+        # set -g status-position top
+        # set -g status-bg 'colour235'
+        # set -g status-justify 'left'
+        # set -g status-left ""
+        # set -g status-right ""
+        # set -g message-style fg='colour222',bg='colour238'
+        # set -g message-command-style fg='colour222',bg='colour238'
+        # set -g pane-border-style fg='colour238'
+        # set -g pane-active-border-style fg='colour11'
+        # setw -g window-status-separator ""
+        # setw -g window-status-activity-style fg='colour11',bg='colour235',none
+        # setw -g window-status-style fg='colour121',bg='colour235',none
 
-        setw -g window-status-format '#[fg=colour8,bg=colour235] #W '
-        setw -g window-status-current-format '#[fg=colour11,bg=colour235,bold] #W '
+        # setw -g window-status-format '#[fg=colour8,bg=colour235] #W '
+        # setw -g window-status-current-format '#[fg=colour11,bg=colour235,bold] #W '
       '';
     };
   };
