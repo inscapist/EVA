@@ -21,10 +21,10 @@
     GDK_BACKEND = "wayland";
     WLR_RENDERER = "vulkan";
 
-    # Theming
-    # GTK_THEME = "";
+    # Xwayland
     # XCURSOR_THEME = "";
-    # XCURSOR_SIZE = "";
+    XCURSOR_SIZE = "32";
+    GDK_SCALE = "2";
 
     # applications on wayland
     MOZ_ENABLE_WAYLAND = "1";
