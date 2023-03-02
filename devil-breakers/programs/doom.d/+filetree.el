@@ -26,3 +26,6 @@
 
 ;; ace window fix
 (require 'ace-window)
+
+(after! (:and treemacs ace-window)
+  (setq aw-ignored-buffers (delq 'treemacs-mode aw-ignored-buffers)))
