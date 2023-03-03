@@ -31,8 +31,8 @@
   in {
     enable = true;
     xwayland = {
-      enable = true;
-      hidpi = true;
+      enable = false;
+      hidpi = false;
     };
     nvidiaPatches = false;
     systemdIntegration = true;
@@ -40,9 +40,19 @@
       $mod = ALT
 
       # scale apps
-      exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
+      # exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
       exec-once = hyprctl setcursor ${pointer.name} ${toString pointer.size}
       exec-once = eww open bar
+
+      # laptop screen
+      monitor = eDP-1, preferred, auto, 1
+
+      # dell 4k monitor
+      monitor = DP-3, preferred, auto, 1
+
+      # default workspace for monitors
+      workspace = eDP-1, 1
+      workspace = DP-3, 10
 
       misc {
         disable_hyprland_logo = true
@@ -144,11 +154,18 @@
       bind = $mod SHIFT, K, movewindow, u
       bind = $mod SHIFT, J, movewindow, d
 
+      # move window (https://www.reddit.com/r/hyprland/comments/10izfpf/moving_window_between_monitors/)
+      bind = $mod SHIFT, left, movewindow, mon:l
+      bind = $mod SHIFT, right, movewindow, mon:r
+
+      bind = $mod, left, focusmonitor, l
+      bind = $mod, right, focusmonitor, r
+
       # window resize
-      binde = $mod, right, resizeactive, 10 0
-      binde = $mod, left, resizeactive, -10 0
-      binde = $mod, up, resizeactive, 0 -10
-      binde = $mod, down, resizeactive, 0 10
+      binde = $mod CTRL, right, resizeactive, 10 0
+      binde = $mod CTRL, left, resizeactive, -10 0
+      binde = $mod CTRL, up, resizeactive, 0 -10
+      binde = $mod CTRL, down, resizeactive, 0 10
 
       # volume
       bindle = , XF86AudioRaiseVolume, exec, wpctl set-volume -l "1.0" @DEFAULT_AUDIO_SINK@ 6%+
