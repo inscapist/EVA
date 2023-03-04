@@ -1,5 +1,9 @@
 ;;; $DOOMDIR/+editor.el -*- lexical-binding: t; -*-
 
+
+;; https://www.emacswiki.org/emacs/SmoothScrolling
+; (setq pixel-scroll-precision-large-scroll-height 40.0)
+
 ;; Do not ask for "Confirm exit Emacs"
 (setq confirm-kill-emacs nil)
 
@@ -11,7 +15,7 @@
 (setq direnv-always-show-summary nil)
 
 ;; Display line number, use `SPC t l' to toggle
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type nil)
 
 ;; History & backup settings (save nothing, that's what git is for)
 (setq auto-save-default nil

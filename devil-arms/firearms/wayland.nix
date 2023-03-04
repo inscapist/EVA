@@ -2,6 +2,12 @@
 
   imports = [ inputs.hyprland.nixosModules.default ];
 
+  security.pam.services.swaylock = {
+    text = ''
+      auth include login
+    '';
+  };
+
   # Configuration
   # https://github.com/hyprwm/Hyprland/blob/main/nix/module.nix
   # NOTE: it is important that the settings are in sync with home manager's

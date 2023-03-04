@@ -24,6 +24,7 @@
     pointer = config.home.pointerCursor;
     homeDir = config.home.homeDirectory;
     terminal = "alacritty";
+    browser = "brave";
 
     # wofi
     emoji = "${pkgs.wofi-emoji}/bin/wofi-emoji";
@@ -133,8 +134,9 @@
       # utilities
       bind = $mod, Space, exec, ${launcher}
       bind = $mod, Return, exec, ${terminal}
-      bind = $mod, Escape, exec, wlogout -p layer-shell
-      bind = $mod SHIFT, L, exec, loginctl lock-session
+      bind = $mod CTRL, Return, exec, ${browser}
+      bind = SUPER SHIFT, Q, exec, wlogout -p layer-shell
+      bind = SUPER SHIFT, L, exec, loginctl lock-session
 
       # emoji picker
       bind = $mod, E, exec, ${emoji}
@@ -200,6 +202,10 @@
           bind = $mod, ${str ws}, workspace, ${str (x + 1)}
           bind = $mod SHIFT, ${str ws}, movetoworkspace, ${str (x + 1)}
         '') 10)}
+
+      # workspaces (arrow navigation)
+      bind = SUPER, left, workspace, -1
+      bind = SUPER, right, workspace, +1
     '';
   };
 }
