@@ -6,7 +6,7 @@
 
 ;; custom variables
 (setq felix/default-font "Monoid"
-      felix/default-font-size 20
+      felix/default-font-size 18
       felix/default-font-weight 'extra-light ;; refer font-weight-table variable
       felix/muted-font-height 0.95
       felix/modeline-font "Monoid"
@@ -18,7 +18,8 @@
       doom-font (font-spec :family felix/default-font
                            :size felix/default-font-size
                            :weight felix/default-font-weight)
-      all-the-icons-scale-factor 0.7)
+      ;; all-the-icons-scale-factor 0.7
+      )
 
 
 ;; use kaolin theme
