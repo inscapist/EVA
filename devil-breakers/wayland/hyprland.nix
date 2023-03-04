@@ -45,14 +45,14 @@
       exec-once = eww open bar
 
       # laptop screen
-      monitor = eDP-1, preferred, auto, 1
+      # monitor = , highres, auto, auto
 
       # dell 4k monitor
-      monitor = DP-3, preferred, auto, 1
+      # monitor = DP-3, preferred, auto, 1
 
       # default workspace for monitors
-      workspace = eDP-1, 1
-      workspace = DP-3, 10
+      # workspace = eDP-1, 1
+      # workspace = DP-3, 10
 
       misc {
         disable_hyprland_logo = true
