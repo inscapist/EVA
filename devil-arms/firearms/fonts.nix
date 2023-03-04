@@ -10,6 +10,8 @@
       material-symbols
 
       # normal fonts
+      agave
+      monoid
       jost
       lexend
       recursive
@@ -27,9 +29,9 @@
     ];
     fontconfig = {
       defaultFonts = {
-        serif = [ "Recursive Sans Casual Static Medium" ];
-        sansSerif = [ "Recursive Sans Linear Static Medium" ];
-        monospace = [ "Recursive Mono Linear Static" ];
+        # serif = [ "Recursive Sans Casual Static Medium" ];
+        # sansSerif = [ "Recursive Sans Linear Static Medium" ];
+        # monospace = [ "Recursive Mono Linear Static" ];
         emoji = [ "Noto Color Emoji" ];
       };
     };
