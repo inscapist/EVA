@@ -24,7 +24,6 @@
 (load! "+editor")
 (load! "+hydra")
 (load! "+langs")
-;;(load! "+filetree")
 (load! "+extras")
 
 
