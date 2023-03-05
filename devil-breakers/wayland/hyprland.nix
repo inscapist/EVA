@@ -45,12 +45,14 @@
       # exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
       exec-once = hyprctl setcursor ${pointer.name} ${toString pointer.size}
       exec-once = eww open bar
-
-      # dell 4k monitor
-      monitor = DP-3, preferred, auto, 1
+      exec-once = light -S 0
 
       # laptop screen
-      monitor = eDP-1, preferred, auto, auto
+      monitor = eDP-1, preferred, 0x0, 2
+
+      # dell 4k monitor
+      # monitor = , preferred, auto, auto
+      monitor = DP-2, preferred, 1920x0, auto
 
       # default workspace for monitors
       # workspace = DP-3, 1
@@ -91,12 +93,12 @@
         inactive_opacity = 0.85
         fullscreen_opacity = 1
 
-        drop_shadow = true
-        shadow_ignore_window = true
-        shadow_offset = 2 2
-        shadow_range = 4
-        shadow_render_power = 1
-        col.shadow = 0x55000000
+        # drop_shadow = true
+        # shadow_ignore_window = true
+        # shadow_offset = 2 2
+        # shadow_range = 4
+        # shadow_render_power = 1
+        # col.shadow = 0x55000000
       }
 
       animations {
@@ -137,8 +139,8 @@
       bind = $mod, Return, exec, ${terminal}
       bind = $mod CTRL, Return, exec, ${browser}
       bind = $mod CTRL, M, exec, ${explorer}
-      bind = SUPER, Escape, exec, wlogout -p layer-shell
-      bind = SUPER SHIFT, L, exec, loginctl lock-session
+      bind = $mod SHIFT, Q, exec, wlogout -p layer-shell
+      bind = $mod SHIFT, L, exec, loginctl lock-session
 
       # emoji picker
       bind = $mod, E, exec, ${emoji}
