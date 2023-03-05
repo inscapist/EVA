@@ -11,7 +11,11 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [ emacs-overlay.overlay orbs.fontDankMono orbs.polyglot ];
+        overlays = [
+          emacs-overlay.overlay
+          orbs.fontDankMono
+          # orbs.polyglot
+        ];
       };
       specialArgs = {
         inherit system pkgs inputs dt sdt;

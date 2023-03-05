@@ -5,7 +5,7 @@
     # check with fc-list
     fonts = with pkgs; [
       # https://github.com/NixOS/nixpkgs/blob/master/pkgs/data/fonts/nerdfonts/default.nix
-      (nerdfonts.override { fonts = [ "Agave" "Monoid" ]; })
+      (nerdfonts.override { fonts = [ "Agave" ]; })
 
       # icon fonts
       material-symbols
@@ -14,13 +14,13 @@
       agave
       monoid
       dank-mono
-      jost
-      lexend
       recursive
+      jost
+      roboto
+      lexend
       noto-fonts
       noto-fonts-extra
       noto-fonts-emoji
-      roboto
 
       # CJK support
       wqy_microhei
@@ -31,9 +31,9 @@
     ];
     fontconfig = {
       defaultFonts = {
-        # serif = [ "Recursive Sans Casual Static Medium" ];
-        # sansSerif = [ "Recursive Sans Linear Static Medium" ];
-        # monospace = [ "Recursive Mono Linear Static" ];
+        serif = [ "Recursive Sans Casual Static Medium" ];
+        sansSerif = [ "Recursive Sans Linear Static Medium" ];
+        monospace = [ "Recursive Mono Linear Static" ];
         emoji = [ "Noto Color Emoji" ];
       };
     };

@@ -93,12 +93,12 @@
         inactive_opacity = 0.85
         fullscreen_opacity = 1
 
-        # drop_shadow = true
-        # shadow_ignore_window = true
-        # shadow_offset = 2 2
-        # shadow_range = 4
-        # shadow_render_power = 1
-        # col.shadow = 0x55000000
+        drop_shadow = true
+        shadow_ignore_window = true
+        shadow_offset = 2 2
+        shadow_range = 4
+        shadow_render_power = 1
+        col.shadow = 0x55000000
       }
 
       animations {
