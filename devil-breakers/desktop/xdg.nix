@@ -12,7 +12,7 @@ let
     "application/xhtml+xml" = browser;
     "text/html" = browser;
     "x-scheme-handler/about" = browser;
-    "x-scheme-handler/chrome" = [ "chromium-browser.desktop" ];
+    "x-scheme-handler/chrome" = [ "brave.desktop" ];
     "x-scheme-handler/ftp" = browser;
     "x-scheme-handler/http" = browser;
     "x-scheme-handler/https" = browser;
@@ -23,9 +23,9 @@ let
     "image/*" = [ "imv.desktop" ];
     "application/json" = browser;
     "application/pdf" = [ "org.pwmt.zathura.desktop.desktop" ];
-    "x-scheme-handler/discord" = [ "discordcanary.desktop" ];
-    "x-scheme-handler/spotify" = [ "spotify.desktop" ];
-    "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
+    # "x-scheme-handler/discord" = [ "discordcanary.desktop" ];
+    # "x-scheme-handler/spotify" = [ "spotify.desktop" ];
+    # "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
   };
 in {
   home.packages = with pkgs; [ xdg-utils ];
@@ -42,11 +42,11 @@ in {
       createDirectories = true;
 
       # I don't want so many directories
-      desktop = null;
       music = null;
       publicShare = null;
       templates = null;
       videos = null;
+      desktop = "${config.home.homeDirectory}/desktop";
       documents = "${config.home.homeDirectory}/documents";
       download = "${config.home.homeDirectory}/downloads";
       pictures = "${config.home.homeDirectory}/pictures";

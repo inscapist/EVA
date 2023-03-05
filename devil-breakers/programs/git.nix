@@ -1,12 +1,12 @@
 { pkgs, ... }: {
 
-  home.packages = [ pkgs.gh ];
+  home.packages = with pkgs; [ gh tig ];
 
   programs = {
     git = {
       enable = true;
       package = pkgs.gitAndTools.gitFull;
-      userName = "sagittaros";
+      userName = "felix";
       userEmail = "zen9.felix@gmail.com";
 
       # signing = {

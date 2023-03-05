@@ -191,6 +191,7 @@
       # screenshot
       # stop animations while screenshotting; makes black border go away
       $screenshotarea = hyprctl keyword animation "fadeOut,0,0,default"; grimblast --notify copysave area; hyprctl keyword animation "fadeOut,1,4,default"
+      bind = , F3, exec, $screenshotarea
       bind = $mod SHIFT, R, exec, $screenshotarea
       bind = $mod SHIFT CTRL, R, exec, grimblast --notify --cursor copysave output
 
