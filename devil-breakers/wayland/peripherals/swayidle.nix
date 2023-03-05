@@ -12,6 +12,7 @@ in {
   # screen idle
   services.swayidle = {
     enable = true;
+    systemdTarget = "hyprland-session.target";
     events = [
       {
         event = "before-sleep";
@@ -24,11 +25,11 @@ in {
     ];
     timeouts = [
       {
-        timeout = 310;
+        timeout = 120;
         command = "${pkgs.systemd}/bin/loginctl lock-session";
       }
       {
-        timeout = 310;
+        timeout = 120;
         command = suspendScript.outPath;
       }
     ];

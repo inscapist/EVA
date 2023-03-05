@@ -54,19 +54,6 @@
 (map!
  "C-c C-\\" #'evil-make)
 
-;; Add/override treemacs keybindings
-(map!
- :map treemacs-mode-map
- "p"     #'treemacs-peek
- "x"     #'treemacs-collapse-parent-node
- "X"     #'treemacs-collapse-all-projects
- "C-h"   #'evil-window-left
- "C-l"   #'evil-window-right
- "C-M-h" #'+workspace/switch-left
- "C-M-l" #'+workspace/switch-right
- "M-n"   #'+workspace/new
- "M-w"   #'+workspace/close-window-or-workspace)
-
 ;; Add some sugar in smartparens mode
 (map!
  :map evil-cleverparens-mode-map

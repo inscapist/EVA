@@ -25,6 +25,7 @@
     homeDir = config.home.homeDirectory;
     terminal = "alacritty";
     browser = "brave";
+    explorer = "nemo";
 
     # wofi
     emoji = "${pkgs.wofi-emoji}/bin/wofi-emoji";
@@ -45,15 +46,15 @@
       exec-once = hyprctl setcursor ${pointer.name} ${toString pointer.size}
       exec-once = eww open bar
 
-      # laptop screen
-      # monitor = , highres, auto, auto
-
       # dell 4k monitor
-      # monitor = DP-3, preferred, auto, 1
+      monitor = DP-3, preferred, auto, 1
+
+      # laptop screen
+      monitor = eDP-1, preferred, auto, auto
 
       # default workspace for monitors
-      # workspace = eDP-1, 1
-      # workspace = DP-3, 10
+      # workspace = DP-3, 1
+      # workspace = eDP-1, 10
 
       misc {
         disable_hyprland_logo = true
@@ -63,14 +64,14 @@
       input {
         kb_layout = us
         kb_options = caps:escape
-        repeat_rate = 60
-        repeat_delay = 250
+        repeat_rate = 50
+        repeat_delay = 200
       }
 
       general {
         gaps_in = 5
         gaps_out = 5
-        border_size = 1
+        border_size = 2
         col.active_border = rgb(${colors.blue}) rgb(${colors.mauve}) 270deg
         col.inactive_border = rgb(${colors.crust}) rgb(${colors.lavender}) 270deg
 
@@ -86,8 +87,8 @@
         blur_passes = 3
         blur_new_optimizations = true
 
-        active_opacity = 0.9
-        inactive_opacity = 0.7
+        active_opacity = 0.95
+        inactive_opacity = 0.85
         fullscreen_opacity = 1
 
         drop_shadow = true
@@ -135,7 +136,8 @@
       bind = $mod, Space, exec, ${launcher}
       bind = $mod, Return, exec, ${terminal}
       bind = $mod CTRL, Return, exec, ${browser}
-      bind = SUPER SHIFT, Q, exec, wlogout -p layer-shell
+      bind = $mod CTRL, M, exec, ${explorer}
+      bind = SUPER, Escape, exec, wlogout -p layer-shell
       bind = SUPER SHIFT, L, exec, loginctl lock-session
 
       # emoji picker
@@ -206,6 +208,14 @@
       # workspaces (arrow navigation)
       bind = SUPER, left, workspace, -1
       bind = SUPER, right, workspace, +1
+
+      # window rules
+      windowrulev2 = opaque,title:^(firefox)$
+      windowrulev2 = opaque,title:^(brave)$
+
+      # throw sharing indicators away
+      windowrulev2 = workspace special silent, title:^(Firefox — Sharing Indicator)$
+      windowrulev2 = workspace special silent, title:^(.*is sharing (your screen|a window)\.)$
     '';
   };
 }

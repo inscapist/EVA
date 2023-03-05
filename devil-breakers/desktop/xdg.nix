@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 let
   browser = [ "firefox.desktop" ];
 
@@ -28,6 +28,7 @@ let
     "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
   };
 in {
+  home.packages = with pkgs; [ xdg-utils ];
   xdg = {
     enable = true;
 
