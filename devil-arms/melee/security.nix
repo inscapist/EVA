@@ -9,15 +9,15 @@
   security = {
     polkit.enable = true;
     sudo = {
-      enable = true;
+      enable = false;
       wheelNeedsPassword = false;
     };
-    # doas = {
-    #   enable = true;
-    #   extraConfig = ''
-    #     permit nopass :wheel
-    #   '';
-    # };
+    doas = {
+      enable = true;
+      extraConfig = ''
+        permit nopass :wheel
+      '';
+    };
   };
 
   # TODO consider https://wiki.archlinux.org/title/GNOME/Keyring
