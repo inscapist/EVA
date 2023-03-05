@@ -2,6 +2,7 @@
 # https://github.com/pinpox/nixos/blob/main/modules/fonts/default.nix
 { pkgs, ... }: {
   fonts = {
+    # check with fc-list
     fonts = with pkgs; [
       # https://github.com/NixOS/nixpkgs/blob/master/pkgs/data/fonts/nerdfonts/default.nix
       (nerdfonts.override { fonts = [ "Agave" "Monoid" ]; })
@@ -12,6 +13,7 @@
       # normal fonts
       agave
       monoid
+      dank-mono
       jost
       lexend
       recursive

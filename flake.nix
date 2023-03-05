@@ -1,65 +1,17 @@
 {
   description = "My NixOS configuration - codenamed EVA";
 
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprland-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hm = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    emacs-overlay = {
-      url = "github:nix-community/emacs-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    emacs29 = {
-      url = "github:emacs-mirror/emacs/emacs-29";
-      flake = false;
-    };
-    doom = {
-      url = "github:nix-community/nix-doom-emacs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    eww = {
-      url = "github:elkowar/eww";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
-
   outputs = inputs@{ self, nixpkgs, flake-utils, emacs-overlay, emacs29, ... }:
     let
       system = "x86_64-linux";
       mods = [ ./devil-arms ./devil-breakers ];
       dt = import ./devil-triggers nixpkgs.lib;
       sdt = import ./sin-devil-triggers;
+      orbs = import ./orbs inputs;
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [
-          # defaults to latest emacs (version 30)
-          emacs-overlay.overlay
-          # (final: prev: {
-          #   emacsPgtk = prev.emacsPgtk.overrideAttrs (old: {
-          #     name = "emacs-pgtk";
-          #     version = inputs.emacs29.shortRev;
-          #     src = inputs.emacs29;
-          #     withPgtk = true;
-          #     withGTK3 = true;
-          #   });
-          # })
-        ];
+        overlays = [ emacs-overlay.overlay orbs.fontDankMono orbs.polyglot ];
       };
       specialArgs = {
         inherit system pkgs inputs dt sdt;
@@ -110,4 +62,41 @@
         devShells.default = import ./dev-shell.nix { inherit pkgs; };
         formatter = pkgs.nixpkgs-fmt;
       });
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hm = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    emacs29 = {
+      url = "github:emacs-mirror/emacs/emacs-29";
+      flake = false;
+    };
+    doom = {
+      url = "github:nix-community/nix-doom-emacs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    eww = {
+      url = "github:elkowar/eww";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
 }

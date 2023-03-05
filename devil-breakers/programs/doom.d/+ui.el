@@ -5,11 +5,11 @@
 ;; =======================================================================
 
 ;; custom variables
-(setq felix/default-font "Monoid"
+(setq felix/default-font "Recursive Mono Casual Static"
       felix/default-font-size 18
       felix/default-font-weight 'extra-light ;; refer font-weight-table variable
       felix/muted-font-height 0.95
-      felix/modeline-font "Monoid"
+      felix/modeline-font "Recursive Mono Casual Static"
       felix/modeline-height 0.8)
 
 ;; font settings
@@ -41,12 +41,11 @@
   `(mode-line :height ,felix/modeline-height :family ,felix/modeline-font)
   `(mode-line-inactive :height ,felix/modeline-height ,felix/modeline-font))
 
-;; performance hack
-(setq inhibit-compacting-font-caches t)
-
 ;; thinner modeline for (modeline +light)
 (setq +modeline-height 18)
 
 ;; transparency
 ;; (set-frame-parameter (selected-frame)'alpha '(92 . 92))
 ;; (add-to-list 'default-frame-alist'(alpha . (92 . 92)))
+
+(setq gc-cons-threshold (* 4000 1024 1024)) ; I got 4GB to spare..

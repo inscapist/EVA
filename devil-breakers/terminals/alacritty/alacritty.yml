@@ -1,14 +1,14 @@
 font:
   normal:
-    family: agave Nerd Font Mono
-    style: Light
+    family: Recursive Mono Casual Static
+    # style: Light
   bold:
-    family: agave Nerd Font Mono
+    family: Recursive Mono Casual Static
     style: Bold
   italic:
-    family: agave Nerd Font Mono
-    style: ExtraLight Italic
-  size: 17
+    family: Recursive Mono Casual Static
+    style: Light Italic
+  size: 14
 
 window:
   opacity: 1.0
@@ -16,7 +16,7 @@ window:
     x: 8
     y: 5
 
-live_config_reload: true
+live_config_reload: false
 
 key_bindings:
   - { key: V, mods: Alt, action: Paste }
@@ -27,6 +27,13 @@ key_bindings:
   # - { key: K, mods: Alt|Control, chars: "`K" }
   # - { key: H, mods: Alt|Control, chars: "`," }
   # - { key: L, mods: Alt|Control, chars: "`." }
+
+#import:
+  # uncomment the flavour you want below:
+  #  - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
+  #  - ~/.config/alacritty/catppuccin/catppuccin-macchiato.yml
+  #  - ~/.config/alacritty/catppuccin/catppuccin-frappe.yml
+  #  - ~/.config/alacritty/catppuccin/catppuccin-latte.yml
 
 colors:
   primary:
@@ -76,41 +83,3 @@ colors:
     magenta: "#8c738c"
     cyan: "#6d96a5"
     white: "#aeb3bb"
-# colors:
-#   # Default colors
-#   primary:
-#     background: '#161616'
-#     foreground: '#e4e4e4'
-
-#   # Cursor volors
-#   cursor:
-#     text: '#feffff'
-#     cursor: '#ffb472'
-
-#   # Normal colors
-#   normal:
-#     black: '#a3a3a3'
-#     red: '#e98885'
-#     green: '#a3c38b'
-#     yellow: '#ffc68d'
-#     blue: '#a6cae2'
-#     magenta: '#e7cdfb'
-#     cyan: '#00a69f'
-#     white: '#e4e4e4'
-
-#   # Bright colors
-#   bright:
-#     black: '#c8c8c8'
-#     red: '#ffb2b0'
-#     green: '#c8e2b9'
-#     yellow: '#ffe1af'
-#     blue: '#bddff7'
-#     magenta: '#fce2ff'
-#     cyan: '#0bbdb6'
-#     white: '#feffff'
-
-#   # Selection colors
-#   selection:
-#     text: '#5963a2'
-#     background: '#f6f6f6'
-# theme: Jellybeans
