@@ -7,8 +7,11 @@
   };
 
   home.packages = with pkgs; [
+    #-- tools --#
+    vagrant
     #-- Languages --#
     yarn
+    nodejs
     python39
     clojure
     leiningen

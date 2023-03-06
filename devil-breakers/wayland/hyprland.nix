@@ -136,8 +136,8 @@
       bind = $mod, Q, killactive,
       bind = $mod, F, fullscreen,
       bind = $mod, G, togglegroup,
-      bind = $mod CTRL, L, changegroupactive, f
-      bind = $mod CTRL, H, changegroupactive, b
+      bind = SUPER, L, changegroupactive, f
+      bind = SUPER, H, changegroupactive, b
       # bind = $mod, R, togglesplit,
       bind = $mod, T, togglefloating,
       bind = $mod SHIFT, P, pseudo,
@@ -153,7 +153,7 @@
       bind = $mod CTRL, Return, exec, ${browser}
       bind = $mod CTRL, M, exec, ${explorer}
       bind = $mod SHIFT, Q, exec, wlogout -p layer-shell
-      bind = SUPER, L, exec, loginctl lock-session
+      bind = SUPER SHIFT, L, exec, loginctl lock-session
 
       # emoji picker
       bind = $mod, E, exec, ${emoji}

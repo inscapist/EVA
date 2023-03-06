@@ -1,6 +1,6 @@
 { pkgs, ... }: {
 
-  home.packages = with pkgs; [ gh tig ];
+  home.packages = with pkgs; [ git-extras gh tig ];
 
   programs = {
     git = {
