@@ -11,5 +11,11 @@
     _1password-gui
     _1password
     authy
+
+    # dev/ops
+    flyctl
+    kubectl
+    krew
+    kubectx
   ];
 }

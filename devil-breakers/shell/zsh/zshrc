@@ -164,7 +164,7 @@ alias oo="xdg-open"
 
 # kubectl
 alias k="kubectl"
-alias kc="kubecm"
+alias kc="kubectl kc"
 alias kn="kubectl ns"
 alias knn="kubectl config view --minify -o jsonpath='{..namespace}'"
 alias kk="kubectl krew"

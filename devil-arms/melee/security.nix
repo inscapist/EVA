@@ -9,11 +9,11 @@
   security = {
     polkit.enable = true;
     sudo = {
-      enable = false;
+      enable = true;
       wheelNeedsPassword = false;
     };
     doas = {
-      enable = true;
+      enable = false;
       extraConfig = ''
         permit nopass :wheel
       '';

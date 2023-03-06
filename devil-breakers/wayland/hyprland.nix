@@ -58,6 +58,19 @@
       # workspace = DP-3, 1
       # workspace = eDP-1, 10
 
+      # laptop screen is a peripheral screen for secondary stuff
+      # use MOD+SHIFT+h|l or MOD+SHIFT+left|right to move between monitors
+      wsbind = 1, eDP-1
+      wsbind = 2, DP-2
+      wsbind = 3, DP-2
+      wsbind = 4, DP-2
+      wsbind = 5, DP-2
+      wsbind = 6, DP-2
+      wsbind = 7, DP-2
+      wsbind = 8, DP-2
+      wsbind = 9, DP-2
+      wsbind = 10, DP-2
+
       misc {
         disable_hyprland_logo = true
         focus_on_activate = true
@@ -140,7 +153,7 @@
       bind = $mod CTRL, Return, exec, ${browser}
       bind = $mod CTRL, M, exec, ${explorer}
       bind = $mod SHIFT, Q, exec, wlogout -p layer-shell
-      bind = $mod SHIFT, L, exec, loginctl lock-session
+      bind = SUPER, L, exec, loginctl lock-session
 
       # emoji picker
       bind = $mod, E, exec, ${emoji}

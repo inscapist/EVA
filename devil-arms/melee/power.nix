@@ -46,7 +46,7 @@ in {
     #   /necessity or legacy? swelling battery?/
     #   https://github.com/intel/thermal_daemon
     #   https://www.phoronix.com/review/intel-thermald-tgl
-    thermald.enable = true;
+    thermald.enable = false;
 
     # Check battery health with `upower -d`
     upower.enable = true;
