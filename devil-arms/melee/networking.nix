@@ -26,7 +26,12 @@ in {
       allowedUDPPorts = [ ];
     };
 
-    extraHosts = (readFile blocklist);
+    extraHosts = ''
+      192.168.0.189 dante
+      192.168.0.121 vergil
+
+      ${(readFile blocklist)}
+    '';
   };
 
   services.resolved = {
