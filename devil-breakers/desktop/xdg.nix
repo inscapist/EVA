@@ -28,7 +28,15 @@ let
     # "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
   };
 in {
+
+  home.sessionVariables = {
+    # xdg-settings get default-web-browser
+    BROWSER = "brave";
+    MOZ_ENABLE_WAYLAND = "1";
+  };
+
   home.packages = with pkgs; [ xdg-utils ];
+
   xdg = {
     enable = true;
 

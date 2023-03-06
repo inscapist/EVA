@@ -228,6 +228,7 @@
       # window rules
       windowrulev2 = opaque,title:^(firefox)$
       windowrulev2 = opaque,title:^(brave)$
+      windowrulev2 = workspace 5,title:^(Slack)$
 
       # throw sharing indicators away
       windowrulev2 = workspace special silent, title:^(Firefox — Sharing Indicator)$
