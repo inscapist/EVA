@@ -69,4 +69,20 @@
     enable = true;
     # abrmd.enable = true;
   };
+
+  environment = { systemPackages = with pkgs; [ fcron ]; };
+
+  # https://wiki.archlinux.org/title/ClamAV
+  # https://gist.github.com/johnfedoruk/19820540dc096380784c8cf0b7ef333b
+  #
+  # Enable the ClamAV service and keep the database up to date
+  # for initial installation, do `sudo freshclam && systemctl restart clamav-daemon && systemctl restart clamav-freshclam`
+  # to check that daemon is running, do `systemctl status clamav-daemon`
+  # for scanning, do `sudo clamscan`
+  #
+  # TODO: add email notification
+  services.clamav = {
+    daemon.enable = true;
+    updater.enable = true;
+  };
 }
