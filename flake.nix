@@ -4,7 +4,7 @@
   outputs = inputs@{ self, nixpkgs, flake-utils, emacs-overlay, emacs29, ... }:
     let
       system = "x86_64-linux";
-      mods = [ ./devil-arms ./devil-breakers ];
+      mods = [ ./devil-arms ./devil-breakers ./sins ];
       dt = import ./devil-triggers nixpkgs.lib;
       sdt = import ./sin-devil-triggers;
       orbs = import ./orbs inputs;

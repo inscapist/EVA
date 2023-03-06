@@ -2,7 +2,6 @@
   imports = [
     # pfft!
     ./firearms/fonts.nix
-    ./firearms/privacy.nix
     ./firearms/tools.nix
     ./firearms/wayland.nix
 

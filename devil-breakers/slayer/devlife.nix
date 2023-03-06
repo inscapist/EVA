@@ -1,7 +1,10 @@
 { pkgs, ... }:
 
 {
-  programs.go.enable = true;
+  programs = {
+    go.enable = true;
+    java.enable = true;
+  };
 
   home.packages = with pkgs; [
     #-- Languages --#
