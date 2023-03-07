@@ -13,7 +13,7 @@ let
     "application/xhtml+xml" = browsers;
     "text/html" = browsers;
     "x-scheme-handler/about" = browsers;
-    "x-scheme-handler/chrome" = [ "chromium.desktop" ];
+    "x-scheme-handler/chrome" = browsers;
     "x-scheme-handler/ftp" = browsers;
     "x-scheme-handler/http" = browsers;
     "x-scheme-handler/https" = browsers;
