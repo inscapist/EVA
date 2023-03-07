@@ -136,30 +136,25 @@
       bind = $mod, Q, killactive,
       bind = $mod, F, fullscreen,
       bind = $mod, G, togglegroup,
-      bind = SUPER, L, changegroupactive, f
-      bind = SUPER, H, changegroupactive, b
-      # bind = $mod, R, togglesplit,
+      bind = $mod, J, changegroupactive, f
+      bind = $mod, K, changegroupactive, b
       bind = $mod, T, togglefloating,
-      bind = $mod SHIFT, P, pseudo,
+      bind = $mod, P, pseudo,
       bind = $mod SUPER, ,resizeactive,
 
       # toggle "monocle" (no_gaps_when_only)
       $kw = dwindle:no_gaps_when_only
       bind = $mod, M, exec, hyprctl keyword $kw $(($(hyprctl getoption $kw -j | jq -r '.int') ^ 1))
 
-      # utilities
-      bind = $mod, Space, exec, ${launcher}
-      bind = $mod, Return, exec, ${terminal}
-      bind = $mod CTRL, Return, exec, ${browser}
-      bind = $mod CTRL, M, exec, ${explorer}
+      # session control
       bind = $mod SHIFT, Q, exec, wlogout -p layer-shell
       bind = SUPER SHIFT, L, exec, loginctl lock-session
 
+      # select area to perform OCR on
+      bind = $mod SHIFT, O, exec, wl-ocr
+
       # emoji picker
       bind = $mod, E, exec, ${emoji}
-
-      # select area to perform OCR on
-      bind = $mod, O, exec, wl-ocr
 
       # move focus
       bind = $mod, H, movefocus, l
@@ -185,6 +180,12 @@
       binde = $mod CTRL, left, resizeactive, -10 0
       binde = $mod CTRL, up, resizeactive, 0 -10
       binde = $mod CTRL, down, resizeactive, 0 10
+
+      # utilities
+      bind = $mod, Space, exec, ${launcher}
+      bind = $mod, Return, exec, ${terminal}
+      bind = $mod CTRL, Return, exec, ${browser}
+      bind = $mod CTRL, M, exec, ${explorer}
 
       # volume
       bindle = , XF86AudioRaiseVolume, exec, wpctl set-volume -l "1.0" @DEFAULT_AUDIO_SINK@ 6%+

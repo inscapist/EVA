@@ -7,9 +7,13 @@
   };
 
   home.packages = with pkgs; [
-    #-- tools --#
+    #-- devops/tools --#
     vagrant
     openssl
+    flyctl
+    kubectl
+    krew
+    kubectx
     #-- Languages --#
     yarn
     nodejs

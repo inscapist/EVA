@@ -9,16 +9,12 @@
     libreoffice-fresh
     teamviewer
     zoom-us
+    filezilla
+    neovim-qt
 
     # authentication
     _1password-gui
     _1password
     authy
-
-    # dev/ops
-    flyctl
-    kubectl
-    krew
-    kubectx
   ];
 }

@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ user, pkgs, lib, ... }:
 
 with lib; {
   console.useXkbConfig = true;
@@ -24,6 +24,7 @@ with lib; {
 
   nix = {
     settings = {
+      trusted-users = [ "root" user ];
       auto-optimise-store = true;
       # allowed-users = [ "@wheel" ];
       # trusted-users = [ "root" "@wheel" ];
@@ -35,7 +36,6 @@ with lib; {
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
       experimental-features = [ "nix-command" "flakes" ];
-
     };
     optimise = { automatic = true; };
   };
