@@ -12,6 +12,7 @@
     #-- Languages --#
     yarn
     nodejs
+    nodePackages_latest.firebase-tools
     python39
     clojure
     leiningen

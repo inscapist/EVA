@@ -1,40 +1,34 @@
 { pkgs, config, ... }:
 let
-  browser = [ "brave.desktop" ];
+  browser = config.home.sessionVariables.BROWSER;
+  browsers = [ "${browser}.desktop" ];
 
   # XDG MIME types
   associations = {
-    "application/x-extension-htm" = browser;
-    "application/x-extension-html" = browser;
-    "application/x-extension-shtml" = browser;
-    "application/x-extension-xht" = browser;
-    "application/x-extension-xhtml" = browser;
-    "application/xhtml+xml" = browser;
-    "text/html" = browser;
-    "x-scheme-handler/about" = browser;
-    "x-scheme-handler/chrome" = [ "brave.desktop" ];
-    "x-scheme-handler/ftp" = browser;
-    "x-scheme-handler/http" = browser;
-    "x-scheme-handler/https" = browser;
-    "x-scheme-handler/unknown" = browser;
+    "application/x-extension-htm" = browsers;
+    "application/x-extension-html" = browsers;
+    "application/x-extension-shtml" = browsers;
+    "application/x-extension-xht" = browsers;
+    "application/x-extension-xhtml" = browsers;
+    "application/xhtml+xml" = browsers;
+    "text/html" = browsers;
+    "x-scheme-handler/about" = browsers;
+    "x-scheme-handler/chrome" = [ "chromium.desktop" ];
+    "x-scheme-handler/ftp" = browsers;
+    "x-scheme-handler/http" = browsers;
+    "x-scheme-handler/https" = browsers;
+    "x-scheme-handler/unknown" = browsers;
 
     "audio/*" = [ "mpv.desktop" ];
     "video/*" = [ "mpv.dekstop" ];
     "image/*" = [ "imv.desktop" ];
-    "application/json" = browser;
+    "application/json" = browsers;
     "application/pdf" = [ "org.pwmt.zathura.desktop.desktop" ];
     # "x-scheme-handler/discord" = [ "discordcanary.desktop" ];
     # "x-scheme-handler/spotify" = [ "spotify.desktop" ];
     # "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
   };
 in {
-
-  home.sessionVariables = {
-    # xdg-settings get default-web-browser
-    BROWSER = "brave";
-    MOZ_ENABLE_WAYLAND = "1";
-  };
-
   home.packages = with pkgs; [ xdg-utils ];
 
   xdg = {

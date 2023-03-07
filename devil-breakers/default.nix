@@ -21,6 +21,7 @@
 
       imports = [
         # essentials
+        ./programs/browsers.nix
         ./programs/dunst.nix
         ./programs/emacs.nix
         ./programs/filemanagers.nix
