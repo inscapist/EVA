@@ -29,6 +29,14 @@
     clojure-lsp
     rust-analyzer
     tree-sitter
+    haskell-language-server
+    nodePackages.typescript-language-server
+    nodePackages.bash-language-server
+    nodePackages.dockerfile-language-server-nodejs
+    texlab
+    #-- Linters --#
+    hlint
+    shellcheck
     #-- Formatters --#
     black
     nixfmt
@@ -37,5 +45,10 @@
     nodePackages.prettier
     #-- Debug --#
     lldb
+    #-- Others --#
+    cmatrix
+    prismlauncher
+    freetube
+    protontricks
   ];
 }

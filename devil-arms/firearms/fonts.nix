@@ -14,6 +14,7 @@
       agave
       monoid
       dank-mono
+      victor-mono
       recursive
       jost
       roboto
@@ -21,6 +22,10 @@
       noto-fonts
       noto-fonts-extra
       noto-fonts-emoji
+
+      # latex fonts
+      liberation_ttf
+      lmodern
 
       # CJK support
       wqy_microhei

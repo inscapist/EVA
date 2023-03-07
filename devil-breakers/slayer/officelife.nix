@@ -11,6 +11,7 @@
     zoom-us
     filezilla
     neovim-qt
+    unar
 
     # authentication
     _1password-gui

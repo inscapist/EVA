@@ -1,7 +1,7 @@
 {
   description = "My NixOS configuration - codenamed EVA";
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, emacs-overlay, emacs29, ... }:
+  outputs = inputs@{ self, nixpkgs, flake-utils, emacs-overlay, ... }:
     let
       system = "x86_64-linux";
       mods = [ ./devil-arms ./devil-breakers ./sins ];
@@ -91,10 +91,10 @@
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    emacs29 = {
-      url = "github:emacs-mirror/emacs/emacs-29";
-      flake = false;
-    };
+    # emacs29 = {
+    #   url = "github:emacs-mirror/emacs/emacs-29";
+    #   flake = false;
+    # };
     doom = {
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";

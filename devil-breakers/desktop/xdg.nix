@@ -29,7 +29,7 @@ let
     # "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
   };
 in {
-  home.packages = with pkgs; [ xdg-utils ];
+  home.packages = with pkgs; [ xdg-utils lxappearance ];
 
   xdg = {
     enable = true;

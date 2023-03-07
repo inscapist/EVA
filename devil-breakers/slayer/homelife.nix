@@ -8,6 +8,7 @@
     warzone2100
     zdoom
     flare
+    godot
 
     #-- education --#
     celestia

@@ -174,23 +174,6 @@
         "type": "github"
       }
     },
-    "emacs29": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1678192767,
-        "narHash": "sha256-ya+AfzofPc1WZ67opKC49KsFtr5Xvixe+wEMLNEF7aY=",
-        "owner": "emacs-mirror",
-        "repo": "emacs",
-        "rev": "ab417c8a6eeb7df7ccce3e5f8416f48544a5174e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "emacs-mirror",
-        "ref": "emacs-29",
-        "repo": "emacs",
-        "type": "github"
-      }
-    },
     "evil-escape": {
       "flake": false,
       "locked": {
@@ -506,11 +489,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1677932085,
-        "narHash": "sha256-+AB4dYllWig8iO6vAiGGYl0NEgmMgGHpy9gzWJ3322g=",
+        "lastModified": 1678111249,
+        "narHash": "sha256-ZTIbK7vthZwti5XeLZE+twkb4l44q01q2XoLMmmJe94=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "3c5319ad3aa51551182ac82ea17ab1c6b0f0df89",
+        "rev": "a028e2873d7fcf44e66b784b4ba061824315537f",
         "type": "github"
       },
       "original": {
@@ -637,7 +620,6 @@
         "agenix": "agenix",
         "doom": "doom",
         "emacs-overlay": "emacs-overlay_2",
-        "emacs29": "emacs29",
         "eww": "eww",
         "flake-utils": "flake-utils_4",
         "hm": "hm",
