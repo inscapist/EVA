@@ -136,7 +136,7 @@ alias j="z"
 # alias h="hoogle"
 alias l="exa -lbF --git"
 alias m="make"
-alias n="nix"
+alias n="nnn"
 alias p="python"
 alias s="rg"
 alias t="tmux"
@@ -160,6 +160,7 @@ alias ls="exa"
 alias np="nix profile"
 alias nf="nix flake"
 alias nd="nix-tree --derivation"
+alias ns="nix search nixpkgs"
 alias oo="xdg-open"
 
 # kubectl
@@ -199,8 +200,8 @@ alias gpg-update-keys="gpg --refresh-keys"
 alias hi=Hyprland
 alias eva-pull="pushd ~/EVA && git pull; popd"
 alias eva-update="pushd ~/EVA && nix flake update; popd"
-alias eva-check="pushd ~/EVA && nix flake check; popd"
-alias eva-build="pushd ~/EVA && git add . && sudo nixos-rebuild -j 8 switch --flake .#vergil; popd"
+alias eva-check="pushd ~/EVA && git add . && nix flake check; popd"
+alias eva="pushd ~/EVA && git add . && sudo nixos-rebuild -j 8 switch --flake .#vergil; popd"
 
 function list-hardware-modules() {
   for i in `find /sys/ -name modalias -exec cat {} \;`; do

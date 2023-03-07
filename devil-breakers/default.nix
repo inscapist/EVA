@@ -14,6 +14,9 @@
     users.${user} = {
       home = { stateVersion = "23.05"; };
 
+      nixpkgs.config = import ./nixpkgs-config.nix;
+      xdg.configFile."nixpkgs/config.nix".source = ./nixpkgs-config.nix;
+
       # Whether to enable fontconfig configuration. This will,
       # for example, allow fontconfig to discover fonts and
       # configurations installed through home.packages and nix-env.

@@ -14,11 +14,12 @@
     kubectl
     krew
     kubectx
+    azuredatastudio
     #-- Languages --#
     yarn
     nodejs
     nodePackages_latest.firebase-tools
-    python39
+    python39 # install pip with `python -m ensurepip --upgrade`
     clojure
     leiningen
     #-- LSP --#
