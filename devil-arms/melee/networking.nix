@@ -18,10 +18,11 @@ in {
       wifi.backend = "iwd";
 
       # https://www.reddit.com/r/archlinux/comments/xf4z2m/thoughts_on_systemdresolved_vs_dnsmasq/
-      dns = "systemd-resolved";
+      # dns = "systemd-resolved";
     };
 
     nameservers = [ "1.1.1.1" "8.8.8.8" ];
+    networkmanager.insertNameservers = [ "1.1.1.1" "8.8.8.8" ];
 
     firewall = {
       allowedTCPPorts = [ 22 ];
@@ -34,17 +35,24 @@ in {
 
       ${(readFile blocklist)}
     '';
+
   };
 
-  services.resolved = {
-    enable = true;
-    dnssec = "allow-downgrade";
-    fallbackDns =
-      [ "1.1.1.1" "2606:4700:4700::1111" "8.8.8.8" "2001:4860:4860::8844" ];
-    llmnr = "true";
-    extraConfig = ''
-      Domains=~.
-      MulticastDNS=true
-    '';
+  # my wireguard client configs
+  networking.wg-quick.interfaces = {
+    # systemctl start wg-quick-wg0
+    wg0.configFile = config.age.secrets.wg0_conf.path;
   };
+
+  # services.resolved = {
+  #   enable = true;
+  #   dnssec = "allow-downgrade";
+  #   fallbackDns =
+  #     [ "1.1.1.1" "2606:4700:4700::1111" "8.8.8.8" "2001:4860:4860::8844" ];
+  #   llmnr = "true";
+  #   extraConfig = ''
+  #     Domains=~.
+  #     MulticastDNS=true
+  #   '';
+  # };
 }

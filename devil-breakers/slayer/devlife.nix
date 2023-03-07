@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
     #-- tools --#
     vagrant
+    openssl
     #-- Languages --#
     yarn
     nodejs

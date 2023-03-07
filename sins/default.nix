@@ -10,4 +10,5 @@ with inputs; {
     mode = "400";
     owner = user;
   };
+  age.secrets.wg0_conf = { file = ./wg0_conf.age; };
 }

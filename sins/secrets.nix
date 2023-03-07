@@ -8,7 +8,5 @@ let
   keys = [ sparda vergil ];
 in {
   "zsh_private.age".publicKeys = keys;
-  "wg_private_key.age".publicKeys = keys;
-  "wg_public_key.age".publicKeys = keys;
   "wg0_conf.age".publicKeys = keys;
 }
