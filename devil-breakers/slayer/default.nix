@@ -1,1 +1,1 @@
-{ imports = [ ./devlife.nix ./packages.nix ./zathura.nix ]; }
+{ imports = [ ./devlife.nix ./homelife.nix ./packages.nix ./zathura.nix ]; }
