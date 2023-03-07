@@ -15,6 +15,8 @@ Inspired by the DMC game series.
 | [Sin Devil Triggers](sin-devil-triggers) | Modules written by someone else :) |
 | [Nico](devil-triggers/nico)              | The crafty bits :)                 |
 | [Morrison](morrison)                     | The Documentation                  |
+| [Orbs](orbs)                             | Nix overlays                       |
+| [Sins](sins)                             | Encrypted secrets                  |
 
 ## Build Installer ISO
 
