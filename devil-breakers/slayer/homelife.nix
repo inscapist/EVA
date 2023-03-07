@@ -9,10 +9,15 @@
     zdoom
     flare
     godot
+    prismlauncher
 
     #-- education --#
     celestia
     stellarium
     octave
+
+    #-- Others/vanity/fun? --#
+    cmatrix
+    cbonsai
   ];
 }

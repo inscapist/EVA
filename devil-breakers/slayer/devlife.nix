@@ -45,10 +45,5 @@
     nodePackages.prettier
     #-- Debug --#
     lldb
-    #-- Others --#
-    cmatrix
-    prismlauncher
-    freetube
-    protontricks
   ];
 }
