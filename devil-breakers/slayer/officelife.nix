@@ -13,6 +13,10 @@
     neovim-qt
     unar
 
+    # pdf viwers
+    # evince
+    # mate.atril
+
     # authentication
     _1password-gui
     _1password

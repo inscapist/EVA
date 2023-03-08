@@ -76,8 +76,9 @@
     };
     hyprland = {
       # TODO remove ref once the branch is more stable
-      url = "github:hyprwm/Hyprland?ref=v0.21.0beta";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # url = "github:hyprwm/Hyprland?ref=v0.21.0beta";
+      url = "github:hyprwm/Hyprland";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
