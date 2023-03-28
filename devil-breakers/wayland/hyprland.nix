@@ -91,8 +91,12 @@
         col.inactive_border = rgb(${colors.crust}) rgb(${colors.lavender}) 270deg
 
         # group borders
-        # col.group_border = rgb(${colors.surface0})
-        # col.group_border_active = rgb(${colors.pink})
+        col.group_border = rgb(${colors.surface0})
+        col.group_border_active = rgb(${colors.pink})
+      }
+
+      gestures {
+        workspace_swipe = true
       }
 
       decoration {
