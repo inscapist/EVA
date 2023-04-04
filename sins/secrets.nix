@@ -12,4 +12,5 @@ in {
   "zsh_private.age".publicKeys = keys;
   "wg0_conf.age".publicKeys = keys;
   "1pass.age".publicKeys = keys;
+  "userpass.age".publicKeys = keys;
 }
