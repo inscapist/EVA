@@ -22,7 +22,7 @@
         "ver" = "describe --abbrev=0 --tags";
         "st" = "status";
         "reset-remote" =
-          "!git reset --hard $(!git rev-parse --abbrev-ref '@{upstream}')";
+          "!git reset --hard $(git rev-parse --abbrev-ref '@{upstream}')";
         "reset-head" = "reset --hard HEAD";
         "reset-back" = "reset --hard HEAD~1";
         "remote-tag" = "ls-remote --tags origin";
