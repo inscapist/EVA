@@ -44,6 +44,9 @@ in {
     wg0.configFile = config.age.secrets.wg0_conf.path;
   };
 
+  # https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1473408913
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
+
   # services.resolved = {
   #   enable = true;
   #   dnssec = "allow-downgrade";

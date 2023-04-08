@@ -36,6 +36,8 @@
     ];
   };
 
+  programs.zsh.enable = true;
+
   services = {
     getty.autologinUser = user;
     openssh = { enable = true; };
