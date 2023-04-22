@@ -4,15 +4,15 @@ with builtins;
 with lib;
 let
   blocklist = fetchurl {
-    url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
-    sha256 = "05zf2dawr1zh0l109jr13bm263jpqxrxfcgigxy86drh6za4kk2i";
+    url =
+      "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts";
+    sha256 = "02x2i5k78a28g07l7fbfl8i04w9s06q05qg9w2rvpcg6i8ihn02b";
   };
 in {
   services.openssh.enable = true;
 
   networking = {
     useDHCP = false;
-    # networking.interfaces.wlp0s20f3.useDHCP = true;
     networkmanager = {
       enable = true;
       wifi.backend = "iwd";

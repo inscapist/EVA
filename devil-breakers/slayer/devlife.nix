@@ -15,6 +15,7 @@
     krew
     kubectx
     azuredatastudio
+    android-studio
     #-- Languages --#
     yarn
     nodejs
