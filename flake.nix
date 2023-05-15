@@ -1,7 +1,7 @@
 {
   description = "My NixOS configuration - codenamed EVA";
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, emacs-overlay, ... }:
+  outputs = inputs@{ self, nixpkgs, fu, emacs-overlay, ... }:
     let
       system = "x86_64-linux";
       mods = [ ./devil-arms ./devil-breakers ./sins ];
@@ -57,7 +57,7 @@
         modules = [ ./nephilims/dante/installer.nix ];
       };
 
-    } // flake-utils.lib.eachDefaultSystem (system:
+    } // fu.lib.eachDefaultSystem (system:
       # --------------------------------------------------------
       # Dev shell
       # ========================================================
@@ -69,7 +69,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
+    fu.url = "github:numtide/flake-utils";
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -100,9 +100,15 @@
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "fu";
+    };
     eww = {
       url = "github:elkowar/eww";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.follows = "rust-overlay";
     };
   };
 }

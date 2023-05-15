@@ -146,6 +146,7 @@ alias y="yarn"
 
 alias ad="ansible-doc"
 alias ap="ansible-playbook"
+alias bl="chatblade -l"
 alias da="direnv allow"
 alias di="dua interactive" # install with `sudo pacman -S dua-cli`
 alias ff="nemo"

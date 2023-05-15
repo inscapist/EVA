@@ -23,6 +23,7 @@
     python39 # install pip with `python -m ensurepip --upgrade`
     clojure
     leiningen
+    rustup
     #-- LSP --#
     nil
     sumneko-lua-language-server
@@ -42,10 +43,9 @@
     #-- Formatters --#
     black
     nixfmt
-    rustfmt
     beautysh
     nodePackages.prettier
-    #-- Debug --#
+    #-- Misc --#
     lldb
   ];
 }

@@ -23,15 +23,14 @@ in {
         command = "${pkgs.swaylock-effects}/bin/swaylock -fF";
       }
     ];
-    timeouts = [
-      {
-        timeout = 120;
-        command = "${pkgs.systemd}/bin/loginctl lock-session";
-      }
-      # {
-      #   timeout = 120;
-      #   command = suspendScript.outPath;
-      # }
-    ];
+    timeouts = [{
+      timeout = 300;
+      command = "${pkgs.systemd}/bin/loginctl lock-session";
+    }
+    # {
+    #   timeout = 120;
+    #   command = suspendScript.outPath;
+    # }
+      ];
   };
 }

@@ -9,7 +9,6 @@
     zdoom
     flare
     godot
-    prismlauncher
 
     #-- education --#
     celestia

@@ -15,7 +15,7 @@ in {
     useDHCP = false;
     networkmanager = {
       enable = true;
-      wifi.backend = "iwd";
+      # wifi.backend = "iwd";
 
       # https://www.reddit.com/r/archlinux/comments/xf4z2m/thoughts_on_systemdresolved_vs_dnsmasq/
       # dns = "systemd-resolved";
