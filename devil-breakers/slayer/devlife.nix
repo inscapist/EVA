@@ -30,7 +30,6 @@
     gopls
     pyright
     clojure-lsp
-    rust-analyzer
     tree-sitter
     haskell-language-server
     nodePackages.typescript-language-server
