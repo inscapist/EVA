@@ -10,7 +10,7 @@
     #-- devops/tools --#
     vagrant
     openssl
-    flyctl
+    # flyctl
     kubectl
     krew
     kubectx
