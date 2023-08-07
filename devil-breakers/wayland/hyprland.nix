@@ -91,10 +91,6 @@
 
       decoration {
         rounding = 16
-        blur = true
-        blur_size = 3
-        blur_passes = 3
-        blur_new_optimizations = true
 
         active_opacity = 0.95
         inactive_opacity = 0.85
