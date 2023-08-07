@@ -3,7 +3,7 @@
 { pkgs, ... }: {
   fonts = {
     # check with fc-list
-    fonts = with pkgs; [
+    packages = with pkgs; [
       # https://github.com/NixOS/nixpkgs/blob/master/pkgs/data/fonts/nerdfonts/default.nix
       (nerdfonts.override { fonts = [ "Agave" ]; })
 
@@ -35,7 +35,7 @@
       # noto-fonts-cjk-serif
     ];
     fontconfig = {
-      defaultFonts = {
+      defaultPackages = {
         serif = [ "Recursive Sans Casual Static Medium" ];
         sansSerif = [ "Recursive Sans Linear Static Medium" ];
         monospace = [ "Recursive Mono Linear Static" ];
