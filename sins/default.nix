@@ -12,4 +12,8 @@ with inputs; {
   };
   age.secrets.wg0_conf = { file = ./wg0_conf.age; };
   age.secrets.userpass = { file = ./userpass.age; };
+  age.secrets.b2_uri = {
+    file = ./b2_uri.age;
+    mode = "400";
+  };
 }
