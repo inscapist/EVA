@@ -5,7 +5,7 @@ inputs:
 
   # use emacs 29 for whatever reason
   emacs29 = (_: prev: {
-    emacsPgtk = prev.emacsPgtk.overrideAttrs (old: {
+    emacs-pgtk = prev.emacs-pgtk.overrideAttrs (old: {
       name = "emacs-pgtk";
       version = inputs.emacs29.shortRev;
       src = inputs.emacs29;
@@ -46,7 +46,7 @@ inputs:
         tree-sitter-yaml
       ];
     in {
-      emacsPgtk = prev.emacsPgtk.overrideAttrs (old: {
+      emacs-pgtk = prev.emacs-pgtk.overrideAttrs (old: {
         name = "emacs-pgtk";
         treeSitterPlugins = grammers;
       });

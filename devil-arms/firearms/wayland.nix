@@ -24,7 +24,7 @@
   # good to make them explicit so nix can check conflicts for us.
   #   https://github.com/hyprwm/Hyprland/blob/e3027248470dab4553273368de85d0f4cf357f78/nix/module.nix#L77-L104
   environment = { sessionVariables = { NIXOS_OZONE_WL = "1"; }; };
-  fonts.enableDefaultFonts = true;
+  fonts.enableDefaultPackages = true;
   hardware.opengl.enable = true;
   programs = {
     dconf.enable = true;

@@ -35,7 +35,7 @@
       # noto-fonts-cjk-serif
     ];
     fontconfig = {
-      defaultPackages = {
+      defaultFonts = {
         serif = [ "Recursive Sans Casual Static Medium" ];
         sansSerif = [ "Recursive Sans Linear Static Medium" ];
         monospace = [ "Recursive Mono Linear Static" ];

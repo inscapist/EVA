@@ -4,14 +4,14 @@
   # programs.doom-emacs = {
   #   enable = true;
   #   doomPrivateDir = ./doom.d;
-  #   emacsPackage = pkgs.emacsPgtk;
+  #   emacsPackage = pkgs.emacs-pgtk;
   # };
 
   programs.emacs = {
     enable = true;
     # package = emacs-overlay.packages.${system}.emacsPgtk;
     # package = pkgs.emacsPgtk;
-    package = pkgs.emacsPgtk;
+    package = pkgs.emacs-pgtk;
   };
 
   home.file.".doom.d" = {
