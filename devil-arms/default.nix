@@ -1,5 +1,6 @@
 {
   imports = [
+    ./backup.nix
     ./bluetooth.nix
     ./fonts.nix
     ./networking.nix

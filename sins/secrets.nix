@@ -9,9 +9,10 @@ let
 
   keys = [ sparda vergil ];
 in {
-  "b2_uri.age".publicKeys = keys;
   "zsh_private.age".publicKeys = keys;
   "wg0_conf.age".publicKeys = keys;
   "1pass.age".publicKeys = keys;
   "userpass.age".publicKeys = keys;
+  "restic_env.age".publicKeys = keys;
+  "restic_password.age".publicKeys = keys;
 }

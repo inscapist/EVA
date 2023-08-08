@@ -20,6 +20,24 @@ PURE_PROMPT_SYMBOL="▲"
 PURE_PROMPT_VICMD_SYMBOL="▸" # or "▼"
 znap prompt sindresorhus/pure
 
+# keep welcome message without being cleared by prompt
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd message-hook
+message-hook() {
+  add-zsh-hook -d precmd message-hook
+  unfunction message-hook
+
+  zmodload -F zsh/terminfo b:echoti
+  echoti el
+
+  (
+    if journalctl -u restic-backup.service | rg -i "error|failure"; then
+        echo "[WOOP] There was an error or failure in the Restic Backup job."
+    fi
+  ) & disown
+}
+
+
 znap source zsh-users/zsh-syntax-highlighting
 znap source agkozak/zsh-z
 
