@@ -12,8 +12,6 @@ with inputs; {
   };
   age.secrets.wg0_conf = { file = ./wg0_conf.age; };
   age.secrets.userpass = { file = ./userpass.age; };
-  age.secrets.b2_uri = {
-    file = ./b2_uri.age;
-    mode = "400";
-  };
+  age.secrets.restic_env = { file = ./restic_env.age; };
+  age.secrets.restic_password = { file = ./restic_password.age; };
 }
