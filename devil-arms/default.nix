@@ -1,17 +1,14 @@
 {
   imports = [
-    # pfft!
-    ./firearms/fonts.nix
-    ./firearms/tools.nix
-    ./firearms/wayland.nix
-
-    # anyone can use it, only a few truly master them
-    ./melee/bluetooth.nix
-    ./melee/networking.nix
-    ./melee/os.nix
-    ./melee/power.nix
-    ./melee/security.nix
-    ./melee/sound.nix
-    ./melee/virtualization.nix
+    ./bluetooth.nix
+    ./fonts.nix
+    ./networking.nix
+    ./os.nix
+    ./power.nix
+    ./security.nix
+    ./sound.nix
+    ./tools.nix
+    ./virtualization.nix
+    ./wayland.nix
   ];
 }

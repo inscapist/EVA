@@ -6,6 +6,7 @@
       ++ [ httpie tokei tealdeer helix unrar zip unzip ]
       ++ [ dua duf htop btop glances iotop ]
       ++ [ gcc gnumake graphviz gdb hexyl poppler_utils ]
-      ++ [ tcpdump inetutils dig socat netcat ] ++ [ imagemagick imv ];
+      ++ [ tcpdump inetutils dig socat netcat ] ++ [ imagemagick imv ]
+      ++ [ restic ]; # required for backing up stuff to backblaze(b2 protocol)
   };
 }
