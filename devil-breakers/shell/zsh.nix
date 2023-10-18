@@ -8,7 +8,7 @@
       enable = true;
       enableZshIntegration = true;
     };
-    exa = {
+    eza = {
       enable = true;
       enableAliases = true;
     };

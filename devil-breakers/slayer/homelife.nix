@@ -8,7 +8,6 @@
     warzone2100
     zdoom
     flare
-    godot
 
     #-- education --#
     celestia
@@ -18,5 +17,6 @@
     #-- Others/vanity/fun? --#
     cmatrix
     cbonsai
+    dmidecode
   ];
 }

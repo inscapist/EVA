@@ -13,11 +13,8 @@
   # NOTE: it is important that the settings are in sync with home manager's
   programs.hyprland = {
     enable = true;
-    xwayland = {
-      enable = true;
-      hidpi = true;
-    };
-    nvidiaPatches = false;
+    xwayland = { enable = true; };
+    enableNvidiaPatches = false;
   };
 
   # Hyprland module does a lot of configuration for us, but it is

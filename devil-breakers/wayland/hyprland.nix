@@ -32,11 +32,8 @@
     launcher = "wofi";
   in {
     enable = true;
-    xwayland = {
-      enable = true;
-      hidpi = true;
-    };
-    nvidiaPatches = false;
+    xwayland = { enable = true; };
+    # nvidiaPatches = false;
     systemdIntegration = true;
     extraConfig = ''
       $mod = ALT
@@ -79,10 +76,6 @@
         border_size = 2
         col.active_border = rgb(${colors.blue}) rgb(${colors.mauve}) 270deg
         col.inactive_border = rgb(${colors.crust}) rgb(${colors.lavender}) 270deg
-
-        # group borders
-        col.group_border = rgb(${colors.surface0})
-        col.group_border_active = rgb(${colors.pink})
       }
 
       gestures {
