@@ -12,7 +12,7 @@
         inherit system;
         config.allowUnfree = true;
         overlays = [
-          emacs-overlay.overlay
+          # emacs-overlay.overlay
           orbs.fontDankMono
           # orbs.polyglot
         ];

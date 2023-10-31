@@ -4,15 +4,15 @@ inputs:
   fontDankMono = pkgs: _: { dank-mono = import ./font-dankmono pkgs; };
 
   # use emacs 29 for whatever reason
-  emacs29 = (_: prev: {
-    emacs-pgtk = prev.emacs-pgtk.overrideAttrs (old: {
-      name = "emacs-pgtk";
-      version = inputs.emacs29.shortRev;
-      src = inputs.emacs29;
-      withPgtk = true;
-      withGTK3 = true;
-    });
-  });
+  # emacs29 = (_: prev: {
+  #   emacs-pgtk = prev.emacs-pgtk.overrideAttrs (old: {
+  #     name = "emacs-pgtk";
+  #     version = inputs.emacs29.shortRev;
+  #     src = inputs.emacs29;
+  #     withPgtk = true;
+  #     withGTK3 = true;
+  #   });
+  # });
 
   # no need to add in in Doom
   polyglot = (_: prev:
