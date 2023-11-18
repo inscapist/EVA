@@ -15,22 +15,10 @@
 ;; font settings
 (setq doom-themes-enable-bold t
       doom-themes-enable-italic t
+      doom-theme 'doom-plain-dark
       doom-font (font-spec :family felix/default-font
                            :size felix/default-font-size
-                           :weight felix/default-font-weight)
-      ;; all-the-icons-scale-factor 0.7
-      )
-
-
-;; use kaolin theme
-(use-package kaolin-themes
-  :config
-  (load-theme 'kaolin-mono-dark t)
-  (setq kaolin-themes-italic-comments t))
-(use-package kaolin-themes
-  :config
-  (load-theme 'kaolin-mono-dark t)
-  (setq kaolin-themes-italic-comments t))
+                           :weight felix/default-font-weight))
 
 
 ;; customize faces. list with SPC-h-F

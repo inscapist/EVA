@@ -24,7 +24,7 @@
 
 
 ;; Themes
-(package! kaolin-themes)
+;; (package! kaolin-themes)
 
 
 ;; Unpin
