@@ -6,7 +6,7 @@
 
 ;; custom variables
 (setq felix/default-font "Recursive Mono Casual Static"
-      felix/default-font-size 18
+      felix/default-font-size 20
       felix/default-font-weight 'extra-light ;; refer font-weight-table variable
       felix/muted-font-height 0.95
       felix/modeline-font "Recursive Mono Casual Static"
@@ -15,7 +15,7 @@
 ;; font settings
 (setq doom-themes-enable-bold t
       doom-themes-enable-italic t
-      doom-theme 'doom-plain-dark
+      doom-theme 'doom-plain
       doom-font (font-spec :family felix/default-font
                            :size felix/default-font-size
                            :weight felix/default-font-weight))

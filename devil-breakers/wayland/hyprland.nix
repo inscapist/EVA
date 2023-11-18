@@ -1,4 +1,4 @@
-{ theme, lib, config, hyprland, hyprland-contrib, pkgs, system, ... }: {
+{ theme, config, hyprland, hyprland-contrib, pkgs, system, ... }: {
 
   imports = [ hyprland.homeManagerModules.default ];
 
@@ -41,7 +41,7 @@
       # scale apps
       # exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
       exec-once = hyprctl setcursor ${pointer.name} ${toString pointer.size}
-      exec-once = eww open bar
+      # exec-once = eww open bar
       exec-once = light -S 0
 
       # laptop screen
