@@ -4,8 +4,8 @@
   home.packages = with pkgs; [
     # office
     slack
-    signal-desktop-beta
-    obsidian
+    signal-desktop
+    #obsidian
     libreoffice-fresh
     teamviewer
     zoom-us

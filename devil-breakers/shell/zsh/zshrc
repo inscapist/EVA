@@ -222,7 +222,7 @@ alias hi=Hyprland
 alias eva-pull="pushd ~/EVA && git pull; popd"
 alias eva-update="pushd ~/EVA && nix flake update; popd"
 alias eva-check="pushd ~/EVA && git add . && nix flake check; popd"
-alias eva="pushd ~/EVA && git add . && sudo nixos-rebuild -j 8 switch --flake .#vergil; popd"
+alias eva="pushd ~/EVA && git add . && sudo nixos-rebuild -j 8 switch --flake .#vergil --show-trace; popd"
 
 function list-hardware-modules() {
   for i in `find /sys/ -name modalias -exec cat {} \;`; do

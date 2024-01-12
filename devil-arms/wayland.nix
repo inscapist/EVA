@@ -14,7 +14,6 @@
   programs.hyprland = {
     enable = true;
     xwayland = { enable = true; };
-    enableNvidiaPatches = false;
   };
 
   # Hyprland module does a lot of configuration for us, but it is

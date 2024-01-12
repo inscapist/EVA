@@ -68,7 +68,7 @@
       });
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     fu.url = "github:numtide/flake-utils";
     agenix = {
       url = "github:ryantm/agenix";

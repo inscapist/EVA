@@ -3,6 +3,7 @@
 with builtins;
 with lib;
 {
+  services.tailscale.enable = true;
   services.openssh.enable = true;
 
   networking = {
