@@ -12,7 +12,10 @@
       };
 
     users.${user} = {
-      home = { stateVersion = "23.05"; };
+      home = {
+        stateVersion = "23.11";
+        enableNixpkgsReleaseCheck = false;
+      };
 
       nixpkgs.config = import ./nixpkgs-config.nix;
       xdg.configFile."nixpkgs/config.nix".source = ./nixpkgs-config.nix;

@@ -34,7 +34,7 @@
     enable = true;
     xwayland = { enable = true; };
     # nvidiaPatches = false;
-    systemdIntegration = true;
+    systemd = { enable = true; };
     extraConfig = ''
       $mod = ALT
 

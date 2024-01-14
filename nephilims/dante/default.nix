@@ -8,7 +8,7 @@
   imports = [ ./qemu-configuration.nix ./optimization.nix ];
 
   system = {
-    stateVersion = "23.05";
+    stateVersion = "23.11";
     autoUpgrade.enable = true;
   };
 

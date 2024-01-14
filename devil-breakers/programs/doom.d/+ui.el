@@ -15,7 +15,7 @@
 ;; font settings
 (setq doom-themes-enable-bold t
       doom-themes-enable-italic t
-      doom-theme 'doom-plain
+      doom-theme 'doom-pine
       doom-font (font-spec :family felix/default-font
                            :size felix/default-font-size
                            :weight felix/default-font-weight))
