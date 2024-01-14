@@ -21,6 +21,7 @@ inputs:
         tree-sitter-bash
         tree-sitter-cmake
         tree-sitter-clojure
+        tree-sitter-clojurescript
         tree-sitter-cpp
         tree-sitter-css
         tree-sitter-dockerfile

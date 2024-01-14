@@ -40,3 +40,6 @@
 ;;   add the following code to .dir-locals.el
 ;;   ((web-mode . ((eval . (prettier-mode t)))))
 ;; (setq-hook! 'web-mode-hook +format-with :none)
+
+(with-eval-after-load 'tree-sitter
+  (add-to-list 'tree-sitter-major-mode-language-alist '(clojurescript-mode . clojure)))
