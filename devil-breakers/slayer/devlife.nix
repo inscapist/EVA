@@ -46,5 +46,6 @@
     nodePackages.prettier
     #-- Misc --#
     lldb
+    rustdesk
   ];
 }

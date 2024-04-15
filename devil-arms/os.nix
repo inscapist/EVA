@@ -9,7 +9,7 @@ with lib; {
   nixpkgs.config = {
     allowUnfree = true;
     allowBroken = false;
-    permittedInsecurePackages = [ "electron-21.4.0" ];
+    permittedInsecurePackages = [ "electron-21.4.0" "openssl-1.1.1w" ];
   };
 
   nix = {
