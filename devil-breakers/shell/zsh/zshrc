@@ -147,14 +147,13 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 
 # alias e="emacs -nw"
-alias b="chatblade"
 alias c="cargo"
 alias d="docker"
 alias f="fd" # f -e pdf
 alias g="git"
 alias j="z"
 # alias h="hoogle"
-alias l="exa -lbF --git"
+alias l="eza -lbF --git"
 alias m="make"
 alias n="nnn"
 alias p="python"
@@ -165,19 +164,17 @@ alias y="yarn"
 
 alias ad="ansible-doc"
 alias ap="ansible-playbook"
-alias bl="chatblade -l"
 alias da="direnv allow"
 alias di="dua interactive" # install with `sudo pacman -S dua-cli`
-alias ff="nemo"
 alias gb="git branch"
 alias gf="git fetch"
 alias gp="git pull"
 alias gpull="git pull"
 alias gup="git push -u origin HEAD"
 alias gt="git status"
-alias la='exa -la --git --color-scale'
+alias la='eza -la --git --color-scale'
 alias lg="lazygit"
-alias ls="exa"
+alias ls="eza"
 alias np="nix profile"
 alias nf="nix flake"
 alias nd="nix-tree --derivation"
@@ -186,10 +183,10 @@ alias oo="xdg-open"
 
 # kubectl
 alias k="kubectl"
-alias kc="kubectl kc"
+alias kk="kubectl krew"
+alias kc="kubectl ctx"
 alias kn="kubectl ns"
 alias knn="kubectl config view --minify -o jsonpath='{..namespace}'"
-alias kk="kubectl krew"
 alias kd="kubectl deprecations"
 alias kres="kubectl resource-capacity"
 alias ksh="kubectl run -it --rm --image=alpine --restart=Never -- sh"
@@ -217,8 +214,9 @@ alias gpg-find-key="gpg --keyserver pgp.mit.edu --search-keys"
 alias gpg-import-key="gpg --keyserver pgp.mit.edu  --recv"
 alias gpg-update-keys="gpg --refresh-keys"
 
-# EVA maintenance
-alias hi=Hyprland
+# EVA
+alias hi="startx"
+alias bye="i3-msg exit"
 alias eva-pull="pushd ~/EVA && git pull; popd"
 alias eva-update="pushd ~/EVA && nix flake update; popd"
 alias eva-check="pushd ~/EVA && git add . && nix flake check; popd"
@@ -306,17 +304,15 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
-# haskell
-[ -f "/home/xi/.ghcup/env" ] && source "/home/xi/.ghcup/env" # ghcup-env
 
-# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-# Use direnv to load these instead
-# Or call these on demand
-# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-#
-# source <(pyenv init - zsh)
-# source <(rbenv init - zsh)
-# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# Bun
+[ -s "$HOME/.bun/_bun" ] && source "/$HOME/.bun/_bun"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# extras
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
+[ -f "$HOME/.asdf/asdf.sh" ] && source "$HOME/.asdf/asdf.sh"
 
 
 source /run/sins/zsh_private
