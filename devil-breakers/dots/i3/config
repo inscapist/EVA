@@ -220,15 +220,15 @@ set $ws9 "9"
 # use workspaces on different displays:
 # where you have to replace VGA-0/HDMI-0 with the names for your displays
 # you can get from nrandr command
-workspace $ws1 output DP-0
-workspace $ws2 output DP-0
-workspace $ws3 output DP-0
-workspace $ws4 output DP-0
-workspace $ws5 output DP-0
-workspace $ws6 output DP-0
-workspace $ws7 output DP-2
-workspace $ws8 output DP-2
-workspace $ws9 output DP-2
+workspace $ws1 output DP-2
+workspace $ws2 output DP-2
+workspace $ws3 output DP-2
+workspace $ws4 output DP-2
+workspace $ws5 output DP-2
+workspace $ws6 output eDP-1
+workspace $ws7 output eDP-1
+workspace $ws8 output eDP-1
+workspace $ws9 output eDP-1
 
 # bind program to workspace and focus to them on startup:
 # assign [class="Xfce4-terminal"] $ws1
