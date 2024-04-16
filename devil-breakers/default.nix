@@ -24,7 +24,6 @@
       xdg.configFile."nixpkgs/config.nix".source = ./dots/nixpkgs/config.nix;
       xdg.configFile."i3/config".source = ./dots/i3/config;
       home.file.".xinitrc".source = ./dots/xinitrc;
-      #home.file.".Xresources".source = ./dots/Xresources;
 
       # Whether to enable fontconfig configuration. This will,
       # for example, allow fontconfig to discover fonts and
