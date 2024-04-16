@@ -15,6 +15,7 @@
   services = {
     fwupd.enable = true; # firmware update
     fprintd.enable = true; # fingerprint scanner
+    fstrim.enable = true;
   };
 
   hardware.nvidiaOptimus.disable = true;
