@@ -1,11 +1,7 @@
-{ emacs-overlay, doom, pkgs, lib, system, ... }: {
-  # imports = [ doom.hmModule ];
-
+{ pkgs, ... }: {
   programs.emacs = {
     enable = true;
-    # package = emacs-overlay.packages.${system}.emacsPgtk;
-    # package = pkgs.emacsPgtk;
-    package = pkgs.emacs29-pgtk;
+    package = pkgs.emacs-gtk; # or pkgs.emacs
   };
 
   home.file.".doom.d" = {

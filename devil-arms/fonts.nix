@@ -5,7 +5,7 @@
     # check with fc-list
     packages = with pkgs; [
       # https://github.com/NixOS/nixpkgs/blob/master/pkgs/data/fonts/nerdfonts/default.nix
-      (nerdfonts.override { fonts = [ "Agave" ]; })
+      nerdfonts
 
       # icon fonts
       material-symbols
@@ -16,9 +16,7 @@
       dank-mono
       victor-mono
       recursive
-      jost
       roboto
-      lexend
       noto-fonts
       noto-fonts-extra
       noto-fonts-emoji

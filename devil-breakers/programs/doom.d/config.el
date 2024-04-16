@@ -24,6 +24,8 @@
 (load! "+editor")
 (load! "+hydra")
 (load! "+langs")
+(load! "+org")
+;;(load! "+filetree")
 (load! "+extras")
 
 
@@ -32,3 +34,8 @@
   (progn
     (put 'cider-shadow-cljs-default-options 'safe-local-variable always-true)
     (put 'cider-default-cljs-repl 'safe-local-variable always-true)))
+
+;; A hack to make go lsp work
+;; https://github.com/emacs-lsp/lsp-mode/issues/3577#issuecomment-1709232622
+(after! lsp-mode
+  (delete 'lsp-terraform lsp-client-packages))

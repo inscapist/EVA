@@ -11,23 +11,22 @@
     enable = true;
 
     font = {
-      name = "Agave";
-      package = pkgs.agave;
+      name = "MonaspiceRn Nerd Font";
     };
 
     gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
 
     iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
+      name = "Tela-yellow-dark";
+      package = pkgs.tela-icon-theme;
     };
 
+    # https://github.com/NixOS/nixpkgs/blob/master/pkgs/data/themes/orchis-theme/default.nix
+    # nix-build '<nixpkgs>' -A orchis-theme --no-out-link
     theme = {
-      name = "Catppuccin-Mocha-Compact-Mauve-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "mauve" ];
-        size = "compact";
-        variant = "mocha";
+      name = "Orchis-Yellow-Dark-Compact";
+      package = pkgs.orchis-theme.override {
+        tweaks = [ "solid" "compact" ];
       };
     };
   };

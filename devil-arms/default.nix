@@ -2,6 +2,7 @@
   imports = [
     ./backup.nix
     ./bluetooth.nix
+    ./desktop.nix
     ./fonts.nix
     ./networking.nix
     ./os.nix
@@ -10,6 +11,5 @@
     ./sound.nix
     ./tools.nix
     ./virtualization.nix
-    ./wayland.nix
   ];
 }

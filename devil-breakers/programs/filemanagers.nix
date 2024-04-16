@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  home.packages = with pkgs; [ cinnamon.nemo ranger ];
+  home.packages = with pkgs; [ ranger xfce.thunar ];
   programs = {
     # https://nix-community.github.io/home-manager/options.html#opt-programs.nnn.package
     nnn = {

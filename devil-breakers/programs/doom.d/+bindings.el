@@ -28,6 +28,7 @@
  :nv "gx" #'browse-url
  :nv "rr" #'evil-ex-nohighlight
  :nv "rb" #'revert-buffer
+ :nv "rq" #'apheleia-format-buffer
  :nv "rc" #'lsp-workspace-restart)
 
 ;; convenience
@@ -54,6 +55,19 @@
 (map!
  "C-c C-\\" #'evil-make)
 
+;; Add/override treemacs keybindings
+(map!
+ :map treemacs-mode-map
+ "p"     #'treemacs-peek
+ "x"     #'treemacs-collapse-parent-node
+ "X"     #'treemacs-collapse-all-projects
+ "C-h"   #'evil-window-left
+ "C-l"   #'evil-window-right
+ "C-M-h" #'+workspace/switch-left
+ "C-M-l" #'+workspace/switch-right
+ "M-n"   #'+workspace/new
+ "M-w"   #'+workspace/close-window-or-workspace)
+
 ;; Add some sugar in smartparens mode
 (map!
  :map evil-cleverparens-mode-map
@@ -77,24 +91,29 @@
  :nmo "\\"     #'evil-cp-next-closing)
 
 (map! :after lsp-mode
-      ("C-c C-o" #'lsp-organize-imports))
+      ("C-c C-o" #'lsp-organize-imports)
+      ("C-c C-j" #'consult-lsp-symbols)
+      ("C-c C-k" #'lsp-treemacs-symbols))
+
+(map! :after lsp-mode
+      :leader "o k" #'lsp-treemacs-symbols)
 
 (map! :after ranger
       (:map ranger-mode-map
-       [escape] #'ranger-close ))
+            [escape] #'ranger-close ))
 
 ;; Add org-agenda keybindings
 (map! :after evil-org-agenda
       (:map evil-org-agenda-mode-map :m "S" nil)
       (:map org-agenda-mode-map
-       "S"     #'org-save-all-org-buffers
-       "C-h"   #'evil-window-left
-       "C-l"   #'evil-window-right
-       "C-M-h" #'+workspace/switch-left
-       "C-M-l" #'+workspace/switch-right
-       "C-M-r"   #'+workspace/rename
-       "M-n"   #'+workspace/new
-       "M-w"   #'+workspace/close-window-or-workspace))
+            "S"     #'org-save-all-org-buffers
+            "C-h"   #'evil-window-left
+            "C-l"   #'evil-window-right
+            "C-M-h" #'+workspace/switch-left
+            "C-M-l" #'+workspace/switch-right
+            "C-M-r"   #'+workspace/rename
+            "M-n"   #'+workspace/new
+            "M-w"   #'+workspace/close-window-or-workspace))
 
 ;; Easier window split
 (map! :leader
@@ -105,7 +124,7 @@
 (map! :leader "w w" #'ace-window)
 
 ;; Elfeed;
-;; (map! :leader "e l" #'elfeed)
+;;(map! :leader "e l" #'elfeed)
 
 ;; toggle LSP Doc
 (map! :leader "h h" #'lsp-describe-thing-at-point)
@@ -117,3 +136,21 @@
 (cond (IS-MAC
        (setq mac-option-modifier       'meta
              mac-right-option-modifier 'meta)))
+
+
+;; flutter
+;; (map! :after dart-mode
+;;       (:map dart-mode-map
+;;             "C-r"   #'flutter-hot-reload
+;;             "C-\\"   #'flutter-hot-reload
+;;             "C-R"   #'flutter-hot-restart))
+
+(after! dart-mode
+  ;; Ensure `flutter-hot-reload` and `flutter-hot-restart` are available
+  (require 'flutter)
+  (map! :map dart-mode-map
+        :n "C-r" nil  ; Unbind `C-r` in normal state first, if needed
+        :n "C-r" #'flutter-hot-reload  ; Rebind `C-r` to `flutter-hot-reload` in normal state
+        "C-\\" #'flutter-hot-reload
+        "C-S-r" #'flutter-hot-restart))
+

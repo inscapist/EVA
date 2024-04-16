@@ -1,4 +1,4 @@
-{ user, system, inputs, dt, sdt, ... }: {
+{ user, system, inputs, dt, ... }: {
   imports = [ inputs.hm.nixosModules.home-manager ];
 
   home-manager = {
@@ -7,7 +7,6 @@
     extraSpecialArgs = # make them available to hm modules
       with inputs;
       with dt; {
-        inherit emacs-overlay doom hyprland hyprland-contrib eww;
         inherit system theme;
       };
 
@@ -17,8 +16,11 @@
         enableNixpkgsReleaseCheck = false;
       };
 
-      nixpkgs.config = import ./nixpkgs-config.nix;
-      xdg.configFile."nixpkgs/config.nix".source = ./nixpkgs-config.nix;
+      nixpkgs.config = import ./dots/nixpkgs/config.nix;
+      xdg.configFile."nixpkgs/config.nix".source = ./dots/nixpkgs/config.nix;
+      xdg.configFile."i3/config".source = ./dots/i3/config;
+      home.file.".xinitrc".source = ./dots/xinitrc;
+      #home.file.".Xresources".source = ./dots/Xresources;
 
       # Whether to enable fontconfig configuration. This will,
       # for example, allow fontconfig to discover fonts and
@@ -28,11 +30,9 @@
       imports = [
         # essentials
         ./programs/browsers.nix
-        ./programs/dunst.nix
         ./programs/emacs.nix
         ./programs/filemanagers.nix
         ./programs/git.nix
-        ./programs/notification.nix
         ./programs/nvim.nix
 
         # terminal
@@ -41,13 +41,10 @@
         ./terminals/alacritty.nix
 
         # spices
+        ./desktop/desktop.nix
         ./desktop/gtk.nix
         ./desktop/xdg.nix
         ./slayer
-        ./wayland
-
-        # sin devil triggers
-        sdt.hmModules
       ];
     };
   };

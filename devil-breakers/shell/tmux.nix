@@ -41,32 +41,36 @@
         unbind w
         bind w select-pane -t :.+
 
+        # status bar theme
+        # https://gist.github.com/rajanand02/9407361
+        set -g status 'on'
+        set -g status-interval 2
+        set -g status-position top
+        set -g status-bg default
+        set-option -g status-style bg=default
+        set -g status-justify 'left'
+        set -g status-left-length '20'
+        set -g status-right-length '60'
+        set -g message-style fg='colour222'
+        set -g message-command-style fg='colour222'
+        set -g pane-border-style fg='colour238'
+        set -g pane-active-border-style fg='colour11'
+        setw -g window-status-activity-style fg='colour11',none
+        setw -g window-status-separator ""
+        setw -g window-status-style fg='colour121',none
+
+        # status bar
+        set -g status-left ""
+        set -g status-right ""
+
+        setw -g window-status-format '#[fg=colour8] #W '
+        setw -g window-status-current-format '#[fg=colour11,bold] #W '
+
         # clear tmux history with ctrl+K (uppercase)
         # conditional clear screen, do nothing if in vim
         is_vim="isvim2 #{pane_tty}"
         unbind K
         bind K if-shell "$is_vim" "" "send-keys -R \; send-keys C-l \; clear-history"
-
-
-        # status bar theme
-        # https://gist.github.com/rajanand02/9407361
-        set -g status 'off'
-        # set -g status-interval 2
-        # set -g status-position top
-        # set -g status-bg 'colour235'
-        # set -g status-justify 'left'
-        # set -g status-left ""
-        # set -g status-right ""
-        # set -g message-style fg='colour222',bg='colour238'
-        # set -g message-command-style fg='colour222',bg='colour238'
-        # set -g pane-border-style fg='colour238'
-        # set -g pane-active-border-style fg='colour11'
-        # setw -g window-status-separator ""
-        # setw -g window-status-activity-style fg='colour11',bg='colour235',none
-        # setw -g window-status-style fg='colour121',bg='colour235',none
-
-        # setw -g window-status-format '#[fg=colour8,bg=colour235] #W '
-        # setw -g window-status-current-format '#[fg=colour11,bg=colour235,bold] #W '
       '';
     };
   };

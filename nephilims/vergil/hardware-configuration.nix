@@ -37,5 +37,6 @@
     lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 42;
   boot.loader.efi.canTouchEfiVariables = true;
 }

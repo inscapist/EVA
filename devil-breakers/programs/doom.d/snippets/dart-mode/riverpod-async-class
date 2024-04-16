@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: Riverpod async class
+# key: \riverpod-async-class
+# --
+
+
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+// import 'my_model.dart';
+
+part '${3:file}.g.dart';
+
+@riverpod
+class ${1:ClassName} extends _$$1 {
+  @override
+  Future<List<${2:Todo}>> build() async => [/* ... */];
+
+  Future<void> add$2($2 todo) async {
+  }
+}
