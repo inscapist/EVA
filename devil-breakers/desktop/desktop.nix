@@ -10,6 +10,7 @@
     xorg.xrdb
     xorg.xprop
 
+    arandr
     maim
     xclip
   ];

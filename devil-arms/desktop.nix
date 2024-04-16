@@ -21,7 +21,7 @@
   services.xserver = {
     enable = true;
     autorun = false;
-    layout = "us";
+    xkb.layout = "us";
 
     # A misleading option. Has nought to do with startx
     # it simply means do not enable any display

@@ -65,21 +65,21 @@ cursor = "#d8dee9"
 text = "#202329"
 
 [font]
-size = 14
+size = 12
 
 [font.bold]
-# family = "MonaspiceRn Nerd Font"
-family = "Recursive Mono Casual Static"
+family = "MonaspiceRn Nerd Font"
+#family = "Recursive Mono Casual Static"
 style = "Bold"
 
 [font.italic]
-# family = "MonaspiceRn Nerd Font"
-family = "Recursive Mono Casual Static"
+family = "MonaspiceRn Nerd Font"
+#family = "Recursive Mono Casual Static"
 style = "ExtraLight Italic"
 
 [font.normal]
-#family = "MonaspiceRn Nerd Font"
-family = "Recursive Mono Casual Static"
+family = "MonaspiceRn Nerd Font"
+#family = "Recursive Mono Casual Static"
 style = "Light"
 
 [[keyboard.bindings]]
