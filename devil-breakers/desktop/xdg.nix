@@ -48,7 +48,7 @@ in {
       publicShare = null;
       templates = null;
       videos = null;
-      desktop = "${config.home.homeDirectory}/desktop";
+      desktop = null;
       documents = "${config.home.homeDirectory}/documents";
       download = "${config.home.homeDirectory}/downloads";
       pictures = "${config.home.homeDirectory}/pictures";

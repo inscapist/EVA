@@ -19,6 +19,5 @@
   home.sessionVariables = {
     # xdg-settings get default-web-browser
     BROWSER = "brave";
-    MOZ_ENABLE_WAYLAND = "1";
   };
 }
