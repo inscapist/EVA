@@ -195,13 +195,10 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 ## App shortcuts
-bindsym $mod+Ctrl+Return exec flatpak run com.brave.Browser
-#bindsym $mod+o exec /usr/bin/thunar
+bindsym $mod+Ctrl+Return exec brave
 bindsym Ctrl+$mod+r exec alacritty -e ranger
 bindsym Ctrl+$mod+m exec thunar
 bindsym Shift+$mod+m exec toggle-touchpad
-#bindsym $mod+w exec /usr/bin/firefox
-#bindsym $mod+n exec /usr/bin/thunar
 bindsym Print exec "scrot ~/%Y-%m-%d-%T-screenshot.png"
 
 ##########################################
