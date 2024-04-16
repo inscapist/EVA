@@ -16,13 +16,6 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
-  security.pam.services.i3lock = {
-    text = ''
-      auth include login
-    '';
-  };
-  security.polkit.enable = true;
-
   programs.dconf.enable = true;
 
   services.dbus = {
@@ -30,12 +23,15 @@
     packages = [ pkgs.dconf ];
   };
 
+  services.displayManager.defaultSession = "none+i3";
+
   services.xserver = {
     enable = true;
     xkb.layout = "us";
     xkb.options = "caps:escape";
 
-    displayManager.startx.enable = true;
+    # NOTE mutually exclusive with `services.displayManager.defaultSession`
+    # displayManager.startx.enable = true;
 
     # run autostart programs
     desktopManager.runXdgAutostartIfNone = true;

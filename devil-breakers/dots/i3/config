@@ -283,6 +283,7 @@ exec --no-startup-id xrandr --output eDP-1 --brightness .7
 exec_always --no-startup-id xset r rate 250 60
 exec_always --no-startup-id feh --bg-scale ~/.background.png
 exec_always --no-startup-id i3-msg workspace 1
+exec_always --no-startup-id xss-lock -- i3lock-fancy-rapid 4 2
 
 bindsym F3 exec loc=~/pictures/$(date +%s).png && maim -s $loc && gthumb $loc
 bindsym F5 exec loc=~/pictures/$(date +%s).png && maim $loc && gthumb $loc

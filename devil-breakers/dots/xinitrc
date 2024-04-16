@@ -11,10 +11,19 @@ if [ -z "${XDG_RUNTIME_DIR}" ]; then
     fi
 fi
 
-xss-lock -- i3lock-fancy-rapid 4 2 &
+# https://nixos.wiki/wiki/Using_X_without_a_Display_Manager
+if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+	eval $(dbus-launch --exit-with-session --sh-syntax)
+fi
+systemctl --user import-environment DISPLAY XAUTHORITY
+
+if command -v dbus-update-activation-environment >/dev/null 2>&1; then
+        dbus-update-activation-environment DISPLAY XAUTHORITY
+fi
 
 #exec herbstluftwm --locked
 #exec xmonad
 
 # the bus will be known at $DBUS_SESSION_BUS_ADDRESS
-exec dbus-run-session -- i3
+#exec dbus-run-session -- i3
+exec i3

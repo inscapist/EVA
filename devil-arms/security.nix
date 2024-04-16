@@ -19,6 +19,11 @@
         permit nopass :wheel
       '';
     };
+    pam.services.i3lock = {
+      text = ''
+        auth include login
+      '';
+    };
   };
 
   # TODO consider https://wiki.archlinux.org/title/GNOME/Keyring
