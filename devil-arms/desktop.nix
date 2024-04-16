@@ -4,6 +4,8 @@
   hardware.opengl.enable = true;
   fonts.enableDefaultPackages = true;
 
+  xdg.mime.enable = true;
+
   xdg.portal = {
     enable = true;
     config = {
@@ -21,22 +23,21 @@
   };
   security.polkit.enable = true;
 
-  programs = {
-    dconf.enable = true;
+  programs.dconf.enable = true;
+
+  services.dbus = {
+    enable = true;
+    packages = [ pkgs.dconf ];
   };
 
   services.xserver = {
     enable = true;
-    autorun = false;
     xkb.layout = "us";
+    xkb.options = "caps:escape";
 
-    # A misleading option. Has nought to do with startx
-    # it simply means do not enable any display
-    displayManager = {
-      startx.enable = true;
-    };
+    displayManager.startx.enable = true;
 
-    # Needed for fcitx5/ibus
+    # run autostart programs
     desktopManager.runXdgAutostartIfNone = true;
 
     # use i3

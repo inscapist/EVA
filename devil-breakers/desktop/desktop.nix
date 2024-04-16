@@ -18,4 +18,6 @@
     maim
     xclip
   ];
+
+  home.file.".background.png".source = ./background.png;
 }

@@ -12,8 +12,8 @@
     openssl
     kubectl
     krew
-    azuredatastudio
-    android-studio
+    #azuredatastudio
+    #android-studio
     #-- Languages --#
     yarn
     nodejs

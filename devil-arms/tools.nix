@@ -54,6 +54,8 @@
       ++ [
         imagemagick
         imv
+        gthumb
+        feh
       ]
       ++ [ restic ]; # required for backing up stuff to backblaze(b2 protocol)
   };

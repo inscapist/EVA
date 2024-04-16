@@ -44,6 +44,7 @@
         ./terminals/alacritty.nix
 
         # spices
+        ./desktop/compositor.nix
         ./desktop/desktop.nix
         ./desktop/gtk.nix
         ./desktop/xdg.nix
