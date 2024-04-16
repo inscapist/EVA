@@ -21,10 +21,11 @@
 
        :completion
        company           ; the ultimate code completion backend
+       ;;(corfu +dabbrev)  ; complete with cap(f), cape and a flying feather!
        ;;(helm +childframe)              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;(ivy +prescient +childframe)               ; a search engine for love and life
-       (vertico +childframe)           ; the search engine of the future
+       vertico           ; the search engine of the future
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -43,12 +44,12 @@
        ophints           ; highlight the region an operation acts on
        (popup +all +defaults)   ; tame sudden yet inevitable temporary windows
        ;;tabs              ; a tab bar for Emacs
-       ;;(treemacs +lsp)          ; a project drawer, like neotree but cooler
+       treemacs          ; a project drawer, like neotree but cooler
        ;;unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe
        ;;vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        ;;window-select     ; visually switch windows
-       ;;workspaces        ; tab emulation, persistence & separate workspaces
+       workspaces        ; tab emulation, persistence & separate workspaces
        ;;zen               ; distraction-free coding or writing
 
        :editor
@@ -58,7 +59,7 @@
        (format +onsave)  ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
        ;;lispy             ; vim for lisp, for people who don't like vim
-       ;;multiple-cursors  ; editing in many places at once
+       multiple-cursors  ; editing in many places at once
        ;;objed             ; text object editing for the innocent
        ;;parinfer          ; turn lisp into python, sort of
        ;;rotate-text       ; cycle region at point between text candidates
@@ -66,7 +67,7 @@
        ;;word-wrap         ; soft wrapping with language-aware indent
 
        :emacs
-       (dired +ranger)             ; making dired pretty [functional]
+       (dired +icons +ranger)             ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
        ;;ibuffer         ; interactive buffer management
        undo              ; persistent, smarter undo for your inevitable mistakes
@@ -88,7 +89,7 @@
        ansible
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        direnv
-       docker
+       (docker +lsp)
        ;;editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
@@ -102,7 +103,7 @@
        ;;prodigy           ; FIXME managing external services & code builders
        rgb               ; creating color strings
        ;;taskrunner        ; taskrunner for all your projects
-       terraform         ; infrastructure as code
+       ;;terraform         ; infrastructure as code
        ;;tmux              ; an API for interacting with tmux
        ;;upload            ; map local to remote projects via ssh/ftp
 
@@ -113,14 +114,14 @@
        :lang
        ;;agda              ; types of types of types of types...
        ;;cc                ; C/C++/Obj-C madness
-       (clojure +lsp +tree-sitter)           ; java with a lisp
+       (clojure +lsp)           ; java with a lisp
        ;;common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
        ;;crystal           ; ruby at the speed of c
        ;;csharp            ; unity, .NET, and mono shenanigans
        ;;data              ; config/data formats
-       ;;(dart +flutter)   ; paint ui and not much else
-       (elixir +lsp +tree-sitter)            ; erlang done right
+       (dart +flutter +lsp)   ; paint ui and not much else
+       elixir            ; erlang done right
        ;;elm               ; care for a cup of TEA?
        emacs-lisp        ; drown in parentheses
        ;;erlang            ; an elegant language for a more civilized age
@@ -129,13 +130,13 @@
        ;;fsharp            ; ML stands for Microsoft's Language
        ;;fstar             ; (dependent) types and (monadic) effects and Z3
        ;;gdscript          ; the language you waited for
-       (go +lsp +tree-sitter)         ; the hipster dialect
-       (haskell +lsp +tree-sitter)  ; a language that's lazier than I am
+       (go +lsp)         ; the hipster dialect
+       (haskell +lsp)  ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ;
        json              ; At least it ain't XML
        ;;(java +meghanada) ; the poster child for carpal tunnel syndrome
-       (javascript +lsp +tree-sitter)        ; all(hope(abandon(ye(who(enter(here))))))
+       (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
        (latex +fold +lsp)             ; writing papers in Emacs has never been so fun
@@ -158,17 +159,17 @@
        ;;raku              ; the artist formerly known as perl6
        ;;rest              ; Emacs as a REST client
        ;;rst               ; ReST in peace
-       (ruby +lsp +tree-sitter)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       (rust +lsp +tree-sitter)              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       (ruby +lsp +tree-sitter +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
+       (rust +lsp)              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        ;;scheme            ; a fully conniving family of lisps
-       (sh +lsp +tree-sitter)                ; she sells {ba,z,fi}sh shells on the C xor
+       (sh +lsp)                ; she sells {ba,z,fi}sh shells on the C xor
        ;;sml
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
-       (web +html +tree-sitter)          ; the tubes
-       (yaml +lsp +tree-sitter)              ; JSON, but readable
+       (web +tree-sitter)          ; the tubes
+       (yaml +lsp)              ; JSON, but readable
 
        :email
        ;;(mu4e +gmail)

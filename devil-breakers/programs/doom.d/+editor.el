@@ -1,9 +1,5 @@
 ;;; $DOOMDIR/+editor.el -*- lexical-binding: t; -*-
 
-
-;; https://www.emacswiki.org/emacs/SmoothScrolling
-; (setq pixel-scroll-precision-large-scroll-height 40.0)
-
 ;; Do not ask for "Confirm exit Emacs"
 (setq confirm-kill-emacs nil)
 
@@ -15,7 +11,7 @@
 (setq direnv-always-show-summary nil)
 
 ;; Display line number, use `SPC t l' to toggle
-(setq display-line-numbers-type nil)
+(setq display-line-numbers-type t)
 
 ;; History & backup settings (save nothing, that's what git is for)
 (setq auto-save-default nil
@@ -52,7 +48,7 @@
   (set-popup-rule! "^*Embark" :side 'bottom :size 0.4 :select t :modeline nil :quit nil :ttl nil))
 (after! cider
   (set-popup-rule! "^*cider-repl" :side 'right :size 0.35 :select t :modeline nil :quit nil :ttl nil))
-  ;;(setq cider-ns-refresh-show-log-buffer t))
+;;(setq cider-ns-refresh-show-log-buffer t))
 
 
 ;; Allow local variables to be set
@@ -60,3 +56,6 @@
 (put 'cider-ns-refresh-after-fn 'safe-local-variable (lambda (_) t))
 (put 'cider-default-cljs-repl 'safe-local-variable (lambda (_) t))
 (put 'cider-shadow-cljs-default-options 'safe-local-variable (lambda (_) t))
+
+;; prioritize snippets
+(setq +lsp-company-backends '(:separate company-yasnippet company-capf))

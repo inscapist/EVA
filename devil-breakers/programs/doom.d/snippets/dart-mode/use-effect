@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: Use Effect
+# key: \use-effect
+# --
+
+useEffect(() {
+    $0
+    return () {
+
+    }
+}, [$1]);

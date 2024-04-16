@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Use State
+# key: \use-state
+# --
+
+final counter = useState<${1:type}>(0);

@@ -2,6 +2,9 @@
 
 (setq web-mode-code-indent-offset 2)
 
+;; lsp settings
+;; (setq lsp-rust-analyzer-rustfmt-override-command '("leptosfmt" "--stdin" "--rustfmt"))
+
 (after! lsp-mode
   (setq lsp-enable-file-watchers nil)
   (setq lsp-clients-typescript-init-opts '(:importModuleSpecifierPreference "non-relative"))
@@ -26,6 +29,15 @@
 (setq-hook! 'typescript-mode-hook +format-with-lsp nil)
 (setq-hook! 'nix-mode-hook +format-with-lsp nil)
 
+;; https://github.com/doomemacs/doomemacs/issues/7490
+(setq-hook! 'clojure-mode-hook
+  apheleia-inhibit t
+  +format-with nil)
+(add-hook 'clojure-mode-hook
+          (lambda()
+            (add-hook 'before-save-hook #'+format/buffer nil t)))
+
+
 ;; do not format markdown slidev
 (setq-hook! 'markdown-mode-hook +format-with :none)
 
@@ -41,5 +53,46 @@
 ;;   ((web-mode . ((eval . (prettier-mode t)))))
 ;; (setq-hook! 'web-mode-hook +format-with :none)
 
-(with-eval-after-load 'tree-sitter
-  (add-to-list 'tree-sitter-major-mode-language-alist '(clojurescript-mode . clojure)))
+
+;; =============================================
+;; Astro support
+(define-derived-mode astro-mode web-mode "astro")
+(setq auto-mode-alist
+      (append '((".*\\.astro\\'" . astro-mode))
+              auto-mode-alist))
+
+(with-eval-after-load 'lsp-mode
+  (add-to-list 'lsp-language-id-configuration
+               '(astro-mode . "astro"))
+
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection '("astro-ls" "--stdio"))
+                    :activation-fn (lsp-activate-on "astro")
+                    :server-id 'astro-ls)))
+
+(add-hook! astro-mode #'lsp!)
+;; =============================================
+
+
+;; =============================================
+;; Ruby support
+(use-package! apheleia)
+(setq +format-on-save-disabled-modes
+      '(ruby-mode web-mode))
+
+(after! ruby-mode
+  (setq-hook! 'ruby-mode-hook +format-with 'prettier-ruby))
+
+;; (after! ruby-mode
+;;   (set-formatter! 'ruby-mode
+;;     '("rufo" "--filename" filepath "--simple-exit")
+;;     :modes '(ruby-mode ruby-ts-mode)))
+
+(with-eval-after-load 'lsp-mode
+  (lsp-register-client
+   (make-lsp-client
+    :new-connection (lsp-stdio-connection '("ruby-lsp"))
+    :activation-fn (lsp-activate-on "ruby")
+    :priority 9999
+    :server-id 'ruby-lsp)))
+;; =============================================

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Dart Enum
+# key: \dart-enum
+# --
+
+enum $0 { var, var2 }

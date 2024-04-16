@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: Riverpod async function
+# key: \riverpod-async-function
+# --
+
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+// import 'my_model.dart';
+
+part '${1:future}.g.dart';
+
+/// This will create a provider named `$1Provider`
+/// which will cache the result of this function.
+@riverpod
+Future<${1:$(capitalize yas-text)}> $1(${1:$(capitalize yas-text)}Ref ref) async {
+  $0
+}

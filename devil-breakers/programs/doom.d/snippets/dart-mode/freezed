@@ -1,0 +1,30 @@
+# -*- mode: snippet -*-
+# name: Freezed
+# key: \freezed
+# --
+
+
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter/foundation.dart';
+
+part '$2.freezed.dart';
+part '$2.g.dart';
+
+/// The response of the `GET /api/activity` endpoint.
+///
+/// It is defined using `freezed` and `json_serializable`.
+@freezed
+class $1 with _$$1 {
+  factory $1({
+    required String key,
+    required String activity,
+    required String type,
+    required int participants,
+    required double price,
+  }) = _$1;
+
+  /// Convert a JSON object into an [$1] instance.
+  /// This enables type-safe reading of the API response.
+  factory $1.fromJson(Map<String, dynamic> json) =>
+      _$$1FromJson(json);
+}
