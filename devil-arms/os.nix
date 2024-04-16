@@ -1,12 +1,5 @@
-{ user, lib, ... }:
-
-with lib;
+{ user, ... }:
 {
-  console.useXkbConfig = true;
-
-  time.timeZone = mkDefault "Asia/Singapore";
-  i18n.defaultLocale = mkDefault "en_US.UTF-8";
-
   nixpkgs.config = {
     allowUnfree = true;
     allowBroken = false;

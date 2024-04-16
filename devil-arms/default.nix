@@ -4,6 +4,7 @@
     ./bluetooth.nix
     ./desktop.nix
     ./fonts.nix
+    ./i18n.nix
     ./networking.nix
     ./os.nix
     ./power.nix

@@ -40,7 +40,7 @@
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
-        i3lock-pixeled
+        i3lock-fancy-rapid
         xss-lock
       ];
     };

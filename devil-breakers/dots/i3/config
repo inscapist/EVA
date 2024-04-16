@@ -199,7 +199,7 @@ bindsym $mod+Ctrl+Return exec brave
 bindsym Ctrl+$mod+r exec alacritty -e ranger
 bindsym Ctrl+$mod+m exec thunar
 bindsym Shift+$mod+m exec toggle-touchpad
-bindsym Shift+$mod+q exec i3lock-pixeled
+bindsym Shift+$mod+q exec i3lock-fancy-rapid 4 2
 bindsym Print exec "scrot ~/%Y-%m-%d-%T-screenshot.png"
 
 ##########################################
