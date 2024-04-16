@@ -10,9 +10,7 @@
   gtk = {
     enable = true;
 
-    font = {
-      name = "MonaspiceRn Nerd Font";
-    };
+    font = { name = "MonaspiceRn Nerd Font"; };
 
     gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
 
@@ -25,9 +23,7 @@
     # nix-build '<nixpkgs>' -A orchis-theme --no-out-link
     theme = {
       name = "Orchis-Yellow-Dark-Compact";
-      package = pkgs.orchis-theme.override {
-        tweaks = [ "solid" "compact" ];
-      };
+      package = pkgs.orchis-theme.override { tweaks = [ "solid" "compact" ]; };
     };
   };
 }

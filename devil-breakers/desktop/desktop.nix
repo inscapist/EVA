@@ -1,5 +1,8 @@
 { pkgs, ... }: {
-  programs = { rofi.enable = true; };
+  programs.rofi = {
+    enable = true;
+    theme = "DarkBlue";
+  };
 
   home.packages = with pkgs; [
     xorg.xset
