@@ -12,7 +12,6 @@ Inspired by the DMC game series.
 | [Devil Arms](devil-arms)                 | NixOS modules                      |
 | [Devil Breakers](devil-breakers)         | HomeManager modules                |
 | [Devil Triggers](devil-triggers)         | Enhancements, utils, themes..      |
-| [Sin Devil Triggers](sin-devil-triggers) | Modules written by someone else :) |
 | [Nico](devil-triggers/nico)              | The crafty bits :)                 |
 | [Morrison](morrison)                     | The Documentation                  |
 | [Orbs](orbs)                             | Nix overlays                       |
