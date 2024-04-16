@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     #-- recreation --#
+    gthumb
     mindustry-wayland
     openra
     warzone2100

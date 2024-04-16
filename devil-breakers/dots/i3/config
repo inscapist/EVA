@@ -342,8 +342,8 @@ exec_always --no-startup-id setxkbmap -option caps:escape
 
 # bindsym F1 exec ~/.config/i3/scripts/keyhint-2
 #bindsym F2 exec ~/.config/i3/scripts/blur-lock
-bindsym F3 exec loc=~/Screenshots/$(date +%s).png && maim -s $loc && gthumb $loc
-bindsym F5 exec loc=~/Screenshots/$(date +%s).png && maim $loc && gthumb $loc
+bindsym F3 exec loc=~/pictures/$(date +%s).png && maim -s $loc && gthumb $loc
+bindsym F5 exec loc=~/pictures/$(date +%s).png && maim $loc && gthumb $loc
 
 # Set inner/outer gaps
 gaps inner 18
