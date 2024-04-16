@@ -1,7 +1,9 @@
 lib:
 
-let nico = import ./nico lib;
-in {
+let
+  nico = import ./nico lib;
+in
+{
   theme = rec {
     # -> RRGGBB
     colors = import ./theme/palette.nix;

@@ -1,8 +1,10 @@
 { stdenvNoCC, unzip, ... }:
 
 # https://gist.github.com/camtauxe/a1e475e11cd8a23407fd1714c87a3ae1
-let font = "dank-mono";
-in stdenvNoCC.mkDerivation {
+let
+  font = "dank-mono";
+in
+stdenvNoCC.mkDerivation {
   name = font;
   dontConfigure = true;
 
@@ -20,5 +22,7 @@ in stdenvNoCC.mkDerivation {
     # cp -R "$src/dank-mono-regular.otf" $out/share/fonts/opentype/
   '';
 
-  meta = { description = "Dank Mono font"; };
+  meta = {
+    description = "Dank Mono font";
+  };
 }

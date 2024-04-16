@@ -10,10 +10,8 @@
     #-- devops/tools --#
     vagrant
     openssl
-    # flyctl
     kubectl
     krew
-    kubectx
     azuredatastudio
     android-studio
     #-- Languages --#
@@ -41,7 +39,7 @@
     shellcheck
     #-- Formatters --#
     black
-    nixfmt
+    nixfmt-rfc-style
     beautysh
     nodePackages.prettier
     #-- Misc --#

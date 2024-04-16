@@ -1,14 +1,18 @@
-{ user, system, inputs, dt, ... }: {
+{
+  user,
+  system,
+  inputs,
+  dt,
+  ...
+}:
+{
   imports = [ inputs.hm.nixosModules.home-manager ];
 
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = # make them available to hm modules
-      with inputs;
-      with dt; {
-        inherit system theme;
-      };
+      with inputs; with dt; { inherit system theme; };
 
     users.${user} = {
       home = {

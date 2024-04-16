@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   # environment.systemPackages = with pkgs; [ pulseaudio ];
 
   hardware.pulseaudio.enable = lib.mkForce false;

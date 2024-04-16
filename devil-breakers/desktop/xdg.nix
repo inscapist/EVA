@@ -28,7 +28,8 @@ let
     # "x-scheme-handler/spotify" = [ "spotify.desktop" ];
     # "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
   };
-in {
+in
+{
   home.packages = with pkgs; [ xdg-utils ];
 
   xdg = {

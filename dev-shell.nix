@@ -2,7 +2,7 @@
 pkgs.mkShell {
   buildInputs = with pkgs; [
     git
-    nixfmt # from serokell folks, I prefer it
+    nixfmt-rfc-style # from serokell folks, I prefer it
     nil
     statix
     manix

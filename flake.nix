@@ -1,10 +1,20 @@
 {
   description = "My NixOS configuration - codenamed EVA";
 
-  outputs = inputs@{ self, nixpkgs, fu, ... }:
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      fu,
+      ...
+    }:
     let
       system = "x86_64-linux";
-      mods = [ ./devil-arms ./devil-breakers ./sins ];
+      mods = [
+        ./devil-arms
+        ./devil-breakers
+        ./sins
+      ];
       dt = import ./devil-triggers nixpkgs.lib;
       orbs = import ./orbs inputs;
       pkgs = import nixpkgs {
@@ -16,10 +26,16 @@
         ];
       };
       specialArgs = {
-        inherit system pkgs inputs dt;
+        inherit
+          system
+          pkgs
+          inputs
+          dt
+          ;
         user = "xi";
       };
-    in {
+    in
+    {
       # --------------------------------------------------------
       # My systems
       # ========================================================
@@ -54,16 +70,20 @@
         inherit system specialArgs;
         modules = [ ./nephilims/dante/installer.nix ];
       };
-
-    } // fu.lib.eachDefaultSystem (system:
+    }
+    // fu.lib.eachDefaultSystem (
+      system:
       # --------------------------------------------------------
       # Dev shell
       # ========================================================
-      let pkgs = nixpkgs.legacyPackages.${system};
-      in {
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
         devShells.default = import ./dev-shell.nix { inherit pkgs; };
         formatter = pkgs.nixpkgs-fmt;
-      });
+      }
+    );
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";

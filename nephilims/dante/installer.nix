@@ -1,4 +1,10 @@
-{ config, pkgs, modulesPath, ... }: {
+{
+  config,
+  pkgs,
+  modulesPath,
+  ...
+}:
+{
   imports = [
     ../../devil-arms/melee/os.nix
     ./optimization.nix
@@ -19,39 +25,54 @@
   ];
 
   environment = with pkgs; {
-    variables = { EDITOR = "hx"; };
-    systemPackages = let
+    variables = {
+      EDITOR = "hx";
+    };
+    systemPackages =
+      let
 
-      party = writeShellScriptBin "party" ''
-        set -euxo pipefail
+        party = writeShellScriptBin "party" ''
+          set -euxo pipefail
 
-        diskdev=/dev/vda
+          diskdev=/dev/vda
 
-        # Partitioning
-        sgdisk -o -g -n 1::+550M -t 1:ef00 -n 2:: -t 2:8300 $diskdev
+          # Partitioning
+          sgdisk -o -g -n 1::+550M -t 1:ef00 -n 2:: -t 2:8300 $diskdev
 
-        # Formatting
-        mkfs.fat -n boot ''${diskdev}1
-        mkfs.ext4 -L nixos ''${diskdev}2
+          # Formatting
+          mkfs.fat -n boot ''${diskdev}1
+          mkfs.ext4 -L nixos ''${diskdev}2
 
-        # Pre-Installation
-        mount ''${diskdev}2 /mnt
-        mkdir -p /mnt/boot
-        mount ''${diskdev}1 /mnt/boot
+          # Pre-Installation
+          mount ''${diskdev}2 /mnt
+          mkdir -p /mnt/boot
+          mount ''${diskdev}1 /mnt/boot
 
-        # Generate/Copy Configuration
-        nixos-generate-config --root /mnt
-      '';
+          # Generate/Copy Configuration
+          nixos-generate-config --root /mnt
+        '';
 
-      flaky = writeShellScriptBin "flaky" ''
-        set -euxo pipefail
+        flaky = writeShellScriptBin "flaky" ''
+          set -euxo pipefail
 
-        cd /mnt/etc/nixos
-        git clone https://github.com/sagittaros/EVA.git
-        cd EVA
-        nixos-install --flake .#dante
-      '';
-
-    in [ party flaky ] ++ [ git tig lazygit helix curl which tree ];
+          cd /mnt/etc/nixos
+          git clone https://github.com/sagittaros/EVA.git
+          cd EVA
+          nixos-install --flake .#dante
+        '';
+      in
+      [
+        party
+        flaky
+      ]
+      ++ [
+        git
+        tig
+        lazygit
+        helix
+        curl
+        which
+        tree
+      ];
   };
 }

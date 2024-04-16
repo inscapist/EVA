@@ -1,4 +1,5 @@
-{ pkgs, user, ... }: {
+{ pkgs, user, ... }:
+{
   virtualisation = {
     docker = {
       autoPrune.enable = true;
@@ -20,7 +21,10 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ virt-manager docker-compose ];
+  environment.systemPackages = with pkgs; [
+    virt-manager
+    docker-compose
+  ];
 
   users.groups.docker.members = [ user ];
   users.groups.libvirtd.members = [ user ];

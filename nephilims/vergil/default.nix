@@ -2,10 +2,18 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, user, ... }:
+{
+  config,
+  pkgs,
+  user,
+  ...
+}:
 
 {
-  imports = [ ./hardware-configuration.nix ./optimization.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ./optimization.nix
+  ];
 
   system = {
     stateVersion = "23.11";
@@ -30,7 +38,12 @@
 
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" "audio" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "video"
+      "audio"
+    ];
     shell = pkgs.zsh;
     hashedPasswordFile = config.age.secrets.userpass.path;
     openssh.authorizedKeys.keys = [
@@ -40,6 +53,8 @@
 
   services = {
     getty.autologinUser = user;
-    openssh = { enable = true; };
+    openssh = {
+      enable = true;
+    };
   };
 }

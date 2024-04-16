@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs = {
     # https://nix-community.github.io/home-manager/options.html#opt-programs.tmux.enable
     # https://github.com/sagittaros/dotfiles/blob/master/.tmux.conf

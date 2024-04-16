@@ -2,7 +2,9 @@
 
 {
   boot = {
-    kernel.sysctl = { "fs.inotify.max_user_watches" = "1048576"; };
+    kernel.sysctl = {
+      "fs.inotify.max_user_watches" = "1048576";
+    };
 
     # https://discourse.nixos.org/t/new-install-hangs-on-boot/21435/10
     extraModprobeConfig = ''
@@ -19,7 +21,10 @@
   };
 
   hardware.nvidiaOptimus.disable = true;
-  boot.blacklistedKernelModules = [ "nouveau" "nvidia" ];
+  boot.blacklistedKernelModules = [
+    "nouveau"
+    "nvidia"
+  ];
 
   hardware = {
     enableRedistributableFirmware = true;

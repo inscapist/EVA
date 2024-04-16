@@ -15,7 +15,8 @@ inputs:
   # });
 
   # no need to add in in Doom
-  polyglot = (_: prev:
+  polyglot = (
+    _: prev:
     let
       grammers = with prev.tree-sitter-grammars; [
         tree-sitter-bash
@@ -46,10 +47,12 @@ inputs:
         tree-sitter-vim
         tree-sitter-yaml
       ];
-    in {
+    in
+    {
       emacs-pgtk = prev.emacs-pgtk.overrideAttrs (old: {
         name = "emacs-pgtk";
         treeSitterPlugins = grammers;
       });
-    });
+    }
+  );
 }

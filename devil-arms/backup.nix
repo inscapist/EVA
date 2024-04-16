@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   systemd.timers."restic-backup" = {
     description = "Run backup every day at noon";
     enable = true;

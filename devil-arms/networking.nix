@@ -16,8 +16,14 @@
       # dns = "systemd-resolved";
     };
 
-    nameservers = [ "1.1.1.1" "8.8.8.8" ];
-    networkmanager.insertNameservers = [ "1.1.1.1" "8.8.8.8" ];
+    nameservers = [
+      "1.1.1.1"
+      "8.8.8.8"
+    ];
+    networkmanager.insertNameservers = [
+      "1.1.1.1"
+      "8.8.8.8"
+    ];
 
     firewall = {
       allowedTCPPorts = [ 22 ];
@@ -28,7 +34,6 @@
       192.168.0.189 dante
       192.168.0.121 vergil
     '';
-
   };
 
   # my wireguard client configs

@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
 
   # Lid settings
   services.logind = {
@@ -70,7 +71,9 @@
     # abrmd.enable = true;
   };
 
-  environment = { systemPackages = with pkgs; [ fcron ]; };
+  environment = {
+    systemPackages = with pkgs; [ fcron ];
+  };
 
   # https://wiki.archlinux.org/title/ClamAV
   # https://gist.github.com/johnfedoruk/19820540dc096380784c8cf0b7ef333b

@@ -5,7 +5,7 @@
     # office
     slack
     signal-desktop
-    #obsidian
+    obsidian
     libreoffice-fresh
     teamviewer
     zoom-us

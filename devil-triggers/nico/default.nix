@@ -1,5 +1,3 @@
 lib:
 
-{
-  colorlib = import ./colorlib.nix lib;
-}
+{ colorlib = import ./colorlib.nix lib; }

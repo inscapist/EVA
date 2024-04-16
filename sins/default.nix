@@ -1,6 +1,12 @@
-{ user, inputs, system, ... }:
+{
+  user,
+  inputs,
+  system,
+  ...
+}:
 
-with inputs; {
+with inputs;
+{
   imports = [ agenix.nixosModules.default ];
   environment.systemPackages = [ agenix.packages.${system}.default ];
 
@@ -10,8 +16,12 @@ with inputs; {
     mode = "400";
     owner = user;
   };
-  age.secrets.wg0_conf = { file = ./wg0_conf.age; };
-  age.secrets.userpass = { file = ./userpass.age; };
+  age.secrets.wg0_conf = {
+    file = ./wg0_conf.age;
+  };
+  age.secrets.userpass = {
+    file = ./userpass.age;
+  };
   age.secrets.restic_env = {
     file = ./restic_env.age;
     path = "/etc/restic-env";

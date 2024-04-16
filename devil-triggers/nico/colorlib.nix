@@ -1,18 +1,20 @@
-lib:
-with lib; rec {
+lib: with lib; rec {
   hex = c: "#${c}";
 
-  rgba = c:
+  rgba =
+    c:
     let
       r = toString (hexToDec (__substring 0 2 c));
       g = toString (hexToDec (__substring 2 2 c));
       b = toString (hexToDec (__substring 4 2 c));
       res = "rgba(${r}, ${g}, ${b}, .5)";
-    in res;
+    in
+    res;
 
   # functions copied from https://gist.github.com/corpix/f761c82c9d6fdbc1b3846b37e1020e11
   # convert a hex value to an integer
-  hexToDec = v:
+  hexToDec =
+    v:
     let
       hexToInt = {
         "0" = 0;
@@ -40,18 +42,21 @@ with lib; rec {
       };
       chars = stringToCharacters v;
       charsLen = length chars;
-    in foldl (a: v: a + v) 0
-    (imap0 (k: v: hexToInt."${v}" * (pow 16 (charsLen - k - 1))) chars);
+    in
+    foldl (a: v: a + v) 0 (imap0 (k: v: hexToInt."${v}" * (pow 16 (charsLen - k - 1))) chars);
 
-  pow = let
-    pow' = base: exponent: value:
-      # FIXME: It will silently overflow on values > 2**62 :(
-      # The value will become negative or zero in this case
-      if exponent == 0 then
-        1
-      else if exponent <= 1 then
-        value
-      else
-        (pow' base (exponent - 1) (value * base));
-  in base: exponent: pow' base exponent base;
+  pow =
+    let
+      pow' =
+        base: exponent: value:
+        # FIXME: It will silently overflow on values > 2**62 :(
+        # The value will become negative or zero in this case
+        if exponent == 0 then
+          1
+        else if exponent <= 1 then
+          value
+        else
+          (pow' base (exponent - 1) (value * base));
+    in
+    base: exponent: pow' base exponent base;
 }

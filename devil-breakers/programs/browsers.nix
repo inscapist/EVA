@@ -12,8 +12,12 @@
 
     #   ];
     # };
-    brave = { enable = true; };
-    firefox = { enable = true; };
+    brave = {
+      enable = true;
+    };
+    firefox = {
+      enable = true;
+    };
   };
 
   home.sessionVariables = {
