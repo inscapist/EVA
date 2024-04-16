@@ -36,6 +36,9 @@
       startx.enable = true;
     };
 
+    # Needed for fcitx5/ibus
+    desktopManager.runXdgAutostartIfNone = true;
+
     # use i3
     windowManager.i3 = {
       enable = true;

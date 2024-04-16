@@ -12,7 +12,6 @@ if [ -z "${XDG_RUNTIME_DIR}" ]; then
     fi
 fi
 
-ibus-daemon -d
 xss-lock -- i3lock-fancy-rapid 4 2 &
 
 #exec herbstluftwm --locked
