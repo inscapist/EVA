@@ -11,8 +11,6 @@ call plug#begin('~/.config/nvim/vim-plugins')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'easymotion/vim-easymotion'
@@ -20,10 +18,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/goyo.vim'
-Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 " UI
-Plug 'franbach/miramare'
-Plug 'sainnhe/everforest'
+Plug 'rebelot/kanagawa.nvim'
 Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
 call plug#end()
@@ -97,21 +93,7 @@ let g:coc_node_path = '/usr/bin/node'
 set background=dark
 set termguicolors
 
-let g:everforest_background = 'hard'
-colorscheme everforest
-
-" use gruvbox
-" let g:gruvbox_contrast_dark='medium'
-" let g:gruvbox_contrast_light='soft'
-" let g:gruvbox_italic=1
-" let g:gruvbox_bold=1
-" colorscheme gruvbox
-
-" use miramare
-" let g:miramare_enable_italic = 1
-" let g:miramare_disable_italic_comment = 1
-" colorscheme miramare
-
+colorscheme kanagawa-dragon
 
 " ===========================================================================
 " HOOKS
@@ -123,11 +105,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " ===========================================================================
 " MODULES
 " ===========================================================================
-source ~/.config/nvim/modules/denite.vim
 source ~/.config/nvim/modules/floating-window.vim
 source ~/.config/nvim/modules/keymaps.vim
 source ~/.config/nvim/modules/nerdtree.vim
 source ~/.config/nvim/modules/syntax.vim
-source ~/.config/nvim/modules/zen.vim
-
-
