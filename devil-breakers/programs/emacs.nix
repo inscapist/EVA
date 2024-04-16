@@ -2,7 +2,8 @@
 {
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs-gtk; # or pkgs.emacs
+    # package = pkgs.emacs-gtk;
+    package = pkgs.emacs;
   };
 
   home.file.".doom.d" = {

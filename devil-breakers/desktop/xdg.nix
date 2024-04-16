@@ -21,7 +21,7 @@ let
 
     "audio/*" = [ "mpv.desktop" ];
     "video/*" = [ "mpv.dekstop" ];
-    "image/*" = [ "imv.desktop" ];
+    "image/*" = [ "gthumb.desktop" ];
     "application/json" = browsers;
     "application/pdf" = [ "org.pwmt.zathura.desktop.desktop" ];
     # "x-scheme-handler/discord" = [ "discordcanary.desktop" ];
