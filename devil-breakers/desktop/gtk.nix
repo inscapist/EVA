@@ -21,11 +21,6 @@
       package = pkgs.tela-icon-theme;
     };
 
-    # iconTheme = {
-    #   name = "Papirus-Dark";
-    #   package = pkgs.papirus-icon-theme;
-    # };
-
     # https://github.com/NixOS/nixpkgs/blob/master/pkgs/data/themes/orchis-theme/default.nix
     # nix-build '<nixpkgs>' -A orchis-theme --no-out-link
     theme = {
@@ -34,15 +29,5 @@
         tweaks = [ "solid" "compact" ];
       };
     };
-
-    # Purr
-    # theme = {
-    #   name = "Catppuccin-Mocha-Compact-Mauve-Dark";
-    #   package = pkgs.catppuccin-gtk.override {
-    #     accents = [ "mauve" ];
-    #     size = "compact";
-    #     variant = "mocha";
-    #   };
-    # };
   };
 }
