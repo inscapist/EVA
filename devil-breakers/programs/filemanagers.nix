@@ -1,7 +1,6 @@
 { pkgs, ... }: {
-  home.packages = with pkgs; [ ranger ];
+  home.packages = with pkgs; [ ranger xfce.thunar ];
   programs = {
-    thunar.enable = true;
     # https://nix-community.github.io/home-manager/options.html#opt-programs.nnn.package
     nnn = {
       enable = true;

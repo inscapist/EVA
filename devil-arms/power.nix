@@ -45,7 +45,7 @@
   };
 
   # # This is what I was familiar with
-  powerManagement.powertop.enable = true;
+  # powerManagement.powertop.enable = true;
 
   networking.networkmanager.wifi.powersave = true;
 }

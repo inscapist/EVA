@@ -25,7 +25,9 @@
 
     # A misleading option. Has nought to do with startx
     # it simply means do not enable any display
-    displayManager.startx.enable = true;
+    displayManager = {
+      startx.enable = true;
+    };
 
     # use i3
     windowManager.i3 = {
