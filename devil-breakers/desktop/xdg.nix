@@ -21,7 +21,7 @@ let
 
     "audio/*" = [ "mpv.desktop" ];
     "video/*" = [ "mpv.dekstop" ];
-    "image/*" = [ "gthumb.desktop" ];
+    "image/*" = [ "imv.desktop" ];
     "application/json" = browsers;
     "application/pdf" = [ "org.pwmt.zathura.desktop.desktop" ];
     # "x-scheme-handler/discord" = [ "discordcanary.desktop" ];
@@ -36,7 +36,7 @@ in
     enable = true;
 
     mimeApps = {
-      enable = true;
+      enable = false; # easier to manage this manually
       defaultApplications = associations;
     };
 
