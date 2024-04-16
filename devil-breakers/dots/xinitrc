@@ -12,6 +12,8 @@ if [ -z "${XDG_RUNTIME_DIR}" ]; then
     fi
 fi
 
+xss-lock -- i3lock-pixeled &
+
 #exec herbstluftwm --locked
 #exec xmonad
 
