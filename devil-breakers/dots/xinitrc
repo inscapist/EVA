@@ -1,6 +1,5 @@
 xset r rate 250 60
 setxkbmap -option caps:escape
-xbacklight -set 10
 
 # paired with `Xft.dpi: 144`
 export GDK_DPI_SCALE=1.4
