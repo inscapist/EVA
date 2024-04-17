@@ -56,6 +56,7 @@
         imv
         gthumb
         feh
+        xsel
       ]
       ++ [ restic ]; # required for backing up stuff to backblaze(b2 protocol)
   };
