@@ -279,6 +279,25 @@ function tlscert-check-kube() {
     openssl x509 -noout -text
 }
 
+function git-stats() {
+    if [[ -z "$1" ]]; then
+        echo "Usage: git-stats <number-of-commits>"
+        return 1
+    fi
+    
+    git log --format=format: --name-only -n $1 | sort | uniq -c | sort -g
+}
+
+function git-loc-stats() {
+    if [[ -z "$1" ]]; then
+        echo "Usage: git-loc-stats <number-of-commits>"
+        return 1
+    fi
+
+    git log --format=format: --numstat -n $1 | awk '{ add += $1; subs += $2; loc += $1 + $2; print $3, loc; loc = 0; }' | sort | uniq -c | sort -rg
+}
+
+
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # >> My Environment
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
