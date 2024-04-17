@@ -142,8 +142,8 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+q kill
 
 # Backlight control
-bindsym XF86MonBrightnessUp exec light -A 1
-bindsym XF86MonBrightnessDown exec light -U 1
+bindsym XF86MonBrightnessUp exec light -A 3
+bindsym XF86MonBrightnessDown exec light -U 3
 
 # change focus
 bindsym $mod+h focus left
