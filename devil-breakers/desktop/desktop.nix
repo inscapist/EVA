@@ -9,7 +9,6 @@
     xorg.xset
     xorg.setxkbmap
     xorg.xinit
-    xorg.xbacklight
     xorg.xrandr
     xorg.xrdb
     xorg.xprop

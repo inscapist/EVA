@@ -142,8 +142,8 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+q kill
 
 # Backlight control
-bindsym XF86MonBrightnessUp exec xbacklight +10
-bindsym XF86MonBrightnessDown exec xbacklight -10
+bindsym XF86MonBrightnessUp exec light -A 1
+bindsym XF86MonBrightnessDown exec light -U 1
 
 # change focus
 bindsym $mod+h focus left
@@ -278,7 +278,7 @@ default_border pixel 1
 default_floating_border pixel 1
 for_window [class="^.*"] border pixel 1
 
-exec --no-startup-id xrandr --output eDP-1 --brightness .7
+exec --no-startup-id xrandr --output eDP-1 --brightness .6
 
 exec_always --no-startup-id xset r rate 250 60
 exec_always --no-startup-id feh --bg-scale ~/.background.png
