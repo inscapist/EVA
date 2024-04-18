@@ -2,7 +2,7 @@
   imports = [
     ./backup.nix
     ./bluetooth.nix
-    ./desktop.nix
+    ./display.nix
     ./fonts.nix
     ./i18n.nix
     ./networking.nix
