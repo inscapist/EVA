@@ -166,6 +166,7 @@ alias ad="ansible-doc"
 alias ap="ansible-playbook"
 alias da="direnv allow"
 alias di="dua interactive" # install with `sudo pacman -S dua-cli`
+alias fl="flutter"
 alias gb="git branch"
 alias gf="git fetch"
 alias gp="git pull"
@@ -297,6 +298,14 @@ function git-loc-stats() {
     git log --format=format: --numstat -n $1 | awk '{ add += $1; subs += $2; loc += $1 + $2; print $3, loc; loc = 0; }' | sort | uniq -c | sort -rg
 }
 
+function ff() {
+    local file=$(fd --type file --full-path $1)
+    if [[ -n $file ]]; then
+        nvim $file
+    else
+        echo "No file found matching '$1'"
+    fi
+}
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # >> My Environment
