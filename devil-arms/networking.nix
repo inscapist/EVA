@@ -7,8 +7,9 @@
   networking = {
     useDHCP = false;
     networkmanager = {
+      dhcp = "dhcpcd";
       enable = true;
-      # wifi.backend = "iwd";
+      wifi.backend = "iwd";
       dns = "systemd-resolved";
     };
 
