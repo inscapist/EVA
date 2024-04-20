@@ -1,28 +1,22 @@
 { config, lib, ... }:
 
-# with builtins;
-# with lib;
 {
   services.tailscale.enable = true;
-  services.openssh.enable = true;
+  services.openssh.enable = false;
 
   networking = {
     useDHCP = false;
     networkmanager = {
       enable = true;
       # wifi.backend = "iwd";
-
-      # https://www.reddit.com/r/archlinux/comments/xf4z2m/thoughts_on_systemdresolved_vs_dnsmasq/
-      # dns = "systemd-resolved";
+      dns = "systemd-resolved";
     };
 
     nameservers = [
-      "1.1.1.1"
-      "8.8.8.8"
-    ];
-    networkmanager.insertNameservers = [
-      "1.1.1.1"
-      "8.8.8.8"
+      "45.90.28.0#2977d3.dns.nextdns.io"
+      "2a07:a8c0::#2977d3.dns.nextdns.io"
+      "45.90.30.0#2977d3.dns.nextdns.io"
+      "2a07:a8c1::#2977d3.dns.nextdns.io"
     ];
 
     firewall = {
@@ -45,15 +39,20 @@
   # https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1473408913
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
-  # services.resolved = {
-  #   enable = true;
-  #   dnssec = "allow-downgrade";
-  #   fallbackDns =
-  #     [ "1.1.1.1" "2606:4700:4700::1111" "8.8.8.8" "2001:4860:4860::8844" ];
-  #   llmnr = "true";
-  #   extraConfig = ''
-  #     Domains=~.
-  #     MulticastDNS=true
-  #   '';
-  # };
+  services.resolved = {
+    enable = true;
+    dnssec = "allow-downgrade";
+    dnsovertls = "true";
+    llmnr = "true";
+    fallbackDns = [
+      "45.90.28.0#2977d3.dns.nextdns.io"
+      "2a07:a8c0::#2977d3.dns.nextdns.io"
+      "45.90.30.0#2977d3.dns.nextdns.io"
+      "2a07:a8c1::#2977d3.dns.nextdns.io"
+    ];
+    extraConfig = ''
+      Domains=~.
+      MulticastDNS=true
+    '';
+  };
 }

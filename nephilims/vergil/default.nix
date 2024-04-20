@@ -3,6 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
+  lib,
   config,
   pkgs,
   user,
@@ -53,8 +54,6 @@
 
   services = {
     getty.autologinUser = user;
-    openssh = {
-      enable = true;
-    };
+    openssh.enable = false;
   };
 }

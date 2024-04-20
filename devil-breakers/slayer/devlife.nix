@@ -22,6 +22,7 @@
     clojure
     leiningen
     rustup
+    asdf-vm
     #-- LSP --#
     nil
     sumneko-lua-language-server
@@ -45,5 +46,6 @@
     #-- Misc --#
     lldb
     rustdesk
+    libz
   ];
 }

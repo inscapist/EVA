@@ -147,6 +147,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 
 # alias e="emacs -nw"
+alias a="asdf"
 alias c="cargo"
 alias d="docker"
 alias f="fd" # f -e pdf
@@ -192,8 +193,6 @@ alias kd="kubectl deprecations"
 alias kres="kubectl resource-capacity"
 alias ksh="kubectl run -it --rm --image=alpine --restart=Never -- sh"
 
-alias ccat="/bin/cat"
-alias cat="bat"
 alias genrand="openssl rand -hex 32"
 alias lls="/bin/ls"
 alias sha="npx shadow-cljs"
