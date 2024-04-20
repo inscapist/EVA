@@ -2,7 +2,7 @@
 
 {
   services.tailscale.enable = true;
-  services.openssh.enable = false;
+  services.openssh.enable = true;
 
   networking = {
     useDHCP = false;

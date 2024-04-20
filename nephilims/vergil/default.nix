@@ -54,6 +54,6 @@
 
   services = {
     getty.autologinUser = user;
-    openssh.enable = false;
+    openssh.enable = true;
   };
 }
