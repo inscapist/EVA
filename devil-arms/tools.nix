@@ -17,6 +17,7 @@
         jq
         fx
         git
+        rage
       ]
       ++ [ neovim ]
       ++ [
@@ -27,14 +28,19 @@
         unrar
         zip
         unzip
+        ouch # compress/decompress stuffs
       ]
       ++ [
+        nitch
         dua
         duf
+        ncdu
         htop
+        bottom
         btop
         glances
         iotop
+        hyperfine
       ]
       ++ [
         gcc
@@ -50,6 +56,7 @@
         dig
         socat
         netcat
+        dive
       ]
       ++ [
         imagemagick
@@ -57,6 +64,9 @@
         gthumb
         feh
         xsel
+        nyancat
+        asciinema
+        pgcli
       ]
       ++ [ restic ]; # required for backing up stuff to backblaze(b2 protocol)
   };
