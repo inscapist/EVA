@@ -3,11 +3,10 @@
 {
   home.packages = with pkgs; [
     #-- recreation --#
-    mindustry-wayland
-    openra
-    warzone2100
-    zdoom
-    flare
+    # mindustry-wayland
+    # openra
+    # warzone2100
+    # flare
 
     #-- education --#
     celestia
@@ -17,6 +16,6 @@
     #-- Others/vanity/fun? --#
     cmatrix
     cbonsai
-    dmidecode
+    nyancat
   ];
 }

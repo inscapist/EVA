@@ -40,6 +40,16 @@
   # https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1473408913
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
+  virtualisation.docker = {
+    rootless.daemon.settings = {
+      dns = ["1.1.1.1" "9.9.9.9"];
+    };
+    daemon.settings = {
+      dns = ["1.1.1.1" "9.9.9.9"];
+    };
+  };
+
+
   services.resolved = {
     enable = true;
     dnssec = "allow-downgrade";

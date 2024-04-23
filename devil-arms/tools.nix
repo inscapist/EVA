@@ -64,9 +64,9 @@
         gthumb
         feh
         xsel
-        nyancat
         asciinema
         pgcli
+        dmidecode
       ]
       ++ [ restic ]; # required for backing up stuff to backblaze(b2 protocol)
   };

@@ -163,6 +163,7 @@ alias t="tmux"
 alias v="vagrant"
 alias y="yarn"
 
+alias aa="acpi -bi"
 alias ad="ansible-doc"
 alias ap="ansible-playbook"
 alias da="direnv allow"
@@ -182,6 +183,7 @@ alias nf="nix flake"
 alias nd="nix-tree --derivation"
 alias ns="nix search nixpkgs"
 alias oo="xdg-open"
+alias tt="tclock"
 
 # kubectl
 alias k="kubectl"
