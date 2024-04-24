@@ -4,10 +4,10 @@
     docker = {
       autoPrune.enable = true;
       enable = true;
-      rootless = {
-        enable = true;
-        setSocketVariable = true;
-      };
+      # rootless = {
+      #   enable = true;
+      #   setSocketVariable = true;
+      # };
     };
     libvirtd = {
       enable = true;
