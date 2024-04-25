@@ -3,6 +3,9 @@
   programs.rofi = {
     enable = true;
     theme = "DarkBlue";
+    extraConfig = {
+      font = "MonaspiceRn Nerd Font 20";
+    };
   };
 
   home.packages = with pkgs; [
