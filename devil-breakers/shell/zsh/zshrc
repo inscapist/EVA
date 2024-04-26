@@ -174,7 +174,6 @@ alias fl="flutter"
 alias gb="git branch"
 alias gf="git fetch"
 alias gp="git pull"
-alias gpull="git pull"
 alias gup="git push -u origin HEAD"
 alias gt="git status"
 alias la='eza -la --git --color-scale'
@@ -189,6 +188,15 @@ alias oc="ouch compress"
 alias od="ouch decompress"
 alias ol="ouch list"
 alias tt="tclock"
+
+# directory shortcuts
+alias goeva="cd ~/EVA"
+alias gop="cd /projects"
+alias gomain="cd /projects/talenox/talenox"
+alias gosum="cd /projects/talenox/summary-service"
+alias goinfra="cd /projects/talenox/talenox-infra"
+alias gok8s="cd /projects/talenox/talenox-k8s"
+alias gowall="cd /yy/wallpapers"
 
 # kubectl
 alias k="kubectl"
