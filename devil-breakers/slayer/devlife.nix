@@ -12,6 +12,8 @@
     openssl
     kubectl
     krew
+    kapp 
+    stern
     #azuredatastudio
     #android-studio
     #-- Languages --#
@@ -22,6 +24,7 @@
     clojure
     leiningen
     rustup
+    rust-analyzer
     asdf-vm
     #-- LSP --#
     nil
@@ -47,5 +50,6 @@
     lldb
     rustdesk
     libz
+    beekeeper-studio
   ];
 }

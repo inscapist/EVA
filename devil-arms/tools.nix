@@ -17,7 +17,9 @@
         jq
         fx
         git
-        rage
+        gnupg
+        age
+        sops
       ]
       ++ [ neovim ]
       ++ [
@@ -49,6 +51,8 @@
         gdb
         hexyl
         poppler_utils
+        imagemagick
+        dmidecode
       ]
       ++ [
         tcpdump
@@ -59,15 +63,14 @@
         dive
       ]
       ++ [
-        imagemagick
-        imv
+        exiftool
+        mpv
         gthumb
+        imv
         feh
-        xsel
         asciinema
         pgcli
-        dmidecode
-      ]
-      ++ [ restic ]; # required for backing up stuff to backblaze(b2 protocol)
+        restic # required for backing up stuff to backblaze(b2 protocol)
+      ];
   };
 }

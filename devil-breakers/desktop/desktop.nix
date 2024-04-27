@@ -15,10 +15,14 @@
     xorg.xrandr
     xorg.xrdb
     xorg.xprop
+    xorg.xeyes
+    xorg.xlsclients
+    xorg.xwininfo
 
     arandr
     maim
     xclip
+    xsel
   ];
 
   home.file.".background.png".source = ./background.png;
