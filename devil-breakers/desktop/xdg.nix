@@ -5,6 +5,7 @@ let
 
   # XDG MIME types
   associations = {
+    "inode/directory" = [ "thunar.desktop" ];
     "application/x-extension-htm" = browsers;
     "application/x-extension-html" = browsers;
     "application/x-extension-shtml" = browsers;
@@ -20,7 +21,7 @@ let
     "x-scheme-handler/unknown" = browsers;
 
     "audio/*" = [ "mpv.desktop" ];
-    "video/*" = [ "mpv.dekstop" ];
+    "video/*" = [ "mpv.desktop" ];
     "image/*" = [ "imv.desktop" ];
     "application/json" = browsers;
     "application/pdf" = [ "org.pwmt.zathura.desktop.desktop" ];
@@ -36,7 +37,7 @@ in
     enable = true;
 
     mimeApps = {
-      enable = false; # easier to manage this manually
+      enable = true;
       defaultApplications = associations;
     };
 
@@ -55,7 +56,7 @@ in
       pictures = "${config.home.homeDirectory}/pictures";
 
       extraConfig = {
-        XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/screenshots";
+        XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}";
       };
     };
   };

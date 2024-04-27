@@ -24,7 +24,6 @@
     clojure
     leiningen
     rustup
-    rust-analyzer
     asdf-vm
     #-- LSP --#
     nil
