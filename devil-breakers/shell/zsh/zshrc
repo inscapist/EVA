@@ -208,6 +208,10 @@ alias knn="kubectl config view --minify -o jsonpath='{..namespace}'"
 alias kd="kubectl deprecations"
 alias kres="kubectl resource-capacity"
 alias ksh="kubectl run -it --rm --image=alpine --restart=Never -- sh"
+alias kpm="kubectl -n prod-master"
+alias kcm="kubectl -n custom-metrics"
+alias kms="kubectl modify-secret"
+alias wk="watch kubectl"
 
 alias genrand="openssl rand -hex 32"
 alias lls="/bin/ls"
@@ -330,7 +334,6 @@ path+=(
   ${HOME}/.local/bin
   ${HOME}/.config/emacs/bin
   ${HOME}/.cargo/bin
-  ${HOME}/.pyenv/bin
   ${HOME}/.krew/bin
   ${HOME}/.fly/bin
   ${HOME}/go/bin

@@ -18,6 +18,7 @@
     xorg.xeyes
     xorg.xlsclients
     xorg.xwininfo
+    xorg.xev
 
     arandr
     maim

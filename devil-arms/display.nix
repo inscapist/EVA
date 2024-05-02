@@ -28,7 +28,10 @@
   services.xserver = {
     enable = true;
     xkb.layout = "us";
-    xkb.options = "caps:escape";
+    # to be replaced by kmonad
+    #xkb.options = "caps:escape";
+
+    # displayManager.sessionCommands = "sleep 5 && ${pkgs.xorg.xmodmap}/bin/xmodmap -e 'keycode 9 = grave asciitilde' &";
 
     # NOTE mutually exclusive with `services.displayManager.defaultSession`
     # displayManager.startx.enable = true;
