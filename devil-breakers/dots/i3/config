@@ -293,7 +293,7 @@ for_window [class="^.*"] border pixel 1
 
 exec --no-startup-id xrandr --output eDP-1 --brightness .6
 
-exec_always --no-startup-id sleep 5 && xset r rate 250 66
+exec_always --no-startup-id sleep 5 && xset r rate 250 63
 exec_always --no-startup-id feh --bg-scale ~/.background.png
 exec_always --no-startup-id i3-msg workspace 1
 exec_always --no-startup-id xss-lock -- i3lock-fancy-rapid 4 2

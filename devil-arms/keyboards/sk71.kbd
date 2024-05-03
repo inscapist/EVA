@@ -12,7 +12,7 @@
 (deflayer base
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  mute
   tab  @q   w    e    r    t    y    u    i    o    p    [    ]    \     end  volu
-  esc  a    s    d    f    g    h    j    k    l    ;    '    ret        del  vold
+  esc  @a   s    d    f    g    h    j    k    l    ;    '    ret        del  vold
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
   lctl lmet lalt           spc            ralt rmet cmp  rctl
 )
@@ -25,7 +25,17 @@
   _    _    _           _                 _    _    _    _
 )
 
+(deflayer arrows
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _
+  _    _    _    _    _    _   lft  down  up  rght  _    _    _          _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _           _                 _    _    _    _
+)
+
 (defalias
   fn    (layer-while-held funcs)
+  arr   (layer-while-held arrows)
   q     (tap-hold-release 200 200 q @fn)
+  a     (tap-hold-release 200 200 a @arr)
 )
