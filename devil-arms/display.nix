@@ -31,7 +31,9 @@
     # to be replaced by kmonad
     #xkb.options = "caps:escape";
 
-    # displayManager.sessionCommands = "sleep 5 && ${pkgs.xorg.xmodmap}/bin/xmodmap -e 'keycode 9 = grave asciitilde' &";
+    # displayManager.sessionCommands = ''
+    #   sleep 5 && ${pkgs.xorg.xset}/bin/xset r rate 250 66 &
+    # '';
 
     # NOTE mutually exclusive with `services.displayManager.defaultSession`
     # displayManager.startx.enable = true;
@@ -64,4 +66,17 @@
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     XCURSOR_SIZE = "32";
   };
+
+  environment.systemPackages = with pkgs; [
+    xorg.xset
+    xorg.setxkbmap
+    xorg.xinit
+    xorg.xrandr
+    xorg.xrdb
+    xorg.xprop
+    xorg.xeyes
+    xorg.xlsclients
+    xorg.xwininfo
+    xorg.xev
+  ];
 }

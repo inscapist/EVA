@@ -11,7 +11,6 @@
     };
     eza = {
       enable = true;
-      enableAliases = true;
     };
     direnv = {
       enable = true;

@@ -9,17 +9,6 @@
   };
 
   home.packages = with pkgs; [
-    xorg.xset
-    xorg.setxkbmap
-    xorg.xinit
-    xorg.xrandr
-    xorg.xrdb
-    xorg.xprop
-    xorg.xeyes
-    xorg.xlsclients
-    xorg.xwininfo
-    xorg.xev
-
     arandr
     maim
     xclip

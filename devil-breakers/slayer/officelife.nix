@@ -20,6 +20,6 @@
     # authentication
     _1password-gui
     _1password
-    authy
+    #authy
   ];
 }

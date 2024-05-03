@@ -5,6 +5,7 @@
     ./display.nix
     ./fonts.nix
     ./i18n.nix
+    ./keyboards
     ./networking.nix
     ./os.nix
     ./power.nix
