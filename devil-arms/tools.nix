@@ -63,12 +63,6 @@
         dive
       ]
       ++ [
-        exiftool
-        mpv
-        gthumb
-        imv
-        feh
-        asciinema
         pgcli
         nix-tree
         restic # required for backing up stuff to backblaze(b2 protocol)

@@ -101,5 +101,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "fu";
     };
+    yazi.url = "github:sxyazi/yazi";
   };
 }

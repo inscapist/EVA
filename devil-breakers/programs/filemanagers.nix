@@ -1,15 +1,24 @@
-{ pkgs, ... }:
+{ pkgs, yazi, ... }:
 {
   home.packages = with pkgs; [
-    ranger
+    mpv
+    gthumb
+    imv
+    feh
+    asciinema
     xfce.thunar
+    exiftool
+    file
+    zoxide
+    ffmpegthumbnailer
+    unar
+    poppler
   ];
   programs = {
-    # https://nix-community.github.io/home-manager/options.html#opt-programs.nnn.package
-    nnn = {
-      enable = false;
-      package = pkgs.nnn.override { withNerdIcons = true; };
-      bookmarks = { };
+    yazi = {
+      enable = true;
+      package = yazi.packages.${pkgs.system}.default;
+      enableZshIntegration = true;
     };
   };
 }

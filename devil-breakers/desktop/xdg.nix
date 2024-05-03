@@ -5,7 +5,7 @@ let
 
   # XDG MIME types
   associations = {
-    "inode/directory" = [ "thunar.desktop" ];
+    "inode/directory" = [ "yazi" ];
     "application/x-extension-htm" = browsers;
     "application/x-extension-html" = browsers;
     "application/x-extension-shtml" = browsers;
