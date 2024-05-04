@@ -17,7 +17,6 @@
 {
   imports = [ inputs.kmonad.nixosModules.default ];
 
-  # keyboard remapping
   services.kmonad = {
     enable = true;
     package = inputs.kmonad.packages.${pkgs.system}.default;

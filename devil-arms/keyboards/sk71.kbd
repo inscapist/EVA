@@ -1,3 +1,14 @@
+;; https://github.com/kmonad/kmonad/blob/master/keymap/tutorial.kbd
+;; https://tilde.team/~contrapunctus/blog/keyboard-machinations-kmonad.html
+
+;; (deflayer template
+;;   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _
+;;   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _
+;;   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _
+;;   _    _    _    _    _    _    _    _    _    _    _    _
+;;   _    _    _           _                 _    _    _    _
+;; )
+
 (defsrc
   esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     end  pgup
@@ -9,8 +20,34 @@
 (deflayer base
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  mute
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     end  volu
-  esc  a    s    d    f    g    h    j    k    l    ;    '    ret        del  vold
+  esc  @a   s    d    f    g    h    j    k    l    ;    '    ret        del  vold
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc           ralt rmet cmp  rctl
+  lctl lmet lalt           spc            ralt rmet cmp  rctl
 )
 
+(deflayer arrows
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _
+  _    @q   _    _    _    _    _    _    _    _    _    _    _    _     _    _
+  _    _    _    _    _    _    @l   @d   @u   @r   _    _    _          _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _           _                 _    _    _    _
+)
+
+;; using hjkl as arrows
+(defalias
+  mod_arrows (layer-toggle arrows)
+  l lft
+  d down
+  u up
+  r rght
+  q (layer-switch base)
+)
+
+
+;; Tips
+;; - use (tap-next-release tap hold) if there's no need to repeat the chord
+;; - use (tap-hold-next-release timeout tap hold) if you want to hold down the chord (eg. C-left to navigate words)
+
+(defalias
+  a     (tap-next-release a @mod_arrows)
+)
