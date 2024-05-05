@@ -1,5 +1,11 @@
+
 ;; https://github.com/kmonad/kmonad/blob/master/keymap/tutorial.kbd
-;; https://tilde.team/~contrapunctus/blog/keyboard-machinations-kmonad.html
+
+;; > Every Keycode has a name corresponding to its Keycode name, but all lower-case and with the 'Key' prefix removed
+;;   https://github.com/kmonad/kmonad/blob/master/src/KMonad/Keyboard/Keycode.hs
+
+;; For changes to take effect:
+;;    systemctl restart kmonad-sk71.service
 
 ;; (deflayer template
 ;;   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _
@@ -10,24 +16,32 @@
 ;; )
 
 (defsrc
-  esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     end  pgup
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret        del  pgdn
+  esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins   home
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     end   pgup
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret        del   pgdn
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
   lctl lmet lalt           spc            ralt rmet menu rctl
 )
 
 (deflayer base
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  mute
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     end  volu
-  esc  @a   s    d    f    g    h    j    k    l    ;    '    ret        del  vold
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins   mute
+  tab  @q   @w   e    r    t    y    u    i    o    p    [    ]    \     brup  volu
+  @esc a    s    d    f    g    h    j    k    l    ;    '    ret        brdn  vold
+  @lsl z    x    c    v    b    n    m    ,    .    /    rsft
   lctl lmet lalt           spc            ralt rmet cmp  rctl
+)
+
+(deflayer shifted
+  S-grv  S-1  S-2  S-3  S-4  S-5  S-6  S-7  S-8  S-9  S-0  S--  S-=  S-bspc  _   _
+  S-tab  Q    W    E    R    T    Y    U    I    O    P    S-[  S-]   S-\    _   _
+  S-esc  A    S    D    F    G    H    J    K    L    S-;  S-'  S-ret        _   _
+  _      Z    X    C    V    B    N    M    <    >    ?    _
+  S-lctl  S-lmet  S-lalt     S-spc      S-ralt S-rmet S-cmp S-rctl
 )
 
 (deflayer arrows
   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _
-  _    @q   _    _    _    _    _    _    _    _    _    _    _    _     _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _
   _    _    _    _    _    _    @l   @d   @u   @r   _    _    _          _    _
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _           _                 _    _    _    _
@@ -40,14 +54,19 @@
   d down
   u up
   r rght
-  q (layer-switch base)
 )
 
-
 ;; Tips
+;; - https://tilde.team/~contrapunctus/blog/keyboard-machinations-kmonad.html
 ;; - use (tap-next-release tap hold) if there's no need to repeat the chord
 ;; - use (tap-hold-next-release timeout tap hold) if you want to hold down the chord (eg. C-left to navigate words)
 
+;; Also, check this out on why we need a shifted layer
+;; https://github.com/kmonad/kmonad/issues/111#issuecomment-704869481
+
 (defalias
-  a     (tap-next-release a @mod_arrows)
+  lsl (around (layer-toggle shifted) lsft)
+  esc (tap-next-release esc @mod_arrows)
+  q (tap-next-release q (around lalt lsft)) ;; A-S used to move windows around
+  w (tap-next-release w (around lctl lmet)) ;; C-M used to resize windows
 )

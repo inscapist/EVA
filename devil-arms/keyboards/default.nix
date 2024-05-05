@@ -21,7 +21,7 @@
     enable = true;
     package = inputs.kmonad.packages.${pkgs.system}.default;
     keyboards = {
-      one2mini = {
+      sk71 = {
         device = "/dev/input/by-id/usb-BY_Tech_Gaming_Keyboard-event-kbd";
         defcfg = {
           enable = true;
