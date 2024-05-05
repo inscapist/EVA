@@ -28,7 +28,7 @@
   tab  @q   @w   e    r    t    y    u    i    o    p    [    ]    \     brup  volu
   @esc a    s    d    f    g    h    j    k    l    ;    '    ret        brdn  vold
   @lsl z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rmet cmp  rctl
+  lctl lmet lalt           spc            ralt rmet cmp  ralt
 )
 
 (deflayer shifted
@@ -36,7 +36,7 @@
   S-tab  Q    W    E    R    T    Y    U    I    O    P    S-[  S-]   S-\    _   _
   S-esc  A    S    D    F    G    H    J    K    L    S-;  S-'  S-ret        _   _
   _      Z    X    C    V    B    N    M    <    >    ?    _
-  S-lctl  S-lmet  S-lalt     S-spc      S-ralt S-rmet S-cmp S-rctl
+  S-lctl  S-lmet  S-lalt     S-spc      S-ralt S-rmet S-cmp S-ralt
 )
 
 (deflayer arrows
