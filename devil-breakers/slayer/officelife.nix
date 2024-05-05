@@ -7,11 +7,11 @@
     signal-desktop
     obsidian
     libreoffice-fresh
-    teamviewer
-    zoom-us
-    filezilla
-    neovim-qt
+
+    # compression
+    unrar
     unar
+    libsForQt5.ark
 
     # pdf viwers
     # evince
@@ -20,6 +20,5 @@
     # authentication
     _1password-gui
     _1password
-    #authy
   ];
 }

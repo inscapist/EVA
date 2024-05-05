@@ -147,7 +147,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 
 # alias e="emacs -nw"
-alias a="asdf"
 alias c="cargo"
 alias d="docker"
 alias f="fd" # f -e pdf
@@ -355,10 +354,5 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-clou
 [ -s "$HOME/.bun/_bun" ] && source "/$HOME/.bun/_bun"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-# extras
-[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
-[ -f "$HOME/.asdf/asdf.sh" ] && source "$HOME/.asdf/asdf.sh"
-
 
 source /run/sins/zsh_private

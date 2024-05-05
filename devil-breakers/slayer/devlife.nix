@@ -25,7 +25,6 @@
     leiningen
     rustup
     devenv
-    asdf-vm
     #-- LSP --#
     nil
     sumneko-lua-language-server
