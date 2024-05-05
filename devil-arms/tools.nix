@@ -48,6 +48,7 @@
         gcc
         gnumake
         graphviz
+        zgrviewer
         gdb
         hexyl
         poppler_utils
@@ -65,6 +66,7 @@
       ++ [
         pgcli
         nix-tree
+        nix-du
         restic # required for backing up stuff to backblaze(b2 protocol)
       ];
   };
