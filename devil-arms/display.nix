@@ -28,7 +28,7 @@
   services.xserver = {
     enable = true;
     xkb.layout = "us";
-    # to be replaced by kmonad
+    # replaced by kmonad
     #xkb.options = "caps:escape";
 
     # displayManager.sessionCommands = ''
