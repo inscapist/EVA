@@ -12,7 +12,7 @@
     openssl
     kubectl
     krew
-    kapp 
+    kapp
     stern
     #azuredatastudio
     #android-studio
@@ -24,6 +24,7 @@
     clojure
     leiningen
     rustup
+    devenv
     asdf-vm
     #-- LSP --#
     nil

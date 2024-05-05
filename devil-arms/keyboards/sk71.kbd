@@ -28,7 +28,7 @@
   tab  @q   @w   e    r    t    y    u    i    o    p    [    ]    \     brup  volu
   @esc a    s    d    f    g    h    j    k    l    ;    '    ret        brdn  vold
   @lsl z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rmet cmp  ralt
+  lctl lmet lalt           @spc           ralt rmet cmp  rctl
 )
 
 (deflayer shifted
@@ -36,7 +36,7 @@
   S-tab  Q    W    E    R    T    Y    U    I    O    P    S-[  S-]   S-\    _   _
   S-esc  A    S    D    F    G    H    J    K    L    S-;  S-'  S-ret        _   _
   _      Z    X    C    V    B    N    M    <    >    ?    _
-  S-lctl  S-lmet  S-lalt     S-spc      S-ralt S-rmet S-cmp S-ralt
+  S-lctl  S-lmet  S-lalt     S-spc      S-ralt S-rmet S-cmp S-rctl
 )
 
 (deflayer arrows
@@ -65,8 +65,9 @@
 ;; https://github.com/kmonad/kmonad/issues/111#issuecomment-704869481
 
 (defalias
-  lsl (around (layer-toggle shifted) lsft)
+  lsl (around (layer-toggle shifted) lsft) ;; activate shift layer
   esc (tap-next-release esc @mod_arrows)
   q (tap-next-release q (around lalt lsft)) ;; A-S used to move windows around
   w (tap-next-release w (around lctl lmet)) ;; C-M used to resize windows
+  spc (tap-next-release spc lalt)
 )
