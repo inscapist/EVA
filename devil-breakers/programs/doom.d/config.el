@@ -25,7 +25,7 @@
 (load! "+hydra")
 (load! "+langs")
 (load! "+org")
-;;(load! "+filetree")
+(load! "+filetree")
 (load! "+extras")
 
 

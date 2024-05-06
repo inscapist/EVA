@@ -25,8 +25,8 @@
 
 (deflayer base
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins   mute
-  @tab @q   w   e    r    t    y    u    i    o    p    [    ]    \     brup  volu
-  @esc a    s    d    f    g    h    j    k    l    ;    '    ret        brdn  vold
+  @tab @q   @w   e    r    t    y    u    i    o    p    [    ]    \     brup  volu
+  @esc @a   s    d    @f   g    h    j    k    l    ;    '    ret        brdn  vold
   @lsl z    x    c    v    b    n    m    ,    .    /    rsft
   lctl lmet lalt           @spc           ralt rmet cmp  rctl
 )
@@ -40,7 +40,7 @@
 )
 
 (deflayer arrows
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _   del    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _
   _    _    _    _    _    _    @l   @d   @u   @r   _    _    _          _    _
   _    _    _    _    _    _    _    _    _    _    _    _
@@ -67,7 +67,10 @@
 (defalias
   lsl (around (layer-toggle shifted) lsft) ;; activate shift layer
   spc (tap-next-release spc lalt)
-  esc (tap-next-release esc @mod_arrows)
-  tab (tap-next-release tab (around lctl lmet)) ;; C-M used to resize windows
-  q (tap-next-release q (around lalt lsft)) ;; A-S used to move windows around
+  esc (tap-next-release esc lctl)
+  tab (tap-next-release tab @mod_arrows)
+  f (tap-next-release f @mod_arrows)
+  q (tap-next-release q (around lctl lmet)) ;; C-M used to resize windows
+  w (tap-next-release w (around lalt lsft)) ;; A-S used to move windows around
+  a (tap-next-release a (around lctl lalt)) ;; C-A used in tmux, emacs and i3 shortcuts
 )

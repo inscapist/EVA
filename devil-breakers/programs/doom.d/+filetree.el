@@ -17,7 +17,7 @@
 ;; customize treemacs
 (after! treemacs
   (setq treemacs--width-is-locked nil
-        treemacs-width 26
+        treemacs-width 32
         treemacs-position 'left
         treemacs-show-cursor t
         treemacs-read-string-input 'from-minibuffer)
@@ -30,5 +30,3 @@
     (add-to-list 'treemacs-ignored-file-predicates #'treemacs-ignore-python-cache-dirs)
     (add-to-list 'treemacs-pre-file-insert-predicates #'treemacs-is-file-git-ignored?)))
 
-;; ace window fix
-(require 'ace-window)
