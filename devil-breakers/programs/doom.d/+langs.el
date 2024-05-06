@@ -88,6 +88,7 @@
 ;;     '("rufo" "--filename" filepath "--simple-exit")
 ;;     :modes '(ruby-mode ruby-ts-mode)))
 
+;; force ruby-lsp to be used instead of rubocop
 (with-eval-after-load 'lsp-mode
   (lsp-register-client
    (make-lsp-client

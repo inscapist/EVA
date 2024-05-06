@@ -14,13 +14,11 @@
     krew
     kapp
     stern
-    #azuredatastudio
-    #android-studio
     #-- Languages --#
     yarn
     nodejs
     nodePackages_latest.firebase-tools
-    python39 # install pip with `python -m ensurepip --upgrade`
+    python3 # install pip with `python -m ensurepip --upgrade`
     clojure
     leiningen
     rustup
@@ -50,5 +48,6 @@
     rustdesk
     libz
     beekeeper-studio
+    vscode
   ];
 }

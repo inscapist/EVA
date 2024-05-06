@@ -24,7 +24,7 @@ let
     "video/*" = [ "mpv.desktop" ];
     "image/*" = [ "imv.desktop" ];
     "application/json" = browsers;
-    "application/pdf" = [ "org.pwmt.zathura.desktop.desktop" ];
+    "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.deskto" ];
     "application/vnd.rar" = [ "org.kde.ark.desktop" ];
     # "x-scheme-handler/discord" = [ "discordcanary.desktop" ];
     # "x-scheme-handler/spotify" = [ "spotify.desktop" ];
