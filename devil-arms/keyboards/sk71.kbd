@@ -25,7 +25,7 @@
 
 (deflayer base
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins   mute
-  tab  @q   @w   e    r    t    y    u    i    o    p    [    ]    \     brup  volu
+  @tab @q   w   e    r    t    y    u    i    o    p    [    ]    \     brup  volu
   @esc a    s    d    f    g    h    j    k    l    ;    '    ret        brdn  vold
   @lsl z    x    c    v    b    n    m    ,    .    /    rsft
   lctl lmet lalt           @spc           ralt rmet cmp  rctl
@@ -66,8 +66,8 @@
 
 (defalias
   lsl (around (layer-toggle shifted) lsft) ;; activate shift layer
-  esc (tap-next-release esc @mod_arrows)
-  q (tap-next-release q (around lalt lsft)) ;; A-S used to move windows around
-  w (tap-next-release w (around lctl lmet)) ;; C-M used to resize windows
   spc (tap-next-release spc lalt)
+  esc (tap-next-release esc @mod_arrows)
+  tab (tap-next-release tab (around lctl lmet)) ;; C-M used to resize windows
+  q (tap-next-release q (around lalt lsft)) ;; A-S used to move windows around
 )

@@ -83,11 +83,6 @@
 (after! ruby-mode
   (setq-hook! 'ruby-mode-hook +format-with 'prettier-ruby))
 
-;; (after! ruby-mode
-;;   (set-formatter! 'ruby-mode
-;;     '("rufo" "--filename" filepath "--simple-exit")
-;;     :modes '(ruby-mode ruby-ts-mode)))
-
 ;; force ruby-lsp to be used instead of rubocop
 (with-eval-after-load 'lsp-mode
   (lsp-register-client

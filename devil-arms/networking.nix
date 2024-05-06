@@ -1,5 +1,13 @@
 { config, lib, ... }:
-
+with builtins;
+with lib;
+let
+  # nix-prefetch-url --type sha256 "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts"
+  blocklist = fetchurl {
+    url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts";
+    sha256 = "0r3vnsvxnl0yrxiyvad5g7p6l84pxichxg146farnv62wyxmb9jx";
+  };
+in
 {
   services.tailscale.enable = true;
   services.openssh.enable = true;
@@ -28,6 +36,8 @@
     extraHosts = ''
       192.168.0.189 dante
       192.168.0.121 vergil
+
+      ${(readFile blocklist)}
     '';
   };
 
@@ -42,13 +52,18 @@
 
   virtualisation.docker = {
     rootless.daemon.settings = {
-      dns = ["1.1.1.1" "9.9.9.9"];
+      dns = [
+        "1.1.1.1"
+        "9.9.9.9"
+      ];
     };
     daemon.settings = {
-      dns = ["1.1.1.1" "9.9.9.9"];
+      dns = [
+        "1.1.1.1"
+        "9.9.9.9"
+      ];
     };
   };
-
 
   services.resolved = {
     enable = true;
