@@ -4,8 +4,8 @@ with lib;
 let
   # nix-prefetch-url --type sha256 "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts"
   blocklist = fetchurl {
-    url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts";
-    sha256 = "0r3vnsvxnl0yrxiyvad5g7p6l84pxichxg146farnv62wyxmb9jx";
+    url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts";
+    sha256 = "1a6lwdjzfy2r2yf20bpjg2c02nmq8j0j5ig4zpyvzp44yfwg5knh";
   };
 in
 {
