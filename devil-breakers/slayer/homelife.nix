@@ -17,5 +17,6 @@
     cmatrix
     cbonsai
     nyancat
+    calibre
   ];
 }

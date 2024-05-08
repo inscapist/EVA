@@ -11,6 +11,7 @@
     vagrant
     openssl
     kubectl
+    kubernetes-helm
     krew
     kapp
     stern
