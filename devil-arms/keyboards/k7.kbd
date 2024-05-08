@@ -8,43 +8,48 @@
 ;;    systemctl restart kmonad-sk71.service
 
 ;; (deflayer template
-;;   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _
-;;   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _
-;;   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _
+;;   _    _    _    _
+;;   _    _    _    _    _    _    _    _    _    _    _    _    _    _
+;;   _    _    _    _    _    _    _    _    _    _    _    _    _    _
+;;   _    _    _    _    _    _    _    _    _    _    _    _    _
 ;;   _    _    _    _    _    _    _    _    _    _    _    _
-;;   _    _    _           _                 _    _    _    _
+;;   _    _    _           _                 _
 ;; )
 
 (defsrc
-  esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins   home
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     end   pgup
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret        del   pgdn
+  del home pgup pgdn
+  esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rmet menu rctl
+  lctl lmet lalt           spc            ralt
 )
 
 (deflayer base
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc    ins   mute
-  @tab @q   @w   e    r    t    y    u    i    o    p    [    ]    @rctl   brup  volu
-  @esc a    s    d    f    g    h    j    k    l    ;    '    ret          brdn  vold
+  brup brdn volu vold
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  @tab @q   @w   e    r    t    y    u    i    o    p   [    ]    @rctl
+  @esc a    s    d    f    g    h    j    k    l    ;    '    ret
   @lsl z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           @spc           ralt rmet cmp  rctl
+  lctl lmet lalt           @spc           ralt
 )
 
 (deflayer shifted
-  S-grv  S-1  S-2  S-3  S-4  S-5  S-6  S-7  S-8  S-9  S-0  S--  S-=  S-bspc  _   _
-  S-tab  Q    W    E    R    T    Y    U    I    O    P    S-[  S-]   S-\    _   _
-  S-esc  A    S    D    F    G    H    J    K    L    S-;  S-'  S-ret        _   _
+  _    _    _    _
+  S-grv  S-1  S-2  S-3  S-4  S-5  S-6  S-7  S-8  S-9  S-0  S--  S-=  S-bspc
+  S-tab  Q    W    E    R    T    Y    U    I    O    P    S-[  S-]   S-\
+  S-esc  A    S    D    F    G    H    J    K    L    S-;  S-'  S-ret
   _      Z    X    C    V    B    N    M    <    >    ?    _
-  S-lctl  S-lmet  S-lalt     S-spc      S-ralt S-rmet S-cmp S-rctl
+  S-lctl  S-lmet  S-lalt     S-spc      S-ralt
 )
 
 (deflayer arrows
-  _    _    _    _    _    _    _    _    _    _    _    _    _   del    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _
-  _    _    _    _    _    _    @l   @d   @u   @r   _    _    _          _    _
+  _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _   del
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    @l   @d   @u   @r   _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _           _                 _    _    _    _
+  _    _    _           _                 _
 )
 
 ;; using hjkl as arrows

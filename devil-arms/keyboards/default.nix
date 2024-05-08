@@ -30,6 +30,15 @@
         };
         config = builtins.readFile (./. + "/sk71.kbd");
       };
+      k7 = {
+        device = "/dev/input/by-id/usb-Keychron_Keychron_K7-event-kbd";
+        defcfg = {
+          enable = true;
+          fallthrough = true;
+          allowCommands = false;
+        };
+        config = builtins.readFile (./. + "/k7.kbd");
+      };
     };
   };
 }
