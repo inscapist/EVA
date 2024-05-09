@@ -26,6 +26,7 @@ let
     "application/json" = browsers;
     "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.deskto" ];
     "application/vnd.rar" = [ "org.kde.ark.desktop" ];
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [ "writer.desktop" ];
     # "x-scheme-handler/discord" = [ "discordcanary.desktop" ];
     # "x-scheme-handler/spotify" = [ "spotify.desktop" ];
     # "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
