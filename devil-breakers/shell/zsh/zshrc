@@ -188,6 +188,7 @@ alias oc="ouch compress"
 alias od="ouch decompress"
 alias ol="ouch list"
 alias tt="tclock"
+alias xx="xset r rate 250 66"
 
 # directory shortcuts
 alias goeva="cd ~/EVA"

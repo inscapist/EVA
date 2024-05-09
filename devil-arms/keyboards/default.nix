@@ -17,6 +17,10 @@
 {
   imports = [ ./kmonad.mod.nix ];
 
+  services.udev.extraRules = ''
+    ATTRS{name}=="Keychron K7", SYMLINK+="keychron-k7-blue"
+  '';
+
   services.kmonad = {
     enable = true;
     package = pkgs.kmonad;
@@ -32,6 +36,15 @@
       };
       k7 = {
         device = "/dev/input/by-id/usb-Keychron_Keychron_K7-event-kbd";
+        defcfg = {
+          enable = true;
+          fallthrough = true;
+          allowCommands = false;
+        };
+        config = builtins.readFile (./. + "/k7.kbd");
+      };
+      k7-bluetooth = {
+        device = "/dev/keychron-k7-blue";
         defcfg = {
           enable = true;
           fallthrough = true;
