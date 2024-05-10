@@ -54,7 +54,7 @@
   # https://github.com/NixOS/nixpkgs/issues/34603
   # https://wiki.archlinux.org/title/HiDPI
   # https://ricostacruz.com/til/fractional-scaling-on-xorg-linux
-  services.xserver.dpi = 144; # bigger value -> larger elements
+  services.xserver.dpi = 168; # bigger value -> larger elements
   services.xserver.upscaleDefaultCursor = false;
   environment.variables = {
     # the following 2 variables work in conjunction with each other,

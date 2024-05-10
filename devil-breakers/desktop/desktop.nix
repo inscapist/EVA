@@ -4,7 +4,7 @@
     enable = true;
     theme = "DarkBlue";
     extraConfig = {
-      font = "MonaspiceRn Nerd Font 20";
+      font = "MonaspiceRn Nerd Font 32";
     };
   };
 
