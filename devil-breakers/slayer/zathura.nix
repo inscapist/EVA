@@ -5,7 +5,7 @@
     # https://github.com/NixOS/nixpkgs/tree/master/pkgs/applications/misc/zathura
     zathura_pdf_mupdf
     # zathura_pdf_poppler
-  ];
+  ] ++ [ pkgs.sioyek ];
 
   programs.zathura = {
     enable = true;

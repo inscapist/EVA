@@ -187,6 +187,7 @@ alias op="xdg-open"
 alias oc="ouch compress"
 alias od="ouch decompress"
 alias ol="ouch list"
+alias pp="sudo poweroff"
 alias tt="tclock"
 alias xx="xset r rate 250 66"
 
