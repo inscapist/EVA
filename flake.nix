@@ -6,6 +6,7 @@
       self,
       nixpkgs,
       fu,
+      superfile,
       ...
     }:
     let
@@ -22,6 +23,7 @@
         config.allowUnfree = true;
         overlays = [
           orbs.fontDankMono
+          (final: prev: { superfile = superfile.packages.${system}.default; })
           # orbs.polyglot
         ];
       };
@@ -102,5 +104,6 @@
       inputs.flake-utils.follows = "fu";
     };
     yazi.url = "github:sxyazi/yazi";
+    superfile.url = "github:MHNightCat/superfile";
   };
 }

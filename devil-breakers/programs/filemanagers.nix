@@ -13,6 +13,7 @@
     ffmpegthumbnailer
     unar
     poppler
+    superfile
   ];
   programs = {
     yazi = {
