@@ -71,7 +71,7 @@
   rctl (tap-next-release \\ rctl)
 
   ;; chords
-  f   (tap-next-release f (around lctl lmet)) ;; C-M used to resize windows
-  d   (tap-next-release d (around lalt lsft)) ;; A-S used to move windows around
+  d   (tap-next-release d (around lctl lmet)) ;; C-M used to resize windows
+  f   (tap-next-release f (around lalt lsft)) ;; A-S used to move windows around
   tab (tap-next-release tab (around lctl lalt)) ;; C-A used in tmux, emacs and i3 shortcuts
 )
