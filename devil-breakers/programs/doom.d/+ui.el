@@ -22,7 +22,7 @@
 
  ;; Playful like me
  felix/default-font "MonaspiceRn Nerd Font"
- felix/default-font-size 32
+ felix/default-font-size 30
 
  ;; Skinny graceful, but not bold enough
  ;; felix/default-font "Lekton Nerd Font"

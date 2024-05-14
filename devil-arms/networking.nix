@@ -2,12 +2,12 @@
 with builtins;
 with lib;
 let
-  # nix-prefetch-url --type sha256 "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts"
-  blocklist = fetchurl {
-    url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts";
-    sha256 = "1a6lwdjzfy2r2yf20bpjg2c02nmq8j0j5ig4zpyvzp44yfwg5knh";
-  };
 in
+# # nix-prefetch-url --type sha256 "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts"
+# blocklist = fetchurl {
+#   url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts";
+#   sha256 = "1693g755vv26ffnxm2w73hz9w5hvgx7xn616sgjy8yjh34zi33j2";
+# };
 {
   services.tailscale.enable = true;
   services.openssh.enable = true;
@@ -17,7 +17,7 @@ in
     networkmanager = {
       dhcp = "dhcpcd";
       enable = true;
-      wifi.backend = "iwd";
+      # wifi.backend = "iwd";
       dns = "systemd-resolved";
     };
 
@@ -36,8 +36,6 @@ in
     extraHosts = ''
       192.168.0.189 dante
       192.168.0.121 vergil
-
-      ${(readFile blocklist)}
     '';
   };
 
