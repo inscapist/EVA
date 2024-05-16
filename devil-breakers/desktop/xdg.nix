@@ -5,7 +5,7 @@ let
 
   # XDG MIME types
   associations = {
-    "inode/directory" = [ "yazi" ];
+    "inode/directory" = [ "thunar.desktop" ];
     "application/x-extension-htm" = browsers;
     "application/x-extension-html" = browsers;
     "application/x-extension-shtml" = browsers;
@@ -24,7 +24,7 @@ let
     "video/*" = [ "mpv.desktop" ];
     "image/*" = [ "imv.desktop" ];
     "application/json" = browsers;
-    "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.deskto" ];
+    "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ];
     "application/vnd.rar" = [ "org.kde.ark.desktop" ];
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [ "writer.desktop" ];
     # "x-scheme-handler/discord" = [ "discordcanary.desktop" ];
