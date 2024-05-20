@@ -241,6 +241,8 @@ alias bye="i3-msg exit"
 alias eva-pull="pushd ~/EVA && git pull; popd"
 alias eva-update="pushd ~/EVA && nix flake update; popd"
 alias eva-check="pushd ~/EVA && git add . && nix flake check; popd"
+alias eva-roots="nix-store --gc --print-roots"
+alias eva-clean="nix-collect-garbage -d"
 alias eva="pushd ~/EVA && git add . && sudo nixos-rebuild -j 8 switch --flake .#vergil --show-trace; popd"
 
 function list-hardware-modules() {
@@ -326,6 +328,7 @@ function ff() {
         echo "No file found matching '$1'"
     fi
 }
+
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # >> My Environment
