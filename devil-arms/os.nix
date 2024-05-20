@@ -11,12 +11,16 @@
 
   nix = {
     optimise.automatic = true;
-    gc.automatic = true;
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 30d";
+    };
     settings = {
       trusted-users = [
         "root"
         user
       ];
+
       # allowed-users = [ "@wheel" ];
       # trusted-users = [ "root" "@wheel" ];
       # system-features = [ "recursive-nix" ];
