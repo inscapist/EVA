@@ -44,6 +44,7 @@
     nixfmt-rfc-style
     beautysh
     nodePackages.prettier
+    shfmt
     #-- Misc --#
     lldb
     rustdesk

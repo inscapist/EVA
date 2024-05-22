@@ -22,7 +22,8 @@ let
 
     "audio/*" = [ "mpv.desktop" ];
     "video/*" = [ "mpv.desktop" ];
-    "image/*" = [ "imv.desktop" ];
+    "image/*" = [ "org.gnome.gThumb.desktop" ];
+    "image/png" = [ "org.gnome.gThumb.desktop" ];
     "application/json" = browsers;
     "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ];
     "application/vnd.rar" = [ "org.kde.ark.desktop" ];
