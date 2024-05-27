@@ -11,8 +11,10 @@
 
   nix = {
     optimise.automatic = true;
+    # https://nixos.wiki/wiki/Storage_optimization
     gc = {
       automatic = true;
+      dates = "weekly";
       options = "--delete-older-than 30d";
     };
     settings = {
