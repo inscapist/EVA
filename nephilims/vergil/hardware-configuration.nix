@@ -11,13 +11,19 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
+  console.earlySetup = true;
+  console.keyMap = lib.mkDefault "us";
+  boot.initrd.systemd.enable = true;
   boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "thunderbolt"
     "nvme"
-    "usb_storage"
     "sd_mod"
     "rtsx_pci_sdmmc"
+    "thunderbolt"
+    "usb_storage"
+    "xhci_pci"
+    "usbhid"
+    "hid_generic"
+    "hid"
   ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-intel" ];

@@ -15,6 +15,7 @@
     poppler
     superfile
   ];
+
   programs = {
     yazi = {
       enable = true;

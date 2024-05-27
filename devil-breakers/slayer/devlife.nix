@@ -50,6 +50,7 @@
     rustdesk
     libz
     beekeeper-studio
+    mongodb-compass
     vscode
   ];
 }

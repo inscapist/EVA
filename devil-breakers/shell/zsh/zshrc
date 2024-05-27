@@ -236,7 +236,7 @@ alias gpg-import-key="gpg --keyserver pgp.mit.edu  --recv"
 alias gpg-update-keys="gpg --refresh-keys"
 
 # EVA
-alias hi="startx"
+#alias hi="startx"
 alias bye="i3-msg exit"
 alias eva-pull="pushd ~/EVA && git pull; popd"
 alias eva-update="pushd ~/EVA && nix flake update; popd"
