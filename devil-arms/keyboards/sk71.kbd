@@ -68,12 +68,12 @@
   lsl (around (layer-toggle shifted) lsft) ;; activate shift layer
   spc (tap-next-release spc lalt)
   esc (tap-next-release esc @mod_arrows)
-  tab (tap-next-release tab @mod_arrows)
   ret (tap-next-release ret rctl)
   \   (tap-next-release \   rctl)
 
   ;; chords
-  q   (tap-next-release q (around lctl lmet)) ;; C-M used to resize windows
-  f   (tap-next-release f (around lalt lsft)) ;; A-S used to move windows around
-  z   (tap-next-release z (around lctl lalt)) ;; C-A used in tmux, emacs and i3 shortcuts
+  q   (tap-next-release q (around lctl lmet))   ;; C-M used to resize windows
+  f   (tap-next-release f (around lalt lsft))   ;; A-S used to move windows around
+  z   (tap-next-release z (around lctl lalt))   ;; C-A used in tmux, emacs and i3 shortcuts
+  tab (tap-next-release tab (around lctl lalt)) ;; C-A used in tmux, emacs and i3 shortcuts
 )
