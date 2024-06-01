@@ -8,6 +8,7 @@
 
   home.packages = with pkgs; [
     #-- devops/tools --#
+    ngrok
     vagrant
     openssl
     kubectl
