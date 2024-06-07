@@ -190,7 +190,8 @@ alias od="ouch decompress"
 alias ol="ouch list"
 alias qq="sudo poweroff"
 alias tt="tclock"
-alias xx="xset r rate 250 66"
+alias xx="xset r rate 220 66"
+alias rsk="systemctl restart kmonad-sk71.service"
 
 # directory shortcuts
 alias goeva="cd ~/EVA"

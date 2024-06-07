@@ -18,5 +18,6 @@
     cbonsai
     nyancat
     calibre
+    lsix
   ];
 }
