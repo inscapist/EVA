@@ -13,11 +13,14 @@
     stellarium
     octave
 
-    #-- Others/vanity/fun? --#
+    #-- productivity --#
+    calibre
+    lsix
+    xournalpp
+
+    #-- others/vanity/fun? --#
     cmatrix
     cbonsai
     nyancat
-    calibre
-    lsix
   ];
 }
