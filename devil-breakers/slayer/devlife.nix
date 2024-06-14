@@ -53,5 +53,6 @@
     beekeeper-studio
     mongodb-compass
     vscode
+    postman
   ];
 }
