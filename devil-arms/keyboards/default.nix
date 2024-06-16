@@ -20,10 +20,6 @@
   # monitor keys with "keyd monitor"
   environment.systemPackages = [ pkgs.keyd ];
 
-  services.udev.extraRules = ''
-    ATTRS{name}=="Keychron K7", SYMLINK+="keychron-k7-blue"
-  '';
-
   # https://github.com/rvaiya/keyd/blob/master/docs/keyd.scdoc
   # https://github.com/rvaiya/keyd/blob/2338f11b1ddd81eaddd957de720a3b4279222da0/t/keys.py#L31
   services.keyd = {
@@ -49,7 +45,6 @@
           backslash = "lettermod(control, backslash, 150, 200)";
           tab = "lettermod(control, tab, 150, 200)";
           space = "lettermod(alt, space, 150, 200)";
-          g = "lettermod(alt, g, 150, 200)";
         };
         "nav:C" = {
           h = "left";
@@ -62,6 +57,10 @@
       };
     };
   };
+
+  services.udev.extraRules = ''
+    ATTRS{name}=="Keychron K7", SYMLINK+="keychron-k7-blue"
+  '';
 
   services.kmonad = {
     enable = false;
