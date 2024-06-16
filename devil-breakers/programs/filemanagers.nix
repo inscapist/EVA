@@ -1,4 +1,4 @@
-{ pkgs, yazi, ... }:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     mpv
@@ -13,14 +13,5 @@
     ffmpegthumbnailer
     unar
     poppler
-    superfile
   ];
-
-  programs = {
-    yazi = {
-      enable = true;
-      package = yazi.packages.${pkgs.system}.default;
-      enableZshIntegration = true;
-    };
-  };
 }
