@@ -41,18 +41,22 @@
           capslock = "overload(nav, esc)";
 
           # introduce additional modifiers
-          enter = "lettermod(alt, enter, 150, 200)";
-          backslash = "lettermod(control, backslash, 150, 200)";
-          tab = "lettermod(control, tab, 150, 200)";
-          space = "lettermod(alt, space, 150, 200)";
+          enter = "lettermod(alt, enter, 120, 150)";
+          backslash = "lettermod(control, backslash, 120, 150)";
+          tab = "lettermod(control, tab, 120, 150)";
+          space = "lettermod(alt, space, 120, 150)";
         };
-        "nav:C" = {
+        "nav" = {
           h = "left";
           j = "down";
           k = "up";
           l = "right";
           w = "C-right";
           b = "C-left";
+          p = "C-A-h";
+          n = "C-A-l";
+          leftbrace = "C-A-h";
+          rightbrace = "C-A-l";
         };
       };
     };
