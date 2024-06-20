@@ -1,21 +1,18 @@
-{ config, lib, ... }:
-with builtins;
-with lib;
-let
-in
-# # nix-prefetch-url --type sha256 "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts"
-# blocklist = fetchurl {
-#   url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts";
-#   sha256 = "1693g755vv26ffnxm2w73hz9w5hvgx7xn616sgjy8yjh34zi33j2";
-# };
+{
+  config,
+  lib,
+  inputs,
+  ...
+}:
 {
   services.tailscale.enable = true;
   services.openssh.enable = true;
 
   networking = {
+    useDHCP = false;
     networkmanager = {
       enable = true;
-      # wifi.backend = "iwd";
+      wifi.backend = "iwd";
       dns = "systemd-resolved";
     };
 
@@ -27,13 +24,17 @@ in
     ];
 
     firewall = {
-      allowedTCPPorts = [ 22 3000 ];
+      allowedTCPPorts = [
+        22
+        3000
+      ];
       allowedUDPPorts = [ ];
     };
 
     extraHosts = ''
       192.168.0.189 dante
       192.168.0.121 vergil
+      ${lib.readFile inputs.blocklist}
     '';
   };
 

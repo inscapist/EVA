@@ -23,6 +23,18 @@
         "type": "github"
       }
     },
+    "blocklist": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-n87pih9H5JbF/IIkVGwPPU9hXypvDQhdkQub+hWCIlM=",
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -123,33 +135,10 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "blocklist": "blocklist",
         "fu": "fu",
         "hm": "hm",
-        "nixpkgs": "nixpkgs",
-        "rust-overlay": "rust-overlay"
-      }
-    },
-    "rust-overlay": {
-      "inputs": {
-        "flake-utils": [
-          "fu"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1717208326,
-        "narHash": "sha256-4gVhbC+NjSQ4c6cJvJGNCI1oTcD+8jRRNAnOF9faGCE=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "ab69b67fac9a96709fbef0b899db308ca714a120",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "type": "github"
+        "nixpkgs": "nixpkgs"
       }
     },
     "systems": {
