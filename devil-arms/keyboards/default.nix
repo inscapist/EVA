@@ -37,14 +37,25 @@
           pagedown = "volumedown";
 
           # remap escape
-          escape = "grave";
+          escape = "overload(win, grave)";
           capslock = "overload(nav, esc)";
 
           # introduce additional modifiers
-          enter = "lettermod(alt, enter, 120, 150)";
-          backslash = "lettermod(control, backslash, 120, 150)";
-          tab = "lettermod(control, tab, 120, 150)";
-          space = "lettermod(alt, space, 120, 150)";
+          # enter = "lettermod(alt, enter, 120, 150)";
+          backslash = "lettermod(control, backslash, 150, 200)";
+          tab = "lettermod(control, tab, 150, 200)";
+          space = "lettermod(alt, space, 150, 200)";
+        };
+        "win:A" = {
+          i = "A-1";
+          o = "A-2";
+          p = "A-3";
+          k = "A-4";
+          l = "A-5";
+          semicolon = "A-6";
+          "8" = "A-7";
+          "9" = "A-8";
+          "0" = "A-9";
         };
         # inherits from control key
         "nav:C" = {
