@@ -61,7 +61,7 @@
           dot = "A-S-l";
           leftbrace = "C-A-h";
           rightbrace = "C-A-l";
-          enter = "S-enter";
+          enter = "C-enter";
         };
       };
     };
