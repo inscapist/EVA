@@ -55,8 +55,13 @@
           b = "C-left";
           p = "C-A-h";
           n = "C-A-l";
+          minus = "C-M-l";
+          equal = "C-M-h";
+          comma = "A-S-h";
+          dot = "A-S-l";
           leftbrace = "C-A-h";
           rightbrace = "C-A-l";
+          enter = "S-enter";
         };
       };
     };
