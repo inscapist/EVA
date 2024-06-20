@@ -46,7 +46,8 @@
           tab = "lettermod(control, tab, 120, 150)";
           space = "lettermod(alt, space, 120, 150)";
         };
-        "nav" = {
+        # inherits from control key
+        "nav:C" = {
           h = "left";
           j = "down";
           k = "up";
@@ -61,7 +62,6 @@
           dot = "A-S-l";
           leftbrace = "C-A-h";
           rightbrace = "C-A-l";
-          enter = "C-enter";
         };
       };
     };
