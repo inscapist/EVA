@@ -46,7 +46,7 @@
           tab = "lettermod(control, tab, 150, 200)";
           space = "lettermod(alt, space, 150, 200)";
         };
-        "win:A" = {
+        "win" = {
           i = "A-1";
           o = "A-2";
           p = "A-3";

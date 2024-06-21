@@ -361,5 +361,6 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-clou
 [ -s "$HOME/.bun/_bun" ] && source "/$HOME/.bun/_bun"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export UV_USE_IO_URING=0
 
 source /run/sins/zsh_private
