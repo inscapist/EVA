@@ -97,7 +97,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     blocklist = {
-      url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts";
+      url = "https://raw.githubusercontent.com/StevenBlack/hosts/3.14.80/alternates/fakenews-gambling-porn/hosts";
       flake = false;
     };
   };
