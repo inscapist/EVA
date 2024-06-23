@@ -39,11 +39,11 @@
           # remap escape
           escape = "overload(win, grave)";
           capslock = "overload(nav, esc)";
+          backslash = "overload(control, backslash)";
+          tab = "overload(control, tab)";
+          enter = "overload(alt, enter)";
 
           # introduce additional modifiers
-          # enter = "lettermod(alt, enter, 120, 150)";
-          backslash = "lettermod(control, backslash, 150, 200)";
-          tab = "lettermod(control, tab, 150, 200)";
           space = "lettermod(alt, space, 150, 200)";
         };
         "win" = {
