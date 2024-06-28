@@ -37,22 +37,19 @@
           pagedown = "volumedown";
 
           # remap escape
-          escape = "overload(win, grave)";
+          escape = "grave";
+
+          # overloads
           capslock = "overload(nav, esc)";
           backslash = "overload(control, backslash)";
           tab = "overload(control, tab)";
-          # enter = "overload(alt, enter)";
 
           # introduce additional modifiers
           space = "lettermod(alt, space, 150, 200)";
         };
-        "win" = {
-          h = "C-A-h";
-          l = "C-A-l";
-        };
-        # inherits from control key
         "nav" = {
-          q = "layer(nav-q)";
+          a = "layer(nav-a)";
+          d = "layer(nav-d)";
           w = "layer(nav-w)";
           h = "left";
           j = "down";
@@ -62,17 +59,21 @@
           n = "C-A-l";
           minus = "C-M-l";
           equal = "C-M-h";
-          comma = "A-S-h";
-          dot = "A-S-l";
           leftbrace = "C-A-h";
           rightbrace = "C-A-l";
+          comma = "A-S-h";
+          dot = "A-S-l";
           enter = "C-enter";
         };
-        "nav-w" = {
+        "nav-a" = {
+          h = "C-M-l";
+          l = "C-M-h";
+        };
+        "nav-d" = {
           h = "C-A-h";
           l = "C-A-l";
         };
-        "nav-q" = {
+        "nav-f" = {
           h = "A-S-h";
           l = "A-S-l";
         };
