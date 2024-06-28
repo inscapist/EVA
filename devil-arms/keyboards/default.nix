@@ -41,7 +41,7 @@
           capslock = "overload(nav, esc)";
           backslash = "overload(control, backslash)";
           tab = "overload(control, tab)";
-          enter = "overload(alt, enter)";
+          # enter = "overload(alt, enter)";
 
           # introduce additional modifiers
           space = "lettermod(alt, space, 150, 200)";
