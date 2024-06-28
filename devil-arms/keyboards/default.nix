@@ -47,24 +47,17 @@
           space = "lettermod(alt, space, 150, 200)";
         };
         "win" = {
-          i = "A-1";
-          o = "A-2";
-          p = "A-3";
-          k = "A-4";
-          l = "A-5";
-          semicolon = "A-6";
-          "8" = "A-7";
-          "9" = "A-8";
-          "0" = "A-9";
+          h = "C-A-h";
+          l = "C-A-l";
         };
         # inherits from control key
-        "nav:C" = {
+        "nav" = {
+          q = "layer(nav-q)";
+          w = "layer(nav-w)";
           h = "left";
           j = "down";
           k = "up";
           l = "right";
-          w = "C-right";
-          b = "C-left";
           p = "C-A-h";
           n = "C-A-l";
           minus = "C-M-l";
@@ -73,6 +66,15 @@
           dot = "A-S-l";
           leftbrace = "C-A-h";
           rightbrace = "C-A-l";
+          enter = "C-enter";
+        };
+        "nav-w" = {
+          h = "C-A-h";
+          l = "C-A-l";
+        };
+        "nav-q" = {
+          h = "A-S-h";
+          l = "A-S-l";
         };
       };
     };
