@@ -37,7 +37,7 @@
           pagedown = "volumedown";
 
           # remap escape
-          escape = "grave";
+          # escape = "grave";
 
           # overloads
           capslock = "overload(nav, esc)";
@@ -46,6 +46,11 @@
 
           # introduce additional modifiers
           space = "lettermod(alt, space, 150, 200)";
+          escape = "lettermod(win, grave, 150, 200)";
+        };
+        "win" = {
+          h = "C-A-h";
+          l = "C-A-l";
         };
         "nav" = {
           a = "layer(nav-a)";
