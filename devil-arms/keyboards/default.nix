@@ -50,7 +50,7 @@
         "nav" = {
           a = "layer(nav-a)";
           d = "layer(nav-d)";
-          w = "layer(nav-w)";
+          f = "layer(nav-f)";
           h = "left";
           j = "down";
           k = "up";
