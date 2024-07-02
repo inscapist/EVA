@@ -53,7 +53,7 @@
           l = "C-A-l";
         };
         "nav" = {
-          a = "layer(nav-a)";
+          r = "layer(nav-r)";
           d = "layer(nav-d)";
           f = "layer(nav-f)";
           h = "left";
@@ -70,7 +70,7 @@
           dot = "A-S-l";
           enter = "C-enter";
         };
-        "nav-a" = {
+        "nav-r" = {
           h = "C-M-l";
           l = "C-M-h";
         };
