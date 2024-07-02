@@ -54,8 +54,8 @@
         };
         "nav" = {
           r = "layer(nav-r)";
-          d = "layer(nav-d)";
-          f = "layer(nav-f)";
+          w = "layer(nav-w)";
+          s = "layer(nav-s)";
           h = "left";
           j = "down";
           k = "up";
@@ -70,15 +70,19 @@
           dot = "A-S-l";
           enter = "C-enter";
         };
+
+        # resize
         "nav-r" = {
           h = "C-M-l";
           l = "C-M-h";
         };
-        "nav-d" = {
+        # window
+        "nav-w" = {
           h = "C-A-h";
           l = "C-A-l";
         };
-        "nav-f" = {
+        # shift
+        "nav-s" = {
           h = "A-S-h";
           l = "A-S-l";
         };
