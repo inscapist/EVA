@@ -41,12 +41,12 @@
 
           # overloads
           capslock = "overload(nav, esc)";
-          backslash = "overload(control, backslash)";
           tab = "overload(control, tab)";
 
           # introduce additional modifiers
           space = "lettermod(alt, space, 150, 200)";
           escape = "lettermod(win, grave, 150, 200)";
+          backslash = "lettermod(control, backslash, 150, 200)";
         };
         "win" = {
           h = "C-A-h";

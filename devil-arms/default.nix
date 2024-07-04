@@ -11,7 +11,6 @@
     ./power.nix
     ./security.nix
     ./sound.nix
-    ./steam.nix
     ./tools.nix
     ./virtualization.nix
   ];
