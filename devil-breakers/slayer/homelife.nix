@@ -5,15 +5,15 @@
     #-- education --#
     # celestia
     # stellarium
-    octave
+    # octave
 
     #-- productivity --#
-    calibre
+    # calibre
     # lsix
 
     #-- others/vanity/fun? --#
-    cmatrix
-    cbonsai
-    nyancat
+    # cmatrix
+    # cbonsai
+    # nyancat
   ];
 }

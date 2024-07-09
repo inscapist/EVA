@@ -36,7 +36,7 @@
     nodePackages.typescript-language-server
     nodePackages.bash-language-server
     nodePackages.dockerfile-language-server-nodejs
-    texlab
+    # texlab
     #-- Linters --#
     hlint
     shellcheck
@@ -48,10 +48,10 @@
     shfmt
     #-- Misc --#
     lldb
-    rustdesk
-    libz
+    # rustdesk
+    # libz
     beekeeper-studio
-    mongodb-compass
+    # mongodb-compass
     vscode
     postman
   ];
