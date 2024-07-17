@@ -9,6 +9,8 @@
     ];
   };
 
+  programs.nix-ld.enable = true;
+
   nix = {
     optimise.automatic = true;
     # https://nixos.wiki/wiki/Storage_optimization

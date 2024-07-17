@@ -26,13 +26,13 @@
     "blocklist": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-n87pih9H5JbF/IIkVGwPPU9hXypvDQhdkQub+hWCIlM=",
+        "narHash": "sha256-Lqy22uAFb4ufHTW2POihMX/M5rf1OGaLcG+6NUk9s3E=",
         "type": "file",
-        "url": "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts"
+        "url": "https://raw.githubusercontent.com/StevenBlack/hosts/3.14.80/alternates/fakenews-gambling-porn/hosts"
       },
       "original": {
         "type": "file",
-        "url": "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts"
+        "url": "https://raw.githubusercontent.com/StevenBlack/hosts/3.14.80/alternates/fakenews-gambling-porn/hosts"
       }
     },
     "darwin": {

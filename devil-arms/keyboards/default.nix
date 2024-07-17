@@ -37,42 +37,54 @@
           pagedown = "volumedown";
 
           # remap escape
-          escape = "overload(win, grave)";
+          # escape = "grave";
+
+          # overloads
           capslock = "overload(nav, esc)";
+          tab = "overload(control, tab)";
 
           # introduce additional modifiers
-          # enter = "lettermod(alt, enter, 120, 150)";
-          backslash = "lettermod(control, backslash, 150, 200)";
-          tab = "lettermod(control, tab, 150, 200)";
           space = "lettermod(alt, space, 150, 200)";
+          escape = "lettermod(win, grave, 150, 200)";
+          backslash = "lettermod(control, backslash, 150, 200)";
         };
         "win" = {
-          i = "A-1";
-          o = "A-2";
-          p = "A-3";
-          k = "A-4";
-          l = "A-5";
-          semicolon = "A-6";
-          "8" = "A-7";
-          "9" = "A-8";
-          "0" = "A-9";
+          h = "C-A-h";
+          l = "C-A-l";
         };
-        # inherits from control key
-        "nav:C" = {
+        "nav" = {
+          r = "layer(nav-r)";
+          w = "layer(nav-w)";
+          s = "layer(nav-s)";
           h = "left";
           j = "down";
           k = "up";
           l = "right";
-          w = "C-right";
-          b = "C-left";
           p = "C-A-h";
           n = "C-A-l";
           minus = "C-M-l";
           equal = "C-M-h";
-          comma = "A-S-h";
-          dot = "A-S-l";
           leftbrace = "C-A-h";
           rightbrace = "C-A-l";
+          comma = "A-S-h";
+          dot = "A-S-l";
+          enter = "C-enter";
+        };
+
+        # resize
+        "nav-r" = {
+          h = "C-M-l";
+          l = "C-M-h";
+        };
+        # window
+        "nav-w" = {
+          h = "C-A-h";
+          l = "C-A-l";
+        };
+        # shift
+        "nav-s" = {
+          h = "A-S-h";
+          l = "A-S-l";
         };
       };
     };

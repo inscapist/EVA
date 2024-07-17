@@ -2,25 +2,18 @@
 
 {
   home.packages = with pkgs; [
-    #-- recreation --#
-    # mindustry-wayland
-    # openra
-    # warzone2100
-    # flare
-
     #-- education --#
-    celestia
-    stellarium
-    octave
+    # celestia
+    # stellarium
+    # octave
 
     #-- productivity --#
-    calibre
-    lsix
-    xournalpp
+    # calibre
+    # lsix
 
     #-- others/vanity/fun? --#
-    cmatrix
-    cbonsai
-    nyancat
+    # cmatrix
+    # cbonsai
+    # nyancat
   ];
 }
