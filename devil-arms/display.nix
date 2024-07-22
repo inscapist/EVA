@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
 
-  hardware.opengl.enable = true;
   fonts.enableDefaultPackages = true;
 
   xdg.mime.enable = true;

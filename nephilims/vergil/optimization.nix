@@ -69,10 +69,8 @@ in
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true; # vulcan
-    driSupport32Bit = true;
     # Hardware video acceleration:
     #   https://nixos.wiki/wiki/Accelerated_Video_Playback
     #   https://wiki.archlinux.org/title/Hardware_video_acceleration

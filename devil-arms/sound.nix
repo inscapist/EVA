@@ -26,6 +26,4 @@
   environment = {
     systemPackages = with pkgs; [ pavucontrol ];
   };
-
-  sound.enable = true;
 }

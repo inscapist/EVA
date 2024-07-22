@@ -12,10 +12,10 @@
       material-symbols
 
       # normal fonts
-      agave
-      monoid
-      dank-mono
-      victor-mono
+      # agave
+      # monoid
+      # dank-mono
+      # victor-mono
       recursive
       roboto
       noto-fonts
