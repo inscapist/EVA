@@ -2,6 +2,7 @@
   imports = [
     ./backup.nix
     ./bluetooth.nix
+    ./cloudflare.nix
     ./fonts.nix
     ./display.nix
     ./i18n.nix
@@ -11,8 +12,8 @@
     ./power.nix
     ./security.nix
     ./sound.nix
-    ./tools.nix
     ./steam.nix
+    ./tools.nix
     ./virtualization.nix
   ];
 }
