@@ -336,6 +336,9 @@ function ff() {
 # >> My Environment
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+# https://nixos.wiki/wiki/Nvidia#Using_Steam_in_Offload_Mode
+export XDG_DATA_HOME="$HOME/.local/share"
+
 path+=(
   ${HOME}/.local/bin
   ${HOME}/.config/emacs/bin

@@ -1,5 +1,14 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
+let
+  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
+    export __NV_PRIME_RENDER_OFFLOAD=1
+    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+    export __GLX_VENDOR_LIBRARY_NAME=nvidia
+    export __VK_LAYER_NV_optimus=NVIDIA_only
+    exec "$@"
+  '';
+in
 {
   boot = {
     kernel.sysctl = {
@@ -20,20 +29,48 @@
     fstrim.enable = true;
   };
 
-  hardware.nvidiaOptimus.disable = true;
-  boot.blacklistedKernelModules = [
-    "nouveau"
-    "nvidia"
-  ];
-
   hardware = {
     enableRedistributableFirmware = true;
     cpu.intel.updateMicrocode = true;
   };
 
-  hardware.opengl = {
+  # hardware.nvidiaOptimus.disable = true;
+  boot.blacklistedKernelModules = [
+    "nouveau"
+    # "nvidia"
+  ];
+
+  hardware.nvidia = {
+    open = false;
+    modesetting.enable = true;
+    nvidiaSettings = true;
+
+    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+    # Enable this if you have graphical corruption issues or application crashes after waking
+    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
+    # of just the bare essentials.
+    powerManagement.enable = false;
+
+    # Fine-grained power management. Turns off GPU when not in use.
+    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+    powerManagement.finegrained = false;
+
+    prime = {
+      # lspci -nn | grep -E 'VGA|3D'
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+
+      # Optimus PRIME Option A: Offload Mode
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+    };
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
+  hardware.graphics = {
     enable = true;
-    driSupport = true; # vulcan
     # Hardware video acceleration:
     #   https://nixos.wiki/wiki/Accelerated_Video_Playback
     #   https://wiki.archlinux.org/title/Hardware_video_acceleration
@@ -51,6 +88,9 @@
     ];
   };
 
+  # Load nvidia driver for Xorg and Wayland
+  services.xserver.videoDrivers = [ "nvidia" ];
+
   # for debugging
   environment.systemPackages = with pkgs; [
     neofetch
@@ -58,5 +98,6 @@
     pciutils
     lshw
     lsof
+    nvidia-offload
   ];
 }

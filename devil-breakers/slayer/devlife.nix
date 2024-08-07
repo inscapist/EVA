@@ -20,7 +20,7 @@
     yarn
     nodejs
     nodePackages_latest.firebase-tools
-    python3 # install pip with `python -m ensurepip --upgrade`
+    python311 # install pip with `python -m ensurepip --upgrade`
     clojure
     leiningen
     rustup
