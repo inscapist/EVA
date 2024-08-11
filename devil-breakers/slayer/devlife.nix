@@ -19,7 +19,7 @@
     #-- Languages --#
     yarn
     nodejs
-    nodePackages_latest.firebase-tools
+    # nodePackages_latest.firebase-tools
     python311 # install pip with `python -m ensurepip --upgrade`
     clojure
     leiningen
