@@ -15,5 +15,7 @@
     # cmatrix
     # cbonsai
     # nyancat
+
+    discord
   ];
 }
