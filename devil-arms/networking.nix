@@ -12,23 +12,32 @@
     useDHCP = false;
     networkmanager = {
       enable = true;
-      # wifi.backend = "iwd";
+      wifi.backend = "iwd";
       dns = "systemd-resolved";
     };
 
+    # Use Cloudflare DNS as primary, with NextDNS as fallback
     nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
       "45.90.28.0#2977d3.dns.nextdns.io"
-      "2a07:a8c0::#2977d3.dns.nextdns.io"
       "45.90.30.0#2977d3.dns.nextdns.io"
-      "2a07:a8c1::#2977d3.dns.nextdns.io"
     ];
 
     firewall = {
       allowedTCPPorts = [
         22
         3000
+        # Add Cloudflare WARP ports
+        2408
       ];
-      allowedUDPPorts = [ ];
+      allowedUDPPorts = [
+        # Add Cloudflare WARP ports
+        2408
+        1701
+        500
+        4500
+      ];
     };
 
     extraHosts = ''
@@ -38,13 +47,11 @@
     '';
   };
 
-  # my wireguard client configs
+  # consider disabling if conflicts with WARP
   networking.wg-quick.interfaces = {
-    # systemctl start wg-quick-wg0
     wg0.configFile = config.age.secrets.wg0_conf.path;
   };
 
-  # https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1473408913
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
   virtualisation.docker = {
@@ -65,7 +72,7 @@
   services.resolved = {
     enable = true;
     dnssec = "allow-downgrade";
-    dnsovertls = "true";
+    dnsovertls = "opportunistic";
     llmnr = "true";
     fallbackDns = [
       "45.90.28.0#2977d3.dns.nextdns.io"
@@ -76,6 +83,15 @@
     extraConfig = ''
       Domains=~.
       MulticastDNS=true
+      Cache=yes
+      DNSStubListener=yes
     '';
   };
+
+  # https://community.cloudflare.com/t/how-to-register-into-a-team-with-linux-and-warp-cli/627971
+  services.cloudflare-warp = {
+    enable = true;
+  };
+
+  # networking.networkmanager.unmanaged = [ "CloudflareWARP" ];
 }

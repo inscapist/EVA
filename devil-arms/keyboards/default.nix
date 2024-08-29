@@ -17,8 +17,14 @@
 {
   imports = [ ./kmonad.mod.nix ];
 
-  # monitor keys with "keyd monitor"
-  environment.systemPackages = [ pkgs.keyd ];
+  environment.systemPackages = with pkgs; [
+    keyd # monitor keys with "keyd monitor"
+    via
+  ];
+
+  # QMK/VIA
+  hardware.keyboard.qmk.enable = true;
+  services.udev.packages = [ pkgs.via ];
 
   # https://github.com/rvaiya/keyd/blob/master/docs/keyd.scdoc
   # https://github.com/rvaiya/keyd/blob/2338f11b1ddd81eaddd957de720a3b4279222da0/t/keys.py#L31

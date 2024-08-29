@@ -167,6 +167,7 @@ alias aa="acpi -bi"
 alias ad="ansible-doc"
 alias ap="ansible-playbook"
 alias da="direnv allow"
+alias dr="direnv reload"
 alias dc="docker compose"
 alias di="dua interactive" # install with `sudo pacman -S dua-cli`
 alias fl="flutter"
