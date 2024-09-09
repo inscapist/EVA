@@ -261,6 +261,16 @@ function start-nvm() {
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 }
 
+function start-ruby() {
+  if command -v ruby >/dev/null 2>&1; then
+    local ruby_version=$(ruby -e 'puts RUBY_VERSION')
+    local gem_path="$HOME/.local/share/gem/ruby/$ruby_version/bin"
+    if [[ -d "$gem_path" ]]; then
+      export PATH="$PATH:$gem_path"
+    fi
+  fi
+}
+
 function start-homebrew() {
   # Set PATH, MANPATH, etc., for Homebrew.'
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -367,5 +377,8 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-clou
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export UV_USE_IO_URING=0
+
+# Ruby
+start-ruby
 
 source /run/sins/zsh_private
