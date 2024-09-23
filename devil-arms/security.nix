@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
 
+  # creates the agent service
+  programs.ssh.startAgent = true;
+
   # Lid settings
   services.logind = {
     lidSwitch = "suspend";

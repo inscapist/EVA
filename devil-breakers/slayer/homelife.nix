@@ -16,6 +16,7 @@
     # cbonsai
     # nyancat
 
-    discord
+    spotify
+    # discord
   ];
 }

@@ -54,5 +54,6 @@
     # mongodb-compass
     vscode
     postman
+    pwgen
   ];
 }

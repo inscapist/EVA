@@ -189,10 +189,11 @@ alias op="xdg-open"
 alias oc="ouch compress"
 alias od="ouch decompress"
 alias ol="ouch list"
-alias qq="sudo poweroff"
+alias qq="systemctl poweroff"
 alias tt="tclock"
 alias xx="xset r rate 220 66"
 alias rsk="systemctl restart kmonad-sk71.service"
+alias reboot="systemctl reboot"
 
 # directory shortcuts
 alias goeva="cd ~/EVA"
@@ -258,6 +259,16 @@ function start-nvm() {
   export NVM_DIR="$HOME/.config/nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
+
+function start-ruby() {
+  if command -v ruby >/dev/null 2>&1; then
+    local ruby_version=$(ruby -e 'puts RUBY_VERSION')
+    local gem_path="$HOME/.local/share/gem/ruby/$ruby_version/bin"
+    if [[ -d "$gem_path" ]]; then
+      export PATH="$PATH:$gem_path"
+    fi
+  fi
 }
 
 function start-homebrew() {
@@ -366,5 +377,8 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-clou
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export UV_USE_IO_URING=0
+
+# Ruby
+start-ruby
 
 source /run/sins/zsh_private
