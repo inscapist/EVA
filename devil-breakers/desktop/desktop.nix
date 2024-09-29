@@ -15,5 +15,5 @@
     xsel
   ];
 
-  home.file.".background.png".source = ./wallpapers/ffxv.png;
+  home.file.".background.png".source = ./wallpapers/ttm.png;
 }
