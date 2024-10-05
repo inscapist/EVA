@@ -117,6 +117,11 @@ bindsym Control+Mod4+k resize grow height 10 px or 10 ppt
 bindsym Control+Mod4+j resize shrink height 10 px or 10 ppt
 bindsym Control+Mod4+h resize grow width 10 px or 10 ppt
 
+bindsym Control+Mod4+r resize shrink width 10 px or 10 ppt
+bindsym Control+Mod4+t resize grow height 10 px or 10 ppt
+bindsym Control+Mod4+s resize shrink height 10 px or 10 ppt
+bindsym Control+Mod4+b resize grow width 10 px or 10 ppt
+
 # back to normal: Enter or Escape
 #	bindsym Return mode "default"
 #        bindsym Escape mode "default"
@@ -145,11 +150,23 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
+bindsym $mod+b focus left
+bindsym $mod+s focus down
+bindsym $mod+t focus up
+bindsym $mod+r focus right
+
 # move focused window
+
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+b move left
+bindsym $mod+Shift+s move down
+bindsym $mod+Shift+t move up
+bindsym $mod+Shift+r move right
+
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -170,9 +187,9 @@ bindsym $mod+f fullscreen toggle
 # bindsym $mod+a focus parent
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+Shift+s layout stacking
-bindsym $mod+Shift+g layout tabbed
-bindsym $mod+Shift+e layout toggle split
+# bindsym $mod+Shift+s layout stacking
+# bindsym $mod+Shift+g layout tabbed
+# bindsym $mod+Shift+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
