@@ -37,6 +37,8 @@
           # SK71 remaps
           insert = "capslock";
           home = "mute";
+          leftmeta = "leftalt";
+          rightmeta = "rightalt";
           end = "brightnessup";
           delete = "brightnessdown";
           pageup = "volumeup";
@@ -59,39 +61,49 @@
           l = "C-A-l";
         };
         "nav" = {
-          r = "layer(nav-r)";
-          w = "layer(nav-w)";
-          s = "layer(nav-s)";
+          # r = "layer(nav-r)";
+          # w = "layer(nav-w)";
+          # s = "layer(nav-s)";
+          b = "left";
+          s = "down";
+          t = "up";
+          r = "right";
+
           h = "left";
           j = "down";
           k = "up";
           l = "right";
+
           p = "C-A-h";
           n = "C-A-l";
           minus = "C-M-l";
           equal = "C-M-h";
           leftbrace = "C-A-h";
           rightbrace = "C-A-l";
+
+          m = "A-S-h";
+          z = "A-S-l";
           comma = "A-S-h";
           dot = "A-S-l";
+
           enter = "C-enter";
         };
 
         # resize
-        "nav-r" = {
-          h = "C-M-l";
-          l = "C-M-h";
-        };
-        # window
-        "nav-w" = {
-          h = "C-A-h";
-          l = "C-A-l";
-        };
-        # shift
-        "nav-s" = {
-          h = "A-S-h";
-          l = "A-S-l";
-        };
+        # "nav-r" = {
+        #   h = "C-M-l";
+        #   l = "C-M-h";
+        # };
+        # # window
+        # "nav-w" = {
+        #   h = "C-A-h";
+        #   l = "C-A-l";
+        # };
+        # # shift
+        # "nav-s" = {
+        #   h = "A-S-h";
+        #   l = "A-S-l";
+        # };
       };
     };
   };
