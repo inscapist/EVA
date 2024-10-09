@@ -37,6 +37,8 @@
           # SK71 remaps
           insert = "capslock";
           home = "mute";
+          leftmeta = "leftalt";
+          rightmeta = "rightalt";
           end = "brightnessup";
           delete = "brightnessdown";
           pageup = "volumeup";
