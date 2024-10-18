@@ -55,5 +55,7 @@
     vscode
     postman
     pwgen
+
+    linuxKernel.packages.linux_zen.perf
   ];
 }
