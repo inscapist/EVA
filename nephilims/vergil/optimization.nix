@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 let
+  chattr = pkgs.writeShellScriptBin "chattr" "";
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1
     export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
@@ -99,5 +100,6 @@ in
     lshw
     lsof
     nvidia-offload
+    chattr
   ];
 }
