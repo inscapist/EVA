@@ -17,6 +17,6 @@
     # nyancat
 
     spotify
-    # discord
+    discord
   ];
 }
