@@ -53,6 +53,7 @@
     beekeeper-studio
     # mongodb-compass
     vscode
+    code-cursor
     postman
     pwgen
 
