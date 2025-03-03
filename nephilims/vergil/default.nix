@@ -44,6 +44,7 @@
       "networkmanager"
       "video"
       "audio"
+      "realtime"
     ];
     shell = pkgs.zsh;
     hashedPasswordFile = config.age.secrets.userpass.path;
