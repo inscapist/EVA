@@ -37,6 +37,23 @@
 
   programs.zsh.enable = true;
 
+  security.pam.loginLimits = [
+    {
+      domain = "@realtime";
+      type = "-";
+      item = "rtprio";
+      value = "99";
+    }
+    {
+      domain = "@realtime";
+      type = "-";
+      item = "memlock";
+      value = "unlimited";
+    }
+  ];
+
+  users.groups.realtime = {};
+
   users.users.${user} = {
     isNormalUser = true;
     extraGroups = [

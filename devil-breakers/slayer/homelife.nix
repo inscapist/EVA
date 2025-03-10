@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  services.easyeffects.enable = true;
+  # services.easyeffects.enable = true;
 
   home.packages = with pkgs; [
     #-- education --#
@@ -20,5 +20,7 @@
 
     spotify
     discord
+    jamesdsp
+    run-scaled
   ];
 }
