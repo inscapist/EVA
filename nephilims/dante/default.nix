@@ -32,6 +32,7 @@
       "networkmanager"
       "video"
       "audio"
+      "realtime"
     ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [

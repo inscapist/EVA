@@ -37,6 +37,23 @@
 
   programs.zsh.enable = true;
 
+  security.pam.loginLimits = [
+    {
+      domain = "@realtime";
+      type = "-";
+      item = "rtprio";
+      value = "99";
+    }
+    {
+      domain = "@realtime";
+      type = "-";
+      item = "memlock";
+      value = "unlimited";
+    }
+  ];
+
+  users.groups.realtime = {};
+
   users.users.${user} = {
     isNormalUser = true;
     extraGroups = [
@@ -44,6 +61,7 @@
       "networkmanager"
       "video"
       "audio"
+      "realtime"
     ];
     shell = pkgs.zsh;
     hashedPasswordFile = config.age.secrets.userpass.path;
