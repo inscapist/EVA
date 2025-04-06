@@ -17,6 +17,7 @@
     systemPackages =
       with pkgs;
       [
+        bc
         which
         bat
         curl
