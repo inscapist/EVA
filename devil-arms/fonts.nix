@@ -7,7 +7,7 @@
     packages = with pkgs; [
       # https://github.com/NixOS/nixpkgs/blob/master/pkgs/data/fonts/nerdfonts/default.nix
       # nerdfonts
-      # nerd-fonts._0xproto
+      nerd-fonts.monaspace
       # nerd-fonts.droid-sans-mono
 
       # icon fonts
