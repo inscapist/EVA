@@ -21,6 +21,5 @@
     spotify
     discord
     jamesdsp
-    run-scaled
   ];
 }
