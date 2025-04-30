@@ -20,6 +20,14 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+
+        config = {
+          permittedInsecurePackages = [
+            "beekeeper-studio-5.1.5"
+            "electron-21.4.0"
+            "openssl-1.1.1w"
+          ];
+        };
         overlays = [
           orbs.fontDankMono
           orbs.keyd
