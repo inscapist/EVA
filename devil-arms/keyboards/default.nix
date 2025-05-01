@@ -15,7 +15,7 @@
 
 { pkgs, ... }:
 {
-  imports = [ ./kmonad.mod.nix ];
+  # imports = [ ./kmonad.mod.nix ];
 
   environment.systemPackages = with pkgs; [
     keyd # monitor keys with "keyd monitor"
@@ -112,37 +112,37 @@
     ATTRS{name}=="Keychron K7", SYMLINK+="keychron-k7-blue"
   '';
 
-  services.kmonad = {
-    enable = false;
-    package = pkgs.kmonad;
-    keyboards = {
-      sk71 = {
-        device = "/dev/input/by-id/usb-BY_Tech_Gaming_Keyboard-event-kbd";
-        defcfg = {
-          enable = true;
-          fallthrough = true;
-          allowCommands = false;
-        };
-        config = builtins.readFile (./. + "/sk71.kbd");
-      };
-      k7 = {
-        device = "/dev/input/by-id/usb-Keychron_Keychron_K7-event-kbd";
-        defcfg = {
-          enable = true;
-          fallthrough = true;
-          allowCommands = false;
-        };
-        config = builtins.readFile (./. + "/k7.kbd");
-      };
-      k7-bluetooth = {
-        device = "/dev/keychron-k7-blue";
-        defcfg = {
-          enable = true;
-          fallthrough = true;
-          allowCommands = false;
-        };
-        config = builtins.readFile (./. + "/k7.kbd");
-      };
-    };
-  };
+  # services.kmonad = {
+  #   enable = false;
+  #   package = pkgs.kmonad;
+  #   keyboards = {
+  #     sk71 = {
+  #       device = "/dev/input/by-id/usb-BY_Tech_Gaming_Keyboard-event-kbd";
+  #       defcfg = {
+  #         enable = true;
+  #         fallthrough = true;
+  #         allowCommands = false;
+  #       };
+  #       config = builtins.readFile (./. + "/sk71.kbd");
+  #     };
+  #     k7 = {
+  #       device = "/dev/input/by-id/usb-Keychron_Keychron_K7-event-kbd";
+  #       defcfg = {
+  #         enable = true;
+  #         fallthrough = true;
+  #         allowCommands = false;
+  #       };
+  #       config = builtins.readFile (./. + "/k7.kbd");
+  #     };
+  #     k7-bluetooth = {
+  #       device = "/dev/keychron-k7-blue";
+  #       defcfg = {
+  #         enable = true;
+  #         fallthrough = true;
+  #         allowCommands = false;
+  #       };
+  #       config = builtins.readFile (./. + "/k7.kbd");
+  #     };
+  #   };
+  # };
 }

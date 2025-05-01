@@ -18,4 +18,5 @@
     };
   };
   home.file.".config/zsh/.zshrc".source = ./zsh/zshrc;
+  home.file.".config/direnv/direnv.toml".source = ./zsh/direnv.toml;
 }

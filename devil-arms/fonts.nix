@@ -6,7 +6,9 @@
     # check with fc-list
     packages = with pkgs; [
       # https://github.com/NixOS/nixpkgs/blob/master/pkgs/data/fonts/nerdfonts/default.nix
-      nerdfonts
+      # nerdfonts
+      nerd-fonts.monaspace
+      # nerd-fonts.droid-sans-mono
 
       # icon fonts
       material-symbols
@@ -29,7 +31,7 @@
       # CJK support
       wqy_microhei
       wqy_zenhei
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       # noto-fonts-cjk-sans
       # noto-fonts-cjk-serif
     ];
