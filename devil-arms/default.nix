@@ -1,5 +1,6 @@
 {
   imports = [
+    ./apps.nix
     ./backup.nix
     ./bluetooth.nix
     ./fonts.nix
@@ -11,7 +12,6 @@
     ./power.nix
     ./security.nix
     ./sound.nix
-    ./steam.nix
     ./tools.nix
     ./virtualization.nix
   ];
