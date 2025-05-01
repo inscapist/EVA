@@ -362,7 +362,6 @@ path+=(
 )
 export PATH
 
-export DIRENV_LOG_FORMAT=
 eval "$(direnv hook zsh)"
 export EDITOR=nvim
 

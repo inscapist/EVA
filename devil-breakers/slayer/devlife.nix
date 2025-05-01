@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+
   programs = {
     go.enable = true;
     java.enable = true;
@@ -54,6 +55,7 @@
     # mongodb-compass
     vscode
     code-cursor
+    windsurf
     postman
     pwgen
 
