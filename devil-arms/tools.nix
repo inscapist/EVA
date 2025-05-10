@@ -51,7 +51,9 @@
         htop
         bottom
         btop
+        glance
         glances
+        termscp
         iotop
         hyperfine
       ]
