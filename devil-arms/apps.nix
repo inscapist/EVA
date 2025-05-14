@@ -24,7 +24,7 @@
     };
     open-webui = {
       enable = true;
-      port = 11111;
+      port = 2222;
       environment = {
         OLLAMA_API_BASE_URL = "http://127.0.0.1:11434";
         # Disable authentication
