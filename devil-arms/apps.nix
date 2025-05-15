@@ -20,7 +20,7 @@
       package = pkgs.ollama.override { acceleration = "cuda"; };
 
       # Optional: preload models, see https://ollama.com/library
-      loadModels = [ "deepseek-r1:8b" ];
+      # loadModels = [ "deepseek-r1:8b" ];
     };
     open-webui = {
       enable = true;
