@@ -20,11 +20,11 @@
       package = pkgs.ollama.override { acceleration = "cuda"; };
 
       # Optional: preload models, see https://ollama.com/library
-      loadModels = [ "deepseek-r1:8b" ];
+      # loadModels = [ "deepseek-r1:8b" ];
     };
     open-webui = {
       enable = false;
-      port = 11111;
+      port = 2222;
       environment = {
         OLLAMA_API_BASE_URL = "http://127.0.0.1:11434";
         # Disable authentication

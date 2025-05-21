@@ -247,7 +247,16 @@ alias eva-update="pushd ~/EVA && nix flake update; popd"
 alias eva-check="pushd ~/EVA && git add . && nix flake check; popd"
 alias eva-roots="nix-store --gc --print-roots"
 alias eva-clean="nix-collect-garbage -d"
-alias eva="pushd ~/EVA && git add . && sudo nixos-rebuild -j 8 switch --flake .#vergil --show-trace; popd"
+#alias eva="pushd ~/EVA && git add . && sudo nixos-rebuild -j 8 switch --flake .#vergil --show-trace; popd"
+
+eva() {
+  pushd ~/EVA || return
+  git add .
+  if sudo nixos-rebuild -j 8 switch --flake .#vergil --show-trace; then
+    echo "$(tput bold; tput setaf 2)自律者得自由，无戒者为习奴$(tput sgr0)"
+  fi
+  popd
+}
 
 function list-hardware-modules() {
   for i in `find /sys/ -name modalias -exec cat {} \;`; do
