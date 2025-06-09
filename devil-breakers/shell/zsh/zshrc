@@ -253,7 +253,7 @@ eva() {
   pushd ~/EVA || return
   git add .
   if sudo nixos-rebuild -j 8 switch --flake .#vergil --show-trace; then
-    echo "$(tput bold; tput setaf 2)自律者得自由，无戒者为习奴$(tput sgr0)"
+    echo "$(tput bold; tput setaf 2)请善待你自己$(tput sgr0)"
   fi
   popd
 }
