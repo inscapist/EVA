@@ -58,6 +58,7 @@
     windsurf
     postman
     pwgen
+    zed-editor
 
     linuxKernel.packages.linux_zen.perf
   ];
