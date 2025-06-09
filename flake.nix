@@ -108,8 +108,8 @@
       url = "https://raw.githubusercontent.com/StevenBlack/hosts/3.14.80/alternates/fakenews-gambling-porn/hosts";
       flake = false;
     };
-    browser-previews = {
-      url = "github:nix-community/browser-previews";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

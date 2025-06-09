@@ -1,6 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, zen-browser, ... }:
 {
   # home.packages = with pkgs; [ vivaldi ];
+
+  imports = [
+    # inputs.zen-browser.homeModules.beta
+    zen-browser.homeModules.twilight
+    # inputs.zen-browser.homeModules.twilight-official
+  ];
 
   programs = {
     # chromium = {
@@ -18,6 +24,14 @@
     };
     firefox = {
       enable = false;
+    };
+    zen-browser = {
+      enable = true;
+      policies = {
+        DisableAppUpdate = true;
+        DisableTelemetry = true;
+        # find more options here: https://mozilla.github.io/policy-templates/
+      };
     };
   };
 
