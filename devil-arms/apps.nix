@@ -1,21 +1,15 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   programs.steam = {
-    enable = true;
+    enable = false;
     # remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     # dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
-  environment.systemPackages = with inputs.browser-previews.packages.${pkgs.system}; [
-    # google-chrome # Stable Release
-    # google-chrome-beta # Beta Release
-    # google-chrome-dev # Dev Release
-  ];
-
   services = {
     ollama = {
-      enable = true;
+      enable = false;
       acceleration = "cuda";
       package = pkgs.ollama.override { acceleration = "cuda"; };
 
@@ -23,7 +17,7 @@
       # loadModels = [ "deepseek-r1:8b" ];
     };
     open-webui = {
-      enable = true;
+      enable = false;
       port = 2222;
       environment = {
         OLLAMA_API_BASE_URL = "http://127.0.0.1:11434";
