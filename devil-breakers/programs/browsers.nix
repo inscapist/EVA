@@ -1,6 +1,6 @@
 { pkgs, zen-browser, ... }:
 {
-  # home.packages = with pkgs; [ vivaldi ];
+  home.packages = with pkgs; [ chromium ];
 
   imports = [
     # inputs.zen-browser.homeModules.beta
@@ -23,7 +23,7 @@
       enable = true;
     };
     firefox = {
-      enable = false;
+      enable = true;
     };
     zen-browser = {
       enable = true;

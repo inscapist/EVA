@@ -44,6 +44,7 @@
         diff.colorMoved = "default";
         merge.conflictstyle = "diff3";
         push.autoSetupRemote = true;
+        init.defaultBranch = "main";
       };
     };
 
