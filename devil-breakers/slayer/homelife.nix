@@ -19,7 +19,6 @@
     # nyancat
 
     spotify
-    discord
     jamesdsp
   ];
 }
