@@ -23,7 +23,7 @@
       enable = true;
     };
     firefox = {
-      enable = false;
+      enable = true;
     };
     zen-browser = {
       enable = true;
