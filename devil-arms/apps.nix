@@ -10,7 +10,7 @@
 
   services = {
     ollama = {
-      enable = false;
+      enable = true;
       acceleration = "cuda";
       package = pkgs.ollama.override { acceleration = "cuda"; };
 
@@ -18,7 +18,7 @@
       # loadModels = [ "deepseek-r1:8b" ];
     };
     open-webui = {
-      enable = false;
+      enable = true;
       port = 2222;
       environment = {
         OLLAMA_API_BASE_URL = "http://127.0.0.1:11434";

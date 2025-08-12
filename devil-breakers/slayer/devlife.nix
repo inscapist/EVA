@@ -53,12 +53,13 @@
     # libz
     beekeeper-studio
     # mongodb-compass
-    vscode
+    # vscode
     code-cursor
-    windsurf
-    postman
+    # windsurf
+    # postman
     pwgen
-    zed-editor
+    # zed-editor
+    # jan
 
     linuxKernel.packages.linux_zen.perf
   ];
