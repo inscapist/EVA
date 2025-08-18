@@ -1,6 +1,6 @@
 { pkgs, zen-browser, ... }:
 {
-  home.packages = with pkgs; [ chromium ];
+  # home.packages = with pkgs; [ chromium ];
 
   imports = [
     # inputs.zen-browser.homeModules.beta
