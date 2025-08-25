@@ -29,12 +29,6 @@
     # };
   };
 
-  environment.etc."pam.d/i3lock" = {
-    text = ''
-      auth include login
-    '';
-  };
-
   # TODO consider https://wiki.archlinux.org/title/GNOME/Keyring
 
   # security tweaks from Lord @hlissner
