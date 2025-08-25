@@ -94,10 +94,18 @@
   # for initial installation, do `sudo freshclam && systemctl restart clamav-daemon && systemctl restart clamav-freshclam`
   # to check that daemon is running, do `systemctl status clamav-daemon`
   # for scanning, do `sudo clamscan`
-  #
-  # TODO: add email notification
   services.clamav = {
     daemon.enable = true;
     updater.enable = true;
+    scanner = {
+      enable = true;
+      interval = "weekly";
+      scanDirectories = [
+        "/home/*/downloads"
+        "/home/*/documents"
+        "/tmp"
+        "/var/tmp"
+      ];
+    };
   };
 }
