@@ -20,7 +20,6 @@
         enableNixpkgsReleaseCheck = false;
       };
 
-      nixpkgs.config = import ./dots/nixpkgs/config.nix;
       xdg.configFile."nixpkgs/config.nix".source = ./dots/nixpkgs/config.nix;
       xdg.configFile."i3/config".source = ./dots/i3/config;
 

@@ -19,11 +19,10 @@
       orbs = import ./orbs inputs;
       pkgs = import nixpkgs {
         inherit system;
-        config.allowUnfree = true;
-
         config = {
+          allowUnfree = true;
           permittedInsecurePackages = [
-            "beekeeper-studio-5.1.5"
+            "beekeeper-studio-5.2.12"
             "electron-21.4.0"
             "openssl-1.1.1w"
           ];
@@ -36,7 +35,6 @@
       specialArgs = {
         inherit
           system
-          pkgs
           inputs
           dt
           ;
@@ -51,13 +49,19 @@
       # //-- Primary Driver - XPS 9520 --//
       nixosConfigurations.vergil = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
-        modules = [ ./nephilims/vergil ] ++ mods;
+        modules = [ 
+          ./nephilims/vergil
+          { nixpkgs.pkgs = pkgs; }
+        ] ++ mods;
       };
 
       # //-- Dante - Qemu --//
       nixosConfigurations.dante = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
-        modules = [ ./nephilims/dante ] ++ mods;
+        modules = [ 
+          ./nephilims/dante
+          { nixpkgs.pkgs = pkgs; }
+        ] ++ mods;
       };
 
       # --------------------------------------------------------

@@ -1,15 +1,5 @@
 { user, ... }:
 {
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowBroken = false;
-    permittedInsecurePackages = [
-      "beekeeper-studio-5.1.5"
-      "electron-21.4.0"
-      "openssl-1.1.1w"
-    ];
-  };
-
   programs.nix-ld.enable = true;
 
   nix = {
