@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Run vllm with the proper nix-shell environment
+exec nix-shell /home/xi/EVA/shell.nix --run "uv run --with vllm vllm $*"
