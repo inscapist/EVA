@@ -74,7 +74,31 @@ compdef _gh gh
 # >> Options
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-HISTFILE=~/.histfile
+# Directory-based history configuration
+HISTDIR="${HOME}/.local/share/zsh/history"
+mkdir -p "${HISTDIR}"
+
+# Function to get the history file for the current directory
+function _get_histfile() {
+    local dir_hash=$(echo -n "$PWD" | sha256sum | cut -d' ' -f1)
+    echo "${HISTDIR}/${dir_hash}"
+}
+
+# Function to switch history file when changing directories
+function _switch_history() {
+    fc -P  # Push current history to stack
+    HISTFILE=$(_get_histfile)
+    HISTSIZE=10000
+    SAVEHIST=10000
+    fc -p "$HISTFILE" "$HISTSIZE" "$SAVEHIST"  # Load directory-specific history
+}
+
+# Hook to switch history on directory change
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd _switch_history
+
+# Initialize history for the starting directory
+HISTFILE=$(_get_histfile)
 HISTSIZE=10000
 SAVEHIST=10000
 
@@ -219,6 +243,11 @@ alias kms="kubectl modify-secret"
 alias wk="watch kubectl"
 
 alias genrand="openssl rand -hex 32"
+
+# Directory-based history aliases
+alias hist-show="echo \"Current history file: \$HISTFILE\""
+alias hist-dir="ls -la ${HOME}/.local/share/zsh/history/"
+alias hist-clean="find ${HOME}/.local/share/zsh/history/ -type f -size 0 -delete"
 alias lls="/bin/ls"
 alias sha="npx shadow-cljs"
 alias pip="python -m pip"
