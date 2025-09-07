@@ -26,6 +26,13 @@
     leiningen
     rustup
     devenv
+    #-- OCaml --#
+    ocaml
+    opam
+    dune_3
+    ocamlPackages.utop
+    ocamlPackages.ocaml-lsp
+    ocamlPackages.ocp-indent
     #-- LSP --#
     nil
     sumneko-lua-language-server
