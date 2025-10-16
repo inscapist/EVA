@@ -9,7 +9,7 @@
       baseIndex = 1;
       mouse = true;
       prefix = "`";
-      terminal = "screen-256color";
+      terminal = "tmux-256color";
 
       plugins = with pkgs; [
         tmuxPlugins.sensible
@@ -21,6 +21,8 @@
       extraConfig = ''
         # https://unix.stackexchange.com/questions/568260/how-is-default-terminal-compared-to-tmux-terminal-overrides
         set -ga terminal-overrides ",*256col*:Tc"
+        set -ga terminal-features 'xterm*:extkeys'
+        set -g extended-keys always
 
         # disable bell
         set -g bell-action none
@@ -41,6 +43,7 @@
         bind o choose-tree -Zw
         unbind w
         bind w select-pane -t :.+
+        bind -n S-Enter send-keys Escape "[13;2u"
 
         # status bar theme
         # https://gist.github.com/rajanand02/9407361
