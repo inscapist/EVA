@@ -22,7 +22,7 @@
         # https://unix.stackexchange.com/questions/568260/how-is-default-terminal-compared-to-tmux-terminal-overrides
         set -ga terminal-overrides ",*256col*:Tc"
         set -ga terminal-features 'xterm*:extkeys'
-        set -g extended-keys always
+        set -g extended-keys on
 
         # disable bell
         set -g bell-action none
@@ -44,6 +44,7 @@
         unbind w
         bind w select-pane -t :.+
         bind -n S-Enter send-keys Escape "[13;2u"
+        bind -n S-Tab send-keys -l "\u001B[Z"
 
         # status bar theme
         # https://gist.github.com/rajanand02/9407361
