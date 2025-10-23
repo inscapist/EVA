@@ -9,6 +9,7 @@
     ./keyboards
     ./networking.nix
     ./os.nix
+    ./mouse.nix
     ./power.nix
     ./security.nix
     ./sound.nix

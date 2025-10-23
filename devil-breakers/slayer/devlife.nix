@@ -67,6 +67,8 @@
     pwgen
     # zed-editor
     # jan
+    quarto
+    texlive.combined.scheme-full
 
     linuxKernel.packages.linux_zen.perf
   ];
