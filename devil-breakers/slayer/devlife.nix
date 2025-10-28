@@ -43,7 +43,7 @@
     haskell-language-server
     nodePackages.typescript-language-server
     nodePackages.bash-language-server
-    nodePackages.dockerfile-language-server-nodejs
+    dockerfile-language-server
     # texlab
     #-- Linters --#
     hlint
@@ -70,6 +70,6 @@
     quarto
     texlive.combined.scheme-full
 
-    linuxKernel.packages.linux_zen.perf
+    perf
   ];
 }

@@ -5,9 +5,9 @@
   programs.ssh.startAgent = true;
 
   # Lid settings
-  services.logind = {
-    lidSwitch = "suspend";
-    lidSwitchExternalPower = "lock";
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend";
+    HandleLidSwitchExternalPower = "lock";
   };
 
   security = {
