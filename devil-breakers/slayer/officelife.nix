@@ -11,7 +11,7 @@
     # compression
     unrar
     unar
-    libsForQt5.ark
+    kdePackages.ark
 
     # pdf viwers
     # evince
