@@ -67,8 +67,9 @@
     pwgen
     # zed-editor
     # jan
-    quarto
+    # quarto
     texlive.combined.scheme-full
+    dos2unix
 
     perf
   ];
