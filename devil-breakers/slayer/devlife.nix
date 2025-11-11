@@ -69,6 +69,8 @@
     # jan
     # quarto
     texlive.combined.scheme-full
+    perlPackages.LaTeXML
+    calibre
     dos2unix
 
     perf
