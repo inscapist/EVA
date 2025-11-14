@@ -21,8 +21,7 @@
       recursive
       roboto
       noto-fonts
-      noto-fonts-extra
-      noto-fonts-emoji
+      noto-fonts-color-emoji
 
       # latex fonts
       liberation_ttf

@@ -64,7 +64,7 @@
         zgrviewer
         gdb
         hexyl
-        poppler_utils
+        poppler-utils
         imagemagick
         dmidecode
       ]
