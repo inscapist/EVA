@@ -19,6 +19,8 @@
     # nyancat
 
     spotify
+    # AI browser with Copilot features
+    microsoft-edge
     jamesdsp
     discord
 
