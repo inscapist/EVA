@@ -125,6 +125,20 @@ unsetopt CLOBBER            # Do not overwrite existing files with > and >>.
                             # Use >! and >>! to bypass.
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# >> Utility Functions
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+stay_awake() {
+    local reason="${1:-manual block}"
+    systemd-inhibit --what=idle:sleep --why "$reason" sleep infinity
+}
+
+# Configure external display layout
+pin-desktop() {
+    xrandr --output DP-4 --primary --output eDP-1 --auto --left-of DP-4
+}
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # >> My Keybindings
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 

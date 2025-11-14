@@ -35,7 +35,7 @@
     ocamlPackages.ocp-indent
     #-- LSP --#
     nil
-    sumneko-lua-language-server
+    lua-language-server
     gopls
     pyright
     clojure-lsp
@@ -62,6 +62,7 @@
     # mongodb-compass
     # vscode
     code-cursor
+    cursor-cli
     # windsurf
     # postman
     pwgen
@@ -69,6 +70,8 @@
     # jan
     # quarto
     texlive.combined.scheme-full
+    perlPackages.LaTeXML
+    calibre
     dos2unix
 
     perf

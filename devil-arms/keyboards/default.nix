@@ -26,7 +26,10 @@
   hardware.keyboard.qmk.enable = true;
   services.udev.packages = [ pkgs.via ];
 
-  services.xserver.libinput.touchpad.disableWhileTyping = true;
+  services.libinput = {
+    enable = true;
+    touchpad.disableWhileTyping = true;
+  };
   environment.etc."libinput/local-overrides.quirks".text = ''
     [Serial Keyboards]
     MatchUdevType=keyboard

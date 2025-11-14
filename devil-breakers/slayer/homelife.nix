@@ -19,7 +19,10 @@
     # nyancat
 
     spotify
+    # AI browser with Copilot features
+    microsoft-edge
     jamesdsp
+    discord
 
     (pkgs.writeShellScriptBin "reset-desktops" ''
       # First, switch to each workspace to ensure it exists
