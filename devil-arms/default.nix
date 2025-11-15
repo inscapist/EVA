@@ -3,6 +3,7 @@
     ./apps.nix
     ./backup.nix
     ./bluetooth.nix
+    ./gaming.nix
     ./fonts.nix
     ./display.nix
     ./i18n.nix

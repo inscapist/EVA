@@ -5,7 +5,7 @@
   ...
 }:
 {
-  services.tailscale.enable = true;
+  services.tailscale.enable = false;
   services.openssh.enable = true;
 
   networking = {
@@ -28,12 +28,8 @@
       allowedTCPPorts = [
         22
         3000
-        # Add Cloudflare WARP ports
-        2408
       ];
       allowedUDPPorts = [
-        # Add Cloudflare WARP ports
-        2408
         1701
         500
         4500
@@ -90,7 +86,7 @@
 
   # https://community.cloudflare.com/t/how-to-register-into-a-team-with-linux-and-warp-cli/627971
   services.cloudflare-warp = {
-    enable = true;
+    enable = false;
   };
 
   # networking.networkmanager.unmanaged = [ "CloudflareWARP" ];

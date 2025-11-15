@@ -3,7 +3,7 @@
   virtualisation = {
     docker = {
       autoPrune.enable = true;
-      enable = true;
+      enable = false;
       # rootless = {
       #   enable = true;
       #   setSocketVariable = true;
