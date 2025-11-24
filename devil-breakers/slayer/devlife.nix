@@ -71,6 +71,7 @@
     # quarto
     texlive.combined.scheme-full
     perlPackages.LaTeXML
+    python313Packages.markitdown
     calibre
     dos2unix
 
