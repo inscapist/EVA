@@ -271,6 +271,7 @@ alias sys="systemctl"
 alias sysu="systemctl --user"
 alias sysinfo="inxi -Fxxxz"
 alias supercurl="curl -kivL"
+alias co='CODEX_HOME="$PWD/.codex" codex'
 
 # In wayland, wl-copy and wl-paste
 alias pbcopy='xsel --clipboard --input'
