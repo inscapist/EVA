@@ -33,6 +33,7 @@
           "reset-remote" = "!git reset --hard $(git rev-parse --abbrev-ref '@{upstream}')";
           "reset-head" = "reset --hard HEAD";
           "reset-back" = "reset --hard HEAD~1";
+          "uncommit-last" = "reset --soft HEAD~1";
           "remote-tag" = "ls-remote --tags origin";
           "prune-local" = "!git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs !git branch -d";
           "do-not-track" = "!git update-index --assume-unchanged $1; !git rm -f $1";
