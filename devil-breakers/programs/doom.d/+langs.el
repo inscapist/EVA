@@ -45,9 +45,6 @@
 (setq-hook! 'clojure-mode-hook
   apheleia-inhibit t
   +format-with nil)
-(add-hook 'clojure-mode-hook
-          (lambda()
-            (add-hook 'before-save-hook #'+format/buffer nil t)))
 
 
 ;; do not format markdown slidev
