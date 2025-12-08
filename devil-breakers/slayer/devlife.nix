@@ -64,6 +64,8 @@ in
     shfmt
     #-- Misc --#
     lldb
+    timg
+    libcaca
     # rustdesk
     # libz
     beekeeper-studio
@@ -81,6 +83,7 @@ in
     perlPackages.LaTeXML
     python313Packages.markitdown
     calibre
+    mupdf
     dos2unix
 
     perf
