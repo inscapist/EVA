@@ -64,6 +64,8 @@ in
     shfmt
     #-- Misc --#
     lldb
+    timg
+    libcaca
     # rustdesk
     # libz
     beekeeper-studio
@@ -71,6 +73,7 @@ in
     # vscode
     code-cursor
     cursor-cli
+    antigravity
     # windsurf
     # postman
     pwgen
@@ -81,6 +84,7 @@ in
     perlPackages.LaTeXML
     python313Packages.markitdown
     calibre
+    mupdf
     dos2unix
 
     perf

@@ -16,8 +16,7 @@
   services = {
     ollama = {
       enable = false;
-      acceleration = "cuda";
-      package = pkgs.ollama.override { acceleration = "cuda"; };
+      package = pkgs.ollama-cuda;
 
       # Optional: preload models, see https://ollama.com/library
       # loadModels = [ "deepseek-r1:8b" ];
