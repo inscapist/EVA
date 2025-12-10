@@ -73,6 +73,7 @@ in
     # vscode
     code-cursor
     cursor-cli
+    antigravity
     # windsurf
     # postman
     pwgen
