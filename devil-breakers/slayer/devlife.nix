@@ -1,5 +1,13 @@
 { pkgs, ... }:
 
+let
+  pythonDevEnv =
+    pkgs.python311.withPackages (ps: [
+      ps.pip
+      ps.pandas
+      ps.openpyxl
+    ]);
+in
 {
 
   programs = {
@@ -21,7 +29,7 @@
     yarn
     nodejs
     # nodePackages_latest.firebase-tools
-    python311 # install pip with `python -m ensurepip --upgrade`
+    pythonDevEnv
     clojure
     leiningen
     rustup
@@ -56,6 +64,8 @@
     shfmt
     #-- Misc --#
     lldb
+    timg
+    libcaca
     # rustdesk
     # libz
     beekeeper-studio
@@ -63,6 +73,7 @@
     # vscode
     code-cursor
     cursor-cli
+    antigravity
     # windsurf
     # postman
     pwgen
@@ -73,6 +84,7 @@
     perlPackages.LaTeXML
     python313Packages.markitdown
     calibre
+    mupdf
     dos2unix
 
     perf

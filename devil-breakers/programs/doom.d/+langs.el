@@ -10,6 +10,18 @@
   (setq lsp-clients-typescript-init-opts '(:importModuleSpecifierPreference "non-relative"))
   (add-to-list 'exec-path "~/elixir-ls"))
 
+;; rust-analyzer: make sure we send cargo config
+;; in the shapes it expects, to avoid deserialization
+;; errors like those at /cargo/cfgs.
+(after! lsp-rust
+  ;; rust-analyzer expects `cargo.cfgs` to be a sequence
+  ;; (JSON array). Use an empty vector here instead of nil
+  ;; so it doesn't see `null` and complain.
+  (setq lsp-rust-analyzer-cargo-cfgs [])
+  ;; Ensure extraEnv is always a JSON object (map),
+  ;; not a sequence/array.
+  (setq lsp-rust-analyzer-cargo-extra-env (make-hash-table :test 'equal)))
+
 
 ;; SQL
 ;; (setq sqlformat-command 'pgformatter)
@@ -33,9 +45,6 @@
 (setq-hook! 'clojure-mode-hook
   apheleia-inhibit t
   +format-with nil)
-(add-hook 'clojure-mode-hook
-          (lambda()
-            (add-hook 'before-save-hook #'+format/buffer nil t)))
 
 
 ;; do not format markdown slidev
