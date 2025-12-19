@@ -44,14 +44,9 @@
         ouch # compress/decompress stuffs
       ]
       ++ [
-        nitch
         dua
         duf
-        ncdu
-        htop
-        bottom
         btop
-        glance
         glances
         termscp
         iotop
@@ -79,7 +74,6 @@
       ++ [
         pgcli
         nix-tree
-        nix-du
         restic # required for backing up stuff to backblaze(b2 protocol)
       ];
   };
