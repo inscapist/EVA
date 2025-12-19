@@ -21,8 +21,8 @@
     autoUpgrade.enable = true;
   };
 
-  # use latest kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # use latest xanmod kernel
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   # boot.kernelPackages = pkgs.linuxPackages_zen;
 
