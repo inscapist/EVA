@@ -48,11 +48,6 @@
       };
     };
 
-    delta = {
-      enable = true;
-      enableGitIntegration = true;
-    };
-
     lazygit = {
       enable = true;
       settings = {

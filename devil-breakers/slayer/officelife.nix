@@ -10,7 +10,6 @@
 
     # compression
     unrar
-    unar
     kdePackages.ark
 
     # pdf viwers
