@@ -9,24 +9,24 @@
   ];
 
   programs = {
-    # chromium = {
-    #   enable = true;
-    #   # package = pkgs.ungoogled-chromium;
-    #   commandLineArgs = [
+    chromium = {
+      enable = true;
+      # package = pkgs.ungoogled-chromium;
+      commandLineArgs = [
 
-    #   ];
-    #   extensions = [
+      ];
+      extensions = [
 
-    #   ];
-    # };
+      ];
+    };
     brave = {
       enable = true;
     };
     firefox = {
-      enable = true;
+      enable = false;
     };
     zen-browser = {
-      enable = true;
+      enable = false;
       policies = {
         DisableAppUpdate = true;
         DisableTelemetry = true;
