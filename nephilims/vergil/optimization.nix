@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   chattr = pkgs.writeShellScriptBin "chattr" "";
@@ -24,10 +24,15 @@ in
 
   fileSystems."/".options = [ "noatime" ];
 
+  powerManagement.cpuFreqGovernor = lib.mkForce "performance";
+
+  networking.networkmanager.wifi.powersave = lib.mkForce false;
+
   services = {
     fwupd.enable = true; # firmware update
     fprintd.enable = true; # fingerprint scanner
     fstrim.enable = true;
+    auto-cpufreq.enable = lib.mkForce false;
   };
 
   hardware = {
