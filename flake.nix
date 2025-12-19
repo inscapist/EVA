@@ -46,41 +46,43 @@
       # My systems
       # ========================================================
 
-      # //-- Primary Driver - XPS 9520 --//
-      nixosConfigurations.vergil = nixpkgs.lib.nixosSystem {
-        inherit system specialArgs;
-        modules = [ 
-          ./nephilims/vergil
-          { nixpkgs.pkgs = pkgs; }
-        ] ++ mods;
-      };
+      nixosConfigurations = {
+        # //-- Primary Driver - XPS 9520 --//
+        vergil = nixpkgs.lib.nixosSystem {
+          inherit system specialArgs;
+          modules = [
+            ./nephilims/vergil
+            { nixpkgs.pkgs = pkgs; }
+          ] ++ mods;
+        };
 
-      # //-- Dante - Qemu --//
-      nixosConfigurations.dante = nixpkgs.lib.nixosSystem {
-        inherit system specialArgs;
-        modules = [ 
-          ./nephilims/dante
-          { nixpkgs.pkgs = pkgs; }
-        ] ++ mods;
-      };
+        # //-- Dante - Qemu --//
+        dante = nixpkgs.lib.nixosSystem {
+          inherit system specialArgs;
+          modules = [
+            ./nephilims/dante
+            { nixpkgs.pkgs = pkgs; }
+          ] ++ mods;
+        };
 
-      # --------------------------------------------------------
-      # Installers
-      # ========================================================
+        # --------------------------------------------------------
+        # Installers
+        # ========================================================
 
-      # //-- Vergil Installer --//
-      nixosConfigurations.vergilInstaller = nixpkgs.lib.nixosSystem {
-        inherit system specialArgs;
-        modules = [ ./nephilims/vergil/installer.nix ];
-      };
+        # //-- Vergil Installer --//
+        vergilInstaller = nixpkgs.lib.nixosSystem {
+          inherit system specialArgs;
+          modules = [ ./nephilims/vergil/installer.nix ];
+        };
 
-      # //-- Dante Installer on Qemu (make sure to change from bios to UEFI) --//
-      # nix build .#nixosConfigurations.danteInstaller.config.system.build.isoImage -o dante-iso
-      # find the thumbdrive using `lsblk` and replace `/dev/sdb` below
-      # sudo dd if=dante-iso/iso/TAB.iso of=/dev/sdb status=progress
-      nixosConfigurations.danteInstaller = nixpkgs.lib.nixosSystem {
-        inherit system specialArgs;
-        modules = [ ./nephilims/dante/installer.nix ];
+        # //-- Dante Installer on Qemu (make sure to change from bios to UEFI) --//
+        # nix build .#nixosConfigurations.danteInstaller.config.system.build.isoImage -o dante-iso
+        # find the thumbdrive using `lsblk` and replace `/dev/sdb` below
+        # sudo dd if=dante-iso/iso/TAB.iso of=/dev/sdb status=progress
+        danteInstaller = nixpkgs.lib.nixosSystem {
+          inherit system specialArgs;
+          modules = [ ./nephilims/dante/installer.nix ];
+        };
       };
     }
     // fu.lib.eachDefaultSystem (
