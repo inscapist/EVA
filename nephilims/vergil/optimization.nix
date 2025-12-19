@@ -33,6 +33,8 @@ in
     fprintd.enable = true; # fingerprint scanner
     fstrim.enable = true;
     auto-cpufreq.enable = lib.mkForce false;
+    irqbalance.enable = true;
+    system76-scheduler.enable = true;
   };
 
   hardware = {
