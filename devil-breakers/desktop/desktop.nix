@@ -10,6 +10,7 @@
 
   home.packages = with pkgs; [
     arandr
+    feh
     maim
     xclip
     xsel

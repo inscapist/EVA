@@ -119,6 +119,7 @@
       };
     };
   };
+
   environment.etc."libinput/local-overrides.quirks".text = ''
     [Serial Keyboards]
     MatchUdevType=keyboard
