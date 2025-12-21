@@ -16,45 +16,47 @@
   };
 
   programs.dconf.enable = true;
-  services.gvfs.enable = true;
-  services.dbus = {
-    enable = true;
-    packages = [ pkgs.dconf ];
-  };
-
-  services.displayManager.defaultSession = "none+i3";
-
-  services.xserver = {
-    enable = true;
-    xkb.layout = "us";
-    # replaced by kmonad
-    #xkb.options = "caps:escape";
-
-    # displayManager.sessionCommands = ''
-    #   sleep 5 && ${pkgs.xorg.xset}/bin/xset r rate 250 66 &
-    # '';
-
-    # NOTE mutually exclusive with `services.displayManager.defaultSession`
-    # displayManager.startx.enable = true;
-
-    # run autostart programs
-    desktopManager.runXdgAutostartIfNone = true;
-
-    # use i3
-    windowManager.i3 = {
+  services = {
+    gvfs.enable = true;
+    dbus = {
       enable = true;
-      extraPackages = with pkgs; [
-        i3lock-fancy-rapid
-        xss-lock
-      ];
+      packages = [ pkgs.dconf ];
+    };
+
+    displayManager.defaultSession = "none+i3";
+
+    xserver = {
+      enable = true;
+      xkb.layout = "us";
+      # replaced by kmonad
+      #xkb.options = "caps:escape";
+
+      # displayManager.sessionCommands = ''
+      #   sleep 5 && ${pkgs.xorg.xset}/bin/xset r rate 250 66 &
+      # '';
+
+      # NOTE mutually exclusive with `services.displayManager.defaultSession`
+      # displayManager.startx.enable = true;
+
+      # run autostart programs
+      desktopManager.runXdgAutostartIfNone = true;
+
+      # use i3
+      windowManager.i3 = {
+        enable = true;
+        extraPackages = with pkgs; [
+          i3lock-fancy-rapid
+          xss-lock
+        ];
+      };
+
+      # https://github.com/NixOS/nixpkgs/issues/34603
+      # https://wiki.archlinux.org/title/HiDPI
+      # https://ricostacruz.com/til/fractional-scaling-on-xorg-linux
+      dpi = 168; # bigger value -> larger elements
+      upscaleDefaultCursor = false;
     };
   };
-
-  # https://github.com/NixOS/nixpkgs/issues/34603
-  # https://wiki.archlinux.org/title/HiDPI
-  # https://ricostacruz.com/til/fractional-scaling-on-xorg-linux
-  services.xserver.dpi = 168; # bigger value -> larger elements
-  services.xserver.upscaleDefaultCursor = false;
   environment.variables = {
     # the following 2 variables work in conjunction with each other,
     # GDK_SCALE allows doubling/tripling resolution (integer), 

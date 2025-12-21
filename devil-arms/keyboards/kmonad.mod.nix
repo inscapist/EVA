@@ -136,10 +136,12 @@ let
       value = {
         description = "KMonad for ${keyboard.device}";
         script = lib.escapeShellArgs cmd;
-        serviceConfig.Restart = "always";
-        serviceConfig.User = "kmonad";
-        serviceConfig.SupplementaryGroups = groups;
-        serviceConfig.Nice = -20;
+        serviceConfig = {
+          Restart = "always";
+          User = "kmonad";
+          SupplementaryGroups = groups;
+          Nice = -20;
+        };
       };
     };
 in
@@ -174,13 +176,17 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [ cfg.package ];
 
-    users.groups.uinput = { };
-    users.groups.kmonad = { };
+    users = {
+      groups = {
+        uinput = { };
+        kmonad = { };
+      };
 
-    users.users.kmonad = {
-      description = "KMonad system user.";
-      group = "kmonad";
-      isSystemUser = true;
+      users.kmonad = {
+        description = "KMonad system user.";
+        group = "kmonad";
+        isSystemUser = true;
+      };
     };
 
     services.udev.extraRules = ''

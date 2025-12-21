@@ -13,21 +13,30 @@
 
   console.earlySetup = true;
   console.keyMap = lib.mkDefault "us";
-  boot.initrd.systemd.enable = true;
-  boot.initrd.availableKernelModules = [
-    "nvme"
-    "sd_mod"
-    "rtsx_pci_sdmmc"
-    "thunderbolt"
-    "usb_storage"
-    "xhci_pci"
-    "usbhid"
-    "hid_generic"
-    "hid"
-  ];
-  boot.initrd.kernelModules = [ "dm-snapshot" ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot = {
+    initrd = {
+      systemd.enable = true;
+      availableKernelModules = [
+        "nvme"
+        "sd_mod"
+        "rtsx_pci_sdmmc"
+        "thunderbolt"
+        "usb_storage"
+        "xhci_pci"
+        "usbhid"
+        "hid_generic"
+        "hid"
+      ];
+      kernelModules = [ "dm-snapshot" ];
+    };
+    kernelModules = [ "kvm-intel" ];
+    extraModulePackages = [ ];
+    loader = {
+      systemd-boot.enable = true;
+      systemd-boot.configurationLimit = 42;
+      efi.canTouchEfiVariables = true;
+    };
+  };
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/nixos";
@@ -52,7 +61,4 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 42;
-  boot.loader.efi.canTouchEfiVariables = true;
 }
