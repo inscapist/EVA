@@ -6,7 +6,7 @@
 }:
 {
   imports = [
-    ../../devil-arms/melee/os.nix
+    ../../devil-arms/os.nix
     ./optimization.nix
     (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
   ];
@@ -32,7 +32,7 @@
       let
 
         party = writeShellScriptBin "party" ''
-          set -euxo pipefail
+          set -euo pipefail
 
           diskdev=/dev/vda
 
@@ -66,6 +66,9 @@
         flaky
       ]
       ++ [
+        gptfdisk
+        dosfstools
+        e2fsprogs
         git
         tig
         lazygit

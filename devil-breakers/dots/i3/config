@@ -202,7 +202,7 @@ bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 ## App shortcuts
 bindsym $mod+Ctrl+Return exec brave
 bindsym Ctrl+$mod+r exec alacritty -e ranger
-bindsym Ctrl+$mod+m exec thunar
+bindsym Ctrl+$mod+m exec nemo
 bindsym Shift+$mod+m exec toggle-touchpad
 bindsym Shift+$mod+q exec i3lock-fancy-rapid 4 2
 bindsym Print exec "scrot ~/%Y-%m-%d-%T-screenshot.png"

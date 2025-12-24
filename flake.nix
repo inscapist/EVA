@@ -72,7 +72,10 @@
         # //-- Vergil Installer --//
         vergilInstaller = nixpkgs.lib.nixosSystem {
           inherit system specialArgs;
-          modules = [ ./nephilims/vergil/installer.nix ];
+          modules = [
+            ./nephilims/vergil/installer.nix
+            { nixpkgs.pkgs = pkgs; }
+          ];
         };
 
         # //-- Dante Installer on Qemu (make sure to change from bios to UEFI) --//
@@ -81,7 +84,10 @@
         # sudo dd if=dante-iso/iso/TAB.iso of=/dev/sdb status=progress
         danteInstaller = nixpkgs.lib.nixosSystem {
           inherit system specialArgs;
-          modules = [ ./nephilims/dante/installer.nix ];
+          modules = [
+            ./nephilims/dante/installer.nix
+            { nixpkgs.pkgs = pkgs; }
+          ];
         };
       };
     }
