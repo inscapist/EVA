@@ -5,7 +5,7 @@
 }:
 {
   imports = [
-    ../../devil-arms/melee/os.nix
+    ../../devil-arms/os.nix
     ./optimization.nix
     (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
   ];
@@ -31,10 +31,11 @@
       let
 
         party = writeShellScriptBin "party" ''
-          set -euxo pipefail
+          set -euo pipefail
 
           # === config starts ===
-          read -sp 'LUKS passphrase: ' passphrase
+          read -rsp 'LUKS passphrase: ' passphrase
+          echo
           hostname=vergil
           diskdev=/dev/nvme0n1 # check with lsblk
           bootpart=/dev/nvme0n1p1 # check with lsblk
@@ -45,10 +46,10 @@
           sgdisk -o -g -n 1::+550M -t 1:ef00 -n 2:: -t 2:8300 $diskdev
 
           # format partition into a LUKS container
-          echo $passphrase | cryptsetup luksFormat $rootpart --type luks2
+          printf '%s' "$passphrase" | cryptsetup luksFormat "$rootpart" --type luks2 --batch-mode --key-file -
 
           # open/unlock the LUKS container to /dev/mapper/nixcontainer
-          echo $passphrase | cryptsetup luksOpen $rootpart nixcontainer
+          printf '%s' "$passphrase" | cryptsetup luksOpen "$rootpart" nixcontainer --key-file -
 
           # initialize physical volume "nixcontainer"
           pvcreate /dev/mapper/nixcontainer
@@ -85,6 +86,11 @@
         flaky
       ]
       ++ [
+        cryptsetup
+        lvm2
+        gptfdisk
+        dosfstools
+        e2fsprogs
         git
         tig
         lazygit
