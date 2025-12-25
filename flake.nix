@@ -29,7 +29,6 @@
         };
         overlays = [
           orbs.fontDankMono
-          orbs.keyd
         ];
       };
       specialArgs = {

@@ -3,7 +3,7 @@ let
   sparda = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKtsjUN63tlgndK6fx+hHPVo7rhncnIb+Y6A5ftx3vSY";
 
   # systems
-  vergil = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILbQuvzO7tRcdlwt462EGj/iqDKm9Clq2bH4A4B+os5x";
+  vergil = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKoq92l7EUvTuFTBbmv9/pYXemUU68PV9WbThVsR9OQh root@nixos";
 
   keys = [
     sparda

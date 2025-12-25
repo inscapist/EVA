@@ -11,6 +11,9 @@ with inputs;
   environment.systemPackages = [ agenix.packages.${system}.default ];
 
   age = {
+    identityPaths = [
+      "/etc/ssh/ssh_host_ed25519_key"
+    ];
     secretsDir = "/run/sins";
     secrets = {
       zsh_private = {
