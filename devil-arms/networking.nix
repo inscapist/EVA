@@ -73,9 +73,9 @@
   };
 
   # consider disabling if conflicts with WARP
-  networking.wg-quick.interfaces = {
-    wg0.configFile = config.age.secrets.wg0_conf.path;
-  };
+  # networking.wg-quick.interfaces = {
+  #   wg0.configFile = config.age.secrets.wg0_conf.path;
+  # };
 
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
