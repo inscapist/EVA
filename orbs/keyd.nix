@@ -11,10 +11,8 @@ let
   src = fetchFromGitHub {
     owner = "rvaiya";
     repo = "keyd";
-    # rev = "v" + version;
-    # hash = "sha256-NhZnFIdK0yHgFR+rJm4cW+uEhuQkOpCSLwlXNQy6jas=";
     rev = "master";
-    sha256 = "sha256-0zlz4qlfj86LdzXPQFo8j8AUdLn2lScNXRGO7x4aHVg=";
+    sha256 = "sha256-l7yjGpicX1ly4UwF7gcOTaaHPRnxVUMwZkH70NDLL5M=";
   };
 in
 stdenv.mkDerivation {
