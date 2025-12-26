@@ -16,14 +16,14 @@
 
   services = {
     ollama = {
-      enable = false;
+      enable = true;
       package = pkgs.ollama-cuda;
 
       # Optional: preload models, see https://ollama.com/library
       # loadModels = [ "deepseek-r1:8b" ];
     };
     open-webui = {
-      enable = false;
+      enable = true;
       port = 2222;
       environment = {
         # OLLAMA_API_BASE_URL = "http://127.0.0.1:11434";

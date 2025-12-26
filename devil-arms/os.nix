@@ -1,6 +1,10 @@
-{ user, ... }:
+{ user, pkgs, ... }:
 {
   programs.nix-ld.enable = true;
+
+  systemd.tmpfiles.rules = [
+    "L+ /bin/bash - - - - ${pkgs.bashInteractive}/bin/bash"
+  ];
 
   nix = {
     optimise.automatic = true;

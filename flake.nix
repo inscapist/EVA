@@ -29,7 +29,7 @@
         };
         overlays = [
           orbs.fontDankMono
-          orbs.keyd
+          orbs.overops
         ];
       };
       specialArgs = {
@@ -72,7 +72,10 @@
         # //-- Vergil Installer --//
         vergilInstaller = nixpkgs.lib.nixosSystem {
           inherit system specialArgs;
-          modules = [ ./nephilims/vergil/installer.nix ];
+          modules = [
+            ./nephilims/vergil/installer.nix
+            { nixpkgs.pkgs = pkgs; }
+          ];
         };
 
         # //-- Dante Installer on Qemu (make sure to change from bios to UEFI) --//
@@ -81,7 +84,10 @@
         # sudo dd if=dante-iso/iso/TAB.iso of=/dev/sdb status=progress
         danteInstaller = nixpkgs.lib.nixosSystem {
           inherit system specialArgs;
-          modules = [ ./nephilims/dante/installer.nix ];
+          modules = [
+            ./nephilims/dante/installer.nix
+            { nixpkgs.pkgs = pkgs; }
+          ];
         };
       };
     }
@@ -91,11 +97,21 @@
       # Dev shell
       # ========================================================
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+          overlays = [
+            orbs.fontDankMono
+            orbs.overops
+          ];
+        };
       in
       {
         devShells.default = import ./dev-shell.nix { inherit pkgs; };
         formatter = pkgs.nixpkgs-fmt;
+        packages = pkgs.lib.optionalAttrs (system == "x86_64-linux") {
+          inherit (pkgs) overops;
+        };
       }
     );
 

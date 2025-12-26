@@ -25,6 +25,8 @@
   # boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
+  programs.zsh.enable = true;
+
   users.users.${user} = {
     isNormalUser = true;
     extraGroups = [

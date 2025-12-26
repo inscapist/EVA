@@ -4,7 +4,7 @@
     mpv
     gthumb
     asciinema
-    xfce.thunar
+    nemo-with-extensions
     exiftool
     file
     zoxide
