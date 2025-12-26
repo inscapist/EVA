@@ -3,6 +3,7 @@ inputs:
 {
   fontDankMono = pkgs: _: { dank-mono = import ./font-dankmono pkgs; };
   keyd = pkgs: _: { keyd = import ./keyd.nix pkgs; };
+  overops = pkgs: _: { overops = import ./overops.nix pkgs; };
 
   # use emacs 29 for whatever reason
   # emacs29 = (_: prev: {
