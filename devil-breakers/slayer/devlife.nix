@@ -7,6 +7,18 @@ let
       ps.pandas
       ps.openpyxl
     ]);
+
+  kubectlKrewPlugin = pkgs.writeShellScriptBin "kubectl-krew" ''
+    exec ${pkgs.krew}/bin/krew "$@"
+  '';
+
+  kubectlCtxPlugin = pkgs.writeShellScriptBin "kubectl-ctx" ''
+    exec ${pkgs.kubectx}/bin/kubectx "$@"
+  '';
+
+  kubectlNsPlugin = pkgs.writeShellScriptBin "kubectl-ns" ''
+    exec ${pkgs.kubectx}/bin/kubens "$@"
+  '';
 in
 {
 
@@ -18,11 +30,16 @@ in
   home.packages = with pkgs; [
     #-- devops/tools --#
     ngrok
+    overops
     vagrant
     openssl
     kubectl
+    kubectx
     kubernetes-helm
     krew
+    kubectlKrewPlugin
+    kubectlCtxPlugin
+    kubectlNsPlugin
     kapp
     stern
     #-- Languages --#
@@ -76,6 +93,9 @@ in
     antigravity
     # windsurf
     # postman
+
+    d2
+    structurizr-cli
     pwgen
     # zed-editor
     # jan

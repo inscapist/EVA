@@ -29,6 +29,7 @@
         };
         overlays = [
           orbs.fontDankMono
+          orbs.overops
         ];
       };
       specialArgs = {
@@ -96,11 +97,21 @@
       # Dev shell
       # ========================================================
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+          overlays = [
+            orbs.fontDankMono
+            orbs.overops
+          ];
+        };
       in
       {
         devShells.default = import ./dev-shell.nix { inherit pkgs; };
         formatter = pkgs.nixpkgs-fmt;
+        packages = pkgs.lib.optionalAttrs (system == "x86_64-linux") {
+          inherit (pkgs) overops;
+        };
       }
     );
 
