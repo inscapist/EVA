@@ -29,7 +29,7 @@
 
     # https://community.cloudflare.com/t/how-to-register-into-a-team-with-linux-and-warp-cli/627971
     cloudflare-warp = {
-      enable = true;
+      enable = false;
     };
   };
 

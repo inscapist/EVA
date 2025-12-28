@@ -2,7 +2,7 @@
 {
   systemd.timers."restic-backup" = {
     description = "Run backup every day at noon";
-    enable = true;
+    enable = false;
     wantedBy = [ "timers.target" ];
     timerConfig = {
       OnCalendar = "*-*-* 12:00:00";
