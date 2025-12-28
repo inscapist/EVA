@@ -95,10 +95,10 @@
   # to check that daemon is running, do `systemctl status clamav-daemon`
   # for scanning, do `sudo clamscan`
   services.clamav = {
-    daemon.enable = true;
-    updater.enable = true;
+    daemon.enable = false;
+    updater.enable = false;
     scanner = {
-      enable = true;
+      enable = false;
       interval = "weekly";
       scanDirectories = [
         "/home/*/downloads"
