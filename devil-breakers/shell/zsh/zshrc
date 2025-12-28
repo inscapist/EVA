@@ -30,11 +30,11 @@ message-hook() {
   zmodload -F zsh/terminfo b:echoti
   echoti el
 
-  (
-    if journalctl -u restic-backup.service | rg -i "error|failure"; then
-        echo "[WOOP] There was an error or failure in the Restic Backup job."
-    fi
-  ) & disown
+  # (
+  #   if journalctl -u restic-backup.service | rg -i "error|failure"; then
+  #       echo "[WOOP] There was an error or failure in the Restic Backup job."
+  #   fi
+  # ) & disown
 }
 
 
