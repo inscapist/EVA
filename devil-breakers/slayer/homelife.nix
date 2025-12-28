@@ -18,6 +18,14 @@
     # cbonsai
     # nyancat
 
+    (pkgs.writeShellScriptBin "tclock" ''
+      if [ "$#" -eq 0 ]; then
+        exec ${pkgs.tty-clock}/bin/tty-clock -c -s
+      fi
+
+      exec ${pkgs.tty-clock}/bin/tty-clock "$@"
+    '')
+
     spotify
     jamesdsp
     discord
