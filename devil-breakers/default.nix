@@ -45,6 +45,7 @@
         ./desktop/compositor.nix
         ./desktop/desktop.nix
         ./desktop/gtk.nix
+        ./desktop/ibus.nix
         ./desktop/xdg.nix
         ./slayer
       ];
