@@ -29,6 +29,7 @@
     spotify
     jamesdsp
     discord
+    anytype
 
     (pkgs.writeShellScriptBin "reset-desktops" ''
       # First, switch to each workspace to ensure it exists
