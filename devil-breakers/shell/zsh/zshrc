@@ -212,6 +212,7 @@ alias fl="flutter"
 alias gb="git branch"
 alias gf="git fetch"
 alias gp="git pull"
+alias gw="git worktree"
 alias gup="git push -u origin HEAD"
 alias gt="git status"
 alias la='eza -la --git --color-scale'
