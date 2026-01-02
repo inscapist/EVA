@@ -16,5 +16,5 @@
     xsel
   ];
 
-  home.file.".background.png".source = ./wallpapers/ninesols2.jpeg;
+  home.file.".background.png".source = ./wallpapers/ninesols5.png;
 }
