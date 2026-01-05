@@ -106,6 +106,7 @@ in
     calibre
     mupdf
     dos2unix
+    flyctl
 
     perf
   ];

@@ -305,7 +305,7 @@ exec_always --no-startup-id i3-msg workspace 1
 exec_always --no-startup-id xss-lock -- i3lock-fancy-rapid 4 2
 
 bindsym F3 exec loc=~/pictures/$(date +%s).png && maim -s $loc && gthumb $loc
-bindsym F5 exec loc=~/pictures/$(date +%s).png && maim $loc && gthumb $loc
+bindsym F5 exec sh -c 'loc="$HOME/pictures/$(date +%s).png"; out="$(i3-msg -t get_workspaces | jq -r ".[] | select(.focused==true) | .output")"; geom="$(xrandr --query | awk -v out="$out" '"'"'$1==out && $2=="connected" { for (i=1; i<=NF; i++) if ($i ~ /^[0-9]+x[0-9]+\\+[0-9]+\\+[0-9]+$/) { print $i; exit } }'"'"')"; if [ -n "$geom" ]; then maim -g "$geom" "$loc"; else maim "$loc"; fi; gthumb "$loc"'
 
 # Set inner/outer gaps
 gaps inner 18
