@@ -1,7 +1,5 @@
 { pkgs, zen-browser, ... }:
 {
-  home.packages = with pkgs; [ chromium ];
-
   imports = [
     # inputs.zen-browser.homeModules.beta
     zen-browser.homeModules.twilight
@@ -9,16 +7,6 @@
   ];
 
   programs = {
-    # chromium = {
-    #   enable = true;
-    #   # package = pkgs.ungoogled-chromium;
-    #   commandLineArgs = [
-
-    #   ];
-    #   extensions = [
-
-    #   ];
-    # };
     brave = {
       enable = true;
     };
