@@ -1,10 +1,13 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   programs.steam = {
-    enable = false;
-    extraCompatPackages = [ 
-      pkgs.proton-ge-bin 
+    enable = lib.mkDefault false;
+    package = pkgs.steam.override {
+      extraArgs = "-cef-disable-gpu -cef-disable-gpu-compositing";
+    };
+    extraCompatPackages = [
+      pkgs.proton-ge-bin
     ];
     protontricks.enable = true;
     # remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
@@ -28,7 +31,7 @@
         # OLLAMA_API_BASE_URL = "http://127.0.0.1:11434";
         # Use vLLM's OpenAI-compatible API instead of Ollama
         OPENAI_API_BASE_URL = "http://127.0.0.1:8000/v1";
-        OPENAI_API_KEY = "dummy-key";  # vLLM doesn't require a real key
+        OPENAI_API_KEY = "dummy-key"; # vLLM doesn't require a real key
         # Disable authentication
         WEBUI_AUTH = "False";
       };

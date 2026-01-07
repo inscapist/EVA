@@ -29,6 +29,7 @@
     spotify
     jamesdsp
     discord
+    wechat
     anytype
 
     (pkgs.writeShellScriptBin "reset-desktops" ''
