@@ -253,6 +253,7 @@
     ];
 
     firewall = {
+      checkReversePath = "loose";
       allowedTCPPorts = [
         22
         3000
