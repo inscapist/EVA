@@ -14,6 +14,12 @@
       dnssec = "allow-downgrade";
       dnsovertls = "opportunistic";
       llmnr = "true";
+      fallbackDns = [
+        "45.90.28.0#2977d3.dns.nextdns.io"
+        "2a07:a8c0::#2977d3.dns.nextdns.io"
+        "45.90.30.0#2977d3.dns.nextdns.io"
+        "2a07:a8c1::#2977d3.dns.nextdns.io"
+      ];
       extraConfig = ''
         Domains=~.
         MulticastDNS=true
@@ -242,6 +248,8 @@
     nameservers = [
       "1.1.1.1"
       "1.0.0.1"
+      "45.90.28.0"
+      "45.90.30.0"
     ];
 
     firewall = {
