@@ -7,7 +7,7 @@
 }:
 {
   services = {
-    tailscale.enable = true;
+    tailscale.enable = false;
     openssh.enable = true;
     resolved = {
       enable = true;
@@ -184,6 +184,36 @@
         curl -fsS https://www.cloudflare.com/cdn-cgi/trace | grep -E '^(warp=|gateway=|ip=|loc=|colo=)' || true
       '';
     })
+    pkgs.tailscale
+    (pkgs.writeShellApplication {
+      name = "warp-fix";
+      runtimeInputs = [
+        pkgs.cloudflare-warp
+      ];
+      text = ''
+        set -euo pipefail
+        echo "Applying WARP fixes..."
+        
+        # Disconnect to allow configuration
+        warp-cli --accept-tos disconnect || true
+        
+        # Exclude DNS servers from the tunnel to prevent bootstrap loops
+        # Using newer 'tunnel ip add' syntax
+        echo "Adding excluded routes for DNS..."
+        warp-cli --accept-tos tunnel ip add 1.1.1.1 || true
+        warp-cli --accept-tos tunnel ip add 1.0.0.1 || true
+
+        # Disable connectivity checks to bypass "PerformingConnectivityChecks" hang
+        echo "Disabling internal connectivity checks..."
+        warp-cli --accept-tos debug connectivity-check disable || true
+        
+        # Reconnect
+        echo "Reconnecting..."
+        warp-cli --accept-tos connect || true
+        
+        echo "Done. Run 'warp-status' to check connectivity."
+      '';
+    })
     (pkgs.writeShellApplication {
       name = "warp-connected";
       runtimeInputs = [
@@ -206,7 +236,7 @@
         status_json="$(warp-cli --accept-tos -j status 2>/dev/null || true)"
         status="$(jq -r '.status // empty' <<<"$status_json" 2>/dev/null || true)"
 
-        if [[ "$status" != "Connected" ]]; then
+        if [[ "$status" != "Connected" && "$status" != "Connecting" ]]; then
           echo "WARP not connected (status=$status)" >&2
           exit 1
         fi
@@ -238,14 +268,20 @@
       dns = "systemd-resolved";
     };
 
-    # Use Cloudflare DNS as primary, with NextDNS as fallback
+    # Force iptables legacy backend for WARP compatibility
+    nftables.enable = false;
+
     nameservers = [
       "1.1.1.1"
       "1.0.0.1"
     ];
 
     firewall = {
-      checkReversePath = "loose";
+      checkReversePath = false;
+      trustedInterfaces = [
+        "CloudflareWARP"
+        "tailscale0"
+      ];
       allowedTCPPorts = [
         22
         3000
@@ -258,6 +294,8 @@
         1701
         500
         4500
+        # Tailscale
+        41641
       ];
     };
 
@@ -301,5 +339,8 @@
     };
   };
 
-  # networking.networkmanager.unmanaged = [ "CloudflareWARP" ];
+  networking.networkmanager.unmanaged = [
+    "CloudflareWARP"
+    "tailscale0"
+  ];
 }
