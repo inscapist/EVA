@@ -14,12 +14,6 @@
       dnssec = "allow-downgrade";
       dnsovertls = "opportunistic";
       llmnr = "true";
-      fallbackDns = [
-        "45.90.28.0#2977d3.dns.nextdns.io"
-        "2a07:a8c0::#2977d3.dns.nextdns.io"
-        "45.90.30.0#2977d3.dns.nextdns.io"
-        "2a07:a8c1::#2977d3.dns.nextdns.io"
-      ];
       extraConfig = ''
         Domains=~.
         MulticastDNS=true
@@ -190,6 +184,36 @@
         curl -fsS https://www.cloudflare.com/cdn-cgi/trace | grep -E '^(warp=|gateway=|ip=|loc=|colo=)' || true
       '';
     })
+    pkgs.tailscale
+    (pkgs.writeShellApplication {
+      name = "warp-fix";
+      runtimeInputs = [
+        pkgs.cloudflare-warp
+      ];
+      text = ''
+        set -euo pipefail
+        echo "Applying WARP fixes..."
+        
+        # Disconnect to allow configuration
+        warp-cli --accept-tos disconnect || true
+        
+        # Exclude DNS servers from the tunnel to prevent bootstrap loops
+        # Using newer 'tunnel ip add' syntax
+        echo "Adding excluded routes for DNS..."
+        warp-cli --accept-tos tunnel ip add 1.1.1.1 || true
+        warp-cli --accept-tos tunnel ip add 1.0.0.1 || true
+
+        # Disable connectivity checks to bypass "PerformingConnectivityChecks" hang
+        echo "Disabling internal connectivity checks..."
+        warp-cli --accept-tos debug connectivity-check disable || true
+        
+        # Reconnect
+        echo "Reconnecting..."
+        warp-cli --accept-tos connect || true
+        
+        echo "Done. Run 'warp-status' to check connectivity."
+      '';
+    })
     (pkgs.writeShellApplication {
       name = "warp-connected";
       runtimeInputs = [
@@ -212,7 +236,7 @@
         status_json="$(warp-cli --accept-tos -j status 2>/dev/null || true)"
         status="$(jq -r '.status // empty' <<<"$status_json" 2>/dev/null || true)"
 
-        if [[ "$status" != "Connected" ]]; then
+        if [[ "$status" != "Connected" && "$status" != "Connecting" ]]; then
           echo "WARP not connected (status=$status)" >&2
           exit 1
         fi
@@ -244,15 +268,20 @@
       dns = "systemd-resolved";
     };
 
-    # Use Cloudflare DNS as primary, with NextDNS as fallback
+    # Force iptables legacy backend for WARP compatibility
+    nftables.enable = false;
+
     nameservers = [
       "1.1.1.1"
       "1.0.0.1"
-      "45.90.28.0#2977d3.dns.nextdns.io"
-      "45.90.30.0#2977d3.dns.nextdns.io"
     ];
 
     firewall = {
+      checkReversePath = false;
+      trustedInterfaces = [
+        "CloudflareWARP"
+        "tailscale0"
+      ];
       allowedTCPPorts = [
         22
         3000
@@ -261,6 +290,8 @@
         1701
         500
         4500
+        # Tailscale
+        41641
       ];
     };
 
@@ -272,11 +303,22 @@
   };
 
   # consider disabling if conflicts with WARP
-  networking.wg-quick.interfaces = {
-    wg0.configFile = config.age.secrets.wg0_conf.path;
-  };
+  # networking.wg-quick.interfaces = {
+  #   wg0.configFile = config.age.secrets.wg0_conf.path;
+  # };
 
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
+
+  systemd.services.cloudflare-warp = {
+    after = [
+      "NetworkManager.service"
+      "systemd-resolved.service"
+    ];
+    wants = [
+      "NetworkManager.service"
+      "systemd-resolved.service"
+    ];
+  };
 
   virtualisation.docker = {
     rootless.daemon.settings = {
@@ -293,5 +335,8 @@
     };
   };
 
-  # networking.networkmanager.unmanaged = [ "CloudflareWARP" ];
+  networking.networkmanager.unmanaged = [
+    "CloudflareWARP"
+    "tailscale0"
+  ];
 }
