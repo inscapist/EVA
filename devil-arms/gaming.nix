@@ -2,8 +2,8 @@
 
 {
   # Steam launch reminders (4K monitor is capped at 60 Hz per `xrandr`):
-  #   4K 60Hz:     gamemoderun gamescope -w 3840 -h 2160 -r 60 -- %command%
-  #   1440p 60Hz:  gamemoderun gamescope -w 2560 -h 1440 -r 60 -- %command%
+  #   4K 60Hz:     gamemoderun steam-fpscap 60 gamescope -w 3840 -h 2160 -r 60 -- %command%
+  #   1440p 60Hz:  gamemoderun steam-fpscap 60 gamescope -w 2560 -h 1440 -r 60 -- %command%
   # tweak resolution if you need lighter loads, but keep -r 60 for this panel.
 
   boot.kernel.sysctl = {
@@ -43,5 +43,37 @@
     nvtopPackages.nvidia
     vkbasalt
     vulkan-tools
+    (writeShellApplication {
+      name = "steam-fpscap";
+      text = ''
+        set -euo pipefail
+
+        if [ "$#" -lt 2 ]; then
+          echo "Usage: steam-fpscap <fps> <command...>" >&2
+          exit 2
+        fi
+
+        fps="$1"
+        shift
+
+        case "$fps" in
+          ""|*[!0-9]*)
+            echo "steam-fpscap: <fps> must be an integer" >&2
+            exit 2
+            ;;
+        esac
+
+        export DXVK_FRAME_RATE="$fps"
+        export VKD3D_FRAME_RATE="$fps"
+
+        if [ -n "''${MANGOHUD_CONFIG:-}" ]; then
+          export MANGOHUD_CONFIG="''${MANGOHUD_CONFIG},fps_limit=$fps"
+        else
+          export MANGOHUD_CONFIG="fps_limit=$fps"
+        fi
+
+        exec "$@"
+      '';
+    })
   ];
 }
