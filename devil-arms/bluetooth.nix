@@ -18,6 +18,9 @@
         FastConnectable = "true";
         JustWorksRepairing = "always";
       };
+      Policy = {
+        AutoEnable = "true";
+      };
     };
   };
 }
