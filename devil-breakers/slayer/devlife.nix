@@ -91,6 +91,7 @@ in
     code-cursor
     cursor-cli
     antigravity
+    kiro-fhs
     # windsurf
     # postman
 
