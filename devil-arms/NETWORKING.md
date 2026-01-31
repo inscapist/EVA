@@ -23,6 +23,7 @@ To prevent the "Connecting..." hang and DNS outage:
 *   **Package:** `tailscale` is added to system packages.
 *   **Firewall:** Port `41641` (UDP) is open, and `tailscale0` is a trusted interface.
 *   **Unmanaged:** `tailscale0` is also unmanaged by NetworkManager.
+*   **DNS Takeover Guard:** When Tailscale is enabled, a `tailscale-preferences` systemd unit (plus timer) runs `tailscale set --accept-dns=false` to prevent Tailscale/MagicDNS from rewriting system DNS in dual-VPN setups.
 
 ## Included Utility Scripts
 
@@ -55,3 +56,9 @@ A scriptable check (exit code 0 or 1) used by automation to verify the tunnel is
 1.  Ensure you have run `sudo nixos-rebuild switch`.
 2.  Run `warp-fix` in the terminal.
 3.  Check `warp-status`. If `warp=on` and `gateway=on` in the trace output, you are secure, even if the status says "Connecting".
+
+**Symptom:** Internet/DNS "dies" after enabling Tailscale (websites don't resolve).
+**Solution:**
+1.  Run: `sudo tailscale set --accept-dns=false`
+1.  (If you previously used an exit node) Run: `sudo tailscale set --exit-node=`
+2.  Verify with: `resolvectl status` (your global DNS should still be `1.1.1.1` / `1.0.0.1`).

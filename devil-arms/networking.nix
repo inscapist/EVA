@@ -5,6 +5,9 @@
   pkgs,
   ...
 }:
+let
+  tailscaleInterface = config.services.tailscale.interfaceName;
+in
 {
   services = {
     tailscale.enable = false;
@@ -24,7 +27,7 @@
 
     # https://community.cloudflare.com/t/how-to-register-into-a-team-with-linux-and-warp-cli/627971
     cloudflare-warp = {
-      enable = true;
+      enable = false;
     };
   };
 
@@ -280,7 +283,7 @@
       checkReversePath = false;
       trustedInterfaces = [
         "CloudflareWARP"
-        "tailscale0"
+        tailscaleInterface
       ];
       allowedTCPPorts = [
         22
@@ -295,7 +298,7 @@
         500
         4500
         # Tailscale
-        41641
+        config.services.tailscale.port
       ];
     };
 
@@ -311,17 +314,77 @@
   #   wg0.configFile = config.age.secrets.wg0_conf.path;
   # };
 
-  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
+  systemd = {
+    services = {
+      NetworkManager-wait-online.enable = lib.mkForce false;
 
-  systemd.services.cloudflare-warp = {
-    after = [
-      "NetworkManager.service"
-      "systemd-resolved.service"
-    ];
-    wants = [
-      "NetworkManager.service"
-      "systemd-resolved.service"
-    ];
+      cloudflare-warp = {
+        after = [
+          "NetworkManager.service"
+          "systemd-resolved.service"
+        ];
+        wants = [
+          "NetworkManager.service"
+          "systemd-resolved.service"
+        ];
+      };
+
+      # Tailscale can take over system DNS (MagicDNS/admin DNS), which is great
+      # normally, but in a dual-VPN setup (WARP + Tailscale) it can look like the
+      # internet "dies" when DNS starts pointing at Tailscale's resolver while the
+      # tunnel is still coming up (or when WARP's firewall rules interfere).
+      #
+      # Keep the system's DNS stable (systemd-resolved + static nameservers) and
+      # treat Tailscale as a pure transport layer unless explicitly configured
+      # otherwise.
+      tailscale-preferences = lib.mkIf config.services.tailscale.enable {
+        description = "Apply safe Tailscale preferences (avoid DNS takeover)";
+        after = [
+          "tailscaled.service"
+          "network-online.target"
+          "systemd-resolved.service"
+        ];
+        wants = [
+          "tailscaled.service"
+          "network-online.target"
+        ];
+        serviceConfig = {
+          Type = "oneshot";
+        };
+        path = [
+          config.services.tailscale.package
+          pkgs.jq
+        ];
+        script = ''
+          set -euo pipefail
+
+          # If tailscaled isn't logged in yet, skip quietly.
+          state="$(
+            tailscale status --json --peers=false 2>/dev/null \
+              | jq -r '.BackendState // empty' \
+              || true
+          )"
+
+          if [[ "$state" != "Running" ]]; then
+            echo "Tailscale not running (state=$state); skipping preference sync."
+            exit 0
+          fi
+
+          # Prevent Tailscale from rewriting system DNS. Re-enable explicitly with:
+          #   sudo tailscale set --accept-dns=true
+          tailscale set --accept-dns=false
+        '';
+      };
+    };
+
+    timers.tailscale-preferences = lib.mkIf config.services.tailscale.enable {
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnBootSec = "30s";
+        OnUnitActiveSec = "1m";
+        Unit = "tailscale-preferences.service";
+      };
+    };
   };
 
   virtualisation.docker = {
@@ -341,6 +404,6 @@
 
   networking.networkmanager.unmanaged = [
     "CloudflareWARP"
-    "tailscale0"
+    tailscaleInterface
   ];
 }
