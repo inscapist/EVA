@@ -7,10 +7,11 @@
 }:
 let
   tailscaleInterface = config.services.tailscale.interfaceName;
+  tailscaleInterfaceArg = lib.escapeShellArg tailscaleInterface;
 in
 {
   services = {
-    tailscale.enable = false;
+    tailscale.enable = true;
     openssh.enable = true;
     resolved = {
       enable = true;
@@ -284,6 +285,7 @@ in
       trustedInterfaces = [
         "CloudflareWARP"
         tailscaleInterface
+        "docker0"
       ];
       allowedTCPPorts = [
         22
@@ -301,7 +303,6 @@ in
     extraHosts = ''
       192.168.0.189 dante
       192.168.0.121 vergil
-      ${lib.readFile inputs.blocklist}
     '';
   };
 
@@ -330,9 +331,8 @@ in
       # internet "dies" when DNS starts pointing at Tailscale's resolver while the
       # tunnel is still coming up (or when WARP's firewall rules interfere).
       #
-      # Keep the system's DNS stable (systemd-resolved + static nameservers) and
-      # treat Tailscale as a pure transport layer unless explicitly configured
-      # otherwise.
+      # Keep the system's DNS stable (systemd-resolved + static nameservers),
+      # but still keep MagicDNS working via split DNS on the Tailscale link.
       tailscale-preferences = lib.mkIf config.services.tailscale.enable {
         description = "Apply safe Tailscale preferences (avoid DNS takeover)";
         after = [
@@ -350,25 +350,74 @@ in
         path = [
           config.services.tailscale.package
           pkgs.jq
+          pkgs.systemd
         ];
         script = ''
           set -euo pipefail
 
-          # If tailscaled isn't logged in yet, skip quietly.
-          state="$(
-            tailscale status --json --peers=false 2>/dev/null \
-              | jq -r '.BackendState // empty' \
-              || true
-          )"
+          # Retry loop helper
+          wait_for() {
+            local limit="$1"
+            local interval="1"
+            local count=0
+            shift
+            while [[ $count -lt $limit ]]; do
+              if "$@"; then
+                return 0
+              fi
+              sleep "$interval"
+              count=$((count + interval))
+            done
+            return 1
+          }
 
-          if [[ "$state" != "Running" ]]; then
-            echo "Tailscale not running (state=$state); skipping preference sync."
+          check_tailscale_running() {
+            state="$(
+              tailscale status --json --peers=false 2>/dev/null \
+                | jq -r '.BackendState // empty' \
+                || true
+            )"
+            [[ "$state" == "Running" ]]
+          }
+
+          # 1. Wait for Tailscale to be fully connected (up to 10s)
+          # Use a short timeout so we don't block for long if it's intentionally stopped.
+          if ! wait_for 10 check_tailscale_running; then
+            echo "Tailscale not running (state!=Running) after 10s; skipping preference sync."
             exit 0
           fi
 
           # Prevent Tailscale from rewriting system DNS. Re-enable explicitly with:
           #   sudo tailscale set --accept-dns=true
-          tailscale set --accept-dns=false
+          # Also allow LAN access to ensure local Docker subnets (172.17.x.x, etc) are not
+          # routed into the tunnel when using an Exit Node.
+          tailscale set --accept-dns=false --exit-node-allow-lan-access=true
+
+          # Keep MagicDNS working without letting Tailscale take over global DNS.
+          magic_suffix="$(
+            tailscale status --json --peers=false 2>/dev/null \
+              | jq -r '.MagicDNSSuffix // empty' \
+              || true
+          )"
+
+          if [[ -z "$magic_suffix" ]]; then
+            resolvectl revert ${tailscaleInterfaceArg} >/dev/null 2>&1 || true
+            exit 0
+          fi
+
+          check_resolved_link() {
+            resolvectl status ${tailscaleInterfaceArg} >/dev/null 2>&1
+          }
+
+          # 2. Wait for systemd-resolved to see the interface (up to 5s)
+          if ! wait_for 5 check_resolved_link; then
+            echo "systemd-resolved has no link ${tailscaleInterface} after 5s; skipping MagicDNS config."
+            exit 0
+          fi
+
+          resolvectl dns ${tailscaleInterfaceArg} 100.100.100.100
+          resolvectl domain ${tailscaleInterfaceArg} "$magic_suffix" "~$magic_suffix"
+          resolvectl default-route ${tailscaleInterfaceArg} false
         '';
       };
     };
@@ -385,16 +434,10 @@ in
 
   virtualisation.docker = {
     rootless.daemon.settings = {
-      dns = [
-        "1.1.1.1"
-        "9.9.9.9"
-      ];
+      mtu = 1280;
     };
     daemon.settings = {
-      dns = [
-        "1.1.1.1"
-        "9.9.9.9"
-      ];
+      mtu = 1280;
     };
   };
 

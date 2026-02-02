@@ -23,7 +23,7 @@ To prevent the "Connecting..." hang and DNS outage:
 *   **Package:** `tailscale` is added to system packages.
 *   **Firewall:** Port `41641` (UDP) is open, and `tailscale0` is a trusted interface.
 *   **Unmanaged:** `tailscale0` is also unmanaged by NetworkManager.
-*   **DNS Takeover Guard:** When Tailscale is enabled, a `tailscale-preferences` systemd unit (plus timer) runs `tailscale set --accept-dns=false` to prevent Tailscale/MagicDNS from rewriting system DNS in dual-VPN setups.
+*   **DNS Takeover Guard:** When Tailscale is enabled, a `tailscale-preferences` systemd unit (plus timer) keeps `--accept-dns=false` (so Tailscale can't replace global DNS), but still configures **MagicDNS** via `systemd-resolved` (routes `<tailnet>.ts.net` to `100.100.100.100`).
 
 ## Included Utility Scripts
 
@@ -56,6 +56,16 @@ A scriptable check (exit code 0 or 1) used by automation to verify the tunnel is
 1.  Ensure you have run `sudo nixos-rebuild switch`.
 2.  Run `warp-fix` in the terminal.
 3.  Check `warp-status`. If `warp=on` and `gateway=on` in the trace output, you are secure, even if the status says "Connecting".
+
+**Symptom:** Tailscale MagicDNS (`*.ts.net`) doesn't resolve.
+**Solution:**
+1.  Ensure Tailscale is connected (`tailscale status`).
+2.  Restart the sync service: `sudo systemctl restart tailscale-preferences.service`
+    *   This service waits up to 10s for Tailscale to be "Running" and for the interface to appear in `systemd-resolved`.
+3.  Verify with: `resolvectl status tailscale0`
+    *   **Must show:** `DNS Servers: 100.100.100.100`
+    *   **Must show:** `DNS Domain: <tailnet>.ts.net ~<tailnet>.ts.net` (The `~` route is critical for split DNS).
+    *   **Must show:** `Default Route: no` (Ensures global DNS remains 1.1.1.1).
 
 **Symptom:** Internet/DNS "dies" after enabling Tailscale (websites don't resolve).
 **Solution:**
