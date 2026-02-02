@@ -303,6 +303,7 @@ in
     extraHosts = ''
       192.168.0.189 dante
       192.168.0.121 vergil
+      ${lib.readFile inputs.blocklist}
     '';
   };
 
