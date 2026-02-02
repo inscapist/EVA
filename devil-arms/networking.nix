@@ -15,7 +15,7 @@ in
     openssh.enable = true;
     resolved = {
       enable = true;
-      dnssec = "allow-downgrade";
+      dnssec = "false";
       dnsovertls = "opportunistic";
       llmnr = "true";
       extraConfig = ''
@@ -416,7 +416,7 @@ in
           fi
 
           resolvectl dns ${tailscaleInterfaceArg} 100.100.100.100
-          resolvectl domain ${tailscaleInterfaceArg} "$magic_suffix" "~$magic_suffix"
+          resolvectl domain ${tailscaleInterfaceArg} "$magic_suffix"
           resolvectl default-route ${tailscaleInterfaceArg} false
         '';
       };
