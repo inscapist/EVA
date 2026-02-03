@@ -5,17 +5,24 @@
   pkgs,
   ...
 }:
+let
+  tailscaleInterface = config.services.tailscale.interfaceName;
+  tailscaleInterfaceArg = lib.escapeShellArg tailscaleInterface;
+in
 {
   services = {
-    tailscale.enable = false;
+    tailscale = {
+      enable = true;
+      # Prevent Tailscale from fighting WARP during boot
+      # We will manage the startup order via systemd
+    };
     openssh.enable = true;
     resolved = {
       enable = true;
-      dnssec = "allow-downgrade";
+      dnssec = "false";
       dnsovertls = "opportunistic";
       llmnr = "true";
       extraConfig = ''
-        Domains=~.
         MulticastDNS=true
         Cache=yes
         DNSStubListener=yes
@@ -24,8 +31,13 @@
 
     # https://community.cloudflare.com/t/how-to-register-into-a-team-with-linux-and-warp-cli/627971
     cloudflare-warp = {
-      enable = false;
+      enable = true;
     };
+  };
+
+  environment.shellAliases = {
+    run-warp = "sudo systemctl start cloudflare-warp";
+    run-tailscale = "sudo systemctl start tailscaled";
   };
 
   environment.systemPackages = [
@@ -186,35 +198,6 @@
     })
     pkgs.tailscale
     (pkgs.writeShellApplication {
-      name = "warp-fix";
-      runtimeInputs = [
-        pkgs.cloudflare-warp
-      ];
-      text = ''
-        set -euo pipefail
-        echo "Applying WARP fixes..."
-        
-        # Disconnect to allow configuration
-        warp-cli --accept-tos disconnect || true
-        
-        # Exclude DNS servers from the tunnel to prevent bootstrap loops
-        # Using newer 'tunnel ip add' syntax
-        echo "Adding excluded routes for DNS..."
-        warp-cli --accept-tos tunnel ip add 1.1.1.1 || true
-        warp-cli --accept-tos tunnel ip add 1.0.0.1 || true
-
-        # Disable connectivity checks to bypass "PerformingConnectivityChecks" hang
-        echo "Disabling internal connectivity checks..."
-        warp-cli --accept-tos debug connectivity-check disable || true
-        
-        # Reconnect
-        echo "Reconnecting..."
-        warp-cli --accept-tos connect || true
-        
-        echo "Done. Run 'warp-status' to check connectivity."
-      '';
-    })
-    (pkgs.writeShellApplication {
       name = "warp-connected";
       runtimeInputs = [
         pkgs.cloudflare-warp
@@ -272,30 +255,28 @@
     nftables.enable = false;
 
     nameservers = [
+      "8.8.8.8"
       "1.1.1.1"
-      "1.0.0.1"
     ];
 
     firewall = {
+      enable = true;
       checkReversePath = false;
       trustedInterfaces = [
         "CloudflareWARP"
-        "tailscale0"
+        tailscaleInterface
+        "docker0"
       ];
       allowedTCPPorts = [
         22
         3000
-        # Add Cloudflare WARP ports
-        2408
       ];
       allowedUDPPorts = [
-        # Add Cloudflare WARP ports
-        2408
         1701
         500
         4500
         # Tailscale
-        41641
+        config.services.tailscale.port
       ];
     };
 
@@ -311,36 +292,196 @@
   #   wg0.configFile = config.age.secrets.wg0_conf.path;
   # };
 
-  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
+  systemd = {
+    services = {
+      NetworkManager-wait-online.enable = lib.mkForce false;
 
-  systemd.services.cloudflare-warp = {
-    after = [
-      "NetworkManager.service"
-      "systemd-resolved.service"
-    ];
-    wants = [
-      "NetworkManager.service"
-      "systemd-resolved.service"
-    ];
+      tailscaled = {
+        conflicts = [ "cloudflare-warp.service" ];
+      };
+
+      cloudflare-warp = {
+        conflicts = [ "tailscaled.service" ];
+        after = [
+          "NetworkManager.service"
+          "systemd-resolved.service"
+          "network-online.target"
+        ];
+        wants = [
+          "NetworkManager.service"
+          "systemd-resolved.service"
+          "network-online.target"
+        ];
+        path = [ pkgs.iproute2 pkgs.gawk pkgs.coreutils ];
+        serviceConfig = {
+          ExecStartPre = pkgs.writeShellScript "warp-bypass-routes" ''
+            set -euo pipefail
+            
+            echo "Determining gateways for WARP bypass..."
+            
+            # 1. IPv4 Bypass
+            gw="$(ip -4 route show default | awk '/default/ {print $3}' | head -n1)"
+            
+            if [[ -n "$gw" ]]; then
+              echo "IPv4 Gateway: $gw"
+              
+              add_route() {
+                local target="$1"
+                # Use 'replace' to be idempotent
+                ip -4 route replace "$target" via "$gw" dev wlan0 || echo "Failed to add $target"
+              }
+
+              add_route "162.159.0.0/16"
+              add_route "198.41.128.0/17"
+              add_route "1.1.1.1"
+              add_route "1.0.0.1"
+            else
+              echo "Warning: No IPv4 default gateway found."
+            fi
+            
+            # 2. Kill IPv6 for WARP
+            # Since we can't reliably route IPv6 around the tunnel (ISP/Hardware issues),
+            # we force it to be unreachable so Happy Eyeballs fails FAST and uses IPv4.
+            echo "Blocking IPv6 WARP endpoints to force IPv4 fallback..."
+            ip -6 route replace unreachable 2606:4700:100::/48 || true
+            ip -6 route replace unreachable 2606:4700:4700::1111 || true
+            ip -6 route replace unreachable 2606:4700:4700::1001 || true
+
+            exit 0
+          '';
+          
+          ExecStartPost = pkgs.writeShellScript "warp-dns-cleanup" ''
+             set -e
+             # Wait up to 10s for the interface to appear, then clean DNS
+             for i in {1..20}; do
+               if ip link show CloudflareWARP >/dev/null 2>&1; then
+                 ${pkgs.systemd}/bin/resolvectl revert CloudflareWARP || true
+                 ${pkgs.systemd}/bin/resolvectl dns CloudflareWARP "" || true
+                 exit 0
+               fi
+               sleep 0.5
+             done
+          '';
+        };
+      };
+
+      # Tailscale can take over system DNS (MagicDNS/admin DNS), which is great
+      # normally, but in a dual-VPN setup (WARP + Tailscale) it can look like the
+      # internet "dies" when DNS starts pointing at Tailscale's resolver while the
+      # tunnel is still coming up (or when WARP's firewall rules interfere).
+      #
+      # Keep the system's DNS stable (systemd-resolved + static nameservers),
+      # but still keep MagicDNS working via split DNS on the Tailscale link.
+      tailscale-preferences = lib.mkIf config.services.tailscale.enable {
+        description = "Apply safe Tailscale preferences (avoid DNS takeover)";
+        after = [
+          "tailscaled.service"
+          "network-online.target"
+          "systemd-resolved.service"
+        ];
+        wants = [
+          "tailscaled.service"
+          "network-online.target"
+        ];
+        serviceConfig = {
+          Type = "oneshot";
+        };
+        path = [
+          config.services.tailscale.package
+          pkgs.jq
+          pkgs.systemd
+        ];
+        script = ''
+          set -euo pipefail
+
+          # Retry loop helper
+          wait_for() {
+            local limit="$1"
+            local interval="1"
+            local count=0
+            shift
+            while [[ $count -lt $limit ]]; do
+              if "$@"; then
+                return 0
+              fi
+              sleep "$interval"
+              count=$((count + interval))
+            done
+            return 1
+          }
+
+          check_tailscale_running() {
+            state="$(
+              tailscale status --json --peers=false 2>/dev/null \
+                | jq -r '.BackendState // empty' \
+                || true
+            )"
+            [[ "$state" == "Running" ]]
+          }
+
+          # 1. Wait for Tailscale to be fully connected (up to 10s)
+          # Use a short timeout so we don't block for long if it's intentionally stopped.
+          if ! wait_for 10 check_tailscale_running; then
+            echo "Tailscale not running (state!=Running) after 10s; skipping preference sync."
+            exit 0
+          fi
+
+          # Prevent Tailscale from rewriting system DNS. Re-enable explicitly with:
+          #   sudo tailscale set --accept-dns=true
+          # Also allow LAN access to ensure local Docker subnets (172.17.x.x, etc) are not
+          # routed into the tunnel when using an Exit Node.
+          tailscale set --accept-dns=false --exit-node-allow-lan-access=true
+
+          # Keep MagicDNS working without letting Tailscale take over global DNS.
+          magic_suffix="$(
+            tailscale status --json --peers=false 2>/dev/null \
+              | jq -r '.MagicDNSSuffix // empty' \
+              || true
+          )"
+
+          if [[ -z "$magic_suffix" ]]; then
+            resolvectl revert ${tailscaleInterfaceArg} >/dev/null 2>&1 || true
+            exit 0
+          fi
+
+          check_resolved_link() {
+            resolvectl status ${tailscaleInterfaceArg} >/dev/null 2>&1
+          }
+
+          # 2. Wait for systemd-resolved to see the interface (up to 5s)
+          if ! wait_for 5 check_resolved_link; then
+            echo "systemd-resolved has no link ${tailscaleInterface} after 5s; skipping MagicDNS config."
+            exit 0
+          fi
+
+          resolvectl dns ${tailscaleInterfaceArg} 100.100.100.100
+          resolvectl domain ${tailscaleInterfaceArg} "$magic_suffix"
+          resolvectl default-route ${tailscaleInterfaceArg} false
+        '';
+      };
+    };
+
+    timers.tailscale-preferences = lib.mkIf config.services.tailscale.enable {
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnBootSec = "30s";
+        OnUnitActiveSec = "1m";
+        Unit = "tailscale-preferences.service";
+      };
+    };
   };
 
   virtualisation.docker = {
     rootless.daemon.settings = {
-      dns = [
-        "1.1.1.1"
-        "9.9.9.9"
-      ];
+      mtu = 1280;
     };
     daemon.settings = {
-      dns = [
-        "1.1.1.1"
-        "9.9.9.9"
-      ];
+      mtu = 1280;
     };
   };
 
   networking.networkmanager.unmanaged = [
     "CloudflareWARP"
-    "tailscale0"
+    tailscaleInterface
   ];
 }
