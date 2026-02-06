@@ -12,7 +12,7 @@ in
 {
   services = {
     tailscale = {
-      enable = true;
+      enable = false;
       # Prevent Tailscale from fighting WARP during boot
       # We will manage the startup order via systemd
     };
