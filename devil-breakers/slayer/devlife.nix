@@ -43,6 +43,7 @@ in
     kapp
     stern
     #-- Languages --#
+    uv
     yarn
     nodejs
     # nodePackages_latest.firebase-tools

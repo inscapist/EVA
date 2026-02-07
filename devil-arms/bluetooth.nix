@@ -7,7 +7,7 @@
   # https://wiki.archlinux.org/title/bluetooth
   # https://wiki.archlinux.org/title/Bluetooth_headset
   hardware.bluetooth = {
-    enable = true;
+    enable = false;
     powerOnBoot = true;
     hsphfpd.enable = false; # headset
     disabledPlugins = [

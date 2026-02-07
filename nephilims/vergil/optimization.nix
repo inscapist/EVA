@@ -51,6 +51,7 @@ in
   hardware.nvidia = {
     open = false;
     modesetting.enable = true;
+    nvidiaPersistenced = true;
     nvidiaSettings = true;
 
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.

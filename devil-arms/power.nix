@@ -30,7 +30,7 @@
     thermald.enable = false;
 
     # Check battery health with `upower -d`
-    upower.enable = true;
+    upower.enable = false;
 
     # udev.extraRules = ''
     #   # start/stop services on power (un)plug

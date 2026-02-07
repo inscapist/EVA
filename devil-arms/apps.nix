@@ -3,6 +3,7 @@
 {
   programs.steam = {
     enable = lib.mkDefault false;
+    gamescopeSession.enable = true;
     package = pkgs.steam.override {
       extraArgs = "-cef-disable-gpu -cef-disable-gpu-compositing";
     };
